@@ -10,7 +10,8 @@ WHITE = \033[0;97m
 
 NAME = minishell
 
-SRC =	./src/main.c \
+SRC =	./src/utils/utils.c \
+		./src/minishell.c \
 
 SRCB =
 
