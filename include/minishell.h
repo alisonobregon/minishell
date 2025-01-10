@@ -15,6 +15,12 @@
 
 # include "../libft/libft.h"
 
+typedef struct s_path
+{
+	char	*path;
+	char	**env;
+	char	*SHLVL;
+}			t_path;
 typedef struct s_exec
 {
 	char	*path;

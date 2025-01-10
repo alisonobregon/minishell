@@ -12,6 +12,8 @@
 
 #include "../include/minishell.h"
 
+
+
 /* Aqui vamos a crear el while loop principal
 	*/
 
