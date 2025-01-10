@@ -15,12 +15,24 @@
 
 # include "../libft/libft.h"
 
+typedef struct s_exec
+{
+	char	*path;
+	char	**cmd;
+	char	**env;
+	int		infile;
+	int		outfile;
+	char	*limiter;
+	
+}	t_exec;
+
 typedef struct s_minishell
 {
 	char	*command;
 	char	**args;
 	char	**env;
 	char	*line;
+
 }	t_minishell;
 
 #endif
