@@ -8,7 +8,7 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
-NAME = minishelll
+NAME = minishell
 
 SRC =	./src/main.c \
 
