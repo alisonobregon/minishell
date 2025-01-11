@@ -44,7 +44,7 @@ int	main(int argc, char **argv, char **env)
 	} */
 	shell->path = ft_split(getenv("PATH"), ':');
 	if (!shell->path)
-		return (1); // free shell
+		shell->path[0] = ft_strdup("./") ;
 	while(1)
 	{
 		print_header();

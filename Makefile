@@ -10,8 +10,7 @@ WHITE = \033[0;97m
 
 NAME = minishell
 
-SRC =	./src/utils/utils.c \
-		./src/minishell.c \
+SRC = ./src/minishell.c \
 
 SRCB =
 
@@ -19,7 +18,7 @@ OBJ = $(SRC:.c=.o)
 
 OBJB = $(SRCB:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address,leak
+CFLAGS = -Wall -Werror -Wextra
 CC = gcc
 #-no-pie
 
