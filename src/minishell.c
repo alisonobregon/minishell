@@ -17,19 +17,47 @@
 /* Aqui vamos a crear el while loop principal
 	*/
 
-void	print_header()
+/*Aqui le doy los colorinchis y ademas si escuentra la ruta osea
+el pwd imprime eso si no pues imprime la palabra minishell*/
+char	*get_prompt(t_minishell *shell)
 {
-ft_printf("  _      _        _                         \n");
-ft_printf(" | |    (_)      | |                        \n");
-ft_printf(" | |     _  ___  | |_   ___  _ __  ___  ___ \n");
-ft_printf(" | |    | |/ _ \\ | __| / _ \\| '__|/ _ \\/ __|\n");
-ft_printf(" | |____| |  __/ | |_ |  __/| |  |  __/\\__ \\\n");
-ft_printf(" |______|_|\\___|  \\__| \\___||_|   \\___||___/\n");
+	char	*pwd;
+	char	*tmp;
+
+	(void)shell;
+	pwd = getenv("PWD");  //Aqui creo que hay que hacer una funcion porque retorna int y quiero el char
+	if(pwd)
+	{
+		tmp = ft_strjoin("\n"CYAN, pwd);
+		pwd = ft_strjoin(tmp, DEFAULT); 
+		free(tmp);
+	}
+	else
+		pwd = ft_strdup(CYAN "\nminishell" DEFAULT);
+	//AQUI PONDRIAMOS YA SI EL COMANDO FUE EXITOSO O NO
+	return(pwd);
+}
+//readline muestra el texto y espera a que el usuario ingrese una linea
+//aqui ya tenemos buff que es lo que recibe;
+char	*get_input(t_minishell *shell)
+{
+	char	*prompt;
+	char	*buf;
+
+	prompt = get_prompt(shell);
+	buf = readline(prompt);
+	free(prompt);
+	if (!buf) //no ha ingresado nada
+	{
+		ft_printf("\n");
+	}
+	return(buf);
 }
 
 int	main(int argc, char **argv, char **env)
 {
 	t_minishell	*shell;
+	char	*str;
 
 	shell = ft_calloc(1, sizeof(t_minishell));
 	if (!shell)
@@ -47,9 +75,10 @@ int	main(int argc, char **argv, char **env)
 		shell->path[0] = ft_strdup("./") ;
 	while(1)
 	{
-		print_header();
-		// Print prompt
-		shell->prompt->line = get_next_line(0);
+		str = get_input(shell);
+		if (!str)
+			continue;
+		//shell->prompt->line = get_next_line(0);
 		
 		if (!shell->prompt->line)
 			break ;

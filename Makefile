@@ -6,6 +6,7 @@ YELLOW = \033[0;93m
 BLUE = \033[0;94m
 MAGENTA = \033[0;95m
 CYAN = \033[0;96m
+
 WHITE = \033[0;97m
 
 NAME = minishell
@@ -17,8 +18,9 @@ SRCB =
 OBJ = $(SRC:.c=.o)
 
 OBJB = $(SRCB:.c=.o)
-
-CFLAGS = -Wall -Werror -Wextra
+INCLUDES = -I/mingw64/include
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
 CC = gcc
 #-no-pie
 
@@ -26,7 +28,7 @@ all: $(NAME) show_progress
 
 $(NAME): $(OBJ)
 	@make -s -C libft
-	$(CC) $(CFLAGS) $(OBJ) -L libft -lft -o $(NAME)
+	$(CC) $(OBJ) $(CFLAGS) $(FLAGS)  -L libft -lft -o $(NAME)
 
 show_progress:
 		@for file in $(SRC); do \
