@@ -21,13 +21,6 @@
 #define CYAN "\033[36m"
 #define DEFAULT "\033[0m"
 
-typedef struct s_path
-{
-	char	*path;
-	char	**env;
-	char	*SHLVL;
-}			t_path;
-
 typedef struct s_exec
 {
 	char	*path;
@@ -42,8 +35,9 @@ typedef struct s_exec
 
 typedef struct s_prompt
 {
-	char	**prompt;
-	char	*line;
+	char	*cwd;
+	char	*str;
+
 }	t_prompt;
 
 typedef struct s_minishell
@@ -60,8 +54,11 @@ typedef struct s_minishell
 }	t_minishell;
 
 
-// char	*find_path(t_minishell *shell);
-
+/*parsing functions*/
+void	parsing(t_minishell *shell);
+void		check_quotes(char **buf, int simple_quote, int double_quote);
+int		check_other_quote(char **buf, int *i, char c);
 /*built-ins functions*/
 int		cd(t_minishell *shell);
+
 #endif

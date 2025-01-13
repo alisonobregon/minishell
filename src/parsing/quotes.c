@@ -1,0 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   quotes.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/13 16:18:14 by aliobreg          #+#    #+#             */
+/*   Updated: 2025/01/13 19:43:30 by aliobreg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../include/minishell.h"
+/*aqui verifico que las quotes esten cerradas :)*/
+int check_other_quote(char **buf, int *i, char c)
+{
+	int	n;
+		
+	n = 1;
+	while((*buf)[*i + 1] && (*buf)[*i + 1] != c)
+		(*i)++;
+	if ((*buf)[*i + 1] == c)
+		n++;
+	(*i)++;
+	return (n);
+
+}
+
+void	check_quotes(char **buf, int simple_quote, int double_quote)
+{
+	int	i;
+	char *temp;
+	char *dquote;
+
+	i = -1;
+	while ((*buf)[++i])
+	{
+		if ((*buf)[i] == 34)
+			double_quote += check_other_quote(buf, &i, (*buf)[i]);
+		if ((*buf)[i] == 39)
+			simple_quote += check_other_quote(buf, &i, (*buf)[i]);
+	}
+	if ((double_quote % 2 != 0) || (simple_quote % 2 != 0))
+	{
+		dquote = readline("dquote>");
+		temp = ft_strjoin(*buf, dquote);
+		free(dquote);
+		free(*buf);
+		*buf = temp;
+		//free(temp);
+		check_quotes(buf, 0, 0);			
+	}
+	return ;
+}

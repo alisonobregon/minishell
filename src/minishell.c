@@ -19,18 +19,27 @@
 
 /*Aqui le doy los colorinchis y ademas si escuentra la ruta osea
 el pwd imprime eso si no pues imprime la palabra minishell*/
+void memory_allocated(t_minishell *shell)
+{
+	shell->prompt = ft_calloc(1, sizeof(t_prompt));
+}
 char	*get_prompt(t_minishell *shell)
 {
 	char	*pwd;
-	char	*user;
+	char	*temp1;
+	char	*temp2;
 
 	(void)shell;
 	pwd = getenv("PWD");  //hacer una funcion porque retorna int y quiero el char
-	user = getenv("USER");
-	if(pwd || user)
+	//user = getenv("USER");
+	if(pwd)
 	{
-		pwd = ft_strjoin((ft_strjoin(CYAN, user)), pwd);
-		pwd = ft_strjoin((ft_strjoin(pwd, "$ ")), DEFAULT);
+		
+		temp1 =  ft_strjoin(CYAN, pwd);
+		temp2 = ft_strjoin(temp1, "$ ");
+		free(temp1);
+		pwd = ft_strjoin(temp2, DEFAULT);
+		free(temp2);
 		//de esta manera nos ahorramos una variable y se puede imprimir el usuario tambien
 		//free(tmp);
 	}
@@ -44,7 +53,6 @@ char	*get_input(t_minishell *shell)
 	char	*prompt;
 	char	*buf;
 
-	//shell->pwd = readline(prompt);
 	prompt = get_prompt(shell);
 	buf = readline(prompt);
 	free(prompt);
@@ -58,7 +66,6 @@ char	*get_input(t_minishell *shell)
 int	main(int argc, char **argv, char **env)
 {
 	t_minishell	*shell;
-	char	*str;
 
 	shell = ft_calloc(1, sizeof(t_minishell));
 	if (!shell)
@@ -66,25 +73,29 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	shell->env = env;
+
 	/* if (getenv("PATH") == NULL)
 	{
 		 buscar path find_path y asignar o de lo contrario
 		return 
 	} */
+	memory_allocated(shell);
 	shell->path = ft_split(getenv("PATH"), ':');
 	if (!shell->path)
 		shell->path[0] = ft_strdup("./") ;
+	ft_printf("\033[1;1H\033[2J");
 	while(1)
 	{
-		str = get_input(shell);
-		if (ft_strncmp(str, "cd", 3) == 0)
+		shell->prompt->str = get_input(shell);
+		parsing(shell);
+		/*if (ft_strncmp(shell->prompt->str , "cd", 3) == 0)
 		{
 			cd(shell);
 			continue;
-		}
+		}*/
 		/* if (!str)
 			continue; */
-		printf("prompt: %s\n", str);
+		printf("prompt: %s\n", shell->prompt->str);
 		// Read command
 		// Parse command
 		// Execute command
