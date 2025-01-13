@@ -11,8 +11,8 @@ WHITE = \033[0;97m
 
 NAME = minishell
 
-SRC = 	./src/minishell.c \
-		./src/built-ins/cd.c \
+SRC = 	./src/built-ins/cd.c \
+		./src/minishell.c \
 
 SRCB =
 
@@ -22,7 +22,7 @@ OBJB = $(SRCB:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) #-g3 -fsanitize=leak 
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=leak 
 
 FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
 

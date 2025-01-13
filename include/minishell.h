@@ -53,6 +53,7 @@ typedef struct s_minishell
 	char		**env;
 	char		**path;
 	char		*pwd;
+	char		*cwd;
 	t_prompt	*prompt;
 	t_exec		*exec;
 	//t_path		*path;
@@ -63,5 +64,5 @@ typedef struct s_minishell
 // char	*find_path(t_minishell *shell);
 
 /*built-ins functions*/
-int		cd(t_minishell *shell);
+int		cd(t_minishell *shell, char **str);
 #endif

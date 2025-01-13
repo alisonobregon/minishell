@@ -12,29 +12,51 @@
 
 #include "../../include/minishell.h"
 
-int cd(t_minishell *shell)
-{
-	char	*path;
+//setenv
+//chdir
+//getcwd
+//getenv
 
-	if (ft_strncmp(shell->pwd, "cd", 3) != 0)
-		return (0);
-	if (shell->pwd == NULL)
+static int	new_path(t_minishell *shell, char **str)
+{
+	char	*new_path;
+
+	new_path = ft_strdup(*str + 3);
+	ft_printf("new_path: %s\n", new_path);
+	new_path = ft_gnlstrjoin(new_path, "/", 1);
+	if (chdir(new_path) == -1)
 	{
-		path = getenv("HOME");
-		if (path == NULL)
-			return (1);
+		ft_printf("-bash 1: cd: %s: No such file or directory\n", new_path);
+		free(new_path);
+		return (0);
 	}
 	else
-		path = shell->pwd + 3;
-	if (chdir(path) == -1) // Si no encuentra la ruta devuelve -1
 	{
-		ft_printf("-bash: cd: %s: No such file or directory\n", path);
+		chdir(new_path);
+		shell->pwd = new_path;
+		free(new_path);
+	}
+	return (1);
+}
+
+int cd(t_minishell *shell, char **str)
+{
+	char	*home;
+
+	(void)shell;
+	home = getenv("HOME");
+	if (ft_strncmp(*str, "cd ~", 4) == 0 || ft_strncmp(*str, "cd", 2) == 0)
+	{
+		if (home == NULL)
+			return (1);
+		chdir(home);
+		shell->pwd = home;
+			return (1);
+	}
+	else if (ft_strlen(*str) > 3)
+	{
+		new_path(shell, str);
 		return (1);
 	}
-	shell->pwd = getcwd(NULL, 0);
-	if (shell->pwd == NULL)
-		return (1);
-	setenv("PWD", shell->pwd, 1);
-	free(shell->pwd);
 	return (0);
 }
