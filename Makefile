@@ -11,8 +11,8 @@ WHITE = \033[0;97m
 
 NAME = minishell
 
-SRC = 	./src/built-ins/cd.c \
-		./src/minishell.c \
+SRC = 	./src/minishell.c \
+		./src/built-ins/cd.c \
 
 SRCB =
 
@@ -22,7 +22,7 @@ OBJB = $(SRCB:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
-CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=leak $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) #-g3 -fsanitize=leak 
 
 FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
 
@@ -33,7 +33,7 @@ all: $(NAME) show_progress
 
 $(NAME): $(OBJ)
 	@make -s -C libft
-	$(CC) $(OBJ) $(CFLAGS) $(FLAGS)  -L libft -lft -o $(NAME)
+	$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
 
 show_progress:
 		@for file in $(SRC); do \
