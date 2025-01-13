@@ -22,28 +22,29 @@ el pwd imprime eso si no pues imprime la palabra minishell*/
 char	*get_prompt(t_minishell *shell)
 {
 	char	*pwd;
-	char	*tmp;
+	char	*user;
 
 	(void)shell;
-	pwd = getenv("PWD");  //Aqui creo que hay que hacer una funcion porque retorna int y quiero el char
-	if(pwd)
+	pwd = getenv("PWD");  //hacer una funcion porque retorna int y quiero el char
+	user = getenv("USER");
+	if(pwd || user)
 	{
-		tmp = ft_strjoin("\n"CYAN, pwd);
-		pwd = ft_strjoin(tmp, DEFAULT); 
-		free(tmp);
+		pwd = ft_strjoin((ft_strjoin(CYAN, user)), pwd);
+		pwd = ft_strjoin((ft_strjoin(pwd, "$ ")), DEFAULT);
+		//de esta manera nos ahorramos una variable y se puede imprimir el usuario tambien
+		//free(tmp);
 	}
 	else
-		pwd = ft_strdup(CYAN "\nminishell" DEFAULT);
+		pwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
 	//AQUI PONDRIAMOS YA SI EL COMANDO FUE EXITOSO O NO
 	return(pwd);
 }
-//readline muestra el texto y espera a que el usuario ingrese una linea
-//aqui ya tenemos buff que es lo que recibe;
 char	*get_input(t_minishell *shell)
 {
 	char	*prompt;
 	char	*buf;
 
+	//shell->pwd = readline(prompt);
 	prompt = get_prompt(shell);
 	buf = readline(prompt);
 	free(prompt);
@@ -76,13 +77,14 @@ int	main(int argc, char **argv, char **env)
 	while(1)
 	{
 		str = get_input(shell);
-		if (!str)
+		if (ft_strncmp(str, "cd", 3) == 0)
+		{
+			cd(shell);
 			continue;
-		//shell->prompt->line = get_next_line(0);
-		
-		if (!shell->prompt->line)
-			break ;
-		printf("prompt: %s\n", shell->prompt->line);
+		}
+		/* if (!str)
+			continue; */
+		printf("prompt: %s\n", str);
 		// Read command
 		// Parse command
 		// Execute command

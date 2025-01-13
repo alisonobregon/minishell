@@ -27,6 +27,7 @@ typedef struct s_path
 	char	**env;
 	char	*SHLVL;
 }			t_path;
+
 typedef struct s_exec
 {
 	char	*path;
@@ -50,11 +51,17 @@ typedef struct s_minishell
 	char		*command;
 	char		**args;
 	char		**env;
-	t_prompt	*prompt;
 	char		**path;
+	char		*pwd;
+	t_prompt	*prompt;
+	t_exec		*exec;
+	//t_path		*path;
+
 }	t_minishell;
 
 
 // char	*find_path(t_minishell *shell);
 
+/*built-ins functions*/
+int		cd(t_minishell *shell);
 #endif
