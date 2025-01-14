@@ -32,8 +32,9 @@ static int	new_path(t_minishell *shell, char **str)
 	}
 	else
 	{
+		ft_printf("new_path: %s\n", new_path);
 		chdir(new_path);
-		shell->pwd = new_path;
+		shell->cwd = new_path;
 		free(new_path);
 	}
 	return (1);
@@ -43,14 +44,15 @@ int cd(t_minishell *shell, char **str)
 {
 	char	*home;
 
-	(void)shell;
 	home = getenv("HOME");
-	if (ft_strncmp(*str, "cd ~", 4) == 0 || ft_strncmp(*str, "cd", 2) == 0)
+	ft_printf("str: %s\n", *str);
+	if (!ft_strncmp(*str, "cd ~", 4) || !ft_strncmp(*str, "cd", ft_strlen(*str)))
 	{
+		ft_printf("home case\n");
 		if (home == NULL)
 			return (1);
 		chdir(home);
-		shell->pwd = home;
+		shell->cwd = home;
 			return (1);
 	}
 	else if (ft_strlen(*str) > 3)

@@ -60,6 +60,6 @@ void	parsing(t_minishell *shell);
 void		check_quotes(char **buf, int simple_quote, int double_quote);
 int		check_other_quote(char **buf, int *i, char c);
 /*built-ins functions*/
-int		cd(t_minishell *shell);
+int		cd(t_minishell *shell, char **str);
 
 #endif

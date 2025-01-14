@@ -11,15 +11,12 @@ WHITE = \033[0;97m
 
 NAME = minishell
 
-SRC = 	./src/built-ins/cd.c \
-		./src/minishell.c \
-		./src/parsing/parsing.c ./src/parsing/quotes.c
-
-SRCB =
+SRC = 	./src/minishell.c \
+		./src/built-ins/cd.c \
+		./src/parsing/parsing.c \
+		./src/parsing/quotes.c \
 
 OBJ = $(SRC:.c=.o)
-
-OBJB = $(SRCB:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
