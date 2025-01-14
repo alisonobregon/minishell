@@ -13,6 +13,7 @@ NAME = minishell
 
 SRC = 	./src/built-ins/cd.c \
 		./src/minishell.c \
+		./src/parsing/parsing.c ./src/parsing/quotes.c
 
 SRCB =
 
