@@ -48,6 +48,7 @@ typedef struct s_minishell
 	char		**path;
 	char		*pwd;
 	char		*cwd;
+	int			cwd_int;
 	t_prompt	*prompt;
 	t_exec		*exec;
 	//t_path		*path;

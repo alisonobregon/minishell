@@ -88,12 +88,18 @@ int	main(int argc, char **argv, char **env)
 	ft_printf("\033[1;1H\033[2J");
 	while (1)
 	{
-		shell->cwd = get_prompt(shell);
+		if (shell->cwd_int == 0)
+			shell->cwd = get_prompt(shell);
 		shell->prompt->str = readline(shell->cwd);
 		parsing(shell);
 		if (ft_strncmp(shell->prompt->str , "cd", 2) == 0)
 		{
 			cd(shell, &shell->prompt->str);
+			continue;
+		}
+		else if (ft_strncmp(shell->prompt->str, "ls", 2) == 0)
+		{
+			system("ls");
 			continue;
 		}
 		printf("prompt: %s\n", shell->prompt->str);
