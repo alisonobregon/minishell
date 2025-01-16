@@ -1,45 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/01/16 21:39:27 by aliobreg         ###   ########.fr       */
+/*   Created: 2025/01/14 17:22:45 by aliobreg          #+#    #+#             */
+/*   Updated: 2025/01/16 19:41:15 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int get_end_index(char *str, int sp)
+
+
+int ft_countpipes(char *str)
 {
-	char **split;
-
-	split = ft_split("< << >> < | || & &&", ' ');
-	if (!split)
-		return(0);
-	
-
-	
-}
-
-int split_args(t_minishell *shell, char *str)
-{
-	int	i;
-	
+	int i;
+	int res;
+	char quote;
+		
 	i = -1;
-	while(str[++i])
+	res = 0;
+	while (str[++i])
 	{
-		if (str[i] == '\t' || str[i] == ' ')
-			continue;
-		if (str[i] == '>' || str[i] == '<' || str[i] == 34 || str[i] == 39 
-		|| str[i] == '|' || str[i] == '&')
+		if (str[i] == 34 || str[i] == 39)
+		{
+		quote = str[i];
+		i++;
+		while(str[i] && str[i] != quote)
+			i++;
+		}
+		if ((str[i] == '|' && (str[i + 1] == '|' || str[i + 1] == '\0' || ft_blank(str[i + 1]) != 1)) || str[0] == '|')
+			ft_printf("syntax error near unexpected token '|'");
+		if (s[i] == '|')
+			res++;
 	}
-	
-}
-void parsing(t_minishell *shell)
-{
-	check_quotes(&(shell->prompt->str), 2, 2);
-	//check_pipex
+	return(res);
 }
