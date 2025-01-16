@@ -12,9 +12,12 @@ WHITE = \033[0;97m
 NAME = minishell
 
 SRC = 	./src/minishell.c \
+		./src/built-ins/builtins-utils.c \
+		./src/built-ins/env.c \
 		./src/built-ins/cd.c \
 		./src/parsing/parsing.c \
 		./src/parsing/quotes.c \
+		./src/utils/utils.c \
 
 OBJ = $(SRC:.c=.o)
 

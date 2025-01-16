@@ -62,5 +62,13 @@ void		check_quotes(char **buf, int simple_quote, int double_quote);
 int		check_other_quote(char **buf, int *i, char c);
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);
+int		pwd(void);
+void	ft_env(t_minishell *shell);
+/* utils */
+char	**strarray_copy(char **array);
+char	**add_str_to_array(char **array, char *str);
+char	*find_path(t_minishell *shell, char *cmd);
+/* builtins utils */
+void	free_arrays(char **array1, char **array2);
 
 #endif

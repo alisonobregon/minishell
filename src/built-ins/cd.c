@@ -12,10 +12,20 @@
 
 #include "../../include/minishell.h"
 
-//setenv
-//chdir
-//getcwd
-//getenv
+int	pwd(void)
+{
+	char	*cwd;
+
+	cwd = getcwd(NULL, 0);
+	if (cwd == NULL)
+	{
+		ft_printf("minishell: pwd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory\n");
+		return (0);
+	}
+	ft_printf("%s\n", cwd);
+	free(cwd);
+	return (1);
+}
 
 static int	new_path(t_minishell *shell, char **str)
 {

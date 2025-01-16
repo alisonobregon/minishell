@@ -75,13 +75,14 @@ int	main(int argc, char **argv, char **env)
 		return (1);
 	(void)argc;
 	(void)argv;
-	shell->env = env;
+	shell->env = strarray_copy(env);
+	//if (shell->env == NULL) no tenemos enviroment
+	memory_allocated(shell);
 	/* if (getenv("PATH") == NULL)
 	{
 		 buscar path find_path y asignar o de lo contrario
 		return 
 	} */
-	memory_allocated(shell);
 	shell->path = ft_split(getenv("PATH"), ':');
 	if (!shell->path)
 		shell->path[0] = ft_strdup("./") ;
@@ -104,8 +105,28 @@ int	main(int argc, char **argv, char **env)
 		}
 		else if (!ft_strncmp(shell->prompt->str, "pwd", 3))
 		{
-			system("pwd");
+			pwd();
 			continue;
+		}
+		else if (!ft_strncmp(shell->prompt->str, "env", 3))
+		{
+			ft_env(shell);
+			continue;
+		}
+		else if (!ft_strncmp(shell->prompt->str, "export", 6))
+		{
+			ft_export(shell);
+			continue;
+		}
+		else if (!ft_strncmp(shell->prompt->str, "unset", 5))
+		{
+			//ft_unset(shell);
+			continue;
+		}
+		else if (!ft_strncmp(shell->prompt->str, "exit", 4))
+		{
+			//ft_exit(shell);
+			break;
 		}
 		printf("prompt: %s\n", shell->prompt->str);
 		// Read command

@@ -57,3 +57,47 @@
 		else if (ft_strmcmp)
 	}
 } */
+
+char	**add_str_to_array(char **array, char *str)
+{
+	char	**new_array;
+	int		i;
+
+	i = 0;
+	if (!array)
+	{
+		new_array = ft_calloc(2, sizeof(char *));
+		new_array[0] = ft_strdup(str);
+		return (new_array);
+	}
+	new_array = ft_calloc(ft_len(array) + 2, sizeof(char *));
+	if (!new_array)
+		return (NULL);
+	while (array[i] != NULL)
+	{
+		new_array[i] = ft_strdup(array[i]);
+		i++;
+	}
+	new_array[i] = ft_strdup(str);
+	free(array);
+	return (new_array);
+}
+
+char	**strarray_copy(char **array)
+{
+	char	**copy;
+	int		i;
+
+	i = 0;
+	if (!array || !*array)
+		return (NULL);
+	copy = ft_calloc(ft_len(array) + 1, sizeof(char *));
+	if (!copy)
+		return (NULL);
+	while (array[i] != NULL)
+	{
+		copy[i] = ft_strdup(array[i]);
+		i++;
+	}
+	return (copy);
+}
