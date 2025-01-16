@@ -92,14 +92,19 @@ int	main(int argc, char **argv, char **env)
 			shell->cwd = get_prompt(shell);
 		shell->prompt->str = readline(shell->cwd);
 		parsing(shell);
-		if (ft_strncmp(shell->prompt->str , "cd", 2) == 0)
+		if (!ft_strncmp(shell->prompt->str , "cd", 2))
 		{
 			cd(shell, &shell->prompt->str);
 			continue;
 		}
-		else if (ft_strncmp(shell->prompt->str, "ls", 2) == 0)
+		else if (!ft_strncmp(shell->prompt->str, "ls", 2))
 		{
 			system("ls");
+			continue;
+		}
+		else if (!ft_strncmp(shell->prompt->str, "pwd", 3))
+		{
+			system("pwd");
 			continue;
 		}
 		printf("prompt: %s\n", shell->prompt->str);
