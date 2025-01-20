@@ -58,6 +58,33 @@
 	}
 } */
 
+char	**ft_arrjoin(char **arr1, char **arr2)
+{
+	char	**new_arr;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	new_arr = ft_calloc(ft_len(arr1) + ft_len(arr2) + 1, sizeof(char *));
+	if (!new_arr)
+		return (NULL);
+	while (arr1[i] != NULL)
+	{
+		new_arr[i] = ft_strdup(arr1[i]);
+		i++;
+	}
+	while (arr2[j] != NULL)
+	{
+		new_arr[i] = ft_strdup(arr2[j]);
+		i++;
+		j++;
+	}
+	new_arr[i] = NULL;
+	free_arrays(arr1, arr2);
+	return (new_arr);
+}
+
 char	**add_str_to_array(char **array, char *str)
 {
 	char	**new_array;
@@ -68,6 +95,7 @@ char	**add_str_to_array(char **array, char *str)
 	{
 		new_array = ft_calloc(2, sizeof(char *));
 		new_array[0] = ft_strdup(str);
+		new_array[1] = NULL;
 		return (new_array);
 	}
 	new_array = ft_calloc(ft_len(array) + 2, sizeof(char *));
@@ -79,7 +107,8 @@ char	**add_str_to_array(char **array, char *str)
 		i++;
 	}
 	new_array[i] = ft_strdup(str);
-	free(array);
+	new_array[i + 1] = NULL;
+	free_arrays(array, NULL);
 	return (new_array);
 }
 
@@ -99,5 +128,6 @@ char	**strarray_copy(char **array)
 		copy[i] = ft_strdup(array[i]);
 		i++;
 	}
+	copy[i] = NULL;
 	return (copy);
 }

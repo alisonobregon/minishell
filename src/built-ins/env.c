@@ -72,7 +72,8 @@ void	ft_env(t_minishell *shell)
 	i = 0;
 	while (shell->env[i])
 	{
-		ft_printf("%s\n", shell->env[i]);
+		if (ft_strchr(shell->env[i], '='))
+			ft_printf("%s\n", shell->env[i]);
 		i++;
 	}
 }

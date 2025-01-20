@@ -64,9 +64,13 @@ int		check_other_quote(char **buf, int *i, char c);
 int		cd(t_minishell *shell, char **str);
 int		pwd(void);
 void	ft_env(t_minishell *shell);
+void	ft_export(t_minishell *shell);
+/* built-ins tools */
+void	free_arrays(char **array1, char **array2);
 /* utils */
 char	**strarray_copy(char **array);
 char	**add_str_to_array(char **array, char *str);
+char	**ft_arrjoin(char **arr1, char **arr2);
 char	*find_path(t_minishell *shell, char *cmd);
 /* builtins utils */
 void	free_arrays(char **array1, char **array2);
