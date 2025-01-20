@@ -6,13 +6,13 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:18:14 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/01/13 19:43:30 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:47:59 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-/*
+
 int check_other_quote(char **buf, int *i, char c)
 {
 	int	n;
@@ -52,4 +52,4 @@ void	check_quotes(char **buf, int simple_quote, int double_quote)
 		check_quotes(buf, 0, 0);			
 	}
 	return ;
-}*/
+}

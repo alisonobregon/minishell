@@ -16,13 +16,35 @@
 
 #include "../../include/minishell.h"
 
+int get_arg_end(char *str, int end_index)
+{
+	char	**split;
+	int		is_sp;
+	int		is_sep;
+	int		i;
+
+	i = -1;
+	split = ft_split("< << >> < | || & &&", ' ');
+	if(!split)
+		return (-1);
+	is_sp = index_of_newline(str + end_index);
+	while(split[++i])
+	{
+		is_sep = index_of(str, split[i], 1);
+		if (is_sep < is_sp)
+			return (end_index + is_sep); //en plan si hay algun especial antes
+	}	
+	return (end_index + is_sep); //recordatorio amable para luego liberar el split preciosa
+}
+
 int get_quotes_end(char *str, int end)
 {
 	int end_index;
 	
 	end_index = -2; //por ahora no hay ninguna comilla
-	if (str[0] == 39)
-		end_index = get_
+	if (str[0] == 34 || str[0] == 39)
+		end_index = get_arg_end(str, index_of(str + 1, str[0], 1) + 2);
+	else if ()
 }
 int get_end_index(char *str, int end)
 {
@@ -32,7 +54,7 @@ int get_end_index(char *str, int end)
 	split = ft_split("< << >> < | || & &&", ' ');
 	if (!split)
 		return(0);
-	end_index = get_quotes_end(str, end)
+	end_index = get_quotes_end(str, end);
 	
 
 	

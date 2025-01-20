@@ -1,5 +1,6 @@
 #include "../../include/minishell.h"
 
+
 int	index_of(char *str, char *search, int n)
 {
 	int	i;
@@ -13,4 +14,17 @@ int	index_of(char *str, char *search, int n)
 			break ;
 	}
 	return (i); //verificar esta vaina
+}
+
+int index_of_newline(char *str)
+{
+	int index;
+	int temp;
+
+	index = index_of(str, ' ', 1);
+	temp = index_of(str, '\t', 1);
+	if (temp || str[0] == '\t')
+		if (temp < index)
+			index = temp;
+	return (index);
 }
