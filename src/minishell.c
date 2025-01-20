@@ -113,11 +113,11 @@ int	main(int argc, char **argv, char **env)
 			ft_env(shell);
 			continue;
 		}
-		else if (!ft_strncmp(shell->prompt->str, "export", 6))
+/* 		else if (!ft_strncmp(shell->prompt->str, "export", 6))
 		{
 			ft_export(shell);
 			continue;
-		}
+		} */
 		else if (!ft_strncmp(shell->prompt->str, "unset", 5))
 		{
 			//ft_unset(shell);
@@ -128,6 +128,7 @@ int	main(int argc, char **argv, char **env)
 			//ft_exit(shell);
 			break;
 		}
+		ft_export(shell);
 		printf("prompt: %s\n", shell->prompt->str);
 		// Read command
 		// Parse command

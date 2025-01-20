@@ -66,6 +66,7 @@ int		pwd(void);
 void	ft_env(t_minishell *shell);
 void	ft_export(t_minishell *shell);
 /* built-ins tools */
+int	just_export(char *str);
 void	free_arrays(char **array1, char **array2);
 /* utils */
 char	**strarray_copy(char **array);
