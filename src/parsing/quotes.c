@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-/*aqui verifico que las quotes esten cerradas :)*/
+
+/*
 int check_other_quote(char **buf, int *i, char c)
 {
 	int	n;
@@ -51,4 +52,4 @@ void	check_quotes(char **buf, int simple_quote, int double_quote)
 		check_quotes(buf, 0, 0);			
 	}
 	return ;
-}
+}*/

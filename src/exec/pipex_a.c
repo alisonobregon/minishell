@@ -14,7 +14,7 @@ typedef struct s_exec
 	struct s_redirect	*redirect;
 	int		pipe[2];
 	pid_t pid;
-	struct s_exec*next;
+	struct s_exec *next;
 }	t_exec;
 
 t_redirect* handler_redirect(char *token) {
