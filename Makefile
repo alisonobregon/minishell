@@ -24,7 +24,7 @@ OBJ = $(SRC:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=leak 
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 #-fsanitize=leak 
 
 FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
 
@@ -36,6 +36,9 @@ all: $(NAME) show_progress
 $(NAME): $(OBJ)
 	@make -s -C libft
 	$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+
+debug: $(NAME)
+	@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
 
 show_progress:
 		@for file in $(SRC); do \

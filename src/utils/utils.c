@@ -58,6 +58,31 @@
 	}
 } */
 
+char	*ft_array_to_str(char **array)
+{
+	char	*str;
+	int		i;
+	int		len;
+
+	i = 0;
+	len = 0;
+	while (array[i] != NULL)
+	{
+		len += ft_strlen(array[i]);
+		i++;
+	}
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (array[i] != NULL)
+	{
+		ft_strlcat(str, array[i], len + 1);
+		i++;
+	}
+	return (str);
+}
+
 char	**ft_arrjoin(char **arr1, char **arr2)
 {
 	char	**new_arr;
@@ -82,6 +107,8 @@ char	**ft_arrjoin(char **arr1, char **arr2)
 	}
 	new_arr[i] = NULL;
 	free_arrays(arr1, arr2);
+	arr1 = NULL;
+	arr2 = NULL;
 	return (new_arr);
 }
 

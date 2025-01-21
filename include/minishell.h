@@ -70,6 +70,7 @@ int	just_export(char *str);
 void	free_arrays(char **array1, char **array2);
 /* utils */
 char	**strarray_copy(char **array);
+char	*ft_array_to_str(char **array);
 char	**add_str_to_array(char **array, char *str);
 char	**ft_arrjoin(char **arr1, char **arr2);
 char	*find_path(t_minishell *shell, char *cmd);
