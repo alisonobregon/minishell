@@ -57,8 +57,16 @@ typedef struct s_minishell
 
 /*parsing functions*/
 void	parsing(t_minishell *shell);
-void		check_quotes(char **buf, int simple_quote, int double_quote);
+void	check_quotes(char **buf, int simple_quote, int double_quote);
 int		check_other_quote(char **buf, int *i, char c);
+void	parsing(t_minishell *shell);
+int		split_args(t_minishell *shell, char *str);
+int		get_end_index(char *str, int end);
+int		get_quotes_end(char *str, int end);
+int		get_arg_end(char *str, int end_index);
+int		index_of_newline(char *str);
+int		index_of(char *str, char *search, int n);
+
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);
 

@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/01/14 20:37:10 by gongarci         ###   ########.fr       */
-=======
-/*   Updated: 2025/01/16 21:39:27 by aliobreg         ###   ########.fr       */
->>>>>>> 2b0cb83a634fab2cca9401dc9b4326cc1754af77
+/*   Updated: 2025/01/22 21:17:41 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +30,20 @@ int get_arg_end(char *str, int end_index)
 		if (is_sep < is_sp)
 			return (end_index + is_sep); //en plan si hay algun especial antes
 	}	
-	return (end_index + is_sep); //recordatorio amable para luego liberar el split preciosa
+	return (end_index + is_sp); //recordatorio amable para luego liberar el split preciosa
 }
 
 int get_quotes_end(char *str, int end)
 {
 	int end_index;
 	
-	end_index = -2; //por ahora no hay ninguna comilla
+	end_index = -2;
 	if (str[0] == 34 || str[0] == 39)
-		end_index = get_arg_end(str, index_of(str + 1, str[0], 1) + 2);
-	else if ()
+		end_index = get_arg_end(str, index_of(str + 1, &str[0], 1) + 2);
+	(void)end;
+
+	
+	return (end_index);
 }
 int get_end_index(char *str, int end)
 {
@@ -55,29 +54,42 @@ int get_end_index(char *str, int end)
 	if (!split)
 		return(0);
 	end_index = get_quotes_end(str, end);
+	if (end_index == 0)
+		return (free_split(split));
+	if (end_index == -2)
+		return (end_index + free_split(split));
+	
 	
 
-	
+	return (end_index);	
 }
 
 int split_args(t_minishell *shell, char *str)
 {
 	int	i;
+	int j;
 	int end_index;
 
 	i = -1;
+	j = 0;
 	while(str[++i])
-	{
+	{ 
 		if (str[i] == '\t' || str[i] == ' ')
 			continue;
 		if (str[i] == '>' || str[i] == '<' || str[i] == 34 || str[i] == 39 
 		|| str[i] == '|' || str[i] == '&')
 			end_index = get_end_index(str + i, -1);
+		else
+			end_index = get_arg_end(str + i, 0);
+		shell->args[j] = ft_strldup(str + i, end_index);
+		printf("args[%d] = %s\n", j, shell->args[j]);
+		i += ft_strlen(shell->args[j]) - 1;
+		j++;
 	}
-	
+	return (0);
 }
 void parsing(t_minishell *shell)
 {
 	check_quotes(&(shell->prompt->str), 2, 2);
-	//check_pipex
+	split_args(shell, shell->prompt->str);
 }

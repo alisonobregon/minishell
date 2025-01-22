@@ -34,6 +34,4 @@ char **split_pipes(char *str)
 	res = ft_calloc(sizeof(char *), ft_countpipes(str) + 2);
 	if(!res)
 		exit(1); //aqui poner o hacer una funcion de mensaje de error
-	eres 
-
 }

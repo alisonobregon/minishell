@@ -21,6 +21,7 @@ el pwd imprime eso si no pues imprime la palabra minishell*/
 void memory_allocated(t_minishell *shell)
 {
 	shell->prompt = ft_calloc(1, sizeof(t_prompt));
+	shell->args = ft_calloc(1, sizeof(char *));
 	if (!shell->prompt)
 		return ;
 }

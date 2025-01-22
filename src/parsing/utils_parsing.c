@@ -21,8 +21,8 @@ int index_of_newline(char *str)
 	int index;
 	int temp;
 
-	index = index_of(str, ' ', 1);
-	temp = index_of(str, '\t', 1);
+	index = index_of(str, " ", 1);
+	temp = index_of(str, "\t", 1);
 	if (temp || str[0] == '\t')
 		if (temp < index)
 			index = temp;

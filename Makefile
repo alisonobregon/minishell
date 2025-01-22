@@ -15,6 +15,7 @@ SRC = 	./src/minishell.c \
 		./src/built-ins/cd.c \
 		./src/parsing/parsing.c \
 		./src/parsing/quotes.c \
+		./src/parsing/utils_parsing.c \
 
 OBJ = $(SRC:.c=.o)
 
