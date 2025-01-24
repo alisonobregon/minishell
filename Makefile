@@ -14,14 +14,15 @@ NAME = minishell
 SRC = 	./src/minishell.c \
 		./src/built-ins/cd.c \
 		./src/parsing/parsing.c \
-		./src/parsing/quotes.c \
+		./src/parsing/checker.c \
 		./src/parsing/utils_parsing.c \
-
+		./src/parsing/create_command.c \
+		
 OBJ = $(SRC:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) #-g3 -fsanitize=leak 
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=leak 
 
 FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
 

@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/01/22 21:17:41 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:27:30 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,17 @@ int get_end_index(char *str, int end)
 		return (end_index); // + free_split(split));
 	while (split[++i])
 	{
-		if ((end > -1 && index_of(str, split[i], 1) < end) || index_of(str, split[i], 1) != -1)
+		if ((end > -1 && index_of(str, split[i], 1) < end))
+		{
+			printf("entra aqui");
 			return (index_of(str, split[i], 1));// + free_split(split));
+		
+		}
 		if (index_of(str, split[i], 1) == 0)
+		{
+				printf("entra aqui 1");
 			return (ft_strlen(split[i]));// + free_split(split));
+		}
 	}
 	return (end);// + free_split(split));	
 }

@@ -11,10 +11,10 @@ int is_separator(char *str)
 	return (0);
 }
 
-int check_specials(char **str)
+/*int check_specials(char **str)
 {
 	
-}
+}*/
 int	index_of(char *str, char *search, int n)
 {
 	int	i;

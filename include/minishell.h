@@ -30,9 +30,6 @@ typedef struct s_exec
 	char	*limiter;
 	int		pipe[2];
 	struct s_exec *next;
-	{
-		/* data */
-	};
 	
 }	t_exec;
 
@@ -67,6 +64,7 @@ int		get_quotes_end(char *str, int end);
 int		get_arg_end(char *str, int end_index);
 int		index_of_newline(char *str);
 int		index_of(char *str, char *search, int n);
+int 	is_separator(char *str);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);
