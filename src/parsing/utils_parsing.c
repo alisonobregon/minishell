@@ -1,6 +1,20 @@
 #include "../../include/minishell.h"
 
 
+int is_separator(char *str)
+{
+	if (!ft_strncmp(str, ">>", 2) || !ft_strncmp(str, "<<", 2) 
+		|| !ft_strncmp(str, "<", 1) || !ft_strncmp(str, ">", 1) 
+		|| !ft_strncmp(str, "|", 1) || !ft_strncmp(str, "||", 2) 
+		|| !ft_strncmp(str, "&&", 2) || !ft_strncmp(str, "&", 1))
+		return (1);
+	return (0);
+}
+
+int check_specials(char **str)
+{
+	
+}
 int	index_of(char *str, char *search, int n)
 {
 	int	i;

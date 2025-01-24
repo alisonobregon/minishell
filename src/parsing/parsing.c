@@ -40,28 +40,35 @@ int get_quotes_end(char *str, int end)
 	end_index = -2;
 	if (str[0] == 34 || str[0] == 39)
 		end_index = get_arg_end(str, index_of(str + 1, &str[0], 1) + 2);
-	(void)end;
-
-	
+	else if (end > -1 && index_of(str, "'", 1) < end)
+		end_index = get_arg_end(str + 1, index_of(str, "'", 2) + 2);
+	else if (end > -1 && index_of(str, "\"", 1) < end)
+		end_index = get_arg_end(str + 1, index_of(str, "\"", 2) + 2);
 	return (end_index);
 }
 int get_end_index(char *str, int end)
 {
 	char	**split;
 	int		end_index;
+	int		i;
 
+	i = -1;
 	split = ft_split("< << >> < | || & &&", ' ');
 	if (!split)
 		return(0);
 	end_index = get_quotes_end(str, end);
 	if (end_index == 0)
-		return (free_split(split));
-	if (end_index == -2)
-		return (end_index + free_split(split));
-	
-	
-
-	return (end_index);	
+		return (0);//return (free_split(split));
+	if (end_index != -2)
+		return (end_index); // + free_split(split));
+	while (split[++i])
+	{
+		if ((end > -1 && index_of(str, split[i], 1) < end) || index_of(str, split[i], 1) != -1)
+			return (index_of(str, split[i], 1));// + free_split(split));
+		if (index_of(str, split[i], 1) == 0)
+			return (ft_strlen(split[i]));// + free_split(split));
+	}
+	return (end);// + free_split(split));	
 }
 
 int split_args(t_minishell *shell, char *str)
@@ -80,7 +87,9 @@ int split_args(t_minishell *shell, char *str)
 		|| str[i] == '|' || str[i] == '&')
 			end_index = get_end_index(str + i, -1);
 		else
-			end_index = get_arg_end(str + i, 0);
+			end_index = get_end_index(str + i, get_arg_end(str + i, 0));
+		if (end_index < 0)
+			return (-1);
 		shell->args[j] = ft_strldup(str + i, end_index);
 		printf("args[%d] = %s\n", j, shell->args[j]);
 		i += ft_strlen(shell->args[j]) - 1;

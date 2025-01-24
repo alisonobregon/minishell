@@ -53,3 +53,23 @@ void	check_quotes(char **buf, int simple_quote, int double_quote)
 	}
 	return ;
 }
+
+int check_specials(char **buf)
+{
+	int		flag;
+	int		i;
+
+	i = -1;
+	while(buf[++i])
+	{
+		if (is_separator(buf[i]))
+		{
+			if (buf[i + 1] == NULL || is_separator(buf[i + 1]))
+			{
+				ft_printf("syntax error near unexpected token '%s'\n", buf[i]);
+				return (1);
+			}
+		}
+	}
+	return (0);
+}

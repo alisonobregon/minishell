@@ -23,14 +23,17 @@
 
 typedef struct s_exec
 {
-	char	*path;
-	char	**cmd;
-	char	**command;
-	char	**env;
+	//char	*path; //no se si este lo utilizas
+	char	*cmd; 
 	int		infile;
 	int		outfile;
 	char	*limiter;
 	int		pipe[2];
+	struct s_exec *next;
+	{
+		/* data */
+	};
+	
 }	t_exec;
 
 typedef struct s_prompt
@@ -42,7 +45,6 @@ typedef struct s_prompt
 
 typedef struct s_minishell
 {
-	char		*command;
 	char		**args;
 	char		**env;
 	char		**path;
@@ -50,7 +52,6 @@ typedef struct s_minishell
 	char		*cwd;
 	t_prompt	*prompt;
 	t_exec		*exec;
-	//t_path		*path;
 
 }	t_minishell;
 
