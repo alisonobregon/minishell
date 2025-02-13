@@ -66,6 +66,19 @@ char	*get_input(t_minishell *shell)
 	}
 	return(buf);
 }
+int command_list_clear(t_exec *command_list)
+{
+	t_exec	*temp;
+
+	while (command_list)
+	{
+		temp = command_list->next;
+		free(command_list->cmd);
+		free(command_list);
+		command_list = temp;
+	}
+	return (0);
+}
 
 int	main(int argc, char **argv, char **env)
 {
@@ -98,6 +111,7 @@ int	main(int argc, char **argv, char **env)
 			continue;
 		}
 		printf("prompt: %s\n", shell->prompt->str);
+		command_list_clear(shell->exec);
 		// Read command
 		// Parse command
 		// Execute command

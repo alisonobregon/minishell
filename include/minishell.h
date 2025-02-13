@@ -64,12 +64,14 @@ int		index_of(char *str, char *search, int n);
 int 	get_arg_type(char *str);
 //revisar desde aqui
 int		ft_strarr_len(char ***array);
-int		create_command_lst(t_minishell *shell);
-int		command_lstappend(t_exec *new, char **args, int *i);
+int		create_command_lst(t_minishell *shell, t_exec **command_list);
+int command_lstappend(t_exec **new, char ***buf);
 int		append_in_args(char **args, char *op, char ***array, int *i);
 int		strarr_append(char ***array, char *str);
 t_exec	*exec_lstlast(t_exec *lst);
 int print_command_list(t_exec *command_list);
+int command_list_clear(t_exec *command_list);
+int str_array_append(char ***array, char *str);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);

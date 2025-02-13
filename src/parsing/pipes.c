@@ -19,7 +19,7 @@ int ft_countpipes(char *str)
 		}
 		if ((str[i] == '|' && (str[i + 1] == '|' || str[i + 1] == '\0' || ft_blank(str[i + 1]) != 1)) || str[0] == '|')
 			ft_printf("syntax error near unexpected token '|'");
-		if (s[i] == '|')
+		if (str[i] == '|')
 			res++;
 	}
 	return(res);
