@@ -37,3 +37,19 @@ int index_of_newline(char *str)
 			index = temp;
 	return (index);
 }
+
+t_exec *exec_new(void)
+{
+	t_exec	*new;
+
+	new = ft_calloc(1, sizeof(t_exec));
+	if (!new)
+		return (NULL);
+	new->args = NULL;
+	new->cmd = NULL;
+	new->infile = NULL;
+	new->outfile = NULL;
+	new->todo_next = 0;
+	new->next = NULL;
+	return (new);
+}
