@@ -25,7 +25,6 @@ char	*ft_strldup(const char *str, int size)
 		return (NULL);
 	while (--len > -1)
 		point[len] = str[len];
-	printf("valor de point es %s\n", point);
 	return (point);
 }
 

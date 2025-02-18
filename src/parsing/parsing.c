@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/02/17 22:39:42 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/02/18 22:23:40 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,10 @@ int get_end_index(char *str, int end)
 	while (split[++i])
 	{
 		if ((end > -1 && index_of(str, split[i], 1) < end))
-		{
-			printf("entra aqui");
 			return (index_of(str, split[i], 1));// + free_split(split));
 		
-		}
 		if (index_of(str, split[i], 1) == 0)
-		{
-				printf("entra aqui 1");
 			return (ft_strlen(split[i]));// + free_split(split));
-		}
 	}
 	return (end);// + free_split(split));	
 }
@@ -98,7 +92,6 @@ int split_args(t_minishell *shell, char *str)
 		if (end_index < 0)
 			return (-1);
 		shell->args[j] = ft_strldup(str + i, end_index);
-		printf("args[%d] = %s\n", j, shell->args[j]);
 		i += ft_strlen(shell->args[j]) - 1;
 		j++;
 	}

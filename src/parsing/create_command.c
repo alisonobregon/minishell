@@ -1,6 +1,6 @@
 #include "../../include/minishell.h"
 
-int ft_strarr_len(char ***array)
+int ft_strarr_len(char **array)
 {
 	int	i;
 
@@ -59,35 +59,64 @@ t_exec	*exec_lstlast(t_exec *lst)
 		
 	return (1);
   }*/
-char **str_array_append(char **array, char *str)
+int	str_array_append(char ***array, char *str)
 {
 	char	**new;
 	int		i;
 
-	i = -1;
-	new = ft_calloc(sizeof(char *), ft_strarr_len(&array) + 2);
+	i = 0;
+	new = ft_calloc(sizeof(char *), ft_strarr_len(*array) + 2);
 	if (!new)
-		return (NULL);
-	while (array[++i])
 	{
-		new[i] = ft_strdup(array[i]);
-		if (!new[i])
-			return (NULL);
+		printf("no se pudo asignar memoria\n");
+		return (1);
+	}
+	if ((*array))
+	{
+		while ((*array)[i])
+		{
+			new[i] = ft_strdup((*array)[i]);
+			printf("new[%d]: %s\n", i, new[i]);
+			if (!new[i])
+				return (1);
+			i++;
+		}		
 	}
 	new[i] = ft_strdup(str);
+	printf("new[%d]: %s\n", i, new[i]);
 	if (!new[i])
-		return (NULL);
+		return (1);
+	if (*array)
+		free_array(*array);
+	new[i + 1] = NULL;
+	*array = new;
+	//printf("array[%d] 2: %s\n", i, (*array)[i]);
+	return (0);
+}
+
+void free_array(char **array)
+{
+	int i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
 	free(array);
-	return (new);
 }
 int command_lstappend(t_exec *new, char **buf)
 {
-
+	
 	while (*buf && get_arg_type(*buf) == 0)
 	{
-		new->args = str_array_append(((new)->args), *buf);
-		(*buf)++;
+		printf("buf: %s\n", *buf);
+		str_array_append(&(new->args), *buf);
+		printf("new->args[0]: %s\n", new->args[0]);
+		buf++;
 	}
+	printf("enntra aqui\n");
 	/*
 	new->args = str_array_append(new->args, *buf);
 	if (!(append_in_args(*buf, ">", &(new->outfile))))
@@ -116,7 +145,7 @@ int create_command_lst(t_minishell *shell)
 			return (1);
 		if (shell->exec != NULL)
 		{
-			new->next = exec_lstlast(shell->exec);
+			exec_lstlast(shell->exec)->next = new;
 			printf("entra aqui al if con %s\n", *buf);
 		}
 		else
@@ -129,7 +158,7 @@ int create_command_lst(t_minishell *shell)
 			return (1);
 		if (!(command_lstappend(new, buf)))
 			return (1);
-		if (buf)
+		if (*buf)
 			new->todo_next = get_arg_type(*buf);
 		printf("buf: %s\n", *buf);
 		buf++;
@@ -140,10 +169,12 @@ int create_command_lst(t_minishell *shell)
 int print_command_list(t_exec *command_list)
 {
 	t_exec	*temp;
+	int i = 0;
 
 	temp = command_list;
 	while(temp)
 	{
+		printf("comando %d\n", i);
 		printf("cmd: %s\n", temp->cmd);
 		for (int i = 0; temp->args[i]; i++)
 			printf("args[%d]: %s\n", i, temp->args[i]);

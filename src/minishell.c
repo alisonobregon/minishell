@@ -50,6 +50,17 @@ char	*get_prompt(t_minishell *shell)
 	//AQUI PONDRIAMOS YA SI EL COMANDO FUE EXITOSO O NO
 	return(pwd);
 }
+int free_shell(t_minishell *shell)
+{
+	free(shell->prompt->cwd);
+	free(shell->prompt->str);
+	free(shell->prompt);
+	free(shell->args);
+	free(shell->path);
+	free(shell->exec);
+	free(shell);
+	return (0);
+}
 
 char	*get_input(t_minishell *shell)
 {
@@ -74,9 +85,14 @@ int command_list_clear(t_exec *command_list)
 	{
 		temp = command_list->next;
 		free(command_list->cmd);
+		free(command_list->args);
+		free(command_list->infile);
+		free(command_list->outfile);
 		free(command_list);
+		
 		command_list = temp;
 	}
+
 	return (0);
 }
 
@@ -112,6 +128,8 @@ int	main(int argc, char **argv, char **env)
 		}
 		printf("prompt: %s\n", shell->prompt->str);
 		command_list_clear(shell->exec);
+		free_shell(shell);
+
 		// Read command
 		// Parse command
 		// Execute command
