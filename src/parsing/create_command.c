@@ -76,14 +76,14 @@ int	str_array_append(char ***array, char *str)
 		while ((*array)[i])
 		{
 			new[i] = ft_strdup((*array)[i]);
-			printf("new[%d]: %s\n", i, new[i]);
+			//printf("new[%d] 48: %s\n", i, new[i]);
 			if (!new[i])
 				return (1);
 			i++;
 		}		
 	}
 	new[i] = ft_strdup(str);
-	printf("new[%d]: %s\n", i, new[i]);
+	//printf("new[%d]: %s\n", i, new[i]);
 	if (!new[i])
 		return (1);
 	if (*array)
@@ -106,17 +106,19 @@ void free_array(char **array)
 	}
 	free(array);
 }
-int command_lstappend(t_exec *new, char **buf)
+int command_lstappend(t_exec *new, char ***buf)
 {
 	
-	while (*buf && get_arg_type(*buf) == 0)
+	while (**buf != NULL && get_arg_type(**buf) == 0)
 	{
-		printf("buf: %s\n", *buf);
-		str_array_append(&(new->args), *buf);
-		printf("new->args[0]: %s\n", new->args[0]);
-		buf++;
+		//printf("buf: %s\n", **buf);
+		str_array_append(&(new->args), **buf);
+		//printf("buf: %s\n", );
+		//printf("new->args[0]: %s\n", new->args[0]);
+		(*buf)++;
+		//printf("el valor de buf es %s\n", **buf);	
 	}
-	printf("enntra aqui\n");
+	//printf("enntra aqui\n");
 	/*
 	new->args = str_array_append(new->args, *buf);
 	if (!(append_in_args(*buf, ">", &(new->outfile))))
@@ -138,7 +140,7 @@ int create_command_lst(t_minishell *shell)
 	
 	shell->exec = NULL;
 	buf = shell->args;
-	while (*buf && get_arg_type(*buf) == 0)
+	while (*buf != NULL && get_arg_type(*buf) == 0)
 	{
 		new = exec_new();
 		if (!new)
@@ -146,23 +148,28 @@ int create_command_lst(t_minishell *shell)
 		if (shell->exec != NULL)
 		{
 			exec_lstlast(shell->exec)->next = new;
-			printf("entra aqui al if con %s\n", *buf);
+			//new->next = exec_lstlast(shell->exec);
+			//printf("entra aqui al if con %s\n", *buf);
 		}
 		else
 		{
 			shell->exec = new;
-			printf("entra aqui al else con %s\n", *buf);
+			//printf("entra aqui al else con %s\n", *buf);
 		}
+		
 		new->cmd = ft_strdup(*buf);
 		if(new->cmd == NULL)
 			return (1);
-		if (!(command_lstappend(new, buf)))
+		if (!(command_lstappend(new, &buf)))
 			return (1);
-		if (*buf)
+		if (*buf != NULL)
 			new->todo_next = get_arg_type(*buf);
-		printf("buf: %s\n", *buf);
-		buf++;
+		//printf("buf 1: %s\n", *buf);
+		if (*buf && **buf)
+    		buf++;
+		//printf("buf 2: %s\n", *buf);
 	}
+	//printf("entra aqui al final\n");
 	print_command_list(shell->exec);
 	return (0);
 }

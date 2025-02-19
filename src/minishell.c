@@ -127,8 +127,9 @@ int	main(int argc, char **argv, char **env)
 			continue;
 		}
 		printf("prompt: %s\n", shell->prompt->str);
-		command_list_clear(shell->exec);
-		free_shell(shell);
+		//command_list_clear(shell->exec);
+		
+		//free_shell(shell);
 
 		// Read command
 		// Parse command

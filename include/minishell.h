@@ -66,7 +66,7 @@ int 	get_arg_type(char *str);
 //revisar desde aqui
 int		ft_strarr_len(char **array);
 int create_command_lst(t_minishell *shell);
-int command_lstappend(t_exec *new, char **buf);
+int command_lstappend(t_exec *new, char ***buf);
 int		append_in_args(char **args, char *op, char ***array, int *i);
 int str_array_append(char ***array, char *str);
 t_exec	*exec_lstlast(t_exec *lst);

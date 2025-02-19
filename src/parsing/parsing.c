@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/02/18 22:23:40 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/02/19 21:50:43 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int get_end_index(char *str, int end)
 	int		i;
 
 	i = -1;
-	split = ft_split("< << >> < | || & &&", ' ');
+	split = ft_split("< << >> < | || & && ", ' ');
 	if (!split)
 		return(0);
 	end_index = get_quotes_end(str, end);
@@ -95,11 +95,12 @@ int split_args(t_minishell *shell, char *str)
 		i += ft_strlen(shell->args[j]) - 1;
 		j++;
 	}
+	shell->args[j] = NULL;
 	return (0);
 }
 void parsing(t_minishell *shell)
 {
-	
+	//int i = 0;
 	check_quotes(&(shell->prompt->str), 2, 2);
 	split_args(shell, shell->prompt->str);
 	create_command_lst(shell);
