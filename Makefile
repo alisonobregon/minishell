@@ -17,6 +17,10 @@ SRC = 	./src/minishell.c \
 		./src/built-ins/env.c \
 		./src/built-ins/cd.c \
 		./src/parsing/parsing.c \
+		./src/parsing/checker.c \
+		./src/parsing/utils_parsing.c \
+		./src/parsing/create_command.c \
+		
 		./src/parsing/quotes.c \
 		./src/utils/utils.c \
 

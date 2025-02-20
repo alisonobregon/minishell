@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quotes.c                                           :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:18:14 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/01/13 19:43:30 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/02/11 20:43:26 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-/*aqui verifico que las quotes esten cerradas :)*/
+
+
 int check_other_quote(char **buf, int *i, char c)
 {
 	int	n;
@@ -51,4 +52,23 @@ void	check_quotes(char **buf, int simple_quote, int double_quote)
 		check_quotes(buf, 0, 0);			
 	}
 	return ;
+}
+
+int check_specials(char **buf)
+{
+	int		i;
+
+	i = -1;
+	while(buf[++i])
+	{
+		if (get_arg_type(buf[i]))
+		{
+			if (buf[i + 1] == NULL || get_arg_type(buf[i + 1]))
+			{
+				ft_printf("syntax error near unexpected token '%s'\n", buf[i]);
+				return (1);
+			}
+		}
+	}
+	return (0);
 }

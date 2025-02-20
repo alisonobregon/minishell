@@ -59,6 +59,7 @@
   "files.associations": {
     "*.embeddedhtml": "html",
     "compare": "c",
-    "type_traits": "c"
+    "type_traits": "c",
+    "minishell.h": "c"
   }
 }
