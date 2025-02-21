@@ -21,13 +21,26 @@
 #define CYAN "\033[36m"
 #define DEFAULT "\033[0m"
 
+typedef struct s_output
+{
+	int		action;
+	char	*file;
+}			t_output;
+
+typedef struct s_heredoc
+{
+	char	*delimiter;
+	char	*content;
+}			t_heredoc;
+
 typedef struct s_exec
 {
-	char	*cmd;
-	char	**args;
-	char	*infile;
-	char	*outfile;
-	int		todo_next;
+	char		*cmd;
+	char		**args;
+	char		**infile;
+	t_output	*outfile;
+	t_heredoc	**heredoc;
+	int			todo_next;
 	struct s_exec *next;
 	
 }	t_exec;
@@ -68,7 +81,7 @@ int 	get_arg_type(char *str);
 int		ft_strarr_len(char **array);
 int create_command_lst(t_minishell *shell);
 int command_lstappend(t_exec *new, char ***buf);
-int		append_in_args(char **args, char *op, char ***array, int *i);
+int append_in_args(char ***buf, char *op, char ***array);
 int str_array_append(char ***array, char *str);
 t_exec	*exec_lstlast(t_exec *lst);
 int print_command_list(t_exec *command_list);

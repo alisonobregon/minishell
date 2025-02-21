@@ -45,20 +45,19 @@ t_exec	*exec_lstlast(t_exec *lst)
 	return (lst);
 }
 
-/*int append_in_args(char ***args, char *op, char ***array, int i)
+int append_in_args(char ***buf, char *op, char ***array)
 {
-	if (!(*args))
+	if (!(**buf))
 		return (1);
-	if(ft_strncmp(*args[i], op, ft_strlen(op)) == 0)
+	if(!(ft_strncmp(**buf, op, ft_strlen(op))))
 	{
-		if (strarr_append(array, *args[*i]))
-			return (1);
-		
-	}
-	
-		
+		(*buf)++;
+		if (!(str_array_append(array, **buf)))
+			return (0);
+		(*buf)++;
+	}		
 	return (1);
-  }*/
+  }
 int	str_array_append(char ***array, char *str)
 {
 	char	**new;
@@ -78,7 +77,7 @@ int	str_array_append(char ***array, char *str)
 			new[i] = ft_strdup((*array)[i]);
 			//printf("new[%d] 48: %s\n", i, new[i]);
 			if (!new[i])
-				return (1);
+				return (0);
 			i++;
 		}		
 	}
@@ -91,7 +90,7 @@ int	str_array_append(char ***array, char *str)
 	new[i + 1] = NULL;
 	*array = new;
 	//printf("array[%d] 2: %s\n", i, (*array)[i]);
-	return (0);
+	return (1);
 }
 
 void free_array(char **array)
@@ -109,26 +108,27 @@ void free_array(char **array)
 int command_lstappend(t_exec *new, char ***buf)
 {
 	
-	while (**buf != NULL && get_arg_type(**buf) == 0)
+	while (**buf != NULL && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1))
 	{
-		//printf("buf: %s\n", **buf);
-		str_array_append(&(new->args), **buf);
-		//printf("buf: %s\n", );
-		//printf("new->args[0]: %s\n", new->args[0]);
+		if (!(append_in_args(buf, ">", &(new->infile))))
+			return (1);
+		else if (!(append_in_args(buf, "<", &(new->infile))))
+			return (1);
+		else if (!(append_in_args(buf, ">>", &(new->infile))))
+			return (1);
+		else if (!(append_in_args(buf, "<<", &(new->infile))))
+			return (1);
+		if ((**buf) && (!get_arg_type(**buf)))
+		{
+			if (!(str_array_append(&(new->args), **buf)))
+				return (1);
+		}
 		(*buf)++;
-		//printf("el valor de buf es %s\n", **buf);	
 	}
 	//printf("enntra aqui\n");
 	/*
 	new->args = str_array_append(new->args, *buf);
-	if (!(append_in_args(*buf, ">", &(new->outfile))))
-		return (1);
-	if (append_in_args(*buf, "<", &(new->infile)))
-		return (1);
-	if (append_in_args(*buf, ">>", &(new->outfile)))
-		return (1);
-	if (append_in_args(*buf, "<<", &(new->infile)))
-		return (1);
+	
 	*/
 
 	return (1);
@@ -185,7 +185,11 @@ int print_command_list(t_exec *command_list)
 		printf("cmd: %s\n", temp->cmd);
 		for (int i = 0; temp->args[i]; i++)
 			printf("args[%d]: %s\n", i, temp->args[i]);
-		printf("infile: %s\n", temp->infile);
+		if (temp->infile)
+		{
+			for (int i = 0; temp->infile[i]; i++)
+				printf("infile[%d]: %s\n", i, temp->infile[i]);
+		}
 		printf("outfile: %s\n", temp->outfile);
 		printf("todo_next: %d\n", temp->todo_next);
 		temp = temp->next;
