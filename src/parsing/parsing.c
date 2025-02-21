@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/02/19 21:50:43 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:50:19 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int get_end_index(char *str, int end)
 	int		i;
 
 	i = -1;
-	split = ft_split("< << >> < | || & && ", ' ');
+	split = ft_split("< << >> < | || & &&", ' ');
 	if (!split)
 		return(0);
 	end_index = get_quotes_end(str, end);
@@ -86,12 +86,16 @@ int split_args(t_minishell *shell, char *str)
 			continue;
 		if (str[i] == '>' || str[i] == '<' || str[i] == 34 || str[i] == 39 
 		|| str[i] == '|' || str[i] == '&')
+		{
 			end_index = get_end_index(str + i, -1);
+			printf("stri: %s\n", str + i);
+		}
 		else
 			end_index = get_end_index(str + i, get_arg_end(str + i, 0));
 		if (end_index < 0)
 			return (-1);
 		shell->args[j] = ft_strldup(str + i, end_index);
+		printf("---------args[%d]: %s\n", j, shell->args[j]);
 		i += ft_strlen(shell->args[j]) - 1;
 		j++;
 	}
