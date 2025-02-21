@@ -123,9 +123,10 @@ int	main(int argc, char **argv, char **env)
 			shell->cwd = get_prompt(shell);
 		shell->prompt->str = readline(shell->cwd);
 		parsing(shell);
-		if (!ft_strncmp(shell->prompt->str , "cd", 2))
-		{
-			cd(shell, &shell->prompt->str);
+		if (!ft_strncmp(shell->exec->cmd , "cd", 2))
+		/*{
+			cd(shell, &shell->exec->cmd); //este seria el modelo cmd seria el comando y con args serian todos los argummentos de ese comando
+			//explicaicon shell->exec->cmd estaria cd y shell->exec->args[0] seria 0 cd 1 .. o 1 home 
 			continue;
 		}
 		else if (!ft_strncmp(shell->prompt->str, "ls", 2))
@@ -143,11 +144,11 @@ int	main(int argc, char **argv, char **env)
 			ft_env(shell);
 			continue;
 		}
-/* 		else if (!ft_strncmp(shell->prompt->str, "export", 6))
+ 		else if (!ft_strncmp(shell->prompt->str, "export", 6))
 		{
 			ft_export(shell);
 			continue;
-		} */
+		} 
 		else if (!ft_strncmp(shell->prompt->str, "unset", 5))
 		{
 			//ft_unset(shell);
@@ -158,7 +159,7 @@ int	main(int argc, char **argv, char **env)
 			//ft_exit(shell);
 			break;
 		}
-		ft_export(shell);
+		ft_export(shell);*/
 		printf("prompt: %s\n", shell->prompt->str);
 		//command_list_clear(shell->exec);
 		

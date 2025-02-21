@@ -21,6 +21,7 @@ int	index_of(char *str, char *search, int n)
 			n--;
 		if (n <= 0)
 			break ;
+		//printf("i de str: %s %d\n",str + i, i);
 	}
 	return (i); //verificar esta vaina
 }
