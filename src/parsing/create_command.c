@@ -110,13 +110,13 @@ int command_lstappend(t_exec *new, char ***buf)
 	
 	while (**buf != NULL && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1))
 	{
-		if (!(append_in_args(buf, ">", &(new->infile))))
+		if (!(append_out_args(buf, ">", &(new->outfile))))
 			return (1);
 		else if (!(append_in_args(buf, "<", &(new->infile))))
 			return (1);
-		else if (!(append_in_args(buf, ">>", &(new->infile))))
+		else if (!(append_out_args(buf, ">>", &(new->outfile))))
 			return (1);
-		else if (!(append_in_args(buf, "<<", &(new->infile))))
+		else if (!(append_in_args(buf, "<<", &(new->heredoc))))//preguntar aqui como quiere la lista para el heredoc
 			return (1);
 		if ((**buf) && (!get_arg_type(**buf)))
 		{

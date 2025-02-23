@@ -88,6 +88,9 @@ int print_command_list(t_exec *command_list);
 int command_list_clear(t_exec *command_list);
 t_exec *exec_new(void);
 void free_array(char **array);
+# define OUT_WRITE		0
+# define OUT_APPEND		1
+
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);
 int		pwd(void);
