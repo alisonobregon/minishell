@@ -68,7 +68,7 @@ int	str_array_append(char ***array, char *str)
 	if (!new)
 	{
 		printf("no se pudo asignar memoria\n");
-		return (1);
+		return (0);
 	}
 	if ((*array))
 	{
@@ -84,7 +84,7 @@ int	str_array_append(char ***array, char *str)
 	new[i] = ft_strdup(str);
 	//printf("new[%d]: %s\n", i, new[i]);
 	if (!new[i])
-		return (1);
+		return (0);
 	if (*array)
 		free_array(*array);
 	new[i + 1] = NULL;
@@ -111,11 +111,17 @@ int command_lstappend(t_exec *new, char ***buf)
 	while (**buf != NULL && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1))
 	{
 		if (!(append_out_args(buf, ">", &(new->outfile))))
+		{
+			printf("entra aqui al >\n");
 			return (1);
+		}
 		else if (!(append_in_args(buf, "<", &(new->infile))))
 			return (1);
 		else if (!(append_out_args(buf, ">>", &(new->outfile))))
+		{
+			printf("entra aqui al >>\n");
 			return (1);
+		}
 		else if (!(append_in_args(buf, "<<", &(new->heredoc))))//preguntar aqui como quiere la lista para el heredoc
 			return (1);
 		if ((**buf) && (!get_arg_type(**buf)))
@@ -170,7 +176,7 @@ int create_command_lst(t_minishell *shell)
 		//printf("buf 2: %s\n", *buf);
 	}
 	//printf("entra aqui al final\n");
-	print_command_list(shell->exec);
+	
 	return (0);
 }
 int print_command_list(t_exec *command_list)
@@ -190,7 +196,17 @@ int print_command_list(t_exec *command_list)
 			for (int i = 0; temp->infile[i]; i++)
 				printf("infile[%d]: %s\n", i, temp->infile[i]);
 		}
-		printf("outfile: %s\n", temp->outfile);
+		while (temp->outfile)
+		{
+			printf("outfile: %s\n", temp->outfile->file);
+			printf("action: %d\n", temp->outfile->action);
+			temp->outfile = temp->outfile->next;
+		}
+		if (temp->heredoc)
+		{
+			for (int i = 0; temp->heredoc[i]; i++)
+				printf("heredoc[%d]: %s\n", i, temp->heredoc[i]);
+		}
 		printf("todo_next: %d\n", temp->todo_next);
 		temp = temp->next;
 	}

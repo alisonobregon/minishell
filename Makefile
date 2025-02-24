@@ -21,6 +21,7 @@ SRC = 	./src/minishell.c \
 		./src/parsing/utils_parsing.c \
 		./src/parsing/create_command.c \
 		./src/utils/utils.c \
+		./src/parsing/outfiles.c \
 
 OBJ = $(SRC:.c=.o)
 

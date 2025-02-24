@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   outfiles.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/24 18:32:22 by aliobreg          #+#    #+#             */
+/*   Updated: 2025/02/24 19:47:53 by aliobreg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/minishell.h"
 
 t_output	*outlst_new(char *filename, int action)
@@ -5,18 +17,18 @@ t_output	*outlst_new(char *filename, int action)
 	t_output	*new;
 	new = ft_calloc(sizeof(t_output), 1);
 	if (!new)
-		return (1); //recordatorio amable para mejor cambiar a 0 y por 1 guapa
+		return (NULL); //recordatorio amable para mejor cambiar a 0 y por 1 guapa
 	new->file = ft_strdup(filename);
-	if(!new->filename)
+	if(!new->file)
 	{
 		free(new);
-		return(1);
+		return(NULL);
 	}
 	new->action = action;
 	new->next = NULL;
 	return (new);
 }
-t_output	*out_lstlast(t_exec *out)
+t_output	*out_lstlast(t_output *out)
 {
 	if (!out)
 		return (NULL);
@@ -30,26 +42,32 @@ int	outlst_append(t_output **out, char *filename, char *op)
 	int			action;
 
 	action = OUT_WRITE; // para >
+	//printf("op: %s\n", op);
 	if (ft_strlen(op) == 2)
+	{
+		printf("op 2: %s\n", op);
 		action = OUT_APPEND;
+	}
 	new = outlst_new(filename, action);
 	if (!new)
-		return (1);
+		return (0);
 	if (*out)
 		out_lstlast(*out)->next = new;	
 	else
 		(*out) = new;
-	return (0);
+	return (1);
 
 }
 int append_out_args(char ***buf, char *op, t_output **out)
 {
 	if (!(**buf))
-		return (1);
+		return (0);
+	printf("op 1: %s\n", op);
 	if(!(ft_strncmp(**buf, op, ft_strlen(op))))
 	{
 		(*buf)++;
-		if (*buff && !(outlst_append(out, **buf, op)))
+		printf("buf 1: %s\n", **buf);
+		if (*buf && !(outlst_append(out, **buf, op)))
 			return (0);
 		(*buf)++;
 	}		

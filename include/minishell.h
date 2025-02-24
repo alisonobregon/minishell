@@ -23,14 +23,15 @@
 
 typedef struct s_output
 {
-	int		action;
-	char	*file;
-}			t_output;
+	int				action;
+	char			*file;
+	struct	s_output *next;
+}					t_output;
 
 typedef struct s_heredoc
 {
 	char	*delimiter;
-	char	*content;
+	int		here_d;
 }			t_heredoc;
 
 typedef struct s_exec
@@ -39,7 +40,9 @@ typedef struct s_exec
 	char		**args;
 	char		**infile;
 	t_output	*outfile;
-	t_heredoc	**heredoc;
+	char		**heredoc; //delimitador
+	//int			here_d; 0 1
+	//char		*delimiter; != NULL
 	int			todo_next;
 	struct s_exec *next;
 	
@@ -90,6 +93,11 @@ t_exec *exec_new(void);
 void free_array(char **array);
 # define OUT_WRITE		0
 # define OUT_APPEND		1
+int		append_out_args(char ***buf, char *op, t_output **out);
+int		outlst_append(t_output **out, char *filename, char *op);
+t_output	*out_lstlast(t_output *out);
+t_output	*outlst_new(char *filename, int action);
+
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);
