@@ -28,6 +28,8 @@ typedef struct s_exec
 	char	*infile;
 	char	*outfile;
 	int		todo_next;
+	int		here_doc; 0 1
+	char	*delimiter;
 	struct s_exec *next;
 	
 }	t_exec;
