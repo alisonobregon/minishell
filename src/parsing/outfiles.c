@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 18:32:22 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/02/24 19:47:53 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:17:50 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,10 @@ int append_out_args(char ***buf, char *op, t_output **out)
 {
 	if (!(**buf))
 		return (0);
-	printf("op 1: %s\n", op);
-	if(!(ft_strncmp(**buf, op, ft_strlen(op))))
+	if (ft_strlen(op) == ft_strlen(**buf) 
+		&& !(ft_strncmp(**buf, op, ft_strlen(op))))
 	{
 		(*buf)++;
-		printf("buf 1: %s\n", **buf);
 		if (*buf && !(outlst_append(out, **buf, op)))
 			return (0);
 		(*buf)++;

@@ -49,7 +49,8 @@ int append_in_args(char ***buf, char *op, char ***array)
 {
 	if (!(**buf))
 		return (1);
-	if(!(ft_strncmp(**buf, op, ft_strlen(op))))
+	if (ft_strlen(op) == ft_strlen(**buf) 
+		&& !(ft_strncmp(**buf, op, ft_strlen(op))))
 	{
 		(*buf)++;
 		if (!(str_array_append(array, **buf)))
@@ -108,34 +109,25 @@ void free_array(char **array)
 int command_lstappend(t_exec *new, char ***buf)
 {
 	
-	while (**buf != NULL && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1))
+	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1))
 	{
+		//printf("buf 3: %s\n", **buf);
 		if (!(append_out_args(buf, ">", &(new->outfile))))
-		{
-			printf("entra aqui al >\n");
-			return (1);
-		}
+			return (0);
 		else if (!(append_in_args(buf, "<", &(new->infile))))
-			return (1);
+			return (0);
 		else if (!(append_out_args(buf, ">>", &(new->outfile))))
-		{
-			printf("entra aqui al >>\n");
-			return (1);
-		}
+			return (0);
 		else if (!(append_in_args(buf, "<<", &(new->heredoc))))//preguntar aqui como quiere la lista para el heredoc
-			return (1);
+			return (0);
 		if ((**buf) && (!get_arg_type(**buf)))
 		{
 			if (!(str_array_append(&(new->args), **buf)))
-				return (1);
+				return (0);
+			(*buf)++;
 		}
-		(*buf)++;
+		//printf("buf 4: %s\n", **buf);
 	}
-	//printf("enntra aqui\n");
-	/*
-	new->args = str_array_append(new->args, *buf);
-	
-	*/
 
 	return (1);
 }
@@ -148,6 +140,7 @@ int create_command_lst(t_minishell *shell)
 	buf = shell->args;
 	while (*buf != NULL && get_arg_type(*buf) == 0)
 	{
+		//printf("buf 0: %s\n", *buf);
 		new = exec_new();
 		if (!new)
 			return (1);
@@ -168,6 +161,7 @@ int create_command_lst(t_minishell *shell)
 			return (1);
 		if (!(command_lstappend(new, &buf)))
 			return (1);
+		//printf("buf 1: %s\n", *buf);
 		if (*buf != NULL)
 			new->todo_next = get_arg_type(*buf);
 		//printf("buf 1: %s\n", *buf);
@@ -175,6 +169,7 @@ int create_command_lst(t_minishell *shell)
     		buf++;
 		//printf("buf 2: %s\n", *buf);
 	}
+	
 	//printf("entra aqui al final\n");
 	
 	return (0);
@@ -209,6 +204,7 @@ int print_command_list(t_exec *command_list)
 		}
 		printf("todo_next: %d\n", temp->todo_next);
 		temp = temp->next;
+		i++;
 	}
 	return (0);
 }

@@ -54,6 +54,7 @@ t_exec *exec_new(void)
 	new->cmd = NULL;
 	new->infile = NULL;
 	new->outfile = NULL;
+	new->heredoc = NULL;
 	new->todo_next = 0;
 	new->next = NULL;
 	return (new);
