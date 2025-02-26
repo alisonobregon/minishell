@@ -82,7 +82,7 @@ SRC =	./strings/ft_atoi.c \
 OBJS = $(SRC:.c=.o)
 CURRENT_FILE = 1
 TOTAL_FILES = $(words $(SRC))
-COMPILER = gcc
+COMPILER = cc
 CFLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a

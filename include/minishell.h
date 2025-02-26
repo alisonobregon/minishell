@@ -23,7 +23,7 @@
 
 typedef struct s_output
 {
-	int				action;
+	int				action; // 0 = write, 1 = append
 	char			*file;
 	struct	s_output *next;
 }					t_output;
@@ -40,10 +40,8 @@ typedef struct s_exec
 	char		**args;
 	char		**infile;
 	t_output	*outfile;
-	char		**heredoc; //delimitador
-	//int			here_d; 0 1
-	//char		*delimiter; != NULL
-	int			todo_next;
+	char		**heredoc;
+	int			todo_next; // 0 = nothing,  2 = pipe
 	struct s_exec *next;
 	
 }	t_exec;
@@ -57,6 +55,7 @@ typedef struct s_prompt
 
 typedef struct s_minishell
 {
+	pid_t		pid;
 	char		**args;
 	char		**env;
 	char		**path;
@@ -82,10 +81,10 @@ int		index_of(char *str, char *search, int n);
 int 	get_arg_type(char *str);
 //revisar desde aqui
 int		ft_strarr_len(char **array);
-int create_command_lst(t_minishell *shell);
-int command_lstappend(t_exec *new, char ***buf);
-int append_in_args(char ***buf, char *op, char ***array);
-int str_array_append(char ***array, char *str);
+int		create_command_lst(t_minishell *shell);
+int		command_lstappend(t_exec *new, char ***buf);
+int		append_in_args(char ***buf, char *op, char ***array);
+int		str_array_append(char ***array, char *str);
 t_exec	*exec_lstlast(t_exec *lst);
 int print_command_list(t_exec *command_list);
 int command_list_clear(t_exec *command_list);
@@ -98,6 +97,9 @@ int		outlst_append(t_output **out, char *filename, char *op);
 t_output	*out_lstlast(t_output *out);
 t_output	*outlst_new(char *filename, int action);
 
+/* Execution */
+void	exec(t_minishell *shell);
+char	*find_path(t_minishell *shell);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);
@@ -112,8 +114,6 @@ char	**strarray_copy(char **array);
 char	*ft_array_to_str(char **array);
 char	**add_str_to_array(char **array, char *str);
 char	**ft_arrjoin(char **arr1, char **arr2);
-char	*find_path(t_minishell *shell, char *cmd);
 /* builtins utils */
 void	free_arrays(char **array1, char **array2);
-
 #endif

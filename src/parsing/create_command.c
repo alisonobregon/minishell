@@ -177,7 +177,7 @@ int create_command_lst(t_minishell *shell)
 int print_command_list(t_exec *command_list)
 {
 	t_exec	*temp;
-	int i = 0;
+	int i = 1;
 
 	temp = command_list;
 	while(temp)

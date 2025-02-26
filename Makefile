@@ -22,16 +22,18 @@ SRC = 	./src/minishell.c \
 		./src/parsing/create_command.c \
 		./src/utils/utils.c \
 		./src/parsing/outfiles.c \
+		./src/exec/exec.c \
+		./src/exec/get_path.c \
 
 OBJ = $(SRC:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=leak 
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 #-fsanitize=address,leak
 
 FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
 
-CC = gcc
+CC = cc
 #-no-pie
 
 all: $(NAME) show_progress
@@ -59,5 +61,9 @@ fclean: clean
 
 re: fclean all
 
+git:
+	git add .
+	git commit -m "update"
+	git push
 
 .PHONY: clean fclean re all

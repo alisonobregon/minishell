@@ -123,52 +123,8 @@ int	main(int argc, char **argv, char **env)
 			shell->cwd = get_prompt(shell);
 		shell->prompt->str = readline(shell->cwd);
 		parsing(shell);
-		if (!ft_strncmp(shell->exec->cmd , "cd", 2))
-		/*{
-			cd(shell, &shell->exec->cmd); //este seria el modelo cmd seria el comando y con args serian todos los argummentos de ese comando
-			//explicaicon shell->exec->cmd estaria cd y shell->exec->args[0] seria 0 cd 1 .. o 1 home 
-			continue;
-		}
-		else if (!ft_strncmp(shell->prompt->str, "ls", 2))
-		{
-			system("ls");
-			continue;
-		}
-		else if (!ft_strncmp(shell->prompt->str, "pwd", 3))
-		{
-			pwd();
-			continue;
-		}
-		else if (!ft_strncmp(shell->prompt->str, "env", 3))
-		{
-			ft_env(shell);
-			continue;
-		}
- 		else if (!ft_strncmp(shell->prompt->str, "export", 6))
-		{
-			ft_export(shell);
-			continue;
-		} 
-		else if (!ft_strncmp(shell->prompt->str, "unset", 5))
-		{
-			//ft_unset(shell);
-			continue;
-		}
-		else if (!ft_strncmp(shell->prompt->str, "exit", 4))
-		{
-			//ft_exit(shell);
-			break;
-		}
-		ft_export(shell);*/
+		exec(shell);
 		printf("prompt: %s\n", shell->prompt->str);
-		//command_list_clear(shell->exec);
-		
-		//free_shell(shell);
-
-		// Read command
-		// Parse command
-		// Execute command
-		// Print output
 	}
 	return (0);
 }

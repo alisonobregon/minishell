@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   outfiles.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 18:32:22 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/02/26 18:17:50 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:40:23 by gongarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	outlst_append(t_output **out, char *filename, char *op)
 
 	action = OUT_WRITE; // para >
 	//printf("op: %s\n", op);
-	if (ft_strlen(op) == 2)
+	if (ft_strlen(op) == 2) 
 	{
 		printf("op 2: %s\n", op);
 		action = OUT_APPEND;
