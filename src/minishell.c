@@ -92,19 +92,18 @@ int command_list_clear(t_exec *command_list)
 		
 		command_list = temp;
 	}
-
 	return (0);
 }
 
 int	main(int argc, char **argv, char **env)
 {
+	(void)argc;
+	(void)argv;
 	t_minishell	*shell;
 
 	shell = ft_calloc(1, sizeof(t_minishell));
 	if (!shell)
 		return (1);
-	(void)argc;
-	(void)argv;
 	shell->env = strarray_copy(env);
 	//if (shell->env == NULL) no tenemos enviroment
 	memory_allocated(shell);

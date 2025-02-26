@@ -63,7 +63,7 @@ re: fclean all
 
 git:
 	git add .
-	git commit -m "update"
+	git commit
 	git push
 
 .PHONY: clean fclean re all
