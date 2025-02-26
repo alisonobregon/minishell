@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/02/19 21:50:43 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/02/24 19:23:11 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int get_arg_end(char *str, int end_index)
 	int		i;
 
 	i = -1;
-	split = ft_split("< << >> < | || & &&", ' ');
+	split = ft_split("<< < >> > || | && &", ' ');
 	if (!split)
 		return (-1);
 	is_sp = index_of_newline(str + end_index);
 	while(split[++i])
 	{
-		is_sep = index_of(str, split[i], 1);
+		is_sep = index_of(str + end_index, split[i], 1);
 		if (is_sep < is_sp)
 			return (end_index + is_sep); //en plan si hay algun especial antes
 	}	
@@ -38,8 +38,10 @@ int get_quotes_end(char *str, int end)
 	int end_index;
 	
 	end_index = -2;
-	if (str[0] == 34 || str[0] == 39)
-		end_index = get_arg_end(str, index_of(str + 1, &str[0], 1) + 2);
+	if (str[0] == 39)
+		end_index = get_arg_end(str, index_of(str + 1, "'", 1) + 2);
+	else if (str[0] == 34)
+		end_index = get_arg_end(str, index_of(str + 1, "\"", 1) + 2);
 	else if (end > -1 && index_of(str, "'", 1) < end)
 		end_index = get_arg_end(str + 1, index_of(str, "'", 2) + 2);
 	else if (end > -1 && index_of(str, "\"", 1) < end)
@@ -53,7 +55,7 @@ int get_end_index(char *str, int end)
 	int		i;
 
 	i = -1;
-	split = ft_split("< << >> < | || & && ", ' ');
+	split = ft_split("<< < >> > || | && &", ' ');
 	if (!split)
 		return(0);
 	end_index = get_quotes_end(str, end);
@@ -104,5 +106,5 @@ void parsing(t_minishell *shell)
 	check_quotes(&(shell->prompt->str), 2, 2);
 	split_args(shell, shell->prompt->str);
 	create_command_lst(shell);
-	
+	print_command_list(shell->exec);
 }

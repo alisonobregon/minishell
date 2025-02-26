@@ -21,15 +21,29 @@
 #define CYAN "\033[36m"
 #define DEFAULT "\033[0m"
 
+typedef struct s_output
+{
+	int				action;
+	char			*file;
+	struct	s_output *next;
+}					t_output;
+
+typedef struct s_heredoc
+{
+	char	*delimiter;
+	int		here_d;
+}			t_heredoc;
+
 typedef struct s_exec
 {
-	char	*cmd;
-	char	**args;
-	char	*infile;
-	char	*outfile;
-	int		todo_next;
-	int		here_doc; 0 1
-	char	*delimiter;
+	char		*cmd;
+	char		**args;
+	char		**infile;
+	t_output	*outfile;
+	char		**heredoc; //delimitador
+	//int			here_d; 0 1
+	//char		*delimiter; != NULL
+	int			todo_next;
 	struct s_exec *next;
 	
 }	t_exec;
@@ -70,13 +84,21 @@ int 	get_arg_type(char *str);
 int		ft_strarr_len(char **array);
 int create_command_lst(t_minishell *shell);
 int command_lstappend(t_exec *new, char ***buf);
-int		append_in_args(char **args, char *op, char ***array, int *i);
+int append_in_args(char ***buf, char *op, char ***array);
 int str_array_append(char ***array, char *str);
 t_exec	*exec_lstlast(t_exec *lst);
 int print_command_list(t_exec *command_list);
 int command_list_clear(t_exec *command_list);
 t_exec *exec_new(void);
 void free_array(char **array);
+# define OUT_WRITE		0
+# define OUT_APPEND		1
+int		append_out_args(char ***buf, char *op, t_output **out);
+int		outlst_append(t_output **out, char *filename, char *op);
+t_output	*out_lstlast(t_output *out);
+t_output	*outlst_new(char *filename, int action);
+
+
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);
 int		pwd(void);

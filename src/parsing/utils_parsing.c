@@ -4,10 +4,14 @@
 int get_arg_type(char *str)
 {
 	if (!ft_strncmp(str, ">>", 2) || !ft_strncmp(str, "<<", 2) 
-		|| !ft_strncmp(str, "<", 1) || !ft_strncmp(str, ">", 1))
+		|| !ft_strncmp(str, "<", 1) || !ft_strncmp(str, ">", 1) || !ft_strncmp(str, "&", 1)) // el & es para segundo plano
 		return (1);
-	if (!ft_strncmp(str, "|", 1))
+	else if (!ft_strncmp(str, "|", 1)) 
 		return (2); //devuelve 2 si es un pipe
+	else if (!ft_strncmp(str, "||", 2))
+		return (3); //devuelve 3 si es un or
+	else if (!ft_strncmp(str, "&&", 2))
+		return (4); //devuelve 4 si es un and
 	return (0);
 }
 int	index_of(char *str, char *search, int n)
@@ -21,6 +25,7 @@ int	index_of(char *str, char *search, int n)
 			n--;
 		if (n <= 0)
 			break ;
+		//printf("i de str: %s %d\n",str + i, i);
 	}
 	return (i); //verificar esta vaina
 }
@@ -49,6 +54,7 @@ t_exec *exec_new(void)
 	new->cmd = NULL;
 	new->infile = NULL;
 	new->outfile = NULL;
+	new->heredoc = NULL;
 	new->todo_next = 0;
 	new->next = NULL;
 	return (new);

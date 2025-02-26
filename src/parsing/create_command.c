@@ -45,20 +45,20 @@ t_exec	*exec_lstlast(t_exec *lst)
 	return (lst);
 }
 
-/*int append_in_args(char ***args, char *op, char ***array, int i)
+int append_in_args(char ***buf, char *op, char ***array)
 {
-	if (!(*args))
+	if (!(**buf))
 		return (1);
-	if(ft_strncmp(*args[i], op, ft_strlen(op)) == 0)
+	if (ft_strlen(op) == ft_strlen(**buf) 
+		&& !(ft_strncmp(**buf, op, ft_strlen(op))))
 	{
-		if (strarr_append(array, *args[*i]))
-			return (1);
-		
-	}
-	
-		
+		(*buf)++;
+		if (!(str_array_append(array, **buf)))
+			return (0);
+		(*buf)++;
+	}		
 	return (1);
-  }*/
+  }
 int	str_array_append(char ***array, char *str)
 {
 	char	**new;
@@ -69,7 +69,7 @@ int	str_array_append(char ***array, char *str)
 	if (!new)
 	{
 		printf("no se pudo asignar memoria\n");
-		return (1);
+		return (0);
 	}
 	if ((*array))
 	{
@@ -78,20 +78,20 @@ int	str_array_append(char ***array, char *str)
 			new[i] = ft_strdup((*array)[i]);
 			//printf("new[%d] 48: %s\n", i, new[i]);
 			if (!new[i])
-				return (1);
+				return (0);
 			i++;
 		}		
 	}
 	new[i] = ft_strdup(str);
 	//printf("new[%d]: %s\n", i, new[i]);
 	if (!new[i])
-		return (1);
+		return (0);
 	if (*array)
 		free_array(*array);
 	new[i + 1] = NULL;
 	*array = new;
 	//printf("array[%d] 2: %s\n", i, (*array)[i]);
-	return (0);
+	return (1);
 }
 
 void free_array(char **array)
@@ -109,27 +109,25 @@ void free_array(char **array)
 int command_lstappend(t_exec *new, char ***buf)
 {
 	
-	while (**buf != NULL && get_arg_type(**buf) == 0)
+	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1))
 	{
-		//printf("buf: %s\n", **buf);
-		str_array_append(&(new->args), **buf);
-		//printf("buf: %s\n", );
-		//printf("new->args[0]: %s\n", new->args[0]);
-		(*buf)++;
-		//printf("el valor de buf es %s\n", **buf);	
+		//printf("buf 3: %s\n", **buf);
+		if (!(append_out_args(buf, ">", &(new->outfile))))
+			return (0);
+		else if (!(append_in_args(buf, "<", &(new->infile))))
+			return (0);
+		else if (!(append_out_args(buf, ">>", &(new->outfile))))
+			return (0);
+		else if (!(append_in_args(buf, "<<", &(new->heredoc))))//preguntar aqui como quiere la lista para el heredoc
+			return (0);
+		if ((**buf) && (!get_arg_type(**buf)))
+		{
+			if (!(str_array_append(&(new->args), **buf)))
+				return (0);
+			(*buf)++;
+		}
+		//printf("buf 4: %s\n", **buf);
 	}
-	//printf("enntra aqui\n");
-	/*
-	new->args = str_array_append(new->args, *buf);
-	if (!(append_in_args(*buf, ">", &(new->outfile))))
-		return (1);
-	if (append_in_args(*buf, "<", &(new->infile)))
-		return (1);
-	if (append_in_args(*buf, ">>", &(new->outfile)))
-		return (1);
-	if (append_in_args(*buf, "<<", &(new->infile)))
-		return (1);
-	*/
 
 	return (1);
 }
@@ -142,6 +140,7 @@ int create_command_lst(t_minishell *shell)
 	buf = shell->args;
 	while (*buf != NULL && get_arg_type(*buf) == 0)
 	{
+		//printf("buf 0: %s\n", *buf);
 		new = exec_new();
 		if (!new)
 			return (1);
@@ -162,6 +161,7 @@ int create_command_lst(t_minishell *shell)
 			return (1);
 		if (!(command_lstappend(new, &buf)))
 			return (1);
+		//printf("buf 1: %s\n", *buf);
 		if (*buf != NULL)
 			new->todo_next = get_arg_type(*buf);
 		//printf("buf 1: %s\n", *buf);
@@ -169,8 +169,9 @@ int create_command_lst(t_minishell *shell)
     		buf++;
 		//printf("buf 2: %s\n", *buf);
 	}
+	
 	//printf("entra aqui al final\n");
-	print_command_list(shell->exec);
+	
 	return (0);
 }
 int print_command_list(t_exec *command_list)
@@ -185,10 +186,25 @@ int print_command_list(t_exec *command_list)
 		printf("cmd: %s\n", temp->cmd);
 		for (int i = 0; temp->args[i]; i++)
 			printf("args[%d]: %s\n", i, temp->args[i]);
-		printf("infile: %s\n", temp->infile);
-		printf("outfile: %s\n", temp->outfile);
+		if (temp->infile)
+		{
+			for (int i = 0; temp->infile[i]; i++)
+				printf("infile[%d]: %s\n", i, temp->infile[i]);
+		}
+		while (temp->outfile)
+		{
+			printf("outfile: %s\n", temp->outfile->file);
+			printf("action: %d\n", temp->outfile->action);
+			temp->outfile = temp->outfile->next;
+		}
+		if (temp->heredoc)
+		{
+			for (int i = 0; temp->heredoc[i]; i++)
+				printf("heredoc[%d]: %s\n", i, temp->heredoc[i]);
+		}
 		printf("todo_next: %d\n", temp->todo_next);
 		temp = temp->next;
+		i++;
 	}
 	return (0);
 }
