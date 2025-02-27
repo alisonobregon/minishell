@@ -79,7 +79,6 @@ int		get_arg_end(char *str, int end_index);
 int		index_of_newline(char *str);
 int		index_of(char *str, char *search, int n);
 int 	get_arg_type(char *str);
-//revisar desde aqui
 int		ft_strarr_len(char **array);
 int		create_command_lst(t_minishell *shell);
 int		command_lstappend(t_exec *new, char ***buf);
