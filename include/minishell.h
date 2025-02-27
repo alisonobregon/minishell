@@ -14,13 +14,16 @@
 # define MINISHELL_H
 
 # include "../libft/libft.h"
-#include <readline/readline.h>
-#include <readline/history.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 
 
-#define CYAN "\033[36m"
-#define DEFAULT "\033[0m"
-
+# define CYAN "\033[36m"
+# define DEFAULT "\033[0m"
+# define READ 0
+# define WRITE 1
 typedef struct s_output
 {
 	int				action; // 0 = write, 1 = append
@@ -86,8 +89,8 @@ int		command_lstappend(t_exec *new, char ***buf);
 int		append_in_args(char ***buf, char *op, char ***array);
 int		str_array_append(char ***array, char *str);
 t_exec	*exec_lstlast(t_exec *lst);
-int print_command_list(t_exec *command_list);
-int command_list_clear(t_exec *command_list);
+int		print_command_list(t_exec *command_list);
+int		command_list_clear(t_exec *command_list);
 t_exec *exec_new(void);
 void free_array(char **array);
 # define OUT_WRITE		0
@@ -99,7 +102,7 @@ t_output	*outlst_new(char *filename, int action);
 
 /* Execution */
 void	exec(t_minishell *shell);
-char	*find_path(t_minishell *shell);
+char	*find_path(t_minishell *shell, char *cmd);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);
@@ -107,7 +110,7 @@ int		pwd(void);
 void	ft_env(t_minishell *shell);
 void	ft_export(t_minishell *shell);
 /* built-ins tools */
-int	just_export(char *str);
+int		just_export(char *str);
 void	free_arrays(char **array1, char **array2);
 /* utils */
 char	**strarray_copy(char **array);
