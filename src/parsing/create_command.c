@@ -202,7 +202,7 @@ int print_command_list(t_exec *command_list)
 			for (int i = 0; temp->heredoc[i]; i++)
 				printf("heredoc[%d]: %s\n", i, temp->heredoc[i]);
 		}
-		printf("todo_next: %d\n", temp->todo_next);
+		printf("todo_next: %d\n\n", temp->todo_next);
 		temp = temp->next;
 		i++;
 	}
