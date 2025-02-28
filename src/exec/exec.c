@@ -28,7 +28,7 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 	if (exec->todo_next == 2 && exec->next->todo_next == 0)
 	{
 		//if fdin !=0 then dup2(fdin, STDIN_FILENO)
-
+		printf("pipe1 \n");
 		//if fdout !=1 then dup2(fdout, STDOUT_FILENO)
 		close(pipe_fd[0]);//close unused read end
 		dup2(pipe_fd[1], STDOUT_FILENO);
@@ -38,6 +38,7 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 	}
 	else if (exec->todo_next == 0)
 	{
+		printf("pipe 3 \n");
 		close(pipe_fd[1]); //close unused write end
 		dup2(pipe_fd[0], STDIN_FILENO);
 		close(pipe_fd[0]);
@@ -45,6 +46,7 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 	}
 	else if (exec->todo_next == 2 && exec->next->todo_next == 2)
 	{
+		printf("pipe 2 \n");
 		close(pipe_fd[0]);
 		dup2(pre_pipe[0], STDIN_FILENO);
 		close(pre_pipe[0]);
@@ -107,12 +109,10 @@ void	exec(t_minishell *shell)
 	t_exec	*exec;
 	
 	char *path;
-	//char **all_cmd;
 	if (!shell->exec || ft_strlen(shell->prompt->str) <= 1)
 		return ;
 	exec = shell->exec;
 	printf("father\n");
-	//print_command_list(exec);
 	if (exec && exec->todo_next == 0) // 1 cmd case
 	{
 		shell->pid = fork();
