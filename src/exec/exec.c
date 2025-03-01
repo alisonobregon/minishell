@@ -22,15 +22,48 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 	exit(1);
 }
 
+void	fd_checker(t_exec *exec)
+{
+	if (exec->todo_next == 15)
+	{
+		if (exec->infile)
+		{
+			if (exec->infile[0])
+			{
+				if (access(exec->infile[0], F_OK) == -1)
+				{
+					perror("File not found");
+					exit(1);
+				}
+			}
+		}
+	}
+	else if (exec->todo_next == 0)
+	{
+		if (exec->outfile)
+		{
+			printf("getting outfile\n");
+			if (exec->outfile->action == 0)
+				exec->fd_out = open(exec->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+			else if (exec->outfile->action == 1)
+				exec->fd_out = open(exec->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
+		}
+	}
+}
+
 void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 {
-	(void)pre_pipe;
 	//if (exec->todo_next == 2 && exec->next->todo_next == 0 && shell->exec->i == 0)
 	if (shell->exec->i == 0 && exec->todo_next == 2)
 	{
 		//if fdin !=0 then dup2(fdin, STDIN_FILENO)
 		printf("pipe 1 \n");
 		//if fdout !=1 then dup2(fdout, STDOUT_FILENO)
+		if (exec->outfile)
+		{
+			if (exec->fd_out != 1)
+				close(exec->fd_out);
+		}
 		close(pipe_fd[0]);//close unused read end
 		dup2(pipe_fd[1], STDOUT_FILENO);
 		close(pipe_fd[1]);
@@ -55,6 +88,11 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		close(pipe_fd[1]); //close unused write end
 		dup2(pipe_fd[0], STDIN_FILENO);
 		close(pipe_fd[0]);
+		if (exec->outfile)
+		{
+			dup2(exec->fd_out, STDOUT_FILENO);
+			close(exec->fd_out);
+		}
 		exec_cmd(shell, exec);
 	}
 	exit(127);
@@ -90,7 +128,10 @@ static int pipex(t_minishell *shell)
 			return (1);
 		}
 		if (shell->pid == 0)
+		{
+			fd_checker(exec);
 			handler_fd(shell, exec, pipe_fd, pre_pipe);
+		}
 		if (shell->exec->i >= 1)
 			close(pre_pipe[0]);
 		ft_int_memcpy(pre_pipe, pipe_fd, 2);
@@ -98,8 +139,6 @@ static int pipex(t_minishell *shell)
 		exec = exec->next;
 		shell->exec->i++;
 	}
-	/* close(pipe_fd[1]);
-	close(pipe_fd[0]); */
 	while (wait(NULL) > 0)
 		;
 	return (0);

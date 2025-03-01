@@ -46,6 +46,8 @@ typedef struct s_exec
 	char		**heredoc;
 	int			todo_next; // 0 = nothing,  2 = pipe
 	int			i;
+	int			fd_in;
+	int			fd_out;
 	struct s_exec *next;
 	
 }	t_exec;
