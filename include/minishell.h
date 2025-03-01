@@ -45,6 +45,7 @@ typedef struct s_exec
 	t_output	*outfile;
 	char		**heredoc;
 	int			todo_next; // 0 = nothing,  2 = pipe
+	int			i;
 	struct s_exec *next;
 	
 }	t_exec;
@@ -102,6 +103,7 @@ t_output	*outlst_new(char *filename, int action);
 /* Execution */
 void	exec(t_minishell *shell);
 char	*find_path(t_minishell *shell, char *cmd);
+int	len_pipes(t_exec *exec);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);

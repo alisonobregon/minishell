@@ -25,10 +25,11 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 {
 	(void)pre_pipe;
-	if (exec->todo_next == 2 && exec->next->todo_next == 0)
+	//if (exec->todo_next == 2 && exec->next->todo_next == 0 && shell->exec->i == 0)
+	if (shell->exec->i == 0 && exec->todo_next == 2)
 	{
 		//if fdin !=0 then dup2(fdin, STDIN_FILENO)
-		printf("pipe1 \n");
+		printf("pipe 1 \n");
 		//if fdout !=1 then dup2(fdout, STDOUT_FILENO)
 		close(pipe_fd[0]);//close unused read end
 		dup2(pipe_fd[1], STDOUT_FILENO);
@@ -36,15 +37,8 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		//if we have fd out different than stdout we have to close it
 		exec_cmd(shell, exec);
 	}
-	else if (exec->todo_next == 0)
-	{
-		printf("pipe 3 \n");
-		close(pipe_fd[1]); //close unused write end
-		dup2(pipe_fd[0], STDIN_FILENO);
-		close(pipe_fd[0]);
-		exec_cmd(shell, exec);
-	}
-	else if (exec->todo_next == 2 && exec->next->todo_next == 2)
+				//else if (exec->todo_next == 2 && exec->next->todo_next == 2 && shell->exec->i >= 0)
+	else if (shell->exec->i <= (len_pipes(shell->exec) - 1))
 	{
 		printf("pipe 2 \n");
 		close(pipe_fd[0]);
@@ -55,6 +49,14 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		close(pre_pipe[1]);
 		exec_cmd(shell, exec);
 	}
+	else if (exec->todo_next == 0 && shell->exec->i > 0)
+	{
+		printf("pipe 3 \n");
+		close(pipe_fd[1]); //close unused write end
+		dup2(pipe_fd[0], STDIN_FILENO);
+		close(pipe_fd[0]);
+		exec_cmd(shell, exec);
+	}
 	exit(127);
 }
 
@@ -63,10 +65,9 @@ static int pipex(t_minishell *shell)
 	t_exec	*exec;
 	int	*pipe_fd;
 	int	*pre_pipe;
-	int i;
 
-	i = 0;
 	exec = shell->exec;
+	shell->exec->i = 0;
 	pipe_fd = ft_calloc(2, sizeof(int));
 	pre_pipe = ft_calloc(2, sizeof(int));
 	if (!pipe_fd || !pre_pipe)
@@ -90,12 +91,12 @@ static int pipex(t_minishell *shell)
 		}
 		if (shell->pid == 0)
 			handler_fd(shell, exec, pipe_fd, pre_pipe);
-		if (i >= 1)
+		if (shell->exec->i >= 1)
 			close(pre_pipe[0]);
 		ft_int_memcpy(pre_pipe, pipe_fd, 2);
 		close(pipe_fd[1]);
 		exec = exec->next;
-		i++;
+		shell->exec->i++;
 	}
 	/* close(pipe_fd[1]);
 	close(pipe_fd[0]); */

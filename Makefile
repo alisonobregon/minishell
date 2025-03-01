@@ -22,6 +22,7 @@ SRC = 	./src/minishell.c \
 		./src/parsing/create_command.c \
 		./src/utils/utils.c \
 		./src/parsing/outfiles.c \
+		./src/exec/exec_utils.c \
 		./src/exec/exec.c \
 		./src/exec/get_path.c \
 
