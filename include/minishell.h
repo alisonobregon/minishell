@@ -106,6 +106,7 @@ int		append_out_args(char ***buf, char *op, t_output **out);
 int		outlst_append(t_output **out, char *filename, char *op);
 t_output	*out_lstlast(t_output *out);
 t_output	*outlst_new(char *filename, int action);
+int			add_history_to_file(char *str);
 
 /* Execution */
 void	exec(t_minishell *shell);
@@ -121,6 +122,7 @@ void	ft_export(t_minishell *shell);
 /* built-ins tools */
 int		just_export(char *str);
 void	free_arrays(char **array1, char **array2);
+
 /* utils */
 char	**strarray_copy(char **array);
 char	*ft_array_to_str(char **array);

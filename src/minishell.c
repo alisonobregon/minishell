@@ -97,6 +97,22 @@ int command_list_clear(t_exec *command_list)
 	}
 	return (0);
 }
+int add_history_to_file(char *str)
+{
+	int fd;
+
+	printf("str de add: %s\n", str);
+	fd = open(".history", O_CREAT | O_WRONLY | O_APPEND, 0666);
+	if (fd == -1)
+	{
+		perror("open");
+		return (1);
+	}
+	write(fd, str, ft_strlen(str));
+	write(fd, "\n", 1);
+	close(fd);
+	return (0);
+}
 
 //if (shell->env == NULL) no tenemos enviroment
 int	main(int argc, char **argv, char **env)
@@ -124,8 +140,10 @@ int	main(int argc, char **argv, char **env)
 		if (shell->cwd_int == 0) //preguntar
 			shell->cwd = get_prompt(shell);
 		shell->prompt->str = readline(shell->cwd);
+		add_history(shell->prompt->str);
+		add_history_to_file(shell->prompt->str);
 		parsing(shell);
-		//exec(shell);
+		exec(shell);
 		printf("prompt: %s\n", shell->prompt->str);
 	}
 	return (0);

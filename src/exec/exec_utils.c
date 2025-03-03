@@ -29,7 +29,16 @@ void	fd_checker(t_exec *exec)
 			}
 	}
 	printf("entra aquiiii zzzzz\n");
-	if (exec->outfile->file)
+	printf("outfile dentro de exec: %s\n", exec->outfile->file);
+	if(exec->outfile->file == NULL)
+	{
+		printf("outfile es null\n");
+	}
+	else
+	{
+		printf("outfile no es null\n");
+	}
+	if (exec->outfile != NULL)
 	{
 		printf("getting outfile\n");
 		if (exec->outfile->action == 0)

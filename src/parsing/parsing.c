@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/02/28 19:03:09 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/03 21:52:16 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,5 @@ void parsing(t_minishell *shell)
 	check_quotes(&(shell->prompt->str), 2, 2);
 	split_args(shell, shell->prompt->str);
 	create_command_lst(shell);
-	print_command_list(shell->exec);
+	//print_command_list(shell->exec);
 }

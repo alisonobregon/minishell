@@ -148,7 +148,7 @@ void	exec(t_minishell *shell)
 			//printf("son  whyyyyyy checking fd %d\n", exec->outfile->fd_out);
 			path = find_path(shell, exec->cmd);
 			fd_checker(exec);
-			printf("checking fd %d\n", exec->outfile->fd_out);
+			//printf("checking fd %d\n", exec->outfile->fd_out);
 			if (exec->outfile->file && exec->outfile->fd_out > 1)
 			{
 				printf("fd_out  in child 1 cmd %d\n", exec->fd_out);
