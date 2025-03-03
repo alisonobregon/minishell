@@ -21,7 +21,8 @@ el pwd imprime eso si no pues imprime la palabra minishell*/
 void memory_allocated(t_minishell *shell)
 {
 	shell->prompt = ft_calloc(1, sizeof(t_prompt));
-	shell->args = ft_calloc(1, sizeof(char *));
+	shell->args = ft_calloc(1, sizeof(char *)); //revisar si ultilizamos args
+	shell->path = NULL;
 	if (!shell->prompt)
 		return ;
 }
@@ -31,19 +32,21 @@ char	*get_prompt(t_minishell *shell)
 	char	*pwd;
 	char	*temp1;
 	char	*temp2;
+	char	*temp3;
 
 	(void)shell;
 	pwd = getenv("PWD"); //hacer una funcion porque retorna int y quiero el char
 	//user = getenv("USER");
-	if(pwd)
+	if (pwd)
 	{
 		temp1 = ft_strjoin(CYAN, pwd);
-		temp2 = ft_strjoin(temp1, "$ ");
+		temp2 = ft_strjoin(YELLOW, "->thelatambash$ ");
+		temp3 = ft_strjoin(temp1, temp2);
+
 		free(temp1);
-		pwd = ft_strjoin(temp2, DEFAULT);
 		free(temp2);
-		//de esta manera nos ahorramos una variable y se puede imprimir el usuario tambien
-		//free(tmp);
+		pwd = ft_strjoin(temp3, DEFAULT);
+		free(temp3);
 	}
 	else
 		pwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
@@ -95,6 +98,7 @@ int command_list_clear(t_exec *command_list)
 	return (0);
 }
 
+//if (shell->env == NULL) no tenemos enviroment
 int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
@@ -105,7 +109,6 @@ int	main(int argc, char **argv, char **env)
 	if (!shell)
 		return (1);
 	shell->env = strarray_copy(env);
-	//if (shell->env == NULL) no tenemos enviroment
 	memory_allocated(shell);
 	/* if (getenv("PATH") == NULL)
 	{
@@ -115,14 +118,14 @@ int	main(int argc, char **argv, char **env)
 	shell->path = ft_split(getenv("PATH"), ':');
 	if (!shell->path)
 		shell->path[0] = ft_strdup("./") ;
-	ft_printf("\033[1;1H\033[2J");
+	//ft_printf("\033[1;1H\033[2J");//revisar 
 	while (1)
 	{
-		if (shell->cwd_int == 0)
+		if (shell->cwd_int == 0) //preguntar
 			shell->cwd = get_prompt(shell);
 		shell->prompt->str = readline(shell->cwd);
 		parsing(shell);
-		exec(shell);
+		//exec(shell);
 		printf("prompt: %s\n", shell->prompt->str);
 	}
 	return (0);

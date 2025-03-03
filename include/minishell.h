@@ -21,6 +21,7 @@
 
 
 # define CYAN "\033[36m"
+# define YELLOW "\033[33m"
 # define DEFAULT "\033[0m"
 # define READ 0
 # define WRITE 1
