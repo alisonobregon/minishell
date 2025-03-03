@@ -24,10 +24,8 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 
 void	fd_checker(t_exec *exec)
 {
-	if (exec->todo_next == 15)
+	if (exec->infile != NULL)
 	{
-		if (exec->infile)
-		{
 			if (exec->infile[0])
 			{
 				if (access(exec->infile[0], F_OK) == -1)
@@ -35,8 +33,9 @@ void	fd_checker(t_exec *exec)
 					perror("File not found");
 					exit(1);
 				}
+				exec->fd_in = open(exec->infile[0], O_RDONLY);
+				printf("opening fd %d \n", exec->fd_in);
 			}
-		}
 	}
 	else if (exec->todo_next == 0)
 	{
@@ -57,6 +56,11 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 	if (shell->exec->i == 0 && exec->todo_next == 2)
 	{
 		//if fdin !=0 then dup2(fdin, STDIN_FILENO)
+	/* 	if (exec->fd_in != 0)
+		{
+			dup2(exec->fd_in, STDIN_FILENO);
+			close(exec->fd_in);
+		} */
 		printf("pipe 1 \n");
 		//if fdout !=1 then dup2(fdout, STDOUT_FILENO)
 		if (exec->outfile)
