@@ -18,16 +18,20 @@
 # include <readline/history.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-
+# include <sys/stat.h>
+# include <errno.h>
 
 # define CYAN "\033[36m"
 # define DEFAULT "\033[0m"
 # define READ 0
 # define WRITE 1
+
 typedef struct s_output
 {
 	int				action; // 0 = write, 1 = append
 	char			*file;
+	int				fd_out;
+	int				fd_in;
 	struct	s_output *next;
 }					t_output;
 
@@ -105,7 +109,8 @@ t_output	*outlst_new(char *filename, int action);
 /* Execution */
 void	exec(t_minishell *shell);
 char	*find_path(t_minishell *shell, char *cmd);
-int	len_pipes(t_exec *exec);
+int		len_pipes(t_exec *exec);
+void	fd_checker(t_exec *exec);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);
