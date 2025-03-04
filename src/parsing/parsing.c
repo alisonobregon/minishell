@@ -6,7 +6,7 @@
 /*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/04 20:37:47 by gongarci         ###   ########.fr       */
+/*   Updated: 2025/03/12 21:16:32 by gongarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int get_arg_end(char *str, int end_index)
 		is_sep = index_of(str + end_index, split[i], 1);
 		if (is_sep < is_sp)
 			return (end_index + is_sep); //en plan si hay algun especial antes
-	}
-	free_arrays(split, NULL);
+	}	
 	return (end_index + is_sp); //recordatorio amable para luego liberar el split preciosa
 }
 
@@ -72,8 +71,7 @@ int get_end_index(char *str, int end)
 		if (index_of(str, split[i], 1) == 0)
 			return (ft_strlen(split[i]));// + free_split(split));
 	}
-	free_arrays(split, NULL);
-	return (end);// + free_split(split));
+	return (end);// + free_split(split));	
 }
 
 int split_args(t_minishell *shell, char *str)
@@ -84,8 +82,8 @@ int split_args(t_minishell *shell, char *str)
 
 	i = -1;
 	j = 0;
-	while(str[++i] && str[i + 1] != '\0')
-	{
+	while(str[++i])
+	{ 
 		if (str[i] == '\t' || str[i] == ' ')
 			continue;
 		if (str[i] == '>' || str[i] == '<' || str[i] == 34 || str[i] == 39 
@@ -100,19 +98,45 @@ int split_args(t_minishell *shell, char *str)
 		j++;
 	}
 	shell->args[j] = NULL;
-	/* while(shell->args != NULL)
-	{
-		printf("args: %s\n", *shell->args);
-		shell->args++;
-	} */
 	return (0);
 }
 
+int check_specials(char **args)
+{
+	int i;
+	int is_special;
+	
+	is_special = 0;
+	i = -1;
+	while(args[++i])
+	{
+		if (get_arg_type(args[i]) != 0)
+		{
+			if (args[i + 1] && (get_arg_type(args[i + 1]) == 1) && get_arg_type(args[i]) == 2)
+				break;
+			if (is_special)
+			{
+				printf("minishell: syntax error near unexpected token `%s'\n", args[i]);
+				return (0);
+			}
+			is_special = 1;
+		}
+		else
+			is_special = 0;
+		if (args[i + 1] == NULL && is_special)
+		{
+			printf("minishell: syntax error near unexpected token `newline'\n");	
+			return (0);
+		}	
+	}
+	return (1);
+}
 void parsing(t_minishell *shell)
 {
 	//int i = 0;
 	check_quotes(&(shell->prompt->str), 2, 2);
 	split_args(shell, shell->prompt->str);
+	check_specials(shell->args);
 	create_command_lst(shell);
-	//print_command_list(shell->exec);
+	print_command_list(shell->exec);
 }
