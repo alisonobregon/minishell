@@ -107,6 +107,7 @@ int		outlst_append(t_output **out, char *filename, char *op);
 t_output	*out_lstlast(t_output *out);
 t_output	*outlst_new(char *filename, int action);
 int			add_history_to_file(char *str);
+int			check_specials(char **args);
 
 /* Execution */
 void	exec(t_minishell *shell);

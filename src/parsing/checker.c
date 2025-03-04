@@ -53,7 +53,7 @@ void	check_quotes(char **buf, int simple_quote, int double_quote)
 	}
 	return ;
 }
-
+/*
 int check_specials(char **buf)
 {
 	int		i;
@@ -72,3 +72,4 @@ int check_specials(char **buf)
 	}
 	return (0);
 }
+*/

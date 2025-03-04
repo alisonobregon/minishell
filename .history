@@ -1,0 +1,40 @@
+cat hola
+cat > |
+cat |
+cat >
+< Makefile cat
+ls | | cat
+ls < | cat
+ls < < cat
+ls <> cat
+ls | cat |
+cat Makefile < Makefile << end > output >> append
+cat Makefile < Makefile << end > output >> append
+< Makefile cat
+< Makefile cat | < Makefile cat
+bash
+> out cat Makefile 
+|
+|
+|
+|
+| > 
+| > cat
+ls | > cat
+|
+cat > hoal | < asdsd
+|
+hola | adsad
+hola | < cat hola
+lss
+cat Hola | < Makefile 
+cat Hola | < Makefile cat
+ls | cat < Makefile << end
+ls | cat < Makefile << end > output >> append
+ls | < Makefile << end cat > output >> append
+ls | > Makefile << end cat > output >> append
+ls < | cat
+ls < < cat
+ls < | cat
+ls | | cat
+ls  cat |

@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/03 21:52:16 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/04 19:53:49 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,43 @@ int split_args(t_minishell *shell, char *str)
 	shell->args[j] = NULL;
 	return (0);
 }
+
+int check_specials(char **args)
+{
+	int i;
+	int is_special;
+	
+	is_special = 0;
+	i = -1;
+	while(args[++i])
+	{
+		if (get_arg_type(args[i]) != 0)
+		{
+			if (args[i + 1] && (get_arg_type(args[i + 1]) == 1) && get_arg_type(args[i]) == 2)
+				break;
+			if (is_special)
+			{
+				printf("minishell: syntax error near unexpected token `%s'\n", args[i]);
+				return (0);
+			}
+			is_special = 1;
+		}
+		else
+			is_special = 0;
+		if (args[i + 1] == NULL && is_special)
+		{
+			printf("minishell: syntax error near unexpected token `newline'\n");	
+			return (0);
+		}	
+	}
+	return (1);
+}
 void parsing(t_minishell *shell)
 {
 	//int i = 0;
 	check_quotes(&(shell->prompt->str), 2, 2);
 	split_args(shell, shell->prompt->str);
+	check_specials(shell->args);
 	create_command_lst(shell);
-	//print_command_list(shell->exec);
+	print_command_list(shell->exec);
 }
