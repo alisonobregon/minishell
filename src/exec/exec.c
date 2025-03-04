@@ -107,7 +107,7 @@ static int pipex(t_minishell *shell)
 		}
 		if (shell->pid == 0)
 		{
-			fd_checker(exec);
+			fd_checker(&exec);
 			handler_fd(shell, exec, pipe_fd, pre_pipe);
 		}
 		if (shell->exec->i >= 1)
@@ -132,7 +132,7 @@ void	exec(t_minishell *shell)
 	if (!shell->exec || ft_strlen(shell->prompt->str) <= 1)
 		return ;
 	exec = shell->exec;
-	//print_command_list(exec);
+	print_command_list(exec);
 	if (exec && exec->todo_next == 0) // 1 cmd case
 	{
 		shell->pid = fork();
@@ -144,9 +144,19 @@ void	exec(t_minishell *shell)
 		else if (shell->pid == 0)
 		{
 			path = find_path(shell, exec->cmd);
-			fd_checker(exec);
-			printf("after fd checker\n");
-			if (exec->outfile && exec->fd_out > 1)
+			if (exec->outfile || exec->infile)
+			{
+				printf("in fd checker\n");
+				printf(" exec pointer %p\n", exec);
+				fd_checker(&exec);
+			}
+			printf("fd_in %d\n", exec->fd_in);
+			if (exec->fd_in != 0)
+			{
+				dup2(exec->fd_in, STDIN_FILENO);
+				close(exec->fd_in);
+			}
+			if (exec->outfile && exec->fd_out != 1)
 			{
 				//if exec->fd_out !=1
 				printf("fd_out  in child 1 cmd %d\n", exec->fd_out);
@@ -162,14 +172,6 @@ void	exec(t_minishell *shell)
 		while (wait(NULL) > 0)
 		;
 	}
-	else if (exec && exec->todo_next == 2) // 2 cmd or more cmds case
+	else if (exec && exec->todo_next == 2)
 		pipex(shell);
 }
-
-
-/* char **outfie = {["fd"], ["fd2"], ["fd3"]};
-int	**action = {[0], [1], [1]};
-
-char file - fd    0   fd_checker
-char file - fd2   1   fd_checker
- */

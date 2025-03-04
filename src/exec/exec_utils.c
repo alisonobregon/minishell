@@ -12,40 +12,44 @@
 
 #include "../../include/minishell.h"
 
-void	fd_checker(t_exec *exec)
+void	fd_checker(t_exec **exec)
 {
 	t_exec *tmp;
 	
-	tmp = exec;
-	if (exec->infile != NULL)
+	tmp = (*exec);
+	printf("inside fd pointer %p\n", *exec);
+	if ((*exec)->infile != NULL)
 	{
-		printf("aqu no debo entrar\n");
-		if (exec->infile[0])
+		printf("aqui no debo entrar\n");
+		if ((*exec)->infile[0])
 		{
-			if (access(exec->infile[0], F_OK) == -1)
+			if (access((*exec)->infile[0], F_OK) == -1)
 			{
 				perror("File not found");
+				//free child
 				exit(1);
 			}
-			exec->fd_in = open(exec->infile[0], O_RDONLY);
-			printf("opening fd %d \n", exec->fd_in);
+			(*exec)->fd_in = open((*exec)->infile[0], O_RDONLY);
+			printf("opening file %s\n", (*exec)->infile[0]);
+			printf("opening fd %d \n", (*exec)->fd_in);
 		}
 	}
-	while (exec->outfile->next != NULL)
+	if ((*exec)->outfile == NULL)
+		return ;
+	while ((*exec)->outfile->next != NULL)
 	{
-		printf("tamos aqui \n");
-		if (exec->outfile->action == 0)
-			close(open(exec->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664));
+		if ((*exec)->outfile->action == 0)
+			close(open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664));
 		else
-			close(open(exec->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
-		exec->outfile = exec->outfile->next;
+			close(open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
+		(*exec)->outfile = (*exec)->outfile->next;
 	}
-	if (exec->outfile->next == NULL)
+	if ((*exec)->outfile->next == NULL)
 	{
-		if (exec->outfile->action == 0)
-			tmp->fd_out = open(exec->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-		else if (exec->outfile->action == 1)
-			tmp->fd_out = open(exec->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
+		if ((*exec)->outfile->action == 0)
+			tmp->fd_out = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+		else if ((*exec)->outfile->action == 1)
+			tmp->fd_out = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
 	}
 }
 
