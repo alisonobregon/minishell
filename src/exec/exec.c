@@ -132,11 +132,10 @@ void	exec(t_minishell *shell)
 	if (!shell->exec || ft_strlen(shell->prompt->str) <= 1)
 		return ;
 	exec = shell->exec;
+	//print_command_list(exec);
 	if (exec && exec->todo_next == 0) // 1 cmd case
 	{
-		printf("father\n");
 		shell->pid = fork();
-		printf("pid %d\n", shell->pid);
 		if (shell->pid == -1)
 		{
 			printf("fork error \n");
@@ -144,16 +143,15 @@ void	exec(t_minishell *shell)
 		}
 		else if (shell->pid == 0)
 		{
-			//printf("son\n");
-			//printf("son  whyyyyyy checking fd %d\n", exec->outfile->fd_out);
 			path = find_path(shell, exec->cmd);
 			fd_checker(exec);
-			printf("checking fd %d\n", exec->outfile->fd_out);
-			if (exec->outfile->file && exec->outfile->fd_out > 1)
+			printf("after fd checker\n");
+			if (exec->outfile && exec->fd_out > 1)
 			{
+				//if exec->fd_out !=1
 				printf("fd_out  in child 1 cmd %d\n", exec->fd_out);
-				dup2(exec->outfile->fd_out, STDOUT_FILENO);
-				close(exec->outfile->fd_out);
+				dup2(exec->fd_out, STDOUT_FILENO);
+				close(exec->fd_out);
 			}
 			if (execve(path, exec->args, shell->env) == -1)
 			{
