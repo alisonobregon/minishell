@@ -38,3 +38,11 @@ ls < < cat
 ls < | cat
 ls | | cat
 ls  cat |
+HOAL 1|
+cat archivo |
+cat archivo | > 
+cat < | 
+cat >
+cat >
+ls >
+cat >
