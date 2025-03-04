@@ -6,7 +6,7 @@
 /*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/12 21:16:32 by gongarci         ###   ########.fr       */
+/*   Updated: 2025/03/12 21:19:32 by gongarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int check_specials(char **args)
 			if (is_special)
 			{
 				printf("minishell: syntax error near unexpected token `%s'\n", args[i]);
-				return (0);
+				return(0);
 			}
 			is_special = 1;
 		}
@@ -126,7 +126,7 @@ int check_specials(char **args)
 		if (args[i + 1] == NULL && is_special)
 		{
 			printf("minishell: syntax error near unexpected token `newline'\n");	
-			return (0);
+			return(0);
 		}	
 	}
 	return (1);
@@ -136,7 +136,8 @@ void parsing(t_minishell *shell)
 	//int i = 0;
 	check_quotes(&(shell->prompt->str), 2, 2);
 	split_args(shell, shell->prompt->str);
-	check_specials(shell->args);
+	if (!check_specials(shell->args))
+		return ;
 	create_command_lst(shell);
-	print_command_list(shell->exec);
+	//print_command_list(shell->exec);
 }
