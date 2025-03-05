@@ -27,26 +27,19 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 	//if (exec->todo_next == 2 && exec->next->todo_next == 0 && shell->exec->i == 0)
 	if (shell->exec->i == 0 && exec->todo_next == 2)
 	{
-		//if fdin !=0 then dup2(fdin, STDIN_FILENO)
-	/* 	if (exec->fd_in != 0)
+		printf("pipe 1 \n");
+		printf("fd_in %d\n", exec->fd_in);
+		if (exec->fd_in != 0)
 		{
 			dup2(exec->fd_in, STDIN_FILENO);
 			close(exec->fd_in);
-		} */
-		printf("pipe 1 \n");
-		//if fdout !=1 then dup2(fdout, STDOUT_FILENO)
-		if (exec->outfile)
-		{
-			if (exec->fd_out != 1)
-				close(exec->fd_out);
 		}
-		close(pipe_fd[READ]);//close unused read end
+		close(pipe_fd[READ]);
 		dup2(pipe_fd[WRITE], STDOUT_FILENO);
 		close(pipe_fd[WRITE]);
-		//if we have fd out different than stdout we have to close it
 		exec_cmd(shell, exec);
 	}
-				//else if (exec->todo_next == 2 && exec->next->todo_next == 2 && shell->exec->i >= 0)
+	//else if (exec->todo_next == 2 && exec->next->todo_next == 2 && shell->exec->i >= 0)
 	else if (shell->exec->i <= (len_pipes(shell->exec) - 1))
 	{
 		printf("pipe 2 \n");
@@ -61,12 +54,27 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 	else if (exec->todo_next == 0 && shell->exec->i > 0)
 	{
 		printf("pipe 3 \n");
-		exec->fd_out = 2;
-		exec->next->fd_out = 3;
 		close(pipe_fd[WRITE]); //close unused write end
-		dup2(pipe_fd[READ], STDIN_FILENO);
-		close(pipe_fd[READ]);
-		if (exec->outfile)
+		if (exec->fd_in != 0 && exec->infile) // ls | cat < infile case
+		{
+			printf("fd_in %d\n", exec->fd_in);
+			close(pipe_fd[READ]);
+			close(exec->fd_in);
+			exec->fd_in = open(exec->infile[0], O_RDONLY);
+			if (exec->fd_in == -1)
+			{
+				perror("Error opening file");
+				exit(1);
+			}
+			dup2(exec->fd_in, STDIN_FILENO);
+			close(exec->fd_in);
+		}
+		else
+		{
+			dup2(pipe_fd[READ], STDIN_FILENO);
+			close(pipe_fd[READ]);
+		}
+		if (exec->outfile && exec->fd_out > 1)
 		{
 			dup2(exec->fd_out, STDOUT_FILENO);
 			close(exec->fd_out);
@@ -107,7 +115,8 @@ static int pipex(t_minishell *shell)
 		}
 		if (shell->pid == 0)
 		{
-			fd_checker(&exec);
+			if (exec->outfile || exec->infile)
+				fd_checker(&exec);
 			handler_fd(shell, exec, pipe_fd, pre_pipe);
 		}
 		if (shell->exec->i >= 1)

@@ -15,12 +15,12 @@
 void	fd_checker(t_exec **exec)
 {
 	t_exec *tmp;
-	
+
 	tmp = (*exec);
-	printf("inside fd pointer %p\n", *exec);
-	if ((*exec)->infile != NULL)
+	printf("inside fd checker pointer %p\n", *exec);
+	if ((*exec)->infile)
 	{
-		printf("aqui no debo entrar\n");
+		printf("aqui debo entrar\n");
 		if ((*exec)->infile[0])
 		{
 			if (access((*exec)->infile[0], F_OK) == -1)
@@ -34,10 +34,11 @@ void	fd_checker(t_exec **exec)
 			printf("opening fd %d \n", (*exec)->fd_in);
 		}
 	}
-	if ((*exec)->outfile == NULL)
+	if (!(*exec)->outfile)
 		return ;
 	while ((*exec)->outfile->next != NULL)
 	{
+		//if (access((*exec)->outfile->file, F_OK) == -1)
 		if ((*exec)->outfile->action == 0)
 			close(open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664));
 		else
