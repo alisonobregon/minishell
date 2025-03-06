@@ -82,3 +82,19 @@ ls -la
 ls -la > output
 cat output
 cat < Makefile  > output
+cat < Makefile < .history  | cat > output > output2
+ls -la
+ls -la
+cat < Makefile < .history 
+cat < Makefile < .history 
+cat < Makefile < .history 
+cat < Makefile < .history 
+cat < Makefile < .history 
+cat < Makefile < .history 
+cat < Makefile < .history 
+cat < Makefile < .history 
+cat < Makefile < .history 
+cat < Makefile < output2
+ls
+cat < Makefile < .history 
+cat < Makefile < .history 

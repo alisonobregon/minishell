@@ -12,6 +12,38 @@
 
 #include "../../include/minishell.h"
 
+void	infile_checker(t_exec **exec)
+{
+	int i;
+
+	i = 0;
+	if ((*exec)->infile)
+	{
+		printf("many infile  %d\n", ft_len((*exec)->infile));
+		while (i < ft_len((*exec)->infile))
+		{
+			printf("infile %s\n", (*exec)->infile[i]);
+			if (access((*exec)->infile[i], F_OK))
+			{
+				perror("File not found");
+				exit(1);
+			}
+			if (access((*exec)->infile[i], R_OK))
+			{
+				perror("Permission denied");
+				exit(1);
+			}
+			if (!(*exec)->infile[i + 1])
+			{
+				printf("taking infile %s\n", (*exec)->infile[i]);
+				(*exec)->fd_in = open((*exec)->infile[i], O_RDONLY);
+				close((*exec)->fd_in);
+			}
+			i++;
+		}
+	}
+}
+
 void	fd_checker(t_exec **exec)
 {
 	t_exec *tmp;
@@ -21,7 +53,8 @@ void	fd_checker(t_exec **exec)
 	if ((*exec)->infile)
 	{
 		printf("aqui debo entrar\n");
-		if ((*exec)->infile[0])
+		infile_checker(exec);
+		/* if ((*exec)->infile[0])
 		{
 			if (access((*exec)->infile[0], F_OK) == -1)
 			{
@@ -32,7 +65,7 @@ void	fd_checker(t_exec **exec)
 			(*exec)->fd_in = open((*exec)->infile[0], O_RDONLY);
 			printf("opening file %s\n", (*exec)->infile[0]);
 			printf("opening fd %d \n", (*exec)->fd_in);
-		}
+		} */
 	}
 	if (!(*exec)->outfile)
 		return ;
@@ -72,6 +105,7 @@ void	dup_checker(t_exec *exec)
 {
 	if (exec->fd_in != 0)
 	{
+		//open(exec->infile[ft_len(exec->infile) - 1], O_RDONLY);
 		dup2(exec->fd_in, STDIN_FILENO);
 		close(exec->fd_in);
 	}
