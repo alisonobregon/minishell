@@ -72,3 +72,13 @@ cat < Makefile | grep NAME | grep NAME | grep show_progress > output1 > output2
 cat < Makefile > output2 > output1
 cat output2
 cat < Makefile > output2 > output1
+ls -la
+cat < Makefile 
+ls -la
+ls
+ls -la > output
+cat < Makefile > output
+ls -la
+ls -la > output
+cat output
+cat < Makefile  > output

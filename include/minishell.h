@@ -113,6 +113,7 @@ void	exec(t_minishell *shell);
 char	*find_path(t_minishell *shell, char *cmd);
 int		len_pipes(t_exec *exec);
 void	fd_checker(t_exec **exec);
+void	dup_checker(t_exec *exec);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);

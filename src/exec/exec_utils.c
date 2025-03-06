@@ -67,3 +67,17 @@ int	len_pipes(t_exec *exec)
 	}
 	return (len);
 }
+
+void	dup_checker(t_exec *exec)
+{
+	if (exec->fd_in != 0)
+	{
+		dup2(exec->fd_in, STDIN_FILENO);
+		close(exec->fd_in);
+	}
+	if (exec->fd_out != 1)
+	{
+		dup2(exec->fd_out, STDOUT_FILENO);
+		close(exec->fd_out);
+	}
+}

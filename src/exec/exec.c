@@ -24,7 +24,6 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 
 void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 {
-	//if (exec->todo_next == 2 && exec->next->todo_next == 0 && shell->exec->i == 0)
 	if (shell->exec->i == 0 && exec->todo_next == 2)
 	{
 		printf("pipe 1 \n");
@@ -39,7 +38,6 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		close(pipe_fd[WRITE]);
 		exec_cmd(shell, exec);
 	}
-	//else if (exec->todo_next == 2 && exec->next->todo_next == 2 && shell->exec->i >= 0)
 	else if (shell->exec->i <= (len_pipes(shell->exec) - 1))
 	{
 		printf("pipe 2 \n");
@@ -100,7 +98,7 @@ static int pipex(t_minishell *shell)
 	{
 		if (exec->todo_next == 2)
 		{
-			printf("pipe\n");
+			printf("making a pipe\n");
 			if (pipe(pipe_fd) == -1)
 			{
 				perror("Error creating pipe");
@@ -128,59 +126,45 @@ static int pipex(t_minishell *shell)
 	}
 	while (wait(NULL) > 0)
 		;
+	//close some fds probably piepes;
 	free(pipe_fd);
 	free(pre_pipe);
 	return (0);
+}
+
+void	one_cmd(t_minishell *shell)
+{
+	shell->pid = fork();
+	if (shell->pid == -1)
+	{
+		perror("fork");
+		return ;
+	}
+	if (shell->pid == 0)
+	{
+		if (shell->exec->outfile || shell->exec->infile)
+			fd_checker(&shell->exec);
+		dup_checker(shell->exec);
+		exec_cmd(shell, shell->exec);
+	}
+	while (wait(NULL) > 0)
+		;
 }
 
 void	exec(t_minishell *shell)
 {
 	t_exec	*exec;
 	
-	char *path;
 	if (!shell->exec || ft_strlen(shell->prompt->str) <= 1)
 		return ;
 	exec = shell->exec;
 	print_command_list(exec);
-	if (exec && exec->todo_next == 0) // 1 cmd case
+	if (exec && exec->todo_next == 0)
 	{
-		shell->pid = fork();
-		if (shell->pid == -1)
-		{
-			printf("fork error \n");
-			return ;
-		}
-		else if (shell->pid == 0)
-		{
-			path = find_path(shell, exec->cmd);
-			if (exec->outfile || exec->infile)
-			{
-				printf("in fd checker\n");
-				printf(" exec pointer %p\n", exec);
-				fd_checker(&exec);
-			}
-			printf("fd_in %d\n", exec->fd_in);
-			if (exec->fd_in != 0)
-			{
-				dup2(exec->fd_in, STDIN_FILENO);
-				close(exec->fd_in);
-			}
-			if (exec->outfile && exec->fd_out != 1)
-			{
-				//if exec->fd_out !=1
-				printf("fd_out  in child 1 cmd %d\n", exec->fd_out);
-				dup2(exec->fd_out, STDOUT_FILENO);
-				close(exec->fd_out);
-			}
-			if (execve(path, exec->args, shell->env) == -1)
-			{
-				perror("execve");
-				exit(1);
-			}
-		}
-		while (wait(NULL) > 0)
-		;
+		one_cmd(shell);
 	}
 	else if (exec && exec->todo_next == 2)
+	{
 		pipex(shell);
+	}
 }
