@@ -123,6 +123,7 @@ void	ft_export(t_minishell *shell);
 /* built-ins tools */
 int		just_export(char *str);
 void	free_arrays(char **array1, char **array2);
+int is_builtin(char *cmd);
 
 /* utils */
 char	**strarray_copy(char **array);

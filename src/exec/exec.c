@@ -132,6 +132,7 @@ void	exec(t_minishell *shell)
 	if (!shell->exec || ft_strlen(shell->prompt->str) <= 1)
 		return ;
 	exec = shell->exec;
+	is_builtin(exec->cmd);
 	if (exec && exec->todo_next == 0) // 1 cmd case
 	{
 		printf("father\n");
