@@ -12,6 +12,27 @@
 
 #include "../../include/minishell.h"
 
+int is_builtin(char *cmd)
+{
+	if (!ft_strncmp(cmd, "echo", 5))
+	{
+		printf("echo\n");
+	}
+	if (!ft_strncmp(cmd, "cd", 3))
+		return (1);
+	if (!ft_strncmp(cmd, "pwd", 4))
+		return (1);
+	if (!ft_strncmp(cmd, "export", 7))
+		return (1);
+	if (!ft_strncmp(cmd, "unset", 6))
+		return (1);
+	if (!ft_strncmp(cmd, "env", 4))
+		return (1);
+	if (!ft_strncmp(cmd, "exit", 5))
+		return (1);
+	return (0);
+}
+
 void	free_arrays(char **array1, char **array2)
 {
 	int	i;
