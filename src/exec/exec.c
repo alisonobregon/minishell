@@ -144,7 +144,7 @@ void	one_cmd(t_minishell *shell)
 	{
 		if (shell->exec->outfile || shell->exec->infile)
 			fd_checker(&shell->exec);
-		dup_checker(shell->exec);
+		dup_checker(&shell->exec);
 		exec_cmd(shell, shell->exec);
 	}
 	while (wait(NULL) > 0)
@@ -154,7 +154,7 @@ void	one_cmd(t_minishell *shell)
 void	exec(t_minishell *shell)
 {
 	t_exec	*exec;
-	
+
 	if (!shell->exec || ft_strlen(shell->prompt->str) <= 1)
 		return ;
 	exec = shell->exec;
