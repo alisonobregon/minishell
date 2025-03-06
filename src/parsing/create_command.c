@@ -140,7 +140,7 @@ int create_command_lst(t_minishell *shell)
 	buf = shell->args;
 	while (*buf != NULL && (get_arg_type(*buf) == 0 || get_arg_type(*buf) == 1))
 	{
-		printf("buf 0: %s\n", *buf);
+		//printf("buf 0: %s\n", *buf);
 		new = exec_new();
 		if (!new)
 			return (1);
@@ -179,6 +179,7 @@ int create_command_lst(t_minishell *shell)
 int print_command_list(t_exec *command_list)
 {
 	t_exec	*temp;
+	t_output	*temp_out;
 	int i = 1;
 
 	temp = command_list;
@@ -186,6 +187,7 @@ int print_command_list(t_exec *command_list)
 	{
 		printf("comando %d\n", i);
 		printf("cmd: %s\n", temp->cmd);
+		temp_out = temp->outfile;
 		if (temp->args)
 			for (int i = 0; temp->args[i]; i++)
 				printf("args[%d]: %s\n", i, temp->args[i]);
@@ -195,10 +197,10 @@ int print_command_list(t_exec *command_list)
 				printf("infile[%d]: %s\n", i, temp->infile[i]);
 		}
 		while (temp->outfile)
-		{
-			printf("outfile: %s\n", temp->outfile->file);
-			printf("action: %d\n", temp->outfile->action);
-			temp->outfile = temp->outfile->next;
+		{	
+			printf("outfile: %s\n", temp_out->file);
+			printf("action: %d\n", temp_out->action);
+			temp_out = temp_out->next;
 		}
 		if (temp->heredoc)
 		{

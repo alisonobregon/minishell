@@ -49,8 +49,10 @@ char	*get_prompt(t_minishell *shell)
 		free(temp3);
 	}
 	else
-		pwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
-	//AQUI PONDRIAMOS YA SI EL COMANDO FUE EXITOSO O NO
+	{
+		pwd = ft_strjoin(CYAN "minishell$", YELLOW "->thelatambash$ " DEFAULT);
+		
+	}//AQUI PONDRIAMOS YA SI EL COMANDO FUE EXITOSO O NO
 	return(pwd);
 }
 int free_shell(t_minishell *shell)
@@ -131,9 +133,9 @@ int	main(int argc, char **argv, char **env)
 		 buscar path find_path y asignar o de lo contrario
 		return 
 	} */
-	shell->path = ft_split(getenv("PATH"), ':');
+	/*shell->path = ft_split(getenv("PATH"), ':');
 	if (!shell->path)
-		shell->path[0] = ft_strdup("./") ;
+		shell->path[0] = ft_strdup("./") ;*/
 	//ft_printf("\033[1;1H\033[2J");//revisar 
 	while (1)
 	{
@@ -143,6 +145,8 @@ int	main(int argc, char **argv, char **env)
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
 		parsing(shell);
+		printf("el error no esta en el parseo");
+		//print_command_list(shell->exec);
 		exec(shell);
 		printf("prompt: %s\n", shell->prompt->str);
 	}

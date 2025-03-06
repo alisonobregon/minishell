@@ -113,9 +113,12 @@ int			check_specials(char **args);
 void	exec(t_minishell *shell);
 char	*find_path(t_minishell *shell, char *cmd);
 int		len_pipes(t_exec *exec);
-void	fd_checker(t_exec *exec);
+void	fd_checker(t_exec **exec);
+void	dup_checker(t_exec *exec);
 
 /*built-ins functions*/
+int		ft_echo(char **args);
+void	echo_args(char *str);
 int		cd(t_minishell *shell, char **str);
 int		pwd(void);
 void	ft_env(t_minishell *shell);
@@ -123,7 +126,7 @@ void	ft_export(t_minishell *shell);
 /* built-ins tools */
 int		just_export(char *str);
 void	free_arrays(char **array1, char **array2);
-int is_builtin(char *cmd);
+int		is_builtin(t_exec *exec);
 
 /* utils */
 char	**strarray_copy(char **array);

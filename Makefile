@@ -16,6 +16,7 @@ SRC = 	./src/minishell.c \
 		./src/built-ins/export.c \
 		./src/built-ins/env.c \
 		./src/built-ins/cd.c \
+		./src/built-ins/echo.c \
 		./src/parsing/parsing.c \
 		./src/parsing/checker.c \
 		./src/parsing/utils_parsing.c \
