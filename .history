@@ -32,3 +32,19 @@ ls | cat < Makefile
 cat < Makefile < output | grep PHONY
 cat < Makefile | grep PHONY
 cat < output < Makefile | grep PHONY
+cat < Makefile | cat < Makefile  < output
+ls -la | cat < Makefile < output
+ls -la | cat < Makefile  < output
+ls -la | cat < Makefile  < output
+ls -la | cat < Makefile  < output
+ls -la | cat < Makefile  < output
+ls -la | cat  < Makefile  < output
+ls | cat  < Makefile 
+ls | cat  < Makefile < output
+ls -la | cat < Makefile < output
+ls -la | cat  < Makefile < output
+ls | cat < Makefile < output
+ls | cat < Makefile < output
+ls | cat < Makefile < output
+ cat < Makefile > output | grep NAME
+cat < Makefile > output | grep NAME

@@ -12,19 +12,6 @@
 
 #include "../../include/minishell.h"
 
-void	out_access_checker(t_exec **exec, char	*file)
-{
-	if ((*exec)->outfile->action == 1)
-	{
-		if (access(file, W_OK))
-		{
-			perror("Permission denied");
-			//free;
-			exit(1);
-		}
-	}
-}
-
 void	infile_checker(t_exec **exec)
 {
 	int i;
@@ -47,7 +34,15 @@ void	infile_checker(t_exec **exec)
 				exit(1);
 			}
 			if (!(*exec)->infile[i + 1])
+			{
 				(*exec)->fd_in = open((*exec)->infile[i], O_RDONLY);
+				if ((*exec)->fd_in == -1)
+				{
+					perror("Error opening file here");
+					exit(1);
+				}
+				close((*exec)->fd_in);
+			}
 			i++;
 		}
 	}
@@ -71,8 +66,11 @@ void	fd_checker(t_exec **exec)
 		if ((*exec)->outfile->action == 0)
 			close(open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664));
 		else
+		{
+			//if (access((*exec)->outfile->file, F_OK) == -1)
 			close(open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
-		(*exec)->outfile = (*exec)->outfile->next;
+			(*exec)->outfile = (*exec)->outfile->next;
+		}
 	}
 	if ((*exec)->outfile->next == NULL)
 	{

@@ -29,15 +29,14 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		printf("pipe 1 \n");
 		printf("fd_in %d\n", exec->fd_in);
 		close(pipe_fd[READ]);
-		dup_multi(exec->fd_in, pipe_fd[WRITE]);
-		/* 	if (exec->fd_in != 0)
+		if (exec->fd_out > 1)
 		{
-			dup2(exec->fd_in, STDIN_FILENO);
-			close(exec->fd_in);
+			dup_multi(exec->fd_in, exec->fd_out);
+			close(pipe_fd[WRITE]);
 		}
-		close(pipe_fd[READ]);
-		dup2(pipe_fd[WRITE], STDOUT_FILENO);
-		close(pipe_fd[WRITE]); */
+		else
+			dup_multi(exec->fd_in, pipe_fd[WRITE]);
+		
 		exec_cmd(shell, exec);
 	}
 	else if (shell->exec->i <= (len_pipes(shell->exec) - 1))
@@ -61,11 +60,12 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		if (exec->fd_in != 0 && exec->infile) // ls | cat < infile case
 		{
 			close(pipe_fd[READ]);
-			close(exec->fd_in);
-			exec->fd_in = open(exec->infile[0], O_RDONLY);
+			//	close(exec->fd_in);
+			printf("fd_in %d and many infile %d\n", exec->fd_in, ft_len(exec->infile));
+			exec->fd_in = open(exec->infile[ft_len(exec->infile - 1)], O_RDONLY);
 			if (exec->fd_in == -1)
 			{
-				perror("Error opening file");
+				perror("Error opening file here");
 				exit(1);
 			}
 			dup2(exec->fd_in, STDIN_FILENO);
