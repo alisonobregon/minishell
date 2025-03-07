@@ -110,3 +110,15 @@ void	dup_checker(t_exec **exec)
 		close((*exec)->fd_out);
 	}
 }
+
+void	dup_multi(int read, int write)
+{
+	if (read != 0)
+	{
+		dup2(read, STDIN_FILENO);
+		close(read);
+	}
+	dup2(write, STDOUT_FILENO);
+	if (write > 1)
+		close(write);
+}

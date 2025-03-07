@@ -28,34 +28,38 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 	{
 		printf("pipe 1 \n");
 		printf("fd_in %d\n", exec->fd_in);
-		if (exec->fd_in != 0)
+		close(pipe_fd[READ]);
+		dup_multi(exec->fd_in, pipe_fd[WRITE]);
+		/* 	if (exec->fd_in != 0)
 		{
 			dup2(exec->fd_in, STDIN_FILENO);
 			close(exec->fd_in);
 		}
 		close(pipe_fd[READ]);
 		dup2(pipe_fd[WRITE], STDOUT_FILENO);
-		close(pipe_fd[WRITE]);
+		close(pipe_fd[WRITE]); */
 		exec_cmd(shell, exec);
 	}
 	else if (shell->exec->i <= (len_pipes(shell->exec) - 1))
 	{
 		printf("pipe 2 \n");
 		close(pipe_fd[READ]);
+		close(pre_pipe[WRITE]);
+		dup_multi(pre_pipe[READ], pipe_fd[WRITE]);
+	/* 	close(pipe_fd[READ]);
 		dup2(pre_pipe[READ], STDIN_FILENO);
 		close(pre_pipe[READ]);
 		dup2(pipe_fd[WRITE], STDOUT_FILENO);
 		close(pipe_fd[WRITE]);
-		close(pre_pipe[WRITE]);
+		close(pre_pipe[WRITE]); */
 		exec_cmd(shell, exec);
 	}
 	else if (exec->todo_next == 0 && shell->exec->i > 0)
 	{
 		printf("pipe 3 \n");
-		close(pipe_fd[WRITE]); //close unused write end
+		close(pipe_fd[WRITE]);
 		if (exec->fd_in != 0 && exec->infile) // ls | cat < infile case
 		{
-			printf("fd_in %d\n", exec->fd_in);
 			close(pipe_fd[READ]);
 			close(exec->fd_in);
 			exec->fd_in = open(exec->infile[0], O_RDONLY);
@@ -98,7 +102,6 @@ static int pipex(t_minishell *shell)
 	{
 		if (exec->todo_next == 2)
 		{
-			printf("making a pipe\n");
 			if (pipe(pipe_fd) == -1)
 			{
 				perror("Error creating pipe");

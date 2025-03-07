@@ -1,0 +1,34 @@
+ls
+ls -la
+ls
+cat < Makefile 
+cat < Makefile  > output
+cat output 
+cat < Makefile  < output > output2
+cat output2
+cat < Makefile  < output | grep NAME
+cat < Makefile  < output | grep NAME > output1 > output2
+cat < Makefile  < output | grep NAME > output1 > output2
+ls
+cat output2
+ls -la > output
+cat output 
+cat < Makefile < output 
+cat < Makefile < output 
+ls | cat < Makefile < output 
+ls
+cat < Makefile < output | grep Makefile | grep Makefile 
+cat < Makefile < output | grep Makefile | grep Makefile > output1 > output2
+cat output2
+ls | cat < Makefile  < output
+ls | cat < Makefile < output 
+ls | cat < Makefile < output | grep PHONY
+ls | cat < Makefile < output | grep PHONY | cat
+ls | cat Makefile | grep PHONY
+ls | cat < Makefile < output | grep PHONY | cat
+ls | cat < Makefile  | grep PHONY | cat
+ls | cat < Makefile  | grep PHONY 
+ls | cat < Makefile 
+cat < Makefile < output | grep PHONY
+cat < Makefile | grep PHONY
+cat < output < Makefile | grep PHONY
