@@ -41,7 +41,9 @@ void	infile_checker(t_exec **exec)
 					perror("Error opening file here");
 					exit(1);
 				}
-				close((*exec)->fd_in);
+				dup2((*exec)->fd_in, STDIN_FILENO);
+				if ((*exec)->fd_in != 0)
+					close((*exec)->fd_in);
 			}
 			i++;
 		}
@@ -69,15 +71,35 @@ void	fd_checker(t_exec **exec)
 		{
 			//if (access((*exec)->outfile->file, F_OK) == -1)
 			close(open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
-			(*exec)->outfile = (*exec)->outfile->next;
 		}
+		(*exec)->outfile = (*exec)->outfile->next;
 	}
 	if ((*exec)->outfile->next == NULL)
 	{
 		if ((*exec)->outfile->action == 0)
+		{
 			tmp->fd_out = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+			if (tmp->fd_out == -1)
+			{
+				perror("Error opening file here");
+				exit(1);
+			}
+			dup2(tmp->fd_out, STDOUT_FILENO);
+			if (tmp->fd_out > 1)
+				close(tmp->fd_out);
+		}
 		else if ((*exec)->outfile->action == 1)
+		{
 			tmp->fd_out = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
+			if (tmp->fd_out == -1)
+			{
+				perror("Error opening file");
+				exit(1);
+			}
+			dup2(tmp->fd_out, STDOUT_FILENO);
+			if (tmp->fd_out > 1)
+				close(tmp->fd_out);
+		}
 	}
 }
 
@@ -109,7 +131,7 @@ void	dup_checker(t_exec **exec)
 	}
 }
 
-void	dup_multi(int read, int write)
+void	multi_dup(int read, int write)
 {
 	if (read != 0)
 	{

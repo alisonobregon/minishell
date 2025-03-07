@@ -48,3 +48,29 @@ ls | cat < Makefile < output
 ls | cat < Makefile < output
  cat < Makefile > output | grep NAME
 cat < Makefile > output | grep NAME
+ls -la
+ls -la > output
+cat output 
+cat < output  > output2
+cat output2
+cat < Makefile | cat < output < Makefile > output2 > output3
+cat < Makefile | cat < output < Makefile > output2 > output3
+cat < Makefile | cat < output < Makefile > output2 > output3
+cat output3
+cat < Makefile | cat < output < Makefile > output2 > output3
+cat < Makefile | cat < output < Makefile > output2 > output3
+cat < missing < Makefile 
+cat < Makefile | cat < output < Makefile > output2 > output3
+ls -la | grep output | wc -l
+ls -la | grep output | grep output
+cat < Makefile < output3 > output2 > output4 | grep SRC
+cat Makefile 
+cat < Makefile > output
+cat < Makefile > output > output2
+cat < Makefile > output > output2 | ls -la > output2 > output1 output2 
+cat < Makefile > output > output2 | ls -la > output2 > output1 > output2 
+cat < Makefile > output > output2 | ls -la > output2 > output1 > output2 
+cat < Makefile > output > output2 | sleep 2 | ls -la > output2 > output1 > output2 
+cat < Makefile > output > output2 | sleep 2 | ls -la > output1 > output2 
+cat < Makefile > output > output2 | sleep 2 | ls -la > output1 > output2 
+cat < Makefile > output > output2 | sleep 2 | ls -la > output1 > output2 

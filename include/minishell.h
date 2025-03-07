@@ -114,7 +114,7 @@ char	*find_path(t_minishell *shell, char *cmd);
 int		len_pipes(t_exec *exec);
 void	fd_checker(t_exec **exec);
 void	dup_checker(t_exec **exec);
-void	dup_multi(int read, int write);
+void	multi_dup(int read, int write);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);
