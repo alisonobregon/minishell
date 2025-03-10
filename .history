@@ -1,4 +1,5 @@
 ls
+<<<<<<< HEAD
 ls -la
 ls
 cat < Makefile 
@@ -349,3 +350,84 @@ cd ..
 l
 cd ..
 cd
+=======
+ls ds
+ls
+echo hola
+echo hola< cat
+echo hola
+echo hola
+echo hola
+holacsd 
+echo hola
+cat hola
+cat hola
+ls
+cat < hola
+hola cas
+hola cas
+cat hola
+cat hola
+echo
+echo hola
+echo hola
+echo -n hola que tal | echo como estas
+echo hola que tal | echo como estas
+echo hola que tal 
+echo "hola que tal"
+hola que tal
+ls
+cat hola
+ls
+cat asdsa | ls
+ls > in1 > in2 > in3 
+ls | cat ><
+
+ls | cat < Makefile 
+ls | cat < Makefile  >
+ls | cat < Makefile  < in3
+cat < Makefile | grep NAME | grep NAME | ls
+cat < Makefile | grep NAME | grep NAME | ls > in1 > in2 > in3
+cat < Makefile | grep NAME | grep NAME
+cat < Makefile | grep NAME | grep NAME
+cat < Makefile | grep NAME | grep NAME > in1
+cat < Makefile | grep NAME | grep NAME > in1 > in2
+echo
+echo hola
+echo
+echo hola
+echo hola que tal
+echo hola
+echo hola que tal
+echo -n hola que tal 
+echo hola que tal
+cat makefile
+cat Makefile 
+cat < Makefile
+pwd
+pwd
+export
+export
+export
+export hola
+export hola=hola1
+export
+env
+echo -n hola que tal
+echo hola que tal
+pwd
+pwd
+cat "
+cat "
+"
+"
+cat "
+cat "hola
+"hola
+"hola
+|
+cat "
+cat "
+cat |
+hola |
+>>>>>>> a7fd9e7 (subida)

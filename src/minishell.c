@@ -142,9 +142,9 @@ int	main(int argc, char **argv, char **env)
 		shell->prompt->str = readline(shell->cwd);
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
-		//parsing(shell);
-		cd(shell, shell->prompt->str);
-		//exec(shell);
+		parsing(shell);
+		//print_command_list(shell->exec);
+		exec(shell);
 		printf("prompt: %s\n", shell->prompt->str);
 	}
 	return (0);

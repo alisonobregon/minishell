@@ -6,7 +6,7 @@
 /*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/12 21:19:32 by gongarci         ###   ########.fr       */
+/*   Updated: 2025/03/12 21:29:52 by gongarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void parsing(t_minishell *shell)
 {
 	//int i = 0;
 	check_quotes(&(shell->prompt->str), 2, 2);
+	ft_pipes(&(shell->prompt->str));
 	split_args(shell, shell->prompt->str);
 	if (!check_specials(shell->args))
 		return ;

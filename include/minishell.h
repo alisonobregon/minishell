@@ -108,6 +108,7 @@ t_output	*outlst_new(char *filename, int action);
 int			add_history_to_file(char *str);
 int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
 int			check_specials(char **args);
+int			ft_pipes(char **buf);
 
 /* Execution */
 void	exec(t_minishell *shell);

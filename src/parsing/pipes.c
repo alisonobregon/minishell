@@ -1,37 +1,30 @@
 #include "../../include/minishell.h"
 
-int ft_countpipes(char *str)
+int ft_pipes(char **buf)
 {
 	int i;
-	int res;
-	char quote;
+	char *pipe;
+	char *temp;
 
 	i = -1;
-	res = 0;
-	while (str[++i])
+	while (buf[++i])
 	{
-		if (str[i] == 34 || str[i] == 39)
+		if (get_arg_type(buf[i]) == 2)
 		{
-			quote = str[i];
-			i++;
-			while(str[i] && str[i] != quote)
-				i++;
+			if (i == 0)
+				return (0);
+			if (buf[i + 1] == NULL)
+			{
+				pipe = readline("pipe>");
+				temp = ft_strjoin(buf[i], "\n");
+				temp = ft_strjoin(temp, pipe);
+				free(pipe);
+				free(buf); //free array verifico que libere
+				*buf = temp;
+				return (ft_pipes(buf));
+			}
 		}
-		if ((str[i] == '|' && (str[i + 1] == '|' || str[i + 1] == '\0' || ft_blank(str[i + 1]) != 1)) || str[0] == '|')
-			ft_printf("syntax error near unexpected token '|'");
-		if (str[i] == '|')
-			res++;
 	}
-	return(res);
+	return (0);
 }
 
-char **split_pipes(char *str)
-{
-	char	**res;
-	int		i;
-
-	i = -1;
-	res = ft_calloc(sizeof(char *), ft_countpipes(str) + 2);
-	if(!res)
-		exit(1); //aqui poner o hacer una funcion de mensaje de error
-}
