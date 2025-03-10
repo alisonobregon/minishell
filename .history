@@ -134,3 +134,6 @@ cat < Makefile
 ls -la
 cat < Makefile  << end
 << end | grep test1
+<< end cat | grep alison | wc -l
+cat < Makefile > output2 | ls | ls -la > output > output2
+cat output2
