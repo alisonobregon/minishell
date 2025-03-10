@@ -14,5 +14,6 @@
 
 void	free_exec(t_exec *exec)
 {
-	
+	(void)exec;
+	return ;
 }

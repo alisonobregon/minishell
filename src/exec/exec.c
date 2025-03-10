@@ -145,6 +145,7 @@ void	exec(t_minishell *shell)
 		return ;
 	exec = shell->exec;
 	print_command_list(exec);
+	here_doc(exec);
 	if (exec && exec->todo_next == 0)
 	{
 		one_cmd(shell);

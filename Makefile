@@ -26,6 +26,7 @@ SRC = 	./src/minishell.c \
 		./src/exec/exec.c \
 		./src/exec/get_path.c \
 		./src/exec/redirections.c \
+		./src/exec/here_doc.c \
 		./src/exec/free_exec.c \
 
 

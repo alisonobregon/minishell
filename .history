@@ -126,3 +126,11 @@ ls
 ps
 top | grep gonzo
 make fclean
+<< end
+<< end1 <<end2
+<< end1 << end2 | << end3 << end4
+cat < Makefile 
+cat < Makefile 
+ls -la
+cat < Makefile  << end
+<< end | grep test1

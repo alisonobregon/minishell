@@ -54,7 +54,6 @@ typedef struct s_exec
 	int			fd_in;
 	int			fd_out;
 	struct s_exec *next;
-	
 }	t_exec;
 
 typedef struct s_prompt
@@ -115,6 +114,9 @@ int		len_pipes(t_exec *exec);
 int		fd_checker(t_exec **exec);
 void	multi_dup(int read, int write);
 void	exec_cmd(t_minishell *shell, t_exec *exec);
+
+/*HERE DOC*/
+void	here_doc(t_exec *exec);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);
