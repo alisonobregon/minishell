@@ -40,6 +40,33 @@ int	infile_checker(t_exec **exec)
 	return (1);
 }
 
+t_exec	*outfile_checker(t_exec **exec)
+{
+	t_exec *tmp;
+
+	tmp = (*exec);
+	while (tmp->outfile->next != NULL)
+	{
+		if (!tmp->outfile->action)
+		{
+			if (!access(tmp->outfile->file, F_OK) && access(tmp->outfile->file, W_OK))
+				return (perror("Permission denied"), NULL);
+			close(open(tmp->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664));
+		}
+		else
+		{
+			if (!access(tmp->outfile->file, F_OK) && access(tmp->outfile->file, W_OK))
+				close(open(tmp->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
+			else if (access(tmp->outfile->file, F_OK))
+				close(open(tmp->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
+			else
+				return (perror("Permission denied"), NULL);
+		}
+		tmp->outfile = tmp->outfile->next;
+	}
+	return (tmp);
+}
+
 int	fd_checker(t_exec **exec)
 {
 	t_exec *tmp;
@@ -52,7 +79,7 @@ int	fd_checker(t_exec **exec)
 	}
 	if (!(*exec)->outfile)
 		return (2);
-	while ((*exec)->outfile->next != NULL)
+/* 	while ((*exec)->outfile->next != NULL)
 	{
 		//if (access((*exec)->outfile->file, F_OK) == -1)
 		if ((*exec)->outfile->action == 0)
@@ -63,17 +90,15 @@ int	fd_checker(t_exec **exec)
 			close(open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
 		}
 		(*exec)->outfile = (*exec)->outfile->next;
-	}
+	} */
+	*exec = outfile_checker(exec);
 	if ((*exec)->outfile->next == NULL)
 	{
 		if ((*exec)->outfile->action == 0)
 		{
 			tmp->fd_out = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 			if (tmp->fd_out == -1)
-			{
-				perror("Error opening file here");
-				return (0);
-			}
+				return (perror("Error opening file here"), 0);
 			dup2(tmp->fd_out, STDOUT_FILENO);
 			if (tmp->fd_out > 1)
 				close(tmp->fd_out);
@@ -82,10 +107,7 @@ int	fd_checker(t_exec **exec)
 		{
 			tmp->fd_out = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
 			if (tmp->fd_out == -1)
-			{
-				perror("Error opening file");
-				return (0);
-			}
+				return (perror("Error opening file"), 0);
 			dup2(tmp->fd_out, STDOUT_FILENO);
 			if (tmp->fd_out > 1)
 				close(tmp->fd_out);
