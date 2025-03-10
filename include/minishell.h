@@ -98,8 +98,8 @@ int		str_array_append(char ***array, char *str);
 t_exec	*exec_lstlast(t_exec *lst);
 int		print_command_list(t_exec *command_list);
 int		command_list_clear(t_exec *command_list);
-t_exec *exec_new(void);
-void free_array(char **array);
+t_exec	*exec_new(void);
+void	free_array(char **array);
 # define OUT_WRITE		0
 # define OUT_APPEND		1
 int		append_out_args(char ***buf, char *op, t_output **out);
@@ -112,9 +112,9 @@ int			add_history_to_file(char *str);
 void	exec(t_minishell *shell);
 char	*find_path(t_minishell *shell, char *cmd);
 int		len_pipes(t_exec *exec);
-void	fd_checker(t_exec **exec);
-void	dup_checker(t_exec **exec);
+int		fd_checker(t_exec **exec);
 void	multi_dup(int read, int write);
+void	exec_cmd(t_minishell *shell, t_exec *exec);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);

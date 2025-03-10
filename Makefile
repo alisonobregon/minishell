@@ -25,6 +25,9 @@ SRC = 	./src/minishell.c \
 		./src/exec/exec_utils.c \
 		./src/exec/exec.c \
 		./src/exec/get_path.c \
+		./src/exec/redirections.c \
+		./src/exec/free_exec.c \
+
 
 OBJ = $(SRC:.c=.o)
 

@@ -74,3 +74,55 @@ cat < Makefile > output > output2 | sleep 2 | ls -la > output2 > output1 > outpu
 cat < Makefile > output > output2 | sleep 2 | ls -la > output1 > output2 
 cat < Makefile > output > output2 | sleep 2 | ls -la > output1 > output2 
 cat < Makefile > output > output2 | sleep 2 | ls -la > output1 > output2 
+ls -la
+cat  < Makefile 
+ls -la | cat < Makefile > output | ls -la
+ls -la | cat < Makefile > output | ls -la
+cat < Makefile < .history > output | ls -la
+./bin/ls -la
+/bin/ls -la
+
+
+
+
+
+
+
+                                                                                                              
+                                                                                                                                   lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll                                                                                                                                                               
+ls -la | cat < Makefile  | grep NAME
+ls
+ls -la
+ls -la > output
+cat output
+cat < Makefile | grep NAME | grep NAME > output
+cat output 
+cat < Makefile | grep NAME 
+ls
+ls -la
+cat < Makefile 
+cat < Makefile  > output
+
+cat output 
+cat < Makefile | grep NAME 
+cat < Makefile 
+cat < Makefile  > output
+cat output 
+cat < Makefile  > output > output2
+cat output2
+cat < Makefile  | grep NAME
+cat < Makefile  | grep NAME
+cat < Makefile | grep NAME
+cat < Makefile | grep NAME
+cat < Makefile | > output | ls -la
+cat < Makefile | cat > output | ls -la
+cat output
+"./bin/ls -la"
+/bin/ls -la
+./bin/ls -la
+bin/ls -la
+/bin/ls -la
+ls
+ps
+top | grep gonzo
+make fclean
