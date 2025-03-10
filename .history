@@ -78,3 +78,97 @@ cat "
 cat "
 cat |
 hola |
+|
+cat |
+|
+cat |
+|
+cat |
+|
+cat |
+|
+|
+cat |
+hola |
+make
+cat |
+make
+cat hola
+cat |
+hola |
+hola
+hola |
+cat |
+ls | 
+ls |
+csd " 
+ls 
+ls |
+ls |    
+hola |
+hola | 
+hola |
+hola | 
+hola | 
+hola |
+make
+hola |
+|
+hola |
+hola | 
+make
+ls |
+ls |
+ls | 
+hola 
+hola |
+hola | 
+cat |
+hola | 
+hola | 
+hola | 
+ls |
+|
+|
+hola |
+|
+cat |
+hola | ls
+hola |
+hola |
+hola |
+hola |
+hola |
+cat "dsfsdf
+ls |
+hola |
+hola |
+hola |
+hola |
+hola >
+ls
+hola |
+>>
+>
+hola | 
+ls |
+ls |
+make clean
+cat | 
+cat Makefile |                                          
+cat Makefile |                                          
+cat Makefile                                                                                                      |
+cat Makefile                                                                                                       |
+Cta | |
+Cta |           
+Cta |           
+Cta |            ls
+cat < Makefile > out << end
+cat < Makefile << end > oout
+cat < Makefile > out
+cat < Makefile << end
+cat Makefile > out
+cat Makefile > pout
+cat Makefile > pout < end
+pwd
+ls

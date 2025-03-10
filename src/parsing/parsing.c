@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/10 16:53:41 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:54:18 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,11 @@ int check_specials(char **args)
 	{
 		if (get_arg_type(args[i]) != 0)
 		{
+			/*if (get_arg_type(args[i]) == 2 && args[i + 1] == NULL)
+			{
+				ft_pipes(args[i]);
+				return (0);
+			}*/
 			if (args[i + 1] && (get_arg_type(args[i + 1]) == 1) && get_arg_type(args[i]) == 2)
 				break;
 			if (is_special)
