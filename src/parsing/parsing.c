@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/06 19:49:26 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:53:41 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void parsing(t_minishell *shell)
 {
 	//int i = 0;
 	check_quotes(&(shell->prompt->str), 2, 2);
+	ft_pipes(&(shell->prompt->str));
 	split_args(shell, shell->prompt->str);
 	if (!check_specials(shell->args))
 		return ;

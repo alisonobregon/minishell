@@ -1,135 +1,80 @@
-<<<<<<< HEAD
+ls
+ls ds
+ls
+echo hola
+echo hola< cat
+echo hola
+echo hola
+echo hola
+holacsd 
+echo hola
 cat hola
-cat > |
+cat hola
+ls
+cat < hola
+hola cas
+hola cas
+cat hola
+cat hola
+echo
+echo hola
+echo hola
+echo -n hola que tal | echo como estas
+echo hola que tal | echo como estas
+echo hola que tal 
+echo "hola que tal"
+hola que tal
+ls
+cat hola
+ls
+cat asdsa | ls
+ls > in1 > in2 > in3 
+ls | cat ><
+
+ls | cat < Makefile 
+ls | cat < Makefile  >
+ls | cat < Makefile  < in3
+cat < Makefile | grep NAME | grep NAME | ls
+cat < Makefile | grep NAME | grep NAME | ls > in1 > in2 > in3
+cat < Makefile | grep NAME | grep NAME
+cat < Makefile | grep NAME | grep NAME
+cat < Makefile | grep NAME | grep NAME > in1
+cat < Makefile | grep NAME | grep NAME > in1 > in2
+echo
+echo hola
+echo
+echo hola
+echo hola que tal
+echo hola
+echo hola que tal
+echo -n hola que tal 
+echo hola que tal
+cat makefile
+cat Makefile 
+cat < Makefile
+pwd
+pwd
+export
+export
+export
+export hola
+export hola=hola1
+export
+env
+echo -n hola que tal
+echo hola que tal
+pwd
+pwd
+cat "
+cat "
+"
+"
+cat "
+cat "hola
+"hola
+"hola
+|
+cat "
+cat "
 cat |
-cat >
-< Makefile cat
-ls | | cat
-ls < | cat
-ls < < cat
-ls <> cat
-ls | cat |
-cat Makefile < Makefile << end > output >> append
-cat Makefile < Makefile << end > output >> append
-< Makefile cat
-< Makefile cat | < Makefile cat
-bash
-> out cat Makefile 
-|
-|
-|
-|
-| > 
-| > cat
-ls | > cat
-|
-cat > hoal | < asdsd
-|
-hola | adsad
-hola | < cat hola
-lss
-cat Hola | < Makefile 
-cat Hola | < Makefile cat
-ls | cat < Makefile << end
-ls | cat < Makefile << end > output >> append
-ls | < Makefile << end cat > output >> append
-ls | > Makefile << end cat > output >> append
-ls < | cat
-ls < < cat
-ls < | cat
-ls | | cat
-ls  cat |
-HOAL 1|
-cat archivo |
-cat archivo | > 
-cat < | 
-cat >
-cat >
-ls >
-cat >
-=======
-
-l
-ls -la         
-ls
-cat < Makefile  > output
-cat output
-ls -la > output > outpu2 >> output3
-cat < Makefile | grep NAME | grep NAME > output
-cat < Makefile | grep NAME | grep NAME > output
-cat < Makefile | grep NAME | grep NAME > output
-cat < Makefile | grep NAME | grep NAME > output
-ls -la > output
-cat < Makefile > output
-ls
-ls -la
-cat < Makefile  | grep NAME | grep NAME > output
-cat < Makefile | grep NAME > output
-ls -la
-cat < Makefile  > output
-cat < Makefile | grep NAME
-cat < Makefile | grep NAME
-cat < Makefile | grep NAME
-ls -la
-cat < Makefile  | grep NAME
-ls -la
-ls -la > output
-cat < Makefile > output
-cat < Makefile output
-cat < Makefile | grep NAME
-cat Makefile | grep NAME
-ls
-ls -la | grep Makefile 
-ls -la | grep Makefile 
-ls -la | grep Makefile 
-ls -la | grep Makefile 
-ls -la | grep Makefile 
-ls -la | grep Makefile
-ls -la
-ls -la | grep Makefile 
-cat < Makefile  | grep NAME | grep NAME
-ls | cat < Makefile 
-[200~cat < Makefile | grep NAME | grep NAME > output
-
-cat < Makefile | grep NAME | grep NAME > output
-ls | cat < Makefile
-cd
-env | grep usr
-cd
-cd ..
-make fclean
-ls -la
-ls | cat < Makefile
-ls -la | grep Makefile 
-ls -la | cat  < Makefile 
-ls | cat < Makefile 
-ls | cat < Makefile 
-ls | grep Makefile 
-ls -la | grep Makefile 
-ls | cat < Makefile 
-ls | cat < Makefile 
-ls
-ls -la
-cat < Makefile | grep NAME | grep NAME > output > output2
-ls | cat < Makefile
-ls -la
-ls | cat < Makefile 
-ls | cat < Makefile < output2
-ls -la | cat < Makefile 
-ls -la | cat <  .history  < Makefile
-cat < Makefile | grep NAME | grep NAME | grep show_progress
-cat < Makefile | grep NAME | grep NAME | grep show_progress > output1 > output2
-cat < Makefile > output2 > output1
-cat output2
-cat < Makefile > output2 > output1
-ls -la
-cat < Makefile 
-ls -la
-ls
-ls -la > output
-cat < Makefile > output
-ls -la
-ls -la > output
-cat output
-cat < Makefile  > output
->>>>>>> origin/gonzo
+hola |

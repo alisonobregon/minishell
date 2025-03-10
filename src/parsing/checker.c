@@ -44,7 +44,10 @@ void	check_quotes(char **buf, int simple_quote, int double_quote)
 	if ((double_quote % 2 != 0) || (simple_quote % 2 != 0))
 	{
 		dquote = readline("dquote>");
-		temp = ft_strjoin(*buf, dquote);
+		temp = ft_strjoin(*buf, "\n");
+		temp = ft_strjoin(temp, dquote);
+		//temp = ft_strjoin(*buf, dquote);
+		//temp = ft_strjoin(temp, "\n");
 		free(dquote);
 		free(*buf);
 		*buf = temp;
