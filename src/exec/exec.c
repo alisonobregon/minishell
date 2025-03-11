@@ -40,11 +40,8 @@ static void	middle_case(t_exec *exec, int *pipe_fd, int *pre_pipe)
 
 void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 {
-	printf("iterations: %d\n", shell->exec->i);
-	//if (shell->exec->i == 0)
 	if (shell->exec->i == 0 && exec->todo_next == 2)
 	{
-		printf("pipe 1\n");
 		close(pipe_fd[READ]);
 		if (exec->fd_out > 1)
 			close(pipe_fd[WRITE]);
@@ -63,7 +60,6 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 			close(pipe_fd[READ]);
 		else
 		{
-			printf("pipe 3\n");
 			dup2(pipe_fd[READ], STDIN_FILENO);
 			close(pipe_fd[READ]);
 		}

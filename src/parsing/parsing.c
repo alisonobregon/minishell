@@ -82,8 +82,8 @@ int split_args(t_minishell *shell, char *str)
 
 	i = -1;
 	j = 0;
-	while(str[++i])
-	{ 
+	while(str[++i] && str[i + 1] != '\0')
+	{
 		if (str[i] == '\t' || str[i] == ' ')
 			continue;
 		if (str[i] == '>' || str[i] == '<' || str[i] == 34 || str[i] == 39 
@@ -97,7 +97,7 @@ int split_args(t_minishell *shell, char *str)
 		i += ft_strlen(shell->args[j]) - 1;
 		j++;
 	}
-	shell->args[j] = NULL;
+	//shell->args[j] = NULL;
 	return (0);
 }
 void parsing(t_minishell *shell)

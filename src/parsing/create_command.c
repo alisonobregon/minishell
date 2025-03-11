@@ -128,7 +128,6 @@ void free_array(char **array)
 }
 int command_lstappend(t_exec *new, char ***buf)
 {
-	
 	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1))
 	{
 		//printf("buf 3: %s\n", **buf);
@@ -155,7 +154,7 @@ int create_command_lst(t_minishell *shell)
 {
 	t_exec	*new;
 	char	**buf;
-	
+
 	shell->exec = NULL;
 	buf = shell->args;
 	while (*buf != NULL && (get_arg_type(*buf) == 0 || get_arg_type(*buf) == 1))

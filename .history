@@ -265,3 +265,43 @@ cat < out1 < output2 < output3
 cat < out1 < output2 < output3 > output4
 cat < out1 < output2 < output3 > output4 | ls -la
 cat < out1 < output2 < output3 > output4 | ls -la
+ls
+ls
+ls
+ls -la
+ls -la > out
+cat out 
+cat > out > out2 > out3
+cat out3
+ls -la | grep Makefile 
+ls -la | grep Makefile  | wc -l
+cat < Makefile > out1 > out2 > out3 | grep NAME | wc -l
+cat < Makefile > out1 > out2 > out3 | grep NAME
+cat out3
+cat < Makefile > out1 > out2 > out3 
+cat out3
+cat < Makefile > out1 > out2 > out3  | sleep 2
+cat out3
+cat < Makefile > out1 > out2 > out3  | sleep 2
+cat < Makefile > out
+cat < Makefile > out > out2
+cat < Makefile > out10 | sleep 2
+cat  Makefile > out10 | sleep 2
+cat Makefile > out1 > out2 > out3  | sleep 2
+cat Makefile > out1 > out2 > out3  | sleep 2
+export a=""
+export
+cat << end > out > out2
+cat << end > out > out2
+l
+l
+l
+l
+l
+ls
+ls
+l
+l
+ls 
+l
+ls
