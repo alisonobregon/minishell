@@ -12,14 +12,26 @@
 
 #include "../../include/minishell.h"
 
-int	doc_fd(t_exec *exec, char *limiter)
+void	unlinker(char **heredoc)
+{
+	int	i;
+
+	i = 0;
+	if (!heredoc)
+		return ;
+	while (heredoc[i])
+		unlink(heredoc[i++]);
+}
+
+char	*doc_fd(char *limiter)
 {
 	char	*line;
 	int		temp_fd;
-	(void)exec;
-	temp_fd = open("temp_file", O_CREAT | O_WRONLY, 0644);
+
+	printf("limiter %s\n", limiter);
+	temp_fd = open(limiter, O_CREAT | O_WRONLY, 0644);
 	if (temp_fd < 0)
-		return (ft_printf("Error creating temp file\n"), -1);
+		return (ft_printf("Error creating temp file\n"), NULL);
 	ft_printf("> ");
 	line = get_next_line(0);
 	while (line)
@@ -34,62 +46,25 @@ int	doc_fd(t_exec *exec, char *limiter)
 	}
 	free(line);
 	close(temp_fd);
-	return (temp_fd);
+	printf("temp_file: %s\n", limiter);
+	return (limiter);
 }
 
-int	get_index(char **args)
+void	here_doc(t_exec **exec, char *limiter)
+	
 {
-	int	i;
-	int	status;
+	char	*doc_infile;
 
-	i = 0;
-	status = 0;
-	while (args[i])
-	{
-		if (ft_strncmp(args[i], "<<", 2) == 0)
-			status = 2;
-		else if (ft_strncmp(args[i], "<", 2) == 0)
-			status = 1;
-		i++;
-	}
-	if (status == 2)
-		return (2);
-	return (-1);
-}
-void	here_doc(t_minishell *shell, t_exec *exec)
-{
-	int	i;
-
-	i = 0;
-	/* if (!exec->heredoc)
-		return ; */
-	printf("here_doc!!\n");
-	while(shell->args)
-	{
-		printf("args: %s\n", *shell->args);
-		shell->args++;
-	}
+	printf("HERE DOC\n");
+	printf(" in hd limiter: %s\n", limiter);
+	doc_infile = NULL;
+	if (!exec)
+		return ;
+	if (!(*exec)->heredoc)
 	return ;
-	while (exec->heredoc[i] != NULL)
-	{
-		if (exec->heredoc)
-			exec->fd_in = doc_fd(exec, exec->heredoc[i]);
-		//exec = exec->next;
-		i++;
-	}
+	if ((*exec)->heredoc)
+		doc_infile	= doc_fd(limiter);
+	if (doc_infile)
+		(*exec)->infile = add_str_to_array((*exec)->infile, doc_infile);
 	return ;
 }
-
-//  write  and make the temporal file, and add it to the list of infile order
-// in order to check if first or last one to be taken
-// sorts infile !!
-// 1. check if here_doc is present
-// 2. if present, create a temporal file
-// 3. write in the temporal file until the limiter is found
-// 4. close the file
-// 5. add the file to the infile list
-// 6. go to the next exec
-// 7. repeat until no more here_doc
-
-// one possible solution 
-// to find the index of infile is to create a list of infile

@@ -12,6 +12,22 @@
 
 #include "../../include/minishell.h"
 
+void	print_infiles(t_exec *exec)
+{
+	int i;
+
+	i = 0;
+	while (exec)
+	{
+		while (exec->infile[i])
+		{
+			ft_printf("infile: %s\n", exec->infile[i]);
+			i++;
+		}
+		exec = exec->next;
+	}
+}
+
 int	infile_checker(t_exec **exec)
 {
 	int i;
@@ -19,6 +35,7 @@ int	infile_checker(t_exec **exec)
 	i = 0;
 	if ((*exec)->infile)
 	{
+		print_infiles(*exec);
 		while (i < ft_len((*exec)->infile))
 		{
 			if (access((*exec)->infile[i], F_OK))
@@ -47,7 +64,7 @@ t_exec	*outfile_checker(t_exec **exec)
 	tmp = (*exec);
 	while (tmp->outfile->next != NULL)
 	{
-		if (!tmp->outfile->action)
+		if (tmp->outfile->action == 0)
 		{
 			if (!access(tmp->outfile->file, F_OK) && access(tmp->outfile->file, W_OK))
 				return (perror("Permission denied"), NULL);

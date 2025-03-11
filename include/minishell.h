@@ -106,6 +106,7 @@ int		outlst_append(t_output **out, char *filename, char *op);
 t_output	*out_lstlast(t_output *out);
 t_output	*outlst_new(char *filename, int action);
 int			add_history_to_file(char *str);
+int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
 
 /* Execution */
 void	exec(t_minishell *shell);
@@ -116,7 +117,8 @@ void	multi_dup(int read, int write);
 void	exec_cmd(t_minishell *shell, t_exec *exec);
 
 /*HERE DOC*/
-void	here_doc(t_minishell *shell, t_exec *exec);
+void	here_doc(t_exec **exec, char *limiter);
+void	unlinker(char **heredoc);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);

@@ -56,9 +56,29 @@ int append_in_args(char ***buf, char *op, char ***array)
 		if (!(str_array_append(array, **buf)))
 			return (0);
 		(*buf)++;
-	}		
+	}
 	return (1);
-  }
+}
+int append_in_her_args(char ***buf, char *op, char ***array, t_exec *new)
+{
+	
+	if (!(**buf))
+		return (1);
+	if (ft_strlen(op) == ft_strlen(**buf) 
+		&& !(ft_strncmp(**buf, op, ft_strlen(op))))
+	{
+		(*buf)++;
+		if (!(str_array_append(array, **buf)))
+		{
+			//printf("got here \n");
+			return (0);
+		}
+		here_doc(&new, **buf);
+		(*buf)++;
+	}
+	return (1);
+}
+
 int	str_array_append(char ***array, char *str)
 {
 	char	**new;
@@ -80,7 +100,7 @@ int	str_array_append(char ***array, char *str)
 			if (!new[i])
 				return (0);
 			i++;
-		}		
+		}
 	}
 	new[i] = ft_strdup(str);
 	//printf("new[%d]: %s\n", i, new[i]);
@@ -118,7 +138,7 @@ int command_lstappend(t_exec *new, char ***buf)
 			return (0);
 		else if (!(append_out_args(buf, ">>", &(new->outfile))))
 			return (0);
-		else if (!(append_in_args(buf, "<<", &(new->heredoc))))//preguntar aqui como quiere la lista para el heredoc
+		else if (!(append_in_her_args(buf, "<<", &(new->heredoc), new)))
 			return (0);
 		if ((**buf) && (!get_arg_type(**buf)))
 		{

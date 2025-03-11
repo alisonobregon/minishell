@@ -171,3 +171,97 @@ ls -la
 ls 
 ls
 ls -la
+cat << end1 << end2
+cat << end1 << end2  > output
+cat << end << end1 > output
+cat << end < Makefile  > output
+cat << end << end1 << end2 > output
+cat << end < Makefile > output 
+cat << end < Makefile  > output
+cat output 
+cat << end < Makefile  > output
+cat << end
+cat << end 
+cat << end 
+cat << end > output
+cat output 
+cat << end > output
+cat output 
+cat << end
+cat >> hola
+cat > hola
+cat > hoa
+cat >> hola
+cat > hola
+cat > hola >> hola | ls
+cat > hola
+cat > hola ls make
+cat << end
+cat << end > out1
+cat Makefile 
+cat < Makefile 
+<< end
+cat << end 
+cat << end < Makefile << end2 > output
+cat << end < Makefile << end2 > output
+cat <<  end
+cat <<  end
+cat << end > output
+cat output
+cat << end > output
+cat << end > output
+cat << end < Makefile < end1 > output > output1
+cat << end < Makefile << end1 > output > output1
+
+cat output1
+cat < Makefile > output | cat << end | grep hola
+cat output
+cat < Makefile > output | cat << end | grep hola
+cat < Makefile > output
+cat output 
+>> output
+cat cat
+cat ls
+cat ls
+ls -la >> output
+cat >> output
+cat < Makefile << end < output > output2
+cat < Makefile << end < output > output2 | ls -la
+sleep 5
+cat < Makefil
+cat < output | grep NAME >> output2 | cat << end > output3 
+cat < output | grep NAME >> output2 | cat
+cat < output | grep NAME >> output2 | ls -la
+cat < output | grep NAME >> output2 | ls -la
+cat < output | grep NAME >> output2 | ls -la
+grep Name > minishell
+cat < output | grep NAME
+cat < output | grep NAME
+cat < output | grep NAME
+cat < output  | grep NAME
+cat < output  > out1 | ls -la
+cat out1
+cat < output  > out1 | ls -la
+cat < output > out1 
+cat out1
+cat < output < output3 > out1 | ls -la
+cat < output < output3 > out1 | ls -la
+cat < output < output2 < output3
+cat < output > output2 > output3
+cat < output < out1 > output2 > output3
+cat < output < out1 > output2 > output3 | sleep 3
+cat < output < out1 > output2 > output3 | sleep 3
+cat < out1 | grep Makefile 
+cat < out | grep Makefile 
+cat < out1 | grep Makefile 
+cat < out1 | grep Makefile | ls -la
+ls -la | sleep 5 | ls -la > out1
+ls -la | grep Makefile > output | ls -la | sleep 3
+cat < out1 | grep Makefile 
+cat < out1 | grep Makefile 
+ls -la | grep Makefile 
+cat < out1 < output2 < output3
+cat < out1 < output2 < output3
+cat < out1 < output2 < output3 > output4
+cat < out1 < output2 < output3 > output4 | ls -la
+cat < out1 < output2 < output3 > output4 | ls -la
