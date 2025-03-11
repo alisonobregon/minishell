@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   create_command.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 20:09:24 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/10 20:11:08 by aliobreg         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../include/minishell.h"
 
 int ft_strarr_len(char **array)
@@ -68,9 +56,29 @@ int append_in_args(char ***buf, char *op, char ***array)
 		if (!(str_array_append(array, **buf)))
 			return (0);
 		(*buf)++;
-	}		
+	}
 	return (1);
-  }
+}
+int append_in_her_args(char ***buf, char *op, char ***array, t_exec *new)
+{
+	
+	if (!(**buf))
+		return (1);
+	if (ft_strlen(op) == ft_strlen(**buf) 
+		&& !(ft_strncmp(**buf, op, ft_strlen(op))))
+	{
+		(*buf)++;
+		if (!(str_array_append(array, **buf)))
+		{
+			//printf("got here \n");
+			return (0);
+		}
+		here_doc(&new, **buf);
+		(*buf)++;
+	}
+	return (1);
+}
+
 int	str_array_append(char ***array, char *str)
 {
 	char	**new;
@@ -92,7 +100,7 @@ int	str_array_append(char ***array, char *str)
 			if (!new[i])
 				return (0);
 			i++;
-		}		
+		}
 	}
 	new[i] = ft_strdup(str);
 	//printf("new[%d]: %s\n", i, new[i]);
@@ -130,7 +138,7 @@ int command_lstappend(t_exec *new, char ***buf)
 			return (0);
 		else if (!(append_out_args(buf, ">>", &(new->outfile))))
 			return (0);
-		else if (!(append_in_args(buf, "<<", &(new->heredoc))))//preguntar aqui como quiere la lista para el heredoc
+		else if (!(append_in_her_args(buf, "<<", &(new->heredoc), new)))
 			return (0);
 		if ((**buf) && (!get_arg_type(**buf)))
 		{
@@ -152,7 +160,7 @@ int create_command_lst(t_minishell *shell)
 	buf = shell->args;
 	while (*buf != NULL && (get_arg_type(*buf) == 0 || get_arg_type(*buf) == 1))
 	{
-		//printf("buf 0: %s\n", *buf);
+		printf("buf 0: %s\n", *buf);
 		new = exec_new();
 		if (!new)
 			return (1);
@@ -197,9 +205,9 @@ int print_command_list(t_exec *command_list)
 	temp = command_list;
 	while(temp)
 	{
-		temp_out = temp->outfile;
 		printf("comando %d\n", i);
 		printf("cmd: %s\n", temp->cmd);
+		temp_out = temp->outfile;
 		if (temp->args)
 			for (int i = 0; temp->args[i]; i++)
 				printf("args[%d]: %s\n", i, temp->args[i]);

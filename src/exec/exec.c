@@ -16,6 +16,7 @@ static void	middle_case(t_exec *exec, int *pipe_fd, int *pre_pipe)
 {
 	close(pipe_fd[READ]);
 	close(pre_pipe[WRITE]);
+	printf("pipe 2\n");
 	if (exec->fd_in != 0 && !exec->outfile)
 	{
 		close(pre_pipe[READ]);
@@ -39,8 +40,11 @@ static void	middle_case(t_exec *exec, int *pipe_fd, int *pre_pipe)
 
 void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 {
+	printf("iterations: %d\n", shell->exec->i);
+	//if (shell->exec->i == 0)
 	if (shell->exec->i == 0 && exec->todo_next == 2)
 	{
+		printf("pipe 1\n");
 		close(pipe_fd[READ]);
 		if (exec->fd_out > 1)
 			close(pipe_fd[WRITE]);
@@ -59,10 +63,13 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 			close(pipe_fd[READ]);
 		else
 		{
+			printf("pipe 3\n");
 			dup2(pipe_fd[READ], STDIN_FILENO);
 			close(pipe_fd[READ]);
 		}
 	}
+	if (exec->heredoc)
+		unlinker(exec->heredoc);
 	exec_cmd(shell, exec);
 }
 
@@ -130,7 +137,12 @@ void	one_cmd(t_minishell *shell)
 	if (shell->pid == 0)
 	{
 		if (shell->exec->outfile || shell->exec->infile)
-			fd_checker(&shell->exec);
+		{
+			if (!fd_checker(&shell->exec))
+				return ;
+		}
+		if (shell->exec->heredoc)
+			unlinker(shell->exec->heredoc);
 		exec_cmd(shell, shell->exec);
 	}
 	while (wait(NULL) > 0)
@@ -142,6 +154,8 @@ void	exec(t_minishell *shell)
 	t_exec	*exec;
 
 	if (!shell->exec || ft_strlen(shell->prompt->str) <= 1)
+		return ;
+	if (shell->exec->cmd == NULL)
 		return ;
 	exec = shell->exec;
 	print_command_list(exec);
