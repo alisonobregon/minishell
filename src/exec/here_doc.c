@@ -37,13 +37,39 @@ int	doc_fd(t_exec *exec, char *limiter)
 	return (temp_fd);
 }
 
-void	here_doc(t_exec *exec)
+int	get_index(char **args)
+{
+	int	i;
+	int	status;
+
+	i = 0;
+	status = 0;
+	while (args[i])
+	{
+		if (ft_strncmp(args[i], "<<", 2) == 0)
+			status = 2;
+		else if (ft_strncmp(args[i], "<", 2) == 0)
+			status = 1;
+		i++;
+	}
+	if (status == 2)
+		return (2);
+	return (-1);
+}
+void	here_doc(t_minishell *shell, t_exec *exec)
 {
 	int	i;
 
 	i = 0;
-	if (!exec->heredoc)
-		return ;
+	/* if (!exec->heredoc)
+		return ; */
+	printf("here_doc!!\n");
+	while(shell->args)
+	{
+		printf("args: %s\n", *shell->args);
+		shell->args++;
+	}
+	return ;
 	while (exec->heredoc[i] != NULL)
 	{
 		if (exec->heredoc)

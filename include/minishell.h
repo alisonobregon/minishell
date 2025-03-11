@@ -116,7 +116,7 @@ void	multi_dup(int read, int write);
 void	exec_cmd(t_minishell *shell, t_exec *exec);
 
 /*HERE DOC*/
-void	here_doc(t_exec *exec);
+void	here_doc(t_minishell *shell, t_exec *exec);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **str);

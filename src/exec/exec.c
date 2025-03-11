@@ -130,7 +130,10 @@ void	one_cmd(t_minishell *shell)
 	if (shell->pid == 0)
 	{
 		if (shell->exec->outfile || shell->exec->infile)
-			fd_checker(&shell->exec);
+		{
+			if (!fd_checker(&shell->exec))
+				return ;
+		}
 		exec_cmd(shell, shell->exec);
 	}
 	while (wait(NULL) > 0)
@@ -145,7 +148,9 @@ void	exec(t_minishell *shell)
 		return ;
 	exec = shell->exec;
 	print_command_list(exec);
-	//here_doc(exec);
+	printf("before \n");
+	here_doc(shell, exec);
+	printf("after \n");
 	if (exec && exec->todo_next == 0)
 	{
 		one_cmd(shell);

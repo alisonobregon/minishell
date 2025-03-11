@@ -138,3 +138,36 @@ cat < Makefile  << end
 cat < Makefile > output2 | ls | ls -la > output > output2
 cat output2
 ls
+chmod 000 output
+ls -la > output
+ls -la > output
+cat output
+ls -la > output
+ls -la | ls -la > output
+ls -la  >> output
+ls -la > output2 > output3
+cat output3
+ls -la
+ls -la > output
+ls -la > output2 > output3
+cat output3
+cat output3
+ls -la > output2 > output3
+cat output3
+ls -la
+ls -la > output
+ls -la > output2 > output3
+cat output3
+cat < Makefile  > output2 > output3
+cat output3
+ls -la > output3
+ls -la > output2 > output3 | ls -la > output
+ls -la > output2 > output3 | ls -la > output
+norminette
+norminette
+ls
+ls -la
+ls -la
+ls 
+ls
+ls -la
