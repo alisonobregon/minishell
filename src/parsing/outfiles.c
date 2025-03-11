@@ -44,10 +44,7 @@ int	outlst_append(t_output **out, char *filename, char *op)
 	action = OUT_WRITE; // para >
 	//printf("op: %s\n", op);
 	if (ft_strlen(op) == 2) 
-	{
-		printf("op 2: %s\n", op);
 		action = OUT_APPEND;
-	}
 	new = outlst_new(filename, action);
 	if (!new)
 		return (0);

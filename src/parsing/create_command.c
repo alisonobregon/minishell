@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_command.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/10 20:09:24 by aliobreg          #+#    #+#             */
+/*   Updated: 2025/03/10 20:11:08 by aliobreg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/minishell.h"
 
 int ft_strarr_len(char **array)
@@ -185,9 +197,9 @@ int print_command_list(t_exec *command_list)
 	temp = command_list;
 	while(temp)
 	{
+		temp_out = temp->outfile;
 		printf("comando %d\n", i);
 		printf("cmd: %s\n", temp->cmd);
-		temp_out = temp->outfile;
 		if (temp->args)
 			for (int i = 0; temp->args[i]; i++)
 				printf("args[%d]: %s\n", i, temp->args[i]);
@@ -196,7 +208,7 @@ int print_command_list(t_exec *command_list)
 			for (int i = 0; temp->infile[i]; i++)
 				printf("infile[%d]: %s\n", i, temp->infile[i]);
 		}
-		while (temp->outfile)
+		while (temp_out)
 		{	
 			printf("outfile: %s\n", temp_out->file);
 			printf("action: %d\n", temp_out->action);

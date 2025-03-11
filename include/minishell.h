@@ -31,8 +31,6 @@ typedef struct s_output
 {
 	int				action; // 0 = write, 1 = append
 	char			*file;
-	int				fd_out;
-	int				fd_in;
 	struct	s_output *next;
 }					t_output;
 
@@ -54,7 +52,6 @@ typedef struct s_exec
 	int			fd_in;
 	int			fd_out;
 	struct s_exec *next;
-	
 }	t_exec;
 
 typedef struct s_prompt
@@ -98,8 +95,8 @@ int		str_array_append(char ***array, char *str);
 t_exec	*exec_lstlast(t_exec *lst);
 int		print_command_list(t_exec *command_list);
 int		command_list_clear(t_exec *command_list);
-t_exec *exec_new(void);
-void free_array(char **array);
+t_exec	*exec_new(void);
+void	free_array(char **array);
 # define OUT_WRITE		0
 # define OUT_APPEND		1
 int		append_out_args(char ***buf, char *op, t_output **out);
@@ -114,8 +111,12 @@ void		ft_pipes(char **buf);
 void	exec(t_minishell *shell);
 char	*find_path(t_minishell *shell, char *cmd);
 int		len_pipes(t_exec *exec);
-void	fd_checker(t_exec **exec);
-void	dup_checker(t_exec *exec);
+int		fd_checker(t_exec **exec);
+void	multi_dup(int read, int write);
+void	exec_cmd(t_minishell *shell, t_exec *exec);
+
+/*HERE DOC*/
+void	here_doc(t_exec *exec);
 
 /*built-ins functions*/
 int		ft_echo(char **args);

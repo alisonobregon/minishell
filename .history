@@ -172,3 +172,45 @@ cat Makefile > pout
 cat Makefile > pout < end
 pwd
 ls
+hola | 
+ls
+ls -la
+hola |
+cat > hola
+cat > hola
+hola > asdsd
+cat > hola
+cat Makefile |
+ls -la |
+                                                                                                                                                                                                                                                                                            
+ls | ls
+            
+[200~cat < Makefile   > output2 | ls | ls -la  > output > output2
+cat < Makefile   > output2 | ls | ls -la  > output > output2
+cat < Makefile   > output2 | ls | ls -la  > output > output2
+
+ls
+ls -la
+ls | ls -la
+ls | cat > Makefile 
+ls | cat < Makefile 
+cat hola
+cd ..
+cd
+ls
+cat Makefile 
+cat Makefile 
+cat hola
+ls
+ls -la
+ls "ls
+ls "
+ls "
+ls "
+cat "holsd
+holasd "
+holasd "fsdfsd "
+hola "
+hola "
+cat "holasd 
+holasd
