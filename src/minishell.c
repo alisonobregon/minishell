@@ -140,7 +140,8 @@ int	main(int argc, char **argv, char **env)
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
 		parsing(shell);
-		exec(shell);
+		print_command_list(shell->exec);
+		//exec(shell);
 		printf("prompt: %s\n", shell->prompt->str);
 	}
 	free_shell(shell);
