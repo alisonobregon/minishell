@@ -31,6 +31,12 @@ void memory_allocated(t_minishell *shell)
 		return ;
 	shell->exec = NULL;
 }
+void free_shell(t_minishell *shell)
+{
+	free(shell->args);
+	free(shell->prompt);
+	free(shell);
+}
 
 char	*get_prompt(t_minishell *shell)
 {
@@ -56,17 +62,6 @@ char	*get_prompt(t_minishell *shell)
 		pwd = ft_strjoin(CYAN "minishell$", YELLOW "->thelatambash$ " DEFAULT);	
 	return(pwd);
 }
-int free_shell(t_minishell *shell)
-{
-	free(shell->prompt->cwd);
-	free(shell->prompt->str);
-	free(shell->prompt);
-	free(shell->args);
-	free(shell->path);
-	free(shell->exec);
-	free(shell);
-	return (0);
-}
 
 char	*get_input(t_minishell *shell)
 {
@@ -77,8 +72,11 @@ char	*get_input(t_minishell *shell)
 	prompt = get_prompt(shell);
 	buf = readline(prompt);
 	free(prompt);
-	if (!buf) //no ha ingresado nada
+	if (!buf)
+	{
 		ft_printf("\n");
+		free_shell(shell);
+	}
 	if (ft_strlen(buf) == 0)
 	{
 		free(buf);
@@ -128,23 +126,26 @@ int	main(int argc, char **argv, char **env)
 	shell = ft_calloc(1, sizeof(t_minishell));
 	if (!shell)
 		return (1);
-	shell->env = strarray_copy(env);
 	memory_allocated(shell);
-
+	shell->env = strarray_copy(env);
 	while (1)
 	{
 		/*if (shell->cwd_int == 0) //preguntar
 			shell->cwd = get_prompt(shell);
 		shell->prompt->str = readline(shell->cwd);*/
 		shell->prompt->str = get_input(shell);
+		if (!shell->prompt->str)
+			continue ;
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
 		parsing(shell);
+		free(shell->prompt->str);
+		if (!shell->exec)
+			continue ;
 		print_command_list(shell->exec);
-		//parsing(shell);
-		cd(shell, shell->prompt->str);
+		//cd(shell, shell->prompt->str);
 		//exec(shell);
-		printf("prompt: %s\n", shell->prompt->str);
+		//printf("prompt: %s\n", shell->prompt->str);
 	}
 	free_shell(shell);
 	return (0);

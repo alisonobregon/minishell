@@ -1,0 +1,45 @@
+cat hola ls
+cat hola ls
+cat hola ls
+cat hola ls
+"
+"
+hola "
+cat "
+ls > cat > output1 < asiinds
+ls > cat infile
+hola que tal > isjdijsd < ksjdksjdkjs
+hola > output    | ls -la
+cat >> hola < output
+cat << hola > output
+cat << hola > output
+cat << hola > output
+cat < output < Makefile > output2
+cat < Makefile << end > output7
+cat < Makefile << end >> output7
+cat < Makefile << end >> output7 | ls -la
+ls -la
+ls
+ls
+cat << end > output7 | ls -la
+ls -la
+ls -la
+ls -la
+cat Makefile
+ls -la > output7
+ls -la > output7 | cat Makefile
+cat < Makefile > output7 | ls -la
+cat < Makefile > output7 | ls -la
+ls -la
+ls
+cat Makefile 
+ls -la
+cat < Makefile > outpu7
+cat < Makefile > output > output7 | ls -la
+ls -la
+ls
+ls -la | ls -la
+ls -la
+ls -la > output
+cat  > output
+cat > hola ls < sdsdsj >> nodo1 | ls > cat < sdksk | peroor >> skjdkjs >> fsfsf << end

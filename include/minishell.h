@@ -107,6 +107,7 @@ int			add_history_to_file(char *str);
 int			check_specials(char **args);
 void		ft_pipes(char **buf);
 int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
+void free_shell(t_minishell *shell);
 
 /* Execution */
 void	exec(t_minishell *shell);
@@ -123,8 +124,8 @@ void	unlinker(char **heredoc);
 /*built-ins functions*/
 int		ft_echo(char **args);
 void	echo_args(char *str);
-int		cd(t_minishell *shell, char **str);
-int		cd(t_minishell *shell, char *str);
+//int		cd(t_minishell *shell, char **str);
+//int		cd(t_minishell *shell, char *str);
 int		pwd(void);
 void	ft_env(t_minishell *shell);
 void	ft_export(t_minishell *shell);

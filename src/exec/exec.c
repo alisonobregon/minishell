@@ -132,6 +132,7 @@ void	one_cmd(t_minishell *shell)
 	}
 	if (shell->pid == 0)
 	{
+		printf("one cmd child\n");
 		if (shell->exec->outfile || shell->exec->infile)
 		{
 			if (!fd_checker(&shell->exec))
@@ -149,7 +150,7 @@ void	exec(t_minishell *shell)
 {
 	t_exec	*exec;
 
-	if (!shell->exec || ft_strlen(shell->prompt->str) <= 1)
+	if (!shell->exec)// || ft_strlen(shell->prompt->str) <= 1)
 		return ;
 	if (shell->exec->cmd == NULL)
 		return ;
@@ -158,6 +159,7 @@ void	exec(t_minishell *shell)
 	//here_doc(exec);
 	if (exec && exec->todo_next == 0)
 	{
+		printf("one cmd\n");
 		one_cmd(shell);
 	}
 	else if (exec && exec->todo_next == 2)

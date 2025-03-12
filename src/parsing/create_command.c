@@ -151,50 +151,6 @@ int command_lstappend(t_exec *new, char ***buf)
 	return (1);
 }
 
-/* int create_command_lst(t_minishell *shell)
-{
-	t_exec	*new;
-	char	**buf;
-
-	shell->exec = NULL;
-	buf = shell->args;
-	while ((*buf && (get_arg_type(*buf) == 0 || get_arg_type(*buf) == 1)))
-	{
-		printf("buf 0: %s\n", *buf);
-		new = exec_new();
-		if (!new)
-			return (1);
-		if (shell->exec != NULL)
-		{
-			exec_lstlast(shell->exec)->next = new;
-			//new->next = exec_lstlast(shell->exec);
-			//printf("entra aqui al if con %s\n", *buf);
-		}
-		else
-		{
-			shell->exec = new;
-			//printf("entra aqui al else con %s\n", *buf);
-		}
-		new->cmd = ft_strdup(*buf);
-		if(new->cmd == NULL)
-			return (1);
-		if (!(command_lstappend(new, &buf)))
-			return (1);
-		//printf("buf 1: %s\n", *buf);
-		if (*buf != NULL)
-			new->todo_next = get_arg_type(*buf);
-		if (get_arg_type(new->cmd) == 1 && new->args)
-			new->cmd = ft_strdup(new->args[0]);
-		//printf("buf 1: %s\n", *buf);
-		if (*buf && **buf)
-    		buf++;
-		//printf("buf 2: %s\n", *buf);
-	}
-	
-	//printf("entra aqui al final\n");
-	
-	return (0);
-} */
 
 int create_command_lst(t_minishell *shell)
 {

@@ -31,6 +31,7 @@ void	check_quotes(char **buf, int simple_quote, int double_quote)
 {
 	int	i;
 	char *temp;
+	char *temp2;
 	char *dquote;
 
 	i = -1;
@@ -45,10 +46,11 @@ void	check_quotes(char **buf, int simple_quote, int double_quote)
 	{
 		dquote = readline("dquote>");
 		temp = ft_strjoin(*buf, "\n");
-		temp = ft_strjoin(temp, dquote);
+		temp2 = ft_strjoin(temp, dquote);
+		free(temp);
 		free(dquote);
 		free(*buf);
-		*buf = temp;
+		*buf = temp2;
 		//free(temp);
 		check_quotes(buf, 0, 0);			
 	}
