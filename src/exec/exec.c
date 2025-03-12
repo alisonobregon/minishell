@@ -42,6 +42,7 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 {
 	if (shell->exec->i == 0 && exec->todo_next == 2)
 	{
+		printf("pipe 1\n");
 		close(pipe_fd[READ]);
 		if (exec->fd_out > 1)
 			close(pipe_fd[WRITE]);
@@ -55,6 +56,7 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		middle_case(exec, pipe_fd, pre_pipe);
 	else if (exec->todo_next == 0 && shell->exec->i > 0)
 	{
+		printf("pipe 3\n");
 		close(pipe_fd[WRITE]);
 		if (exec->fd_in != 0 && exec->infile)
 			close(pipe_fd[READ]);
@@ -103,7 +105,7 @@ static int pipex(t_minishell *shell)
 			if (exec->outfile || exec->infile)
 			{
 				if (!fd_checker(&exec))
-					return ((free(pipe_fd), free(pre_pipe)), 0);
+					return ((free(pipe_fd), free(pre_pipe)), 0); // close fds
 			}
 			handler_fd(shell, exec, pipe_fd, pre_pipe);
 		}
@@ -161,6 +163,11 @@ void	exec(t_minishell *shell)
 	}
 	else if (exec && exec->todo_next == 2)
 	{
-		pipex(shell);
+		if (!pipex(shell))
+		{
+			ft_putstr_fd("Error in pipex\n", 2);
+			printf("Error in pipex\n");
+			exit(1);
+		}
 	}
 }
