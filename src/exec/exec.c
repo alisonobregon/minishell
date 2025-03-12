@@ -155,8 +155,7 @@ void	exec(t_minishell *shell)
 	if (shell->exec->cmd == NULL)
 		return ;
 	exec = shell->exec;
-	print_command_list(exec);
-	//here_doc(exec);
+	//print_command_list(exec);
 	if (exec && exec->todo_next == 0)
 	{
 		printf("one cmd\n");

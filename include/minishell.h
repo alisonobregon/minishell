@@ -27,18 +27,23 @@
 # define READ 0
 # define WRITE 1
 
+
+enum e_arg_type
+{
+	CMD,
+	PIPE,
+	REDIR_IN,
+	REDIR_OUT,
+	REDIR_APPEND,
+	HEREDOC
+};
+
 typedef struct s_output
 {
 	int				action; // 0 = write, 1 = append
 	char			*file;
 	struct	s_output *next;
 }					t_output;
-
-typedef struct s_heredoc
-{
-	char	*delimiter;
-	int		here_d;
-}			t_heredoc;
 
 typedef struct s_exec
 {
@@ -51,6 +56,7 @@ typedef struct s_exec
 	int			i;
 	int			fd_in;
 	int			fd_out;
+	int			type;
 	struct s_exec *next;
 }	t_exec;
 
@@ -94,9 +100,9 @@ int		append_in_args(char ***buf, char *op, char ***array);
 int		str_array_append(char ***array, char *str);
 t_exec	*exec_lstlast(t_exec *lst);
 int		print_command_list(t_exec *command_list);
-int		command_list_clear(t_exec *command_list);
+int		command_list_clear(t_exec **command_list);
 t_exec	*exec_new(void);
-void	free_array(char **array);
+int		free_array(char **array);
 # define OUT_WRITE		0
 # define OUT_APPEND		1
 int		append_out_args(char ***buf, char *op, t_output **out);
@@ -108,6 +114,7 @@ int			check_specials(char **args);
 void		ft_pipes(char **buf);
 int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
 void free_shell(t_minishell *shell);
+int free_output(t_output **output);
 
 /* Execution */
 void	exec(t_minishell *shell);
