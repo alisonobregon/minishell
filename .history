@@ -305,3 +305,42 @@ l
 ls 
 l
 ls
+ls
+l
+cat
+l
+l
+ls
+cat < Makefile > output | ls -la
+cat < Makefile > output
+ls
+cat < Makefile > output
+ls
+ls
+cat < Makefile  > output
+ls
+ls -la
+cat < Makefile > output
+cat output 
+ls
+ls -la
+cat < Makefile 
+cat < Makefile  > output
+cat output 
+ls -la
+ls
+ls
+ls
+ls
+ls
+ls
+ls -la
+ls
+ls
+ls -la
+ls
+ls
+l
+ls
+ls
+ls

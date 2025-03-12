@@ -29,7 +29,8 @@ int get_arg_end(char *str, int end_index)
 		is_sep = index_of(str + end_index, split[i], 1);
 		if (is_sep < is_sp)
 			return (end_index + is_sep); //en plan si hay algun especial antes
-	}	
+	}
+	free_arrays(split, NULL);
 	return (end_index + is_sp); //recordatorio amable para luego liberar el split preciosa
 }
 
@@ -71,7 +72,8 @@ int get_end_index(char *str, int end)
 		if (index_of(str, split[i], 1) == 0)
 			return (ft_strlen(split[i]));// + free_split(split));
 	}
-	return (end);// + free_split(split));	
+	free_arrays(split, NULL);
+	return (end);// + free_split(split));
 }
 
 int split_args(t_minishell *shell, char *str)
@@ -97,9 +99,15 @@ int split_args(t_minishell *shell, char *str)
 		i += ft_strlen(shell->args[j]) - 1;
 		j++;
 	}
-	//shell->args[j] = NULL;
+	shell->args[j] = NULL;
+	/* while(shell->args != NULL)
+	{
+		printf("args: %s\n", *shell->args);
+		shell->args++;
+	} */
 	return (0);
 }
+
 void parsing(t_minishell *shell)
 {
 	//int i = 0;
