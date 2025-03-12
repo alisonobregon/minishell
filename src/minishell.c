@@ -141,6 +141,8 @@ int	main(int argc, char **argv, char **env)
 		add_history_to_file(shell->prompt->str);
 		parsing(shell);
 		print_command_list(shell->exec);
+		//parsing(shell);
+		cd(shell, shell->prompt->str);
 		//exec(shell);
 		printf("prompt: %s\n", shell->prompt->str);
 	}

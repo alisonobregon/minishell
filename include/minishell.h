@@ -124,6 +124,7 @@ void	unlinker(char **heredoc);
 int		ft_echo(char **args);
 void	echo_args(char *str);
 int		cd(t_minishell *shell, char **str);
+int		cd(t_minishell *shell, char *str);
 int		pwd(void);
 void	ft_env(t_minishell *shell);
 void	ft_export(t_minishell *shell);
