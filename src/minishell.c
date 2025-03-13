@@ -92,14 +92,14 @@ int command_list_clear(t_exec **command_list)
 	{
 		temp = (*command_list)->next;
 		free((*command_list)->cmd);
-		free_array((*command_list)->args);
-		free_array((*command_list)->infile);
-		free_output(&((*command_list)->outfile));
-		free_array((*command_list)->heredoc);
-		free(command_list);
-		command_list = &temp;
+		//free_array((*command_list)->args);
+		//free_array((*command_list)->infile);
+		free_output(&(*command_list)->outfile);
+		//free_array((*command_list)->heredoc);
+		free(*command_list);
+		*command_list = temp;
 	}
-	command_list = NULL;
+	*command_list = NULL;
 	return (0);
 }
 int free_output(t_output **output)
@@ -157,10 +157,10 @@ int	main(int argc, char **argv, char **env)
 		free(shell->prompt->str);
 		if (!shell->exec)
 			continue ;
-		//command_list_clear(&(shell->exec));
-		print_command_list(shell->exec);
+		command_list_clear(&(shell->exec));
+		//print_command_list(shell->exec);
 		//cd(shell, shell->prompt->str);
-		exec(shell);
+		//exec(shell);
 		//printf("prompt: %s\n", shell->prompt->str);
 	}
 	free_shell(shell);
