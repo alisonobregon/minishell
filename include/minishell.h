@@ -112,11 +112,13 @@ int			ft_pipes(char **buf);
 
 /* Execution */
 void	exec(t_minishell *shell);
+void	one_cmd(t_minishell *shell);
 char	*find_path(t_minishell *shell, char *cmd);
 int		len_pipes(t_exec *exec);
 int		fd_checker(t_exec **exec);
 void	multi_dup(int read, int write);
 void	exec_cmd(t_minishell *shell, t_exec *exec);
+void	free_exec_node(t_exec **exec);
 
 /*HERE DOC*/
 void	here_doc(t_exec **exec, char *limiter);

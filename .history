@@ -3,3 +3,471 @@ cat < Makefile > output > output2 | ls -la | grep Makefile | sleep 3 | ls -la > 
 ls -la | grep Makefile 
 cat < Makefile | grep NAME
 cat < Makefile | grep NAME
+ls -la
+cat < Makefile 
+cat < Makefile  > output
+cat output 
+cat < Makefile | grep NAME
+cat < Makefile | grep NAME | wc -l
+cat << end < output > output2 | ls -la | grep Makefile > output3 | sleep 3 | ls -la
+cat < Makefile > output | ls
+cat < Makefile > output | ls - la
+cat < Makefile > output | ls -la
+ls
+ls
+ls -la
+cat < Makefile 
+cat < Makefile | ls
+cat < Makefile | ls
+cat < Makefile | ls
+cat < Makefile | ls
+cat < Makefile | ls
+cat < Makefile | ls -la
+cat < Makefile | grep PHONY
+cat < Makefile | grep PHONY | grep clean
+cat < Makefile | grep PHONY | ls
+cat < Makefile > output >> out2
+> a > b < c
+> a > b < c | ls
+> a > b < c | ls | cat < Makefile 
+ls | cat -e | cat -e | cat -e
+ls | cat -e | cat -e | cat -e | cat -e
+ls | cat -e | cat -e | cat -e
+ls | cat -e | cat -e | cat -e | cat -e
+ls | cat -e | cat -e | cat -e | cat -e | cat -e
+ls | cat -e | cat -e | cat -e | cat -e | cat Makefile 
+ls | cat -e | cat -e | cat -e | cat -e | cat Makefile | grep PHONY
+ls | cat -e | cat -e | cat -e | cat -e | cat Makefile | grep PHONY
+ls | cat Makefile | grep PHONY
+ls | ls | ls | ls | cat Makefile | grep PHONY
+ls | ls | ls |  cat Makefile | grep PHONY
+ls | ls | cat Makefile | grep PHONY
+ls | ls | ls | ls | cat Makefile | grep PHONY
+ls | ls | ls | ls | cat Makefile | grep PHONY
+ls | ls | ls | ls | cat Makefile | grep PHONY
+ls | ls | ls | ls | cat Makefile | grep PHONY
+ls | ls | ls | ls | cat Makefile | grep PHONY
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+git status
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls -la | grep Makefile 
+ls -la | grep Makefile  | wc -l
+ls -la | grep Makefile | wc -l
+ls -la | grep Makefile | cat
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | cat Makefile | grep PHONY > output
+ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile
+ls | ls | ls | ls | cat Makefile
+ls
+ls
+ls | ls | ls | ls | cat Makefile
+ls | ls | ls | ls | cat Makefile
+ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | cat Makefile | grep PHONY 
+ls | ls | ls | cat Makefile | grep PHONY 
+ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | cat Makefile 
+ls | ls | ls | cat Makefile 
+ls | ls | ls | ls | cat Makefile 
+ls | ls | ls | ls | ls | cat Makefile 
+	close(pipe_fd[READ]);
+	close
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls -la | grep Makefile 
+ls | ls | grep Makefile 
+ls -la | ls -la | grep Makefile 
+ls -la | ls -la | grep Makefile 
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+ls -la
+ls -la | grep Makefile 
+ls -la | grep Makefile  | grep Makefile 
+ls -la | grep Makefile  | grep Makk
+ls -la | grep Makefile  | grep Makefile 
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+cat < Makefile > output
+cat < Makefile < output << end | grep gonzalo | grep gonzalo
+cat < Makefile < output << end | grep gonzalo > output | ls -la
+lks
+ls
+ls              
+                                                                    ls                                                                                                              
+cat Makefile 
+cat -e Makefile 
+cat Makefile -e
+ls | ls | ls | ls | cat < Makefile | cat < Ma
+> a > b >  > d > e < m
+> a > b > c > d > e < m
+[[[[[[[[[[[[[[[[[[[[M
+> a > b > c > d > e < Makefile
+DEFAULT = \033[0;39m
+
+GRAY = \033[0;90m
+
+RED = \033[0;91m
+
+GREEN = \033[0;92m
+
+YELLOW = \033[0;93m
+
+BLUE = \033[0;94m
+
+MAGENTA = \033[0;95m
+
+CYAN = \033[0;96m
+
+
+
+WHITE = \033[0;97m
+
+
+
+NAME = minishell
+
+
+
+SRC = ./src/minishell.c \
+
+./src/built-ins/builtins-utils.c \
+
+./src/built-ins/export.c \
+
+./src/built-ins/env.c \
+
+./src/built-ins/cd.c \
+
+./src/parsing/parsing.c \
+
+./src/parsing/checker.c \
+
+./src/parsing/utils_parsing.c \
+
+./src/parsing/create_command.c \
+
+./src/utils/utils.c \
+
+./src/parsing/outfiles.c \
+
+./src/parsing/pipes.c \
+
+./src/exec/exec_utils.c \
+
+./src/exec/exec.c \
+
+./src/exec/get_path.c \
+
+./src/exec/redirections.c \
+
+./src/exec/here_doc.c \
+
+./src/exec/free_exec.c \
+
+
+
+
+
+OBJ = $(SRC:.c=.o)
+
+
+
+INCLUDES = -I/mingw64/include
+
+
+
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 #-fsanitize=address,leak
+
+
+
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+
+
+
+CC = cc
+
+#-no-pie
+
+
+
+all: $(NAME) show_progress
+
+
+
+$(NAME): $(OBJ)
+
+@make -s -C libft
+
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+
+
+
+debug: $(NAME)
+
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+
+
+
+show_progress:
+
+@for file in $(SRC); do \
+
+echo "$(GREEN)Compiling $$file "; \
+
+done; \
+
+echo "Compiled: 100%$(DEFAULT)"; \
+
+
+
+clean:
+
+rm -f  $(NAME)
+
+@make clean -s -C libft
+
+
+
+fclean: clean
+
+rm -f  $(OBJ)
+
+@make clean -s -C libft
+
+
+
+re: fclean all
+
+
+
+git:
+
+git add .
+
+git commit
+> a > b > c > d > e < Makefile
+DEFAULT = \033[0;39m
+
+GRAY = \033[0;90m
+
+RED = \033[0;91m
+
+GREEN = \033[0;92m
+
+YELLOW = \033[0;93m
+
+BLUE = \033[0;94m
+
+MAGENTA = \033[0;95m
+
+CYAN = \033[0;96m
+
+
+
+WHITE = \033[0;97m
+
+
+
+NAME = minishell
+
+
+
+SRC = ./src/minishell.c \
+
+./src/built-ins/builtins-utils.c \
+
+./src/built-ins/export.c \
+
+./src/built-ins/env.c \
+
+./src/built-ins/cd.c \
+
+./src/parsing/parsing.c \
+
+./src/parsing/checker.c \
+
+./src/parsing/utils_parsing.c \
+
+./src/parsing/create_command.c \
+
+./src/utils/utils.c \
+
+./src/parsing/outfiles.c \
+
+./src/parsing/pipes.c \
+
+./src/exec/exec_utils.c \
+
+./src/exec/exec.c \
+
+./src/exec/get_path.c \
+
+./src/exec/redirections.c \
+
+./src/exec/here_doc.c \
+
+./src/exec/free_exec.c \
+
+
+
+
+
+OBJ = $(SRC:.c=.o)
+
+
+
+INCLUDES = -I/mingw64/include
+
+
+
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 #-fsanitize=address,leak
+
+
+
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+
+
+
+CC = cc
+
+#-no-pie
+
+
+
+all: $(NAME) show_progress
+
+
+
+$(NAME): $(OBJ)
+
+@make -s -C libft
+
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+
+
+
+debug: $(NAME)
+
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+
+
+
+show_progress:
+
+@for file in $(SRC); do \
+
+echo "$(GREEN)Compiling $$file "; \
+
+done; \
+
+echo "Compiled: 100%$(DEFAULT)"; \
+
+
+
+clean:
+
+rm -f  $(NAME)
+
+@make clean -s -C libft
+
+
+
+fclean: clean
+
+rm -f  $(OBJ)
+
+@make clean -s -C libft
+
+
+
+re: fclean all
+
+
+
+git:
+
+git add .
+
+git commit
+<< end""
+bash
+< "Makefile" cat
+cat Makefile > ""
+ls
+rswehtdrjytukgyh
+eho $?
+echo $?
+
+
+
+<< end""
+<< end""
+<< end""
+cat < vamo a ver
+> a > b > c
+> a > b > c > d < f
+< a > b > c > d > e > f
+> a > b > c > d < f
+ls | ls | ls | ls | cat Makefile | grep PHONY > output
+norminette ./exec
+ls
+norminette ./src/exec
+norminette ./src/exec
+norminette ./src/exec
+norminette ./src/exec
+norminette ./src/exec
+norminette ./src/exec
+norminette ./src/exec
+norminette ./src/exec
+ls -al
+norminette ./src/exec
+<< end""
+< Makefile cat
+< Makefile cat ./include/minishell.h 
+< Makefile cat ./include/minishell.h < .history 
+< Makefile cat ./include/minishell.h < .gitignore 
+ Makefile cat ./include/minishell.h < ./src/exec/exec.c .gitignore
+exit
+exit 4
+exit
+exit
+ls
+ping google.es
+clear
+clear
+clear
+ls -la
+ls 
+ls -l
+vim output
+ls
+tail -f output 
+ping google.es > output 
+ls -la | cat << end > out1 | ls -la > out1
+cat out1
+ls -la > out1| cat << end > out1 
+cat out1
+ls -la > out1 | cat << end > out1 
+ls -la > out > out1 |  sleep 2 | cat < Makefile > out1

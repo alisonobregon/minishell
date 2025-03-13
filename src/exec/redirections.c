@@ -30,9 +30,11 @@ int	infile_checker(t_exec **exec)
 				(*exec)->fd_in = open((*exec)->infile[i], O_RDONLY);
 				if ((*exec)->fd_in == -1)
 					return(perror("Error opening file here"), 0);
-				dup2((*exec)->fd_in, STDIN_FILENO);
 				if ((*exec)->fd_in != 0)
+				{
+					dup2((*exec)->fd_in, STDIN_FILENO);
 					close((*exec)->fd_in);
+				}
 			}
 			i++;
 		}
@@ -51,7 +53,7 @@ t_exec	*outfile_checker(t_exec **exec)
 		{
 			if (!access(t->outfile->file, F_OK) && access(t->outfile->file, W_OK))
 				return (perror("Permission denied"), NULL);
-			close(open(tmp->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664));
+			close(open(t->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664));
 		}
 		else
 		{
@@ -85,9 +87,11 @@ int	take_outfile(t_exec **exec)
 			(*exec)->fd_out = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
 			if ((*exec)->fd_out == -1)
 				return (perror("Error opening file"), 0);
-			dup2((*exec)->fd_out, STDOUT_FILENO);
 			if ((*exec)->fd_out > 1)
+			{
+				dup2((*exec)->fd_out, STDOUT_FILENO);
 				close((*exec)->fd_out);
+			}
 		}
 	}
 	return (1);

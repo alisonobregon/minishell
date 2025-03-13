@@ -1,1 +1,3 @@
-cat < Makefile > output > output2 | ls -la > output2 > output1 > output2
+< Makefile cat ./include/minishell.h < .history
+
+< Makefile cat ./include/minishell.h < .gitignore

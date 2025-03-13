@@ -21,6 +21,8 @@ int	len_pipes(t_exec *exec)
 	{
 		if (exec->todo_next == 2)
 			len++;
+		if (exec->next == NULL)
+			break ;
 		exec = exec->next;
 	}
 	return (len);
@@ -42,8 +44,40 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 {
 	char	*path;
 
+	if (exec->cmd == NULL)
+		free_exec_node(&exec);
 	path = find_path(shell, exec->cmd);
+	if (path == NULL)
+		free_exec_node(&exec);
+	if (!ft_strncmp(exec->cmd, "exit", 4))
+	{
+		exit(0);
+		free_exec_node(&exec);
+	}
 	execve(path, exec->args, shell->env);
 	perror("Error excecuting execve\n");
-	exit(1);
+	free_exec_node(&exec);
+}
+
+void	one_cmd(t_minishell *shell)
+{
+	shell->pid = fork();
+	if (shell->pid == -1)
+	{
+		perror("fork");
+		return ;
+	}
+	if (shell->pid == 0)
+	{
+		if (shell->exec->outfile || shell->exec->infile)
+		{
+			if (!fd_checker(&shell->exec))
+				return ;
+		}
+		if (shell->exec->heredoc)
+			unlinker(shell->exec->heredoc);
+		exec_cmd(shell, shell->exec);
+	}
+	while (wait(NULL) > 0)
+		;
 }

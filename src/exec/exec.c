@@ -14,9 +14,6 @@
 
 static void	middle_case(t_exec *exec, int *pipe_fd, int *pre_pipe)
 {
-	close(pipe_fd[READ]);
-	close(pre_pipe[WRITE]);
-	printf("pipe 2\n");
 	if (exec->fd_in != 0 && !exec->outfile)
 	{
 		close(pre_pipe[READ]);
@@ -28,35 +25,32 @@ static void	middle_case(t_exec *exec, int *pipe_fd, int *pre_pipe)
 		close(pipe_fd[WRITE]);
 		close(pre_pipe[READ]);
 	}
-	else if (exec->infile == NULL && exec->outfile)
+	else if (!exec->infile && exec->outfile)
 	{
+		close(pipe_fd[WRITE]);
 		dup2(pre_pipe[READ], STDIN_FILENO);
 		close(pre_pipe[READ]);
-		close(pipe_fd[WRITE]);
 	}
 	else
 		multi_dup(pre_pipe[READ], pipe_fd[WRITE]);
+	close(pipe_fd[READ]);
+	close(pre_pipe[WRITE]);
 }
 
-void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
+void	handler_fd(t_minishell *s, t_exec *exec, int *pipe_fd, int *pre_pipe)
 {
-	if (shell->exec->i == 0 && exec->todo_next == 2)
+	if (s->exec->i == 0 && exec->todo_next == 2)
 	{
-		printf("pipe 1\n");
 		close(pipe_fd[READ]);
 		if (exec->fd_out > 1)
 			close(pipe_fd[WRITE]);
 		else
-		{
 			multi_dup(exec->fd_in, pipe_fd[WRITE]);
-			close(pipe_fd[WRITE]);
-		}
 	}
-	else if (shell->exec->i <= (len_pipes(shell->exec) - 1))
+	else if (s->exec->i <= (len_pipes(s->exec) - 1))
 		middle_case(exec, pipe_fd, pre_pipe);
-	else if (exec->todo_next == 0 && shell->exec->i > 0)
+	else
 	{
-		printf("pipe 3\n");
 		close(pipe_fd[WRITE]);
 		if (exec->fd_in != 0 && exec->infile)
 			close(pipe_fd[READ]);
@@ -67,10 +61,38 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		}
 	}
 	unlinker(exec->heredoc);
-	exec_cmd(shell, exec);
+	exec_cmd(s, exec);
 }
 
-static int pipex(t_minishell *shell)
+int	child_maker(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
+{
+	if (exec->todo_next == 2)
+	{
+		if (pipe(pipe_fd) == -1)
+		{
+			perror("Error creating pipe");
+			return ((free(pipe_fd), free(pre_pipe), 0));
+		}
+	}
+	shell->pid = fork();
+	if (shell->pid == -1)
+	{
+		perror("error in fork");
+		return ((free(pipe_fd), free(pre_pipe), 1));
+	}
+	if (shell->pid == 0)
+	{
+		if (exec->outfile || exec->infile)
+		{
+			if (!fd_checker(&exec))
+				return ((free(pipe_fd), free(pre_pipe)), 0);
+		}
+		handler_fd(shell, exec, pipe_fd, pre_pipe);
+	}
+	return (1);
+}
+
+static int	pipex(t_minishell *shell)
 {
 	t_exec	*exec;
 	int		*pipe_fd;
@@ -81,33 +103,11 @@ static int pipex(t_minishell *shell)
 	pipe_fd = ft_calloc(2, sizeof(int));
 	pre_pipe = ft_calloc(2, sizeof(int));
 	if (!pipe_fd || !pre_pipe)
-		return (1);
+		return (0);
 	while (exec)
 	{
-		if (exec->todo_next == 2)
-		{
-			if (pipe(pipe_fd) == -1)
-			{
-				perror("Error creating pipe");
-				return ((free(pipe_fd), free(pre_pipe), 0));
-			}
-		}
-		shell->pid = fork();
-		if (shell->pid == -1)
-		{
-			perror("fork");
-			(free(pipe_fd), free(pre_pipe));
-			return (1);
-		}
-		if (shell->pid == 0)
-		{
-			if (exec->outfile || exec->infile)
-			{
-				if (!fd_checker(&exec))
-					return ((free(pipe_fd), free(pre_pipe)), 0); // close fds
-			}
-			handler_fd(shell, exec, pipe_fd, pre_pipe);
-		}
+		if (!child_maker(shell, exec, pipe_fd, pre_pipe))
+			return (0);
 		if (shell->exec->i >= 1)
 			close(pre_pipe[READ]);
 		ft_int_memcpy(pre_pipe, pipe_fd, 2);
@@ -117,33 +117,7 @@ static int pipex(t_minishell *shell)
 	}
 	while (wait(NULL) > 0)
 		;
-	//close some fds probably piepes;
-	free(pipe_fd);
-	free(pre_pipe);
-	return (1);
-}
-
-void	one_cmd(t_minishell *shell)
-{
-	shell->pid = fork();
-	if (shell->pid == -1)
-	{
-		perror("fork");
-		return ;
-	}
-	if (shell->pid == 0)
-	{
-		if (shell->exec->outfile || shell->exec->infile)
-		{
-			if (!fd_checker(&shell->exec))
-				return ;
-		}
-		if (shell->exec->heredoc)
-			unlinker(shell->exec->heredoc);
-		exec_cmd(shell, shell->exec);
-	}
-	while (wait(NULL) > 0)
-		;
+	return (free(pre_pipe), free(pipe_fd), 1);
 }
 
 void	exec(t_minishell *shell)
@@ -152,20 +126,15 @@ void	exec(t_minishell *shell)
 
 	if (!shell->exec)
 		return ;
-	if (shell->exec->cmd == NULL)
-		return ;
 	exec = shell->exec;
 	print_command_list(exec);
 	if (exec && exec->todo_next == 0)
-	{
 		one_cmd(shell);
-	}
 	else if (exec && exec->todo_next == 2)
 	{
 		if (!pipex(shell))
 		{
 			ft_putstr_fd("Error in pipex\n", 2);
-			printf("Error in pipex\n");
 			exit(1);
 		}
 	}
