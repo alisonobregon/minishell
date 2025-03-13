@@ -12,22 +12,6 @@
 
 #include "../../include/minishell.h"
 
-void	print_infiles(t_exec *exec)
-{
-	int i;
-
-	i = 0;
-	while (exec)
-	{
-		while (exec->infile[i])
-		{
-			ft_printf("infile: %s\n", exec->infile[i]);
-			i++;
-		}
-		exec = exec->next;
-	}
-}
-
 int	infile_checker(t_exec **exec)
 {
 	int i;
@@ -35,7 +19,6 @@ int	infile_checker(t_exec **exec)
 	i = 0;
 	if ((*exec)->infile)
 	{
-		print_infiles(*exec);
 		while (i < ft_len((*exec)->infile))
 		{
 			if (access((*exec)->infile[i], F_OK))
@@ -117,7 +100,10 @@ int	fd_checker(t_exec **exec)
 	if ((*exec)->infile)
 	{
 		if (!infile_checker(exec))
+		{
+			ft_putstr_fd("infile checker: ", 2);
 			return (0);
+		}
 	}
 	if (!(*exec)->outfile)
 		return (2);

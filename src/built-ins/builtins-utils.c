@@ -12,31 +12,27 @@
 
 #include "../../include/minishell.h"
 
-int is_builtin(t_exec *exec)
+int is_builtin(char *cmd)
 {
-	
-	if (!ft_strncmp(exec->cmd, "echo", 5))
-		return(ft_echo(exec->args));
-	if (!ft_strncmp(exec->cmd, "cd", 3))
+	if (!ft_strncmp(cmd, "echo", 5))
+	{
+		printf("echo\n");
+	}
+	if (!ft_strncmp(cmd, "cd", 3))
 		return (1);
-	if (!ft_strncmp(exec->cmd, "pwd", 4))
-		return(pwd());
-	if (!ft_strncmp(exec->cmd, "export", 7))
+	if (!ft_strncmp(cmd, "pwd", 4))
 		return (1);
-	if (!ft_strncmp(exec->cmd, "unset", 6))
+	if (!ft_strncmp(cmd, "export", 7))
 		return (1);
-	if (!ft_strncmp(exec->cmd, "env", 4))
+	if (!ft_strncmp(cmd, "unset", 6))
 		return (1);
-	if (!ft_strncmp(exec->cmd, "exit", 5))
+	if (!ft_strncmp(cmd, "env", 4))
+		return (1);
+	if (!ft_strncmp(cmd, "exit", 5))
 		return (1);
 	return (0);
 }
-int ft_exit(t_minishell *shell)
-{
-	(void)shell;
-	exit(0);
-	return (0);
-}
+
 void	free_arrays(char **array1, char **array2)
 {
 	int	i;

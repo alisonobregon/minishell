@@ -115,6 +115,8 @@ void		ft_pipes(char **buf);
 int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
 void free_shell(t_minishell *shell);
 int free_output(t_output **output);
+int			check_specials(char **args);
+int			ft_pipes(char **buf);
 
 /* Execution */
 void	exec(t_minishell *shell);
@@ -139,7 +141,7 @@ void	ft_export(t_minishell *shell);
 /* built-ins tools */
 int		just_export(char *str);
 void	free_arrays(char **array1, char **array2);
-int		is_builtin(t_exec *exec);
+int is_builtin(char *cmd);
 
 /* utils */
 char	**strarray_copy(char **array);
