@@ -14,7 +14,7 @@
 
 int	len_pipes(t_exec *exec)
 {
-	int		len;
+	int	len;
 
 	len = 0;
 	while (exec)
@@ -40,7 +40,7 @@ void	multi_dup(int read, int write)
 
 void	exec_cmd(t_minishell *shell, t_exec *exec)
 {
-	char *path;
+	char	*path;
 
 	path = find_path(shell, exec->cmd);
 	execve(path, exec->args, shell->env);

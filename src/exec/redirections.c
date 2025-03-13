@@ -14,7 +14,7 @@
 
 int	infile_checker(t_exec **exec)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if ((*exec)->infile)
@@ -42,34 +42,33 @@ int	infile_checker(t_exec **exec)
 
 t_exec	*outfile_checker(t_exec **exec)
 {
-	t_exec *tmp;
+	t_exec	*t;
 
-	tmp = (*exec);
-	while (tmp->outfile->next != NULL)
+	t = (*exec);
+	while (t->outfile->next != NULL)
 	{
-		if (tmp->outfile->action == 0)
+		if (t->outfile->action == 0)
 		{
-			if (!access(tmp->outfile->file, F_OK) && access(tmp->outfile->file, W_OK))
+			if (!access(t->outfile->file, F_OK) && access(t->outfile->file, W_OK))
 				return (perror("Permission denied"), NULL);
 			close(open(tmp->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664));
 		}
 		else
 		{
-			if (!access(tmp->outfile->file, F_OK) && access(tmp->outfile->file, W_OK))
-				close(open(tmp->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
-			else if (access(tmp->outfile->file, F_OK))
-				close(open(tmp->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
+			if (!access(t->outfile->file, F_OK) && access(t->outfile->file, W_OK))
+				close(open(t->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
+			else if (access(t->outfile->file, F_OK))
+				close(open(t->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
 			else
 				return (perror("Permission denied"), NULL);
 		}
-		tmp->outfile = tmp->outfile->next;
+		t->outfile = t->outfile->next;
 	}
-	return (tmp);
+	return (t);
 }
 
 int	take_outfile(t_exec **exec)
 {
-
 	if ((*exec)->outfile->next == NULL)
 	{
 		if ((*exec)->outfile->action == 0)
@@ -93,6 +92,7 @@ int	take_outfile(t_exec **exec)
 	}
 	return (1);
 }
+
 int	fd_checker(t_exec **exec)
 {
 	t_exec	*tmp;
@@ -101,7 +101,7 @@ int	fd_checker(t_exec **exec)
 	{
 		if (!infile_checker(exec))
 		{
-			ft_putstr_fd("infile checker: ", 2);
+			ft_putstr_fd("infile checker: fail ", 2);
 			return (0);
 		}
 	}

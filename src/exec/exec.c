@@ -66,8 +66,7 @@ void	handler_fd(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 			close(pipe_fd[READ]);
 		}
 	}
-	if (exec->heredoc)
-		unlinker(exec->heredoc);
+	unlinker(exec->heredoc);
 	exec_cmd(shell, exec);
 }
 

@@ -46,7 +46,6 @@ char	*doc_fd(char *limiter)
 	}
 	free(line);
 	close(temp_fd);
-	printf("temp_file: %s\n", limiter);
 	return (limiter);
 }
 
@@ -56,7 +55,6 @@ void	here_doc(t_exec **exec, char *limiter)
 	char	*doc_infile;
 
 	printf("HERE DOC\n");
-	printf(" in hd limiter: %s\n", limiter);
 	doc_infile = NULL;
 	if (!exec)
 		return ;
