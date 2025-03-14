@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/14 21:15:44 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/14 21:17:25 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,10 +152,5 @@ void parsing(t_minishell *shell)
 		return ;
 	/*if (!create_command_lst(shell))
 		return ;
-<<<<<<< HEAD
 	print_command_list(shell->exec);
-=======
-	print_command_list(shell->exec);*/
-	free_array(shell->args);
->>>>>>> aa91d71 (aksjdak)
 }
