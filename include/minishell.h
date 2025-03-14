@@ -110,6 +110,8 @@ int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
 int			check_specials(char **args);
 int			ft_pipes(char **buf);
 
+/*PROMPT*/
+char	*get_prompt(t_minishell *shell);
 /* Execution */
 void	exec(t_minishell *shell);
 void	one_cmd(t_minishell *shell);
@@ -125,20 +127,21 @@ void	here_doc(t_exec **exec, char *limiter);
 void	unlinker(char **heredoc);
 
 /*built-ins functions*/
-int		cd(t_minishell *shell, char *str);
+int		cd(t_minishell *shell, char **arr);
 int		pwd(void);
 void	ft_env(t_minishell *shell);
 void	ft_export(t_minishell *shell);
 /* built-ins tools */
 int		just_export(char *str);
 void	free_arrays(char **array1, char **array2);
-int is_builtin(char *cmd);
+int		is_builtin(char *cmd);
 
 /* utils */
 char	**strarray_copy(char **array);
 char	*ft_array_to_str(char **array);
 char	**add_str_to_array(char **array, char *str);
 char	**ft_arrjoin(char **arr1, char **arr2);
+char	*ft_str2join(char *s1, char *s2);
 /* builtins utils */
 void	free_arrays(char **array1, char **array2);
 #endif

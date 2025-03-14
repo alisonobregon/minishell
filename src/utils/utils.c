@@ -112,3 +112,21 @@ char	**strarray_copy(char **array)
 	copy[i] = NULL;
 	return (copy);
 }
+
+char	*ft_str2join(char *s1, char *s2)
+{
+	char	*substr;
+	size_t	len;
+
+	len = (ft_strlen(s1) + (ft_strlen(s2)) + 1);
+	substr = (char *)ft_calloc(len, sizeof(char));
+	if (!substr)
+		return (NULL);
+	else
+	{
+		ft_memcpy(substr, s1, ft_strlen(s1));
+		ft_memcpy(substr + ft_strlen(s1), s2, ft_strlen(s2));
+		substr[len - 1] = '\0';
+	}
+	return (substr);
+}

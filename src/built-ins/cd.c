@@ -27,11 +27,11 @@ int	pwd(void)
 	return (1);
 }
 
-static int	new_path(t_minishell *shell, char *str)
+static int	new_path(t_minishell *shell, char **arr)
 {
 	char	*new_path;
 
-	new_path = ft_strdup(str + 3);
+	new_path = ft_strdup(arr[1]);
 	ft_printf("new_path: %s\n", new_path);
 	if (new_path == NULL)
 	{
@@ -47,21 +47,28 @@ static int	new_path(t_minishell *shell, char *str)
 	}
 	else
 	{
-		ft_printf("new_path: %s\n", new_path);
 		//chdir(new_path);
 		shell->cwd_int = 1;
-		shell->cwd = new_path;
+		ft_printf(" going to new_path: %s and pwd %s\n", new_path, getenv("PWD"));
+		shell->cwd = ft_str2join(get_prompt(shell), new_path);
+		free(new_path);
+		//shell->cwd = new_path;
 	}
 	return (1);
 }
 
-int cd(t_minishell *shell, char *str)
+int cd(t_minishell *shell, char **arr)
 {
 	char	*home;
 
 	home = getenv("HOME");
-	ft_printf("str: %s\n", *str);
-	if (!ft_strncmp(str, "cd ~", ft_strlen(str)) || !ft_strncmp(str, "cd", ft_strlen(str)))
+	if (!home || !arr || !*arr)
+	{
+		ft_printf("minishell: cd: HOME not set\n");
+		return (1);
+	}
+	ft_printf("str: %s\n", *arr);
+	if ((!ft_strncmp(*arr, "cd ~", ft_strlen(*arr)) || !ft_strncmp(*arr, "cd", ft_strlen(*arr))) && arr[1] == NULL)
 	{
 		ft_printf("home case\n");
 		if (home == NULL)
@@ -71,9 +78,9 @@ int cd(t_minishell *shell, char *str)
 		shell->cwd_int = 1;
 		return (1);
 	}
-	else if (ft_strlen(str) > 3)
+	else if (arr[1])
 	{
-		if (new_path(shell, str) == 0)
+		if (new_path(shell, arr) == 0)
 			return (0);
 		return (1);
 	}

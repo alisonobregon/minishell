@@ -135,17 +135,19 @@ int	main(int argc, char **argv, char **env)
 	if (!shell->path)
 		shell->path[0] = ft_strdup("./") ;
 	//ft_printf("\033[1;1H\033[2J");//revisar 
+	shell->cwd_int = 0;
 	while (1)
 	{
-		if (shell->cwd_int == 0) //preguntar
+		if (shell->cwd_int == 0) //preguntar || al cambiar un directorio cambia a 1 , cuando se devuelve a home es 0; por ahora
 			shell->cwd = get_prompt(shell);
 		shell->prompt->str = readline(shell->cwd);
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
 		parsing(shell);
-		//print_command_list(shell->exec);
+		print_command_list(shell->exec);
+		//cd(shell, shell->exec->args);
 		exec(shell);
-		printf("prompt: %s\n", shell->prompt->str);
+		//printf("prompt: %s\n", shell->prompt->str);
 	}
 	return (0);
 }

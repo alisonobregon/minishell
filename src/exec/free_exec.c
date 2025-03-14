@@ -14,11 +14,11 @@
 
 void	free_exec_node(t_exec **exec)
 {
-	t_exec	*tmp;
+	//t_exec	*tmp;
 
 	while (*exec)
 	{
-		tmp = (*exec)->next;
+		//tmp = (*exec)->next;
 		free_array((*exec)->args);
 		free_arrays((*exec)->infile, (*exec)->heredoc);
 		if ((*exec)->outfile)
