@@ -20,20 +20,20 @@
 el pwd imprime eso si no pues imprime la palabra minishell*/
 void memory_allocated(t_minishell *shell)
 {
-	shell->args = ft_calloc(1, sizeof(char *)); //revisar si ultilizamos args
+	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char *));
 	shell->env = NULL;
 	shell->path = NULL;
 	shell->pwd = NULL;
 	shell->cwd = NULL;
 	shell->cwd_int = 0;
 	shell->prompt = ft_calloc(1, sizeof(t_prompt));
+	shell->exec = NULL;
 	if (!shell->prompt)
 		return ;
-	shell->exec = NULL;
 }
 void free_shell(t_minishell *shell)
 {
-	free(shell->args);
+	
 	free(shell->prompt);
 	free(shell);
 }
@@ -92,10 +92,14 @@ int command_list_clear(t_exec **command_list)
 	{
 		temp = (*command_list)->next;
 		free((*command_list)->cmd);
-		//free_array((*command_list)->args);
-		//free_array((*command_list)->infile);
-		free_output(&(*command_list)->outfile);
-		//free_array((*command_list)->heredoc);
+		if((*command_list)->args)
+			free_array((*command_list)->args);
+		if((*command_list)->infile)
+			free_array((*command_list)->infile);
+		if ((*command_list)->outfile)
+			free_output(&(*command_list)->outfile);
+		if ((*command_list)->heredoc)
+			free_array((*command_list)->heredoc);
 		free(*command_list);
 		*command_list = temp;
 	}
@@ -141,27 +145,23 @@ int	main(int argc, char **argv, char **env)
 	shell = ft_calloc(1, sizeof(t_minishell));
 	if (!shell)
 		return (1);
-	memory_allocated(shell);
 	shell->env = strarray_copy(env);
+	memory_allocated(shell);
 	while (1)
 	{
-		/*if (shell->cwd_int == 0) //preguntar
-			shell->cwd = get_prompt(shell);
-		shell->prompt->str = readline(shell->cwd);*/
 		shell->prompt->str = get_input(shell);
 		if (!shell->prompt->str)
 			continue ;
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
 		parsing(shell);
-		free(shell->prompt->str);
+		free(shell->prompt->str);// este tener cuidado
 		if (!shell->exec)
 			continue ;
-		command_list_clear(&(shell->exec));
+		//command_list_clear(&(shell->exec));
 		//print_command_list(shell->exec);
 		//cd(shell, shell->prompt->str);
 		//exec(shell);
-		//printf("prompt: %s\n", shell->prompt->str);
 	}
 	free_shell(shell);
 	return (0);

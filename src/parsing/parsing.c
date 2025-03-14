@@ -6,7 +6,11 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/14 18:56:32 by aliobreg         ###   ########.fr       */
+=======
+/*   Updated: 2025/03/14 20:54:57 by aliobreg         ###   ########.fr       */
+>>>>>>> aa91d71 (aksjdak)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +26,7 @@ int get_arg_end(char *str, int end_index)
 	i = -1;
 	split = ft_split("<< < >> > || | && &", ' ');
 	if (!split)
-		return (0);
+		return (-1);
 	is_sp = index_of_newline(str + end_index);
 	while(split[++i])
 	{
@@ -60,9 +64,9 @@ int get_end_index(char *str, int end)
 		return(0);
 	end_index = get_quotes_end(str, end);
 	if (end_index == 0)
-		return (0 + free_array(split));
+		return ((0) + free_array(split));
 	if (end_index != -2)
-		return (end_index + free_array(split));
+		return ((end_index) + free_array(split));
 	while (split[++i])
 	{
 		if ((end > -1 && index_of(str, split[i], 1) < end))
@@ -92,7 +96,7 @@ int split_args(t_minishell *shell, char *str)
 		else
 			end_index = get_end_index(str + i, get_arg_end(str + i, 0));
 		if (end_index < 0)
-			return (free_array(shell->args));
+			return (-1 + free_array(shell->args));
 		shell->args[j] = ft_strldup(str + i, end_index);
 		i += ft_strlen(shell->args[j]) - 1;
 		j++;
@@ -103,36 +107,45 @@ int split_args(t_minishell *shell, char *str)
 
 int check_specials(char **args)
 {
-	int i;
-	int is_special;
-	
-	is_special = 0;
-	i = -1;
-	while(args[++i])
-	{
-		if (get_arg_type(args[i]) != 0)
-		{
-			if (args[i + 1] && (get_arg_type(args[i + 1]) == 1) && get_arg_type(args[i]) == 2)
-				break;
-			if (is_special)
-			{
-				printf("minishell: syntax error near unexpected token `%s'\n", args[i]);
-				free_array(args);
-				return(0);
-			}
-			is_special = 1;
-		}
-		else
-			is_special = 0;
-		if (args[i + 1] == NULL && is_special)
-		{
-			printf("minishell: syntax error near unexpected token `newline'\n");
-			free_array(args);	
-			return(0);
-		}	
-	}
-	return (1);
+    int i = 0;
+    int is_special;
+    int is_special2;
+
+	if (!args)
+        return 1;
+    while (args[i] != NULL)
+    {
+        is_special = get_arg_type(args[i]);
+        if (is_special)
+        {
+            if (args[i + 1] == NULL)
+            {
+                printf("minishell: syntax error near unexpected token `newline'\n");
+                free_array(args);
+                return 0;
+            }
+
+            is_special2 = get_arg_type(args[i + 1]);
+
+            if ((is_special == 2 || is_special == 3 || is_special == 4) && is_special2)
+            {
+                printf("minishell: syntax error near unexpected token `%s'\n", args[i + 1]);
+                free_array(args);
+                return 0;
+            }
+
+            if (is_special == 1 && is_special2 == 1)
+            {
+                printf("minishell: syntax error near unexpected token `%s'\n", args[i + 1]);
+                free_array(args);
+                return 0;
+            }
+        }
+        i++;
+    }
+    return 1;
 }
+
 void parsing(t_minishell *shell)
 {
 	check_quotes(&(shell->prompt->str), 2, 2);
@@ -141,7 +154,12 @@ void parsing(t_minishell *shell)
 		return ;
 	if (!check_specials(shell->args))
 		return ;
-	if (!create_command_lst(shell))
+	/*if (!create_command_lst(shell))
 		return ;
+<<<<<<< HEAD
 	print_command_list(shell->exec);
+=======
+	print_command_list(shell->exec);*/
+	free_array(shell->args);
+>>>>>>> aa91d71 (aksjdak)
 }

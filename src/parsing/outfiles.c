@@ -15,6 +15,7 @@
 t_output	*outlst_new(char *filename, int action)
 {
 	t_output	*new;
+
 	new = ft_calloc(sizeof(t_output), 1);
 	if (!new)
 		return (NULL); //recordatorio amable para mejor cambiar a 0 y por 1 guapa
@@ -49,7 +50,7 @@ int	outlst_append(t_output **out, char *filename, char *op)
 	if (!new)
 		return (0);
 	if (*out)
-		out_lstlast(*out)->next = new;	
+		out_lstlast(*out)->next = new;
 	else
 		(*out) = new;
 	return (1);
@@ -66,6 +67,6 @@ int append_out_args(char ***buf, char *op, t_output **out)
 		if (*buf && !(outlst_append(out, **buf, op)))
 			return (0);
 		(*buf)++;
-	}		
+	}
 	return (1);
   }

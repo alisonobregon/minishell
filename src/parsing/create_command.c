@@ -68,10 +68,7 @@ int append_in_her_args(char ***buf, char *op, char ***array, t_exec *new)
 	{
 		(*buf)++;
 		if (!(str_array_append(array, **buf)))
-		{
-			//printf("got here \n");
 			return (0);
-		}
 		here_doc(&new, **buf);
 		(*buf)++;
 	}
@@ -128,9 +125,8 @@ int free_array(char **array)
 }
 int command_lstappend(t_exec *new, char ***buf)
 {
-	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1))
+	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1)) //*buf
 	{
-		//printf("buf 3: %s\n", **buf);
 		if (!(append_out_args(buf, ">", &(new->outfile))))
 			return (0);
 		else if (!(append_in_args(buf, "<", &(new->infile))))
@@ -146,7 +142,6 @@ int command_lstappend(t_exec *new, char ***buf)
 			(*buf)++;
 		}
 	}
-
 	return (1);
 }
 
@@ -171,7 +166,7 @@ int create_command_lst(t_minishell *shell)
 		if(new->cmd == NULL)
 			return (0);
 		if (!(command_lstappend(new, &buf)))
-			return (0);
+			return (1); 
 		if (*buf != NULL)
 			new->todo_next = get_arg_type(*buf);
 		if (get_arg_type(new->cmd) == 1 && new->args)

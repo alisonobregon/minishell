@@ -26,9 +26,10 @@
 # define DEFAULT "\033[0m"
 # define READ 0
 # define WRITE 1
+# define MAX_ARGUMENTS 256
 
 
-enum e_arg_type
+/*enum e_arg_type
 {
 	CMD,
 	PIPE,
@@ -37,7 +38,7 @@ enum e_arg_type
 	REDIR_APPEND,
 	HEREDOC
 };
-
+*/
 typedef struct s_output
 {
 	int				action; // 0 = write, 1 = append
@@ -56,7 +57,7 @@ typedef struct s_exec
 	int			i;
 	int			fd_in;
 	int			fd_out;
-	int			type;
+	//int			type;
 	struct s_exec *next;
 }	t_exec;
 
