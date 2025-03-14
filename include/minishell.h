@@ -116,7 +116,6 @@ int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
 void free_shell(t_minishell *shell);
 int free_output(t_output **output);
 int			check_specials(char **args);
-int			ft_pipes(char **buf);
 
 /* Execution */
 void	exec(t_minishell *shell);
