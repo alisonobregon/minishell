@@ -19,6 +19,7 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <sys/stat.h>
+# include <signal.h>
 # include <errno.h>
 
 # define CYAN "\033[36m"
@@ -28,6 +29,7 @@
 # define WRITE 1
 # define MAX_ARGUMENTS 256
 
+extern sig_atomic_t	 g_sigint;
 
 /*enum e_arg_type
 {
@@ -77,6 +79,7 @@ typedef struct s_minishell
 	char		*pwd;
 	char		*cwd;
 	int			cwd_int;
+	int			status;
 	t_prompt	*prompt;
 	t_exec		*exec;
 
@@ -114,9 +117,12 @@ int			add_history_to_file(char *str);
 int			check_specials(char **args);
 void		ft_pipes(char **buf);
 int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
-void free_shell(t_minishell *shell);
+int			 free_shell(t_minishell *shell);
 int free_output(t_output **output);
 int			check_specials(char **args);
+
+/*Signals :)*/
+void	wait_signal(int sig);
 
 /* Execution */
 void	exec(t_minishell *shell);

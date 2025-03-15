@@ -12,6 +12,7 @@
 
 #include "../include/minishell.h"
 
+int g_sigint;
 
 /* Aqui vamos a crear el while loop principal
 	*/
@@ -26,16 +27,29 @@ void memory_allocated(t_minishell *shell)
 	shell->pwd = NULL;
 	shell->cwd = NULL;
 	shell->cwd_int = 0;
+	shell->status = 0;
 	shell->prompt = ft_calloc(1, sizeof(t_prompt));
 	shell->exec = NULL;
 	if (!shell->prompt)
 		return ;
 }
-void free_shell(t_minishell *shell)
+int free_shell(t_minishell *shell)
 {
-	
-	free(shell->prompt);
+	int exit_status;
+
+	exit_status = shell->status;
+	if (shell->prompt)
+	{
+		if (shell->prompt->str)
+			free(shell->prompt->str);
+		free(shell->prompt);
+	}
+	if (shell->env)
+		free_array(shell->env);
+	if(shell->args)
+		free_array(shell->args);
 	free(shell);
+	return (exit_status);
 }
 
 char	*get_prompt(t_minishell *shell)
@@ -75,7 +89,7 @@ char	*get_input(t_minishell *shell)
 	if (!buf)
 	{
 		ft_printf("\n");
-		free_shell(shell);
+		exit(free_shell(shell));
 	}
 	if (ft_strlen(buf) == 0)
 	{
@@ -146,9 +160,11 @@ int	main(int argc, char **argv, char **env)
 	if (!shell)
 		return (1);
 	shell->env = strarray_copy(env);
-	memory_allocated(shell);
+	g_sigint = 0;
+	wait_signal(1);
 	while (1)
 	{
+		memory_allocated(shell);
 		shell->prompt->str = get_input(shell);
 		if (!shell->prompt->str)
 			continue ;
@@ -158,8 +174,10 @@ int	main(int argc, char **argv, char **env)
 		free(shell->prompt->str);// este tener cuidado
 		if (!shell->exec)
 			continue ;
-		//command_list_clear(&(shell->exec));
+		command_list_clear(&(shell->exec));
 		//print_command_list(shell->exec);
+		free(shell->prompt->cwd);
+		free(shell->prompt);
 		//cd(shell, shell->prompt->str);
 		//exec(shell);
 	}

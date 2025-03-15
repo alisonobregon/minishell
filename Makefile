@@ -30,6 +30,7 @@ SRC = 	./src/minishell.c \
 		./src/exec/redirections.c \
 		./src/exec/here_doc.c \
 		./src/exec/free_exec.c \
+		./src/signals/signals.c \
 
 
 OBJ = $(SRC:.c=.o)
