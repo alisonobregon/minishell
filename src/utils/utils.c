@@ -113,7 +113,7 @@ char	**strarray_copy(char **array)
 	return (copy);
 }
 
-char	*ft_str2join(char *s1, char *s2)
+char	*ft_str2join(char *s1, char *s2, int f1, int f2)
 {
 	char	*substr;
 	size_t	len;
@@ -128,5 +128,9 @@ char	*ft_str2join(char *s1, char *s2)
 		ft_memcpy(substr + ft_strlen(s1), s2, ft_strlen(s2));
 		substr[len - 1] = '\0';
 	}
+	if (f1)
+		free(s1);
+	if (f2)
+		free(s2);
 	return (substr);
 }

@@ -12,16 +12,16 @@
 
 #include "../../include/minishell.h"
 
-int is_builtin(char *cmd)
+int is_builtin(t_minishell *shell, char *cmd)
 {
 	if (!ft_strncmp(cmd, "echo", 5))
 	{
 		printf("echo\n");
 	}
 	if (!ft_strncmp(cmd, "cd", 3))
-		return (1);
+		return (cd(shell, shell->exec->args));
 	if (!ft_strncmp(cmd, "pwd", 4))
-		return (1);
+		return (pwd());
 	if (!ft_strncmp(cmd, "export", 7))
 		return (1);
 	if (!ft_strncmp(cmd, "unset", 6))

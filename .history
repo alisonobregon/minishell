@@ -1,0 +1,93 @@
+ls -la
+asd
+asd
+asd
+ads
+asd
+ls la
+ls -la
+asda
+asd
+asd
+cd ..
+cd ..
+cd include/
+pwd
+cd ..
+cd ..
+ls -la
+cd ..
+ls -la
+ls
+cd ..
+l
+l
+ls
+ls
+ls
+ls -la
+ls
+cd ..
+ls
+ls
+ls
+cd ..
+ls
+cd ..
+cd
+cd
+ls
+cd ..
+cd ..
+ls
+ls -la
+cd ..
+cat < Makefile 
+cat Makefile 
+                                                                                                                                             
+cd
+cd ..
+cd ..
+cd ..
+ls -la
+cd ..
+cd
+cd
+cd
+cd ..
+cd
+cd
+cd ~
+cd ~ 5
+ls -la
+cd ..
+cat Makefile 
+cat <  Makefile 
+cat < Makefile  > out1 > out2
+cat out1
+cat out2
+cat < Makefile | grep NAME | wc -l
+cat  < Makefile > out1 | sleep 3 | ls -la > out1 
+cat out1
+ls
+ls -la
+pwd
+pwd
+ls -la
+cd ..
+pwd
+ls -la
+cd ../..
+cat Makefile 
+cat < Makefile 
+cat  < Makefile > out1 > out2
+cat out1
+cat out2
+ls -la | grep Makefile 
+cat < Makefile  | grep NAME 
+cat < Makefile  | grep NAME  | wc -l
+cat < Makefile > out1 > out 2 | sleep 2 | ls -la > out 2 | cat << end 
+cat out2
+cat < Makefile > out1 > out 2 | sleep 2 | ls -la > out 2 | cat << end 
+cat out2
+                                                                                                                                                                                                                 ygkiuyi7yl             

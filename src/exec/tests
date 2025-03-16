@@ -1,3 +1,6 @@
 < Makefile cat ./include/minishell.h < .history
 
 < Makefile cat ./include/minishell.h < .gitignore
+
+
+cat < Makefile > out1 > out 2 | sleep 2 | ls -la > out 2 | cat << end  not working maybe 

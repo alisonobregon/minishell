@@ -96,7 +96,6 @@ int		append_in_args(char ***buf, char *op, char ***array);
 int		str_array_append(char ***array, char *str);
 t_exec	*exec_lstlast(t_exec *lst);
 int		print_command_list(t_exec *command_list);
-int		command_list_clear(t_exec *command_list);
 t_exec	*exec_new(void);
 void	free_array(char **array);
 # define OUT_WRITE		0
@@ -112,6 +111,7 @@ int			ft_pipes(char **buf);
 
 /*PROMPT*/
 char	*get_prompt(t_minishell *shell);
+int		add_history_to_file(char *str);
 /* Execution */
 void	exec(t_minishell *shell);
 void	one_cmd(t_minishell *shell);
@@ -134,14 +134,15 @@ void	ft_export(t_minishell *shell);
 /* built-ins tools */
 int		just_export(char *str);
 void	free_arrays(char **array1, char **array2);
-int		is_builtin(char *cmd);
+int		is_builtin(t_minishell *shell, char *cmd);
+
+/* builtins utils */
+void	free_arrays(char **array1, char **array2);
 
 /* utils */
 char	**strarray_copy(char **array);
 char	*ft_array_to_str(char **array);
 char	**add_str_to_array(char **array, char *str);
 char	**ft_arrjoin(char **arr1, char **arr2);
-char	*ft_str2join(char *s1, char *s2);
-/* builtins utils */
-void	free_arrays(char **array1, char **array2);
+char	*ft_str2join(char *s1, char *s2, int f1, int f2);
 #endif
