@@ -751,3 +751,6 @@ sd
 ks
 ajksd
 kdas
+cat Makefile 
+make clean
+cat < makefile

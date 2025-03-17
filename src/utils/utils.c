@@ -12,6 +12,18 @@
 
 #include "../../include/minishell.h"
 
+int contains_only(char *str, int c)
+{
+	int i;
+
+	i = -1;
+	while(str[++i])
+	{
+		if (str[i] != c)
+			return (0);
+	}
+	return (1);
+}
 char	*ft_array_to_str(char **array)
 {
 	char	*str;

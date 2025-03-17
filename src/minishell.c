@@ -179,7 +179,7 @@ int	main(int argc, char **argv, char **env)
 		free(shell->prompt->cwd);
 		free(shell->prompt);
 		//cd(shell, shell->prompt->str);
-		//exec(shell);
+		exec(shell);
 	}
 	free_shell(shell);
 	return (0);

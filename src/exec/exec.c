@@ -94,6 +94,7 @@ static int pipex(t_minishell *shell)
 			}
 		}
 		shell->pid = fork();
+		printf("pid: %d\n", shell->pid);
 		if (shell->pid == -1)
 		{
 			perror("fork");
