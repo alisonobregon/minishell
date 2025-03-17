@@ -1,30 +1,42 @@
 #include "../../include/minishell.h"
 
-int ft_pipes(char **buf)
+void ft_pipes(char **buf)
 {
 	int i;
 	char *pipe;
 	char *temp;
 
 	i = -1;
-	while (buf[++i])
+	while ((*buf)[++i])
 	{
-		if (get_arg_type(buf[i]) == 2)
+		if (get_arg_type(&((*buf)[i])) == 2)
 		{
 			if (i == 0)
-				return (0);
-			if (buf[i + 1] == NULL)
+				return ;
+			else
+				i++;
+			while ((*buf)[i] >= 1 && (*buf)[i] <= 32)
+				i++;
+			if ((*buf)[i] == '\0')
 			{
-				pipe = readline("pipe>");
-				temp = ft_strjoin(buf[i], "\n");
-				temp = ft_strjoin(temp, pipe);
-				free(pipe);
-				free(buf); //free array verifico que libere
-				*buf = temp;
-				return (ft_pipes(buf));
+				while (1)
+				{
+					pipe = readline("pipe>");
+					if (pipe && *pipe)
+					{
+						//if (get_arg_type(pipe) == 0)
+						//{
+							temp = ft_strjoin(*buf, pipe);
+							free(pipe);
+							free(*buf); //free array verifico que libere
+							*buf = temp;
+							break;
+						//}
+					}
+					free(pipe);
+				}
 			}
 		}
 	}
-	return (0);
 }
 

@@ -19,6 +19,7 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <sys/stat.h>
+# include <signal.h>
 # include <errno.h>
 
 # define CYAN "\033[36m"
@@ -26,21 +27,26 @@
 # define DEFAULT "\033[0m"
 # define READ 0
 # define WRITE 1
+# define MAX_ARGUMENTS 256
 
+extern sig_atomic_t	 g_sigint;
+
+/*enum e_arg_type
+{
+	CMD,
+	PIPE,
+	REDIR_IN,
+	REDIR_OUT,
+	REDIR_APPEND,
+	HEREDOC
+};
+*/
 typedef struct s_output
 {
 	int				action; // 0 = write, 1 = append
 	char			*file;
-	int				fd_out;
-	int				fd_in;
 	struct	s_output *next;
 }					t_output;
-
-typedef struct s_heredoc
-{
-	char	*delimiter;
-	int		here_d;
-}			t_heredoc;
 
 typedef struct s_exec
 {
@@ -53,6 +59,7 @@ typedef struct s_exec
 	int			i;
 	int			fd_in;
 	int			fd_out;
+	//int			type;
 	struct s_exec *next;
 }	t_exec;
 
@@ -72,6 +79,7 @@ typedef struct s_minishell
 	char		*pwd;
 	char		*cwd;
 	int			cwd_int;
+	int			status;
 	t_prompt	*prompt;
 	t_exec		*exec;
 
@@ -96,8 +104,9 @@ int		append_in_args(char ***buf, char *op, char ***array);
 int		str_array_append(char ***array, char *str);
 t_exec	*exec_lstlast(t_exec *lst);
 int		print_command_list(t_exec *command_list);
+int		command_list_clear(t_exec **command_list);
 t_exec	*exec_new(void);
-void	free_array(char **array);
+int		free_array(char **array);
 # define OUT_WRITE		0
 # define OUT_APPEND		1
 int		append_out_args(char ***buf, char *op, t_output **out);
@@ -105,9 +114,15 @@ int		outlst_append(t_output **out, char *filename, char *op);
 t_output	*out_lstlast(t_output *out);
 t_output	*outlst_new(char *filename, int action);
 int			add_history_to_file(char *str);
-int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
 int			check_specials(char **args);
-int			ft_pipes(char **buf);
+void		ft_pipes(char **buf);
+int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
+int			 free_shell(t_minishell *shell);
+int			free_output(t_output **output);
+int			check_specials(char **args);
+
+/*Signals :)*/
+void	wait_signal(int sig);
 
 /*PROMPT*/
 char	*get_prompt(t_minishell *shell);
@@ -128,6 +143,8 @@ void	unlinker(char **heredoc);
 
 /*built-ins functions*/
 int		cd(t_minishell *shell, char **arr);
+int		ft_echo(char **args);
+void	echo_args(char *str);
 int		pwd(void);
 void	ft_env(t_minishell *shell);
 void	ft_export(t_minishell *shell);

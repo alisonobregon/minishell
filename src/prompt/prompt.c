@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 18:19:13 by marvin            #+#    #+#             */
-/*   Updated: 2025/03/15 18:19:13 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/17 16:00:30 by gongarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,35 +38,6 @@ char	*get_prompt(t_minishell *shell)
 	}
 	else
 		cwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
-	//AQUI PONDRIAMOS YA SI EL COMANDO FUE EXITOSO O NO
-	//free(shell->cwd);
+	//free(shell->cwd); hay que verlo
 	return(cwd);
 }
-
-/* char	*get_prompt(t_minishell *shell)
-{
-	char	*pwd;
-	char	*temp1;
-	char	*temp2;
-	char	*temp3;
-
-	(void)shell;
-	pwd = getenv("PWD"); //hacer una funcion porque retorna int y quiero el char
-	//user = getenv("USER");
-	printf("pwd in get_prompt: %s\n", pwd);
-	if (pwd)
-	{
-		temp1 = ft_strjoin(CYAN, pwd);
-		temp2 = ft_strjoin(YELLOW, "->thelatambash$ ");
-		temp3 = ft_strjoin(temp1, temp2);
-
-		free(temp1);
-		free(temp2);
-		pwd = ft_strjoin(temp3, DEFAULT);
-		free(temp3);
-	}
-	else
-		pwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
-	//AQUI PONDRIAMOS YA SI EL COMANDO FUE EXITOSO O NO
-	return(pwd);
-} */

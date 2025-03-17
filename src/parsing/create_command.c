@@ -61,7 +61,6 @@ int append_in_args(char ***buf, char *op, char ***array)
 }
 int append_in_her_args(char ***buf, char *op, char ***array, t_exec *new)
 {
-	
 	if (!(**buf))
 		return (1);
 	if (ft_strlen(op) == ft_strlen(**buf)
@@ -69,10 +68,7 @@ int append_in_her_args(char ***buf, char *op, char ***array, t_exec *new)
 	{
 		(*buf)++;
 		if (!(str_array_append(array, **buf)))
-		{
-			//printf("got here \n");
 			return (0);
-		}
 		here_doc(&new, **buf);
 		(*buf)++;
 	}
@@ -114,7 +110,7 @@ int	str_array_append(char ***array, char *str)
 	return (1);
 }
 
-void free_array(char **array)
+int free_array(char **array)
 {
 	int i;
 
@@ -125,12 +121,12 @@ void free_array(char **array)
 		i++;
 	}
 	free(array);
+	return (0);
 }
 int command_lstappend(t_exec *new, char ***buf)
 {
-	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1))
+	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1)) //*buf
 	{
-		//printf("buf 3: %s\n", **buf);
 		if (!(append_out_args(buf, ">", &(new->outfile))))
 			return (0);
 		else if (!(append_in_args(buf, "<", &(new->infile))))
@@ -145,56 +141,10 @@ int command_lstappend(t_exec *new, char ***buf)
 				return (0);
 			(*buf)++;
 		}
-		//printf("buf 4: %s\n", **buf);
 	}
-
 	return (1);
 }
 
-/* int create_command_lst(t_minishell *shell)
-{
-	t_exec	*new;
-	char	**buf;
-
-	shell->exec = NULL;
-	buf = shell->args;
-	while ((*buf && (get_arg_type(*buf) == 0 || get_arg_type(*buf) == 1)))
-	{
-		printf("buf 0: %s\n", *buf);
-		new = exec_new();
-		if (!new)
-			return (1);
-		if (shell->exec != NULL)
-		{
-			exec_lstlast(shell->exec)->next = new;
-			//new->next = exec_lstlast(shell->exec);
-			//printf("entra aqui al if con %s\n", *buf);
-		}
-		else
-		{
-			shell->exec = new;
-			//printf("entra aqui al else con %s\n", *buf);
-		}
-		new->cmd = ft_strdup(*buf);
-		if(new->cmd == NULL)
-			return (1);
-		if (!(command_lstappend(new, &buf)))
-			return (1);
-		//printf("buf 1: %s\n", *buf);
-		if (*buf != NULL)
-			new->todo_next = get_arg_type(*buf);
-		if (get_arg_type(new->cmd) == 1 && new->args)
-			new->cmd = ft_strdup(new->args[0]);
-		//printf("buf 1: %s\n", *buf);
-		if (*buf && **buf)
-    		buf++;
-		//printf("buf 2: %s\n", *buf);
-	}
-	
-	//printf("entra aqui al final\n");
-	
-	return (0);
-} */
 
 int create_command_lst(t_minishell *shell)
 {
@@ -205,38 +155,26 @@ int create_command_lst(t_minishell *shell)
 	buf = shell->args;
 	while (*buf != NULL && (get_arg_type(*buf) == 0 || get_arg_type(*buf) == 1))
 	{
-		printf("buf 0: %s\n", *buf);
 		new = exec_new();
 		if (!new)
-			return (1);
+			return (0);
 		if (shell->exec != NULL)
-		{
 			exec_lstlast(shell->exec)->next = new;
-			//new->next = exec_lstlast(shell->exec);
-			//printf("entra aqui al if con %s\n", *buf);
-		}
 		else
-		{
 			shell->exec = new;
-			//printf("entra aqui al else con %s\n", *buf);
-		}
 		new->cmd = ft_strdup(*buf);
 		if(new->cmd == NULL)
-			return (1);
+			return (0);
 		if (!(command_lstappend(new, &buf)))
-			return (1);
-		//printf("buf 1: %s\n", *buf);
+			return (1); 
 		if (*buf != NULL)
 			new->todo_next = get_arg_type(*buf);
 		if (get_arg_type(new->cmd) == 1 && new->args)
 			new->cmd = ft_strdup(new->args[0]);
-		//printf("buf 1: %s\n", *buf);
 		if (*buf && **buf)
     		buf++;
-		//printf("buf 2: %s\n", *buf);
 	}
-	//printf("entra aqui al final\n");
-	return (0);
+	return (1);
 }
 int print_command_list(t_exec *command_list)
 {

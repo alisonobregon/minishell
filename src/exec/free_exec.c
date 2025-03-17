@@ -35,3 +35,60 @@ void	free_exec_node(t_exec **exec)
 	}
 	exit(0);
 }
+
+int command_list_clear(t_exec **command_list)
+{
+	t_exec	*temp;
+
+	while (*command_list)
+	{
+		temp = (*command_list)->next;
+		free((*command_list)->cmd);
+		if((*command_list)->args)
+			free_array((*command_list)->args);
+		if((*command_list)->infile)
+			free_array((*command_list)->infile);
+		if ((*command_list)->outfile)
+			free_output(&(*command_list)->outfile);
+		if ((*command_list)->heredoc)
+			free_array((*command_list)->heredoc);
+		free(*command_list);
+		*command_list = temp;
+	}
+	*command_list = NULL;
+	return (0);
+}
+
+int free_output(t_output **output)
+{
+	t_output	*temp;
+
+	while (*output)
+	{
+		temp = (*output)->next;
+		free((*output)->file);
+		free(*output);
+		*output = temp;
+	}
+	*output = NULL;
+	return (0);
+}
+
+int free_shell(t_minishell *shell)
+{
+	int exit_status;
+
+	exit_status = shell->status;
+	if (shell->prompt)
+	{
+		if (shell->prompt->str)
+			free(shell->prompt->str);
+		free(shell->prompt);
+	}
+	if (shell->env)
+		free_array(shell->env);
+	if(shell->args)
+		free_array(shell->args);
+	free(shell);
+	return (exit_status);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/12 21:29:52 by gongarci         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:33:37 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int get_arg_end(char *str, int end_index)
 	{
 		is_sep = index_of(str + end_index, split[i], 1);
 		if (is_sep < is_sp)
-			return (end_index + is_sep); //en plan si hay algun especial antes
+			return ((end_index + is_sep) + free_array(split)); 
 	}	
-	return (end_index + is_sp); //recordatorio amable para luego liberar el split preciosa
+	return ((end_index + is_sp) + free_array(split));
 }
 
 int get_quotes_end(char *str, int end)
@@ -60,18 +60,18 @@ int get_end_index(char *str, int end)
 		return(0);
 	end_index = get_quotes_end(str, end);
 	if (end_index == 0)
-		return (0);//return (free_split(split));
+		return ((0) + free_array(split));
 	if (end_index != -2)
-		return (end_index); // + free_split(split));
+		return ((end_index) + free_array(split));
 	while (split[++i])
 	{
 		if ((end > -1 && index_of(str, split[i], 1) < end))
-			return (index_of(str, split[i], 1));// + free_split(split));
+			return (index_of(str, split[i], 1) + free_array(split));
 		
 		if (index_of(str, split[i], 1) == 0)
-			return (ft_strlen(split[i]));// + free_split(split));
+			return (ft_strlen(split[i]) + free_array(split));
 	}
-	return (end);// + free_split(split));	
+	return (end + free_array(split));
 }
 
 int split_args(t_minishell *shell, char *str)
@@ -92,53 +92,66 @@ int split_args(t_minishell *shell, char *str)
 		else
 			end_index = get_end_index(str + i, get_arg_end(str + i, 0));
 		if (end_index < 0)
-			return (-1);
+			return (-1 + free_array(shell->args));
 		shell->args[j] = ft_strldup(str + i, end_index);
 		i += ft_strlen(shell->args[j]) - 1;
 		j++;
 	}
-	shell->args[j] = NULL;
-	return (0);
+	//shell->args[j] = NULL;
+	return (1);
 }
 
 int check_specials(char **args)
 {
-	int i;
-	int is_special;
-	
-	is_special = 0;
-	i = -1;
-	while(args[++i])
-	{
-		if (get_arg_type(args[i]) != 0)
-		{
-			if (args[i + 1] && (get_arg_type(args[i + 1]) == 1) && get_arg_type(args[i]) == 2)
-				break;
-			if (is_special)
-			{
-				printf("minishell: syntax error near unexpected token `%s'\n", args[i]);
-				return(0);
-			}
-			is_special = 1;
-		}
-		else
-			is_special = 0;
-		if (args[i + 1] == NULL && is_special)
-		{
-			printf("minishell: syntax error near unexpected token `newline'\n");	
-			return(0);
-		}	
-	}
-	return (1);
+    int i = 0;
+    int is_special;
+    int is_special2;
+
+	if (!args)
+        return 1;
+    while (args[i] != NULL)
+    {
+        is_special = get_arg_type(args[i]);
+        if (is_special)
+        {
+            if (args[i + 1] == NULL)
+            {
+                printf("minishell: syntax error near unexpected token `newline'\n");
+                free_array(args);
+                return 0;
+            }
+
+            is_special2 = get_arg_type(args[i + 1]);
+
+            if ((is_special == 2 || is_special == 3 || is_special == 4) && is_special2)
+            {
+                printf("minishell: syntax error near unexpected token `%s'\n", args[i + 1]);
+                free_array(args);
+                return 0;
+            }
+
+            if (is_special == 1 && is_special2 == 1)
+            {
+                printf("minishell: syntax error near unexpected token `%s'\n", args[i + 1]);
+                free_array(args);
+                return 0;
+            }
+        }
+        i++;
+    }
+    return 1;
 }
+
 void parsing(t_minishell *shell)
 {
-	//int i = 0;
 	check_quotes(&(shell->prompt->str), 2, 2);
 	ft_pipes(&(shell->prompt->str));
-	split_args(shell, shell->prompt->str);
+	if(!split_args(shell, shell->prompt->str))
+		return ;
 	if (!check_specials(shell->args))
 		return ;
-	create_command_lst(shell);
-	//print_command_list(shell->exec);
+	if (!create_command_lst(shell))
+		return ;
+	free_array(shell->args);
+	print_command_list(shell->exec);
 }

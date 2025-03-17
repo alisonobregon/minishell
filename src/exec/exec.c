@@ -127,7 +127,7 @@ void	exec(t_minishell *shell)
 	if (!shell->exec)
 		return ;
 	exec = shell->exec;
-	print_command_list(exec);
+	//print_command_list(exec);
 	if (exec && exec->todo_next == 0)
 		one_cmd(shell);
 	else if (exec && exec->todo_next == 2)

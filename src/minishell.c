@@ -12,13 +12,43 @@
 
 #include "../include/minishell.h"
 
+int g_sigint;
+
 void memory_allocated(t_minishell *shell)
 {
+	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char **));
+	//shell->env = NULL;
+	//shell->path = NULL;
+	//shell->pwd = NULL;
+	//shell->cwd = NULL;
+	shell->cwd_int = 0;
+	shell->status = 0;
 	shell->prompt = ft_calloc(1, sizeof(t_prompt));
-	shell->args = ft_calloc(1, sizeof(char *));
-	shell->path = NULL;
+	shell->exec = NULL;
 	if (!shell->prompt)
 		return ;
+}
+
+char	*get_input(t_minishell *shell)
+{
+	char	*prompt;
+	char	*buf;
+
+	//shell->pwd = get_prompt(shell);
+	prompt = get_prompt(shell);
+	buf = readline(prompt);
+	free(prompt);
+	if (!buf)
+	{
+		ft_printf("\n");
+		exit(free_shell(shell));
+	}
+	if (ft_strlen(buf) == 0)
+	{
+		free(buf);
+		return (NULL);
+	}
+	return(buf);
 }
 
 int	main(int argc, char **argv, char **env)
@@ -30,23 +60,28 @@ int	main(int argc, char **argv, char **env)
 	shell = ft_calloc(1, sizeof(t_minishell));
 	if (!shell)
 		return (1);
-	if (env)
-	{
-		shell->env = strarray_copy(env);
-		shell->path = ft_split(getenv("PATH"), ':');
-	}
-	memory_allocated(shell);
+	shell->env = strarray_copy(env);
+	shell->path = ft_split(getenv("PATH"), ':');
+	g_sigint = 0;
+	wait_signal(1);
 	while (1)
 	{
-		shell->cwd = get_prompt(shell);
-		shell->prompt->str = readline(shell->cwd);
+		memory_allocated(shell);
+		//shell->prompt->str = get_prompt(shell);
+		shell->prompt->str = get_input(shell);
+		if (!shell->prompt->str)
+			continue ;
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
 		parsing(shell);
-		print_command_list(shell->exec);
 		if (!is_builtin(shell, shell->exec->cmd))
 			exec(shell);
+		free(shell->prompt->str);// este tener cuidado
+		command_list_clear(&(shell->exec));
+		//free(shell->prompt->cwd);
+		//free(shell->prompt);
 	}
 	rl_clear_history();
+	free_shell(shell);
 	return (0);
 }
