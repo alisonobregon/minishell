@@ -1,0 +1,54 @@
+car hoa
+ls
+ls -la
+cat "hola"
+echo "hola"
+echo $$
+echo "$$"
+cat hola
+echo hola
+echo "hola"
+echo "$$"
+echo "
+make 
+echo "$$"
+echo ""
+echo "echo"
+echo $hola
+echo $HOME
+echo "$HOME"
+echo "$"
+echo '$JP'
+echo '$HOME'
+echo "$HOME"
+echo "$$"
+echo "$$"
+echo "$HOME"
+echo "Hola $USER estoy en $HOME"
+echo "Hola $USER
+echo "Hola $USER"
+echo "Hola $USER como estas" 
+cat "$HOME"
+echo "$HOME"
+echo "hola"
+echo "hola $USER estoy en $HOME"
+echo "hola $USER estoy"
+echo "hola soy $USER y $HOME"
+echo "$HOME y $HOME
+echo "$HOME y $USER"
+echo "$HOME y $USER SAD"
+echo "$HOME y $USER SAD"
+echo "$HOME y $USER"
+echo "$HOME y $USER SAD" 
+echo "$HOME y $USER" 
+echo " WJPASD $HOME y $USER" 
+echo "EJOAD $HOME y $USER" 
+echo "HOLA $HOME y $USER"
+cat "hola"
+cat "hola $jpña"
+cat hola
+echo "hoola $HOME Y $USER"
+echo "$HOME"
+echo "$HOME $HOME"
+echo "$HOME y $HOME"
+echo "$HOME y asdas $PWD"

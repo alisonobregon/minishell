@@ -33,6 +33,8 @@ SRC = 	./src/minishell.c \
 		./src/prompt/prompt_utils.c \
 		./src/prompt/prompt.c \
 		./src/signals/signals.c \
+		./src/parsing/quotes.c \
+		./src/parsing/env.c \
 
 
 OBJ = $(SRC:.c=.o)

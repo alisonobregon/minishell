@@ -78,7 +78,6 @@ typedef struct s_minishell
 	char		**path;
 	char		*pwd;
 	char		*cwd;
-	int			cwd_int;
 	int			status;
 	t_prompt	*prompt;
 	t_exec		*exec;
@@ -124,6 +123,17 @@ int			check_specials(char **args);
 /*Signals :)*/
 void	wait_signal(int sig);
 
+/*vars y env*/
+int replace_quotes(char ***args, char **env, int last_exit);
+int replace_var(char *arg, char *new_args, int *n_args);
+char	*replace_env(char *arg, char **env, int last_exit);
+char	*malloc_new_arg(char *arg, char **env, int lex);
+int		get_future_arglen(char *arg, char **env, int lex);
+int 	set_quotes(char c, int *quotes);
+int		get_env_len(char *str);
+char *get_env(char *env_name, char **env, int last_exit);
+int env_name_len(char *env_name);
+
 /*PROMPT*/
 char	*get_prompt(t_minishell *shell);
 int		add_history_to_file(char *str);
@@ -162,4 +172,7 @@ char	*ft_array_to_str(char **array);
 char	**add_str_to_array(char **array, char *str);
 char	**ft_arrjoin(char **arr1, char **arr2);
 char	*ft_str2join(char *s1, char *s2, int f1, int f2);
+size_t	ft_strcat(char *dest, const char *src);
+int		contains_only(char *str, int c);
+
 #endif
