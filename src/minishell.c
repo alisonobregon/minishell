@@ -30,16 +30,14 @@ int	main(int argc, char **argv, char **env)
 	shell = ft_calloc(1, sizeof(t_minishell));
 	if (!shell)
 		return (1);
-	shell->env = strarray_copy(env); 
+	if (env)
+	{
+		shell->env = strarray_copy(env);
+		shell->path = ft_split(getenv("PATH"), ':');
+	}
 	memory_allocated(shell);
-	shell->path = ft_split(getenv("PATH"), ':');
-	if (!shell->path)
-		shell->path[0] = ft_strdup("./") ; // why ? maybe in none env case
-	//ft_printf("\033[1;1H\033[2J");//revisar 
-	//shell->cwd_int = 0;
 	while (1)
 	{
-		//if (shell->cwd_int == 0)
 		shell->cwd = get_prompt(shell);
 		shell->prompt->str = readline(shell->cwd);
 		add_history(shell->prompt->str);
