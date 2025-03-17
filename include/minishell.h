@@ -146,8 +146,8 @@ int		cd(t_minishell *shell, char **arr);
 int		ft_echo(char **args);
 void	echo_args(char *str);
 int		pwd(void);
-void	ft_env(t_minishell *shell);
-void	ft_export(t_minishell *shell);
+int		ft_env(t_minishell *shell);
+int		ft_export(t_minishell *shell, char **args);
 /* built-ins tools */
 int		just_export(char *str);
 void	free_arrays(char **array1, char **array2);
@@ -155,6 +155,7 @@ int		is_builtin(t_minishell *shell, char *cmd);
 
 /* builtins utils */
 void	free_arrays(char **array1, char **array2);
+void	print_array(char **array);
 
 /* utils */
 char	**strarray_copy(char **array);

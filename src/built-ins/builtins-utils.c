@@ -14,21 +14,21 @@
 
 int is_builtin(t_minishell *shell, char *cmd)
 {
+	if (!shell->exec->args[0])
+		return (0);
 	if (!ft_strncmp(cmd, "echo", 5))
-	{
-		printf("echo\n");
-	}
-	if (!ft_strncmp(cmd, "cd", 3))
+		return (ft_echo(shell->exec->args));
+	else if (!ft_strncmp(cmd, "cd", 3))
 		return (cd(shell, shell->exec->args));
-	if (!ft_strncmp(cmd, "pwd", 4))
+	else if (!ft_strncmp(cmd, "pwd", 4))
 		return (pwd());
-	if (!ft_strncmp(cmd, "export", 7))
+	else if (!ft_strncmp(cmd, "export", 7) && !shell->exec->todo_next)
+		return (ft_export(shell, shell->exec->args));
+	else if (!ft_strncmp(cmd, "unset", 6))
 		return (1);
-	if (!ft_strncmp(cmd, "unset", 6))
-		return (1);
-	if (!ft_strncmp(cmd, "env", 4))
-		return (1);
-	if (!ft_strncmp(cmd, "exit", 5))
+	else if (!ft_strncmp(cmd, "env", 4) && !shell->exec->args[1])
+		return (ft_env(shell));
+	else if (!ft_strncmp(cmd, "exit", 5))
 		return (1);
 	return (0);
 }

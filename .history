@@ -1,0 +1,22 @@
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export | grep hola
+export | grep NAME
+export | grep NAME
+ls
+ls -la
+export
+export | grep USER
+export | grep USER
+/bin/export | grep USER
+env | grep USER
+exit | grep USER
+pwd | grep hla
+cd
+ls

@@ -1,0 +1,16 @@
+cases for export
+
+
+just export  // print all it's variables
+
+export variable=
+
+export variable=value
+
+export variable=value variable=value
+
+
+check for mutiples variables
+
+check if a correct variable (none numbers  or special characters at the beginning)
+

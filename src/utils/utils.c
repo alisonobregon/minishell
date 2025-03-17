@@ -86,7 +86,7 @@ char	**add_str_to_array(char **array, char *str)
 	i = 0;
 	if (!array)
 	{
-		new_array = ft_calloc(2, sizeof(char *));
+		new_array = ft_calloc(2, sizeof(char **));
 		new_array[0] = ft_strdup(str);
 		new_array[1] = NULL;
 		return (new_array);
@@ -94,6 +94,7 @@ char	**add_str_to_array(char **array, char *str)
 	new_array = ft_calloc(ft_len(array) + 2, sizeof(char *));
 	if (!new_array)
 		return (NULL);
+	print_array(array);
 	while (array[i] != NULL)
 	{
 		new_array[i] = ft_strdup(array[i]);
@@ -145,4 +146,15 @@ char	*ft_str2join(char *s1, char *s2, int f1, int f2)
 	if (f2)
 		free(s2);
 	return (substr);
+}
+void	print_array(char **array)
+{
+	int i;
+
+	i = 0;
+	while (array[i] != NULL)
+	{
+		ft_printf("%s\n", array[i]);
+		i++;
+	}
 }

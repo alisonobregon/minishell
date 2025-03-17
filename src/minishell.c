@@ -17,10 +17,6 @@ int g_sigint;
 void memory_allocated(t_minishell *shell)
 {
 	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char **));
-	//shell->env = NULL;
-	//shell->path = NULL;
-	//shell->pwd = NULL;
-	//shell->cwd = NULL;
 	shell->cwd_int = 0;
 	shell->status = 0;
 	shell->prompt = ft_calloc(1, sizeof(t_prompt));
@@ -34,7 +30,6 @@ char	*get_input(t_minishell *shell)
 	char	*prompt;
 	char	*buf;
 
-	//shell->pwd = get_prompt(shell);
 	prompt = get_prompt(shell);
 	buf = readline(prompt);
 	free(prompt);
@@ -67,7 +62,6 @@ int	main(int argc, char **argv, char **env)
 	while (1)
 	{
 		memory_allocated(shell);
-		//shell->prompt->str = get_prompt(shell);
 		shell->prompt->str = get_input(shell);
 		if (!shell->prompt->str)
 			continue ;
@@ -78,8 +72,8 @@ int	main(int argc, char **argv, char **env)
 			exec(shell);
 		free(shell->prompt->str);// este tener cuidado
 		command_list_clear(&(shell->exec));
-		//free(shell->prompt->cwd);
-		//free(shell->prompt);
+		free(shell->prompt->cwd);
+		free(shell->prompt);
 	}
 	rl_clear_history();
 	free_shell(shell);

@@ -46,6 +46,7 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 
 	if (exec->cmd == NULL)
 		free_exec_node(&exec);
+	// check for a builting cmd and exit stats
 	path = find_path(shell, exec->cmd);
 	if (path == NULL)
 		free_exec_node(&exec);

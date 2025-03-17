@@ -58,6 +58,7 @@ void	handler_fd(t_minishell *s, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		{
 			dup2(pipe_fd[READ], STDIN_FILENO);
 			close(pipe_fd[READ]);
+			close(pre_pipe[WRITE]);
 		}
 	}
 	unlinker(exec->heredoc);
@@ -117,6 +118,8 @@ static int	pipex(t_minishell *shell)
 	}
 	while (wait(NULL) > 0)
 		;
+	close(pipe_fd[READ]);
+	close(pre_pipe[WRITE]);
 	return (free(pre_pipe), free(pipe_fd), 1);
 }
 
