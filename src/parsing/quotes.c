@@ -85,8 +85,7 @@ char *replace_env(char *arg, char **env, int last_exit)
 			var_val = get_env(arg + i, env, last_exit);
 			if (!(replace_var(var_val, new_arg, &n_args)))
 				return (NULL);
-			i += get_env_len(arg + i) - 1;
-			printf("i: %d\n", i);
+			i += get_env_len(arg + i);
 		}
 	}
 	return (new_arg);
@@ -101,14 +100,16 @@ size_t	ft_strcat(char *dest, const char *src)
 		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = 0;
 	return (i);
 }
 int replace_var(char *arg, char *new_args, int *n_args)
 {
-	new_args[(*n_args) - 1] = 0;
+	//new_args[(*n_args) - 1] = 0;
 	if (!arg)
 		return (free_array(&new_args));
-	*n_args = ft_strcat(new_args + (*n_args) - 1, arg) - 1;
+	
+	*n_args = ft_strcat(new_args + (*n_args) -1 , arg) - 1 ;
 	free(arg);
 	return (1); 
 }
