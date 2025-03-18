@@ -20,3 +20,14 @@ exit | grep USER
 pwd | grep hla
 cd
 ls
+export hola
+export hola
+export hola
+export hola
+export
+export hola
+export
+export hola=value1 hola2 hola3=
+export
+export hola=value1 hola2 hola3=
+export

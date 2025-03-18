@@ -27,17 +27,19 @@ int	ft_chrlen(char *str, char c)
 	}
 	return (counter);
 }
+
 char	**check_vars(char **args)
 {
-	int	i;
+	int		i;
 	char	**vars;
-	i = 0;
+
+	i = 1;
 	vars = NULL;
-	while(args[i])
+	while (args[i])
 	{
 		if (ft_isalpha(args[i][0]) || args[i][0] == '_')
 		{
-			printf("times in check vars %d\n", i + 1);
+			printf("times in check vars %d\n", i);
 			vars = add_str_to_array(vars, args[i]);
 		}
 		else
@@ -47,6 +49,35 @@ char	**check_vars(char **args)
 	return (vars);
 }
 
+//this function should check if the array of vars has any repeated variables on shell->env and if it does,
+//it should replace the value of the variable
+void	check_repeats(t_minishell *shell, char **var)
+{
+	int		i;
+	int		j;
+	//char	*changed;
+
+	i = 0;
+	j = 0;
+	while (var[i])
+	{
+		while (shell->env[j])
+		{
+			if (!ft_strncmp(var[i], shell->env[j], ft_strlen(var[i]))
+				&& shell->env[j][ft_strlen(var[i])] == '=')
+			{
+				//changed = ft_strdup(shell->env[j]);
+				free(shell->env[j]);
+				shell->env[j] = ft_strdup(var[i]);
+				//free(var[i]);
+				//var[i] = ft_strdup(changed);
+				//free(changed);
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 int	ft_export(t_minishell *shell, char **args)
 {
@@ -55,6 +86,11 @@ int	ft_export(t_minishell *shell, char **args)
 
 	i = 0;
 	ft_printf("inside of export\n");
+	if (!args || !args[0])
+	{
+		ft_printf("inside of export null args\n");
+		return (1);
+	}
 	if (!ft_strncmp(args[0], "export", 7) && !args[1]) // nada que exportar, check for space before export
 	{
 		while(shell->env[i] != NULL)
@@ -64,6 +100,7 @@ int	ft_export(t_minishell *shell, char **args)
 	if (ft_len(args) > 1)
 	{
 		vars = check_vars(args);
+		check_repeats(shell, vars);
 		printf("before check vars \n");
 		shell->env = ft_arrjoin(shell->env, vars);
 	}

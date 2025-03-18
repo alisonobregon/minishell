@@ -72,8 +72,8 @@ int	main(int argc, char **argv, char **env)
 			exec(shell);
 		free(shell->prompt->str);// este tener cuidado
 		command_list_clear(&(shell->exec));
-		free(shell->prompt->cwd);
-		free(shell->prompt);
+		/* free(shell->prompt->cwd);
+		free(shell->prompt); */
 	}
 	rl_clear_history();
 	free_shell(shell);
