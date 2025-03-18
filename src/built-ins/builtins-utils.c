@@ -14,6 +14,8 @@
 
 int is_builtin(t_minishell *shell, char *cmd)
 {
+	if (!shell->exec->args || !shell->exec)
+		return (0);
 	if (!shell->exec->args[0])
 		return (0);
 	if (!ft_strncmp(cmd, "echo", 5))
@@ -38,14 +40,14 @@ void	free_arrays(char **array1, char **array2)
 	int	i;
 
 	i = 0;
-	if (array1)
+	if (*array1)
 	{
 		while (array1[i] != NULL)
 			free(array1[i++]);
 		if (array1)
 			free(array1);
 	}
-	if (array2)
+	if (*array2 || array2)
 	{
 		i = 0;
 		while (array2[i] != NULL)

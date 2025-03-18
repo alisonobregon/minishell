@@ -14,3 +14,8 @@ check for mutiples variables
 
 check if a correct variable (none numbers  or special characters at the beginning)
 
+
+
+env var1=value1
+
+export var1=value2

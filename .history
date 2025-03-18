@@ -31,3 +31,101 @@ export hola=value1 hola2 hola3=
 export
 export hola=value1 hola2 hola3=
 export
+cat
+                                                                                       
+< Makefile cat ./include/minishell.h  .history | grep hola | wc -l > output
+cat output 
+< Makefile cat ./include/minishell.h  .history
+ls > ls > out >> out2 < cat Makefile < Makefile -e << END ls
+ls Makefile 
+ls Makefile -e
+ls Makefile ls
+ls > ls > out >> out2 < cat Makefile < Makefile -e << END ls
+cat out2
+clear
+cat out2
+ls > ls > out >> out4 < cat Makefile < Makefile -e << END ls
+cat out4
+exit
+ls > ls > out >> out4 < cat Makefile < Makefile -e << END ls
+ls >> out4 Makefile ls
+ls >> out4 Makefile > out2 ls
+lss
+ls
+ls >> out4 Makefile > out2 ls
+ls >> out4 Makefile > out ls
+ls >> out4 Makefile > out > out3
+ls >> out4 Makefile > out > out3
+ls >> out4 Makefile > out > out3
+ls >> out4 Makefile > out > out3
+ls >> out4 Makefile > out > out3
+ls >> out2 > out ls
+ls >> out2 > out3 ls
+lss >> out2 > out23
+ls >> out2 > out23
+ls > out333 > out23
+ls > out333 > out23
+ls > out > out2
+ls > out33 > out33
+ls > out33 > out34
+ls > out32 > out366
+ls >> out > out1 >> out2 ls << END < inf -e
+ls >> out > out1 >> out2 ls 
+ls >> out > out1 >> out2 ls << END
+ls >> out > out1 >> out2 ls < inf << END
+ls >> out > out1 >> out2 ls < inf << END
+ls >> out > out1 >> out2 ls < inf << END
+ls >> out > out1 >> out2 ls  << END
+ls >> out > out1 >> out2  << END
+ls >> out > out1 >> out2  ls << END
+ls >> out > out1 >> out2  ls << END
+ls >> out > out1 >> out2  << END
+ls >> out > out1 >> out2  ls  << END
+                                                               
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+asd
+l
+ 
+ 
+l
+l
+l
+l
+l
+l
+l
+export hola
+export hola
+export hola
+export hola
+export hola
+ls
+export hol
+export hola
+export
+export hola=2
+export
+export hola=3
+export
+export hola=1
+export
+export hola=3
+export var1=v1 var2=v2 var3=v3
+ake
+k
+export hola=1 hola2=2

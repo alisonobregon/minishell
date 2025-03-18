@@ -12,9 +12,9 @@
 
 #include "../include/minishell.h"
 
-int g_sigint;
+int	g_sigint;
 
-void memory_allocated(t_minishell *shell)
+void	memory_allocated(t_minishell *shell)
 {
 	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char **));
 	shell->cwd_int = 0;
@@ -68,7 +68,9 @@ int	main(int argc, char **argv, char **env)
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
 		parsing(shell);
-		if (!is_builtin(shell, shell->exec->cmd))
+		if (!shell->exec || !shell->exec->cmd)
+			continue ;
+		else if (!is_builtin(shell, shell->exec->cmd))
 			exec(shell);
 		free(shell->prompt->str);// este tener cuidado
 		command_list_clear(&(shell->exec));

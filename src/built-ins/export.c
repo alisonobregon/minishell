@@ -55,7 +55,6 @@ void	check_repeats(t_minishell *shell, char **var)
 {
 	int		i;
 	int		j;
-	//char	*changed;
 
 	i = 0;
 	j = 0;
@@ -66,12 +65,13 @@ void	check_repeats(t_minishell *shell, char **var)
 			if (!ft_strncmp(var[i], shell->env[j], ft_strlen(var[i]))
 				&& shell->env[j][ft_strlen(var[i])] == '=')
 			{
-				//changed = ft_strdup(shell->env[j]);
 				free(shell->env[j]);
 				shell->env[j] = ft_strdup(var[i]);
-				//free(var[i]);
-				//var[i] = ft_strdup(changed);
-				//free(changed);
+				var = rm_str_from_array(var, var[i]);
+				print_array(shell->env);
+				print_array(var);
+				i = 0;
+				break;
 			}
 			j++;
 		}
@@ -97,7 +97,7 @@ int	ft_export(t_minishell *shell, char **args)
 			ft_printf("declare -x %s\n", shell->env[i++]);
 		return (1);
 	}
-	if (ft_len(args) > 1)
+	if (ft_len(args) >= 1)
 	{
 		vars = check_vars(args);
 		check_repeats(shell, vars);

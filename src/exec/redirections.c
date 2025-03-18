@@ -45,24 +45,24 @@ int	infile_checker(t_exec **exec)
 t_exec	*outfile_checker(t_exec **exec)
 {
 	t_exec	*t;
+	int fd = -1;
 
 	t = (*exec);
 	while (t->outfile->next != NULL)
 	{
 		if (t->outfile->action == 0)
 		{
-			if (!access(t->outfile->file, F_OK) && access(t->outfile->file, W_OK))
-				return (perror("Permission denied"), NULL);
-			close(open(t->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664));
+			fd = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+			if (fd == -1)
+				return (perror("Error opening file here"), NULL);
+			close(fd);
 		}
 		else
 		{
-			if (!access(t->outfile->file, F_OK) && access(t->outfile->file, W_OK))
-				close(open(t->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
-			else if (access(t->outfile->file, F_OK))
-				close(open(t->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664));
-			else
-				return (perror("Permission denied"), NULL);
+			fd = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+			if (fd == -1)
+				return (perror("Error opening file here"), NULL);
+			close(fd);
 		}
 		t->outfile = t->outfile->next;
 	}

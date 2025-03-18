@@ -163,4 +163,6 @@ char	*ft_array_to_str(char **array);
 char	**add_str_to_array(char **array, char *str);
 char	**ft_arrjoin(char **arr1, char **arr2);
 char	*ft_str2join(char *s1, char *s2, int f1, int f2);
+/* utils 2 */
+char	**rm_str_from_array(char **array, char *str);
 #endif
