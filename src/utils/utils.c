@@ -84,6 +84,8 @@ char	**add_str_to_array(char **array, char *str)
 	int		i;
 
 	i = 0;
+	if (!str)
+		return (array);
 	if (!array)
 	{
 		new_array = ft_calloc(2, sizeof(char **));
@@ -94,7 +96,6 @@ char	**add_str_to_array(char **array, char *str)
 	new_array = ft_calloc(ft_len(array) + 2, sizeof(char *));
 	if (!new_array)
 		return (NULL);
-	print_array(array);
 	while (array[i] != NULL)
 	{
 		new_array[i] = ft_strdup(array[i]);

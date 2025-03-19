@@ -16,7 +16,7 @@ int	g_sigint;
 
 void	memory_allocated(t_minishell *shell)
 {
-	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char **));
+	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char *));
 	shell->cwd_int = 0;
 	shell->status = 0;
 	shell->prompt = ft_calloc(1, sizeof(t_prompt));

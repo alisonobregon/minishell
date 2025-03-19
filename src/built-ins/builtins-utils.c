@@ -40,6 +40,8 @@ void	free_arrays(char **array1, char **array2)
 	int	i;
 
 	i = 0;
+	if (!array1 || !array2)
+		return ;
 	if (*array1)
 	{
 		while (array1[i] != NULL)
@@ -47,7 +49,9 @@ void	free_arrays(char **array1, char **array2)
 		if (array1)
 			free(array1);
 	}
-	if (*array2 || array2)
+	if (!array2)
+		return ;
+	if (*array2 && array2)
 	{
 		i = 0;
 		while (array2[i] != NULL)

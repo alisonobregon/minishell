@@ -129,3 +129,200 @@ export var1=v1 var2=v2 var3=v3
 ake
 k
 export hola=1 hola2=2
+ls -la
+export hola hola2=v2 hola3=
+export hola
+export
+export hola=val1
+export
+export hola=val3
+export
+export hola=val434 var1=value1
+export hola hola2
+export hola=var1 hola2=var2
+export
+./minishell 
+export hola
+export hola=val1 hola2=value2
+export
+export hola=val4 hola2=value4
+export hola
+export hola=val1 hola2=value2
+export
+export hola
+export hola=val1
+export
+export hola
+export hoal=val1
+export
+export hola=val1
+export
+export hola
+export hola=val1
+export hola
+export hola=value1
+export hola
+export hola=var1
+export
+export hola
+export hola=var1
+export hola
+export hola=var1
+export
+export hola=var3
+export
+export hola=var4
+export
+expor
+export
+export
+export hola
+export hola=var1
+export
+export hola=var2
+export
+export hola=var3
+export
+export hola=var3 hola1=var4
+export
+export hola=var1
+export
+export hola
+export hola=var1
+export
+export hola
+export
+export hola
+export hola
+export
+export hola
+export
+export hola
+export hola
+export
+export hola=va1
+export
+./minishell 
+export hola
+export hola=va1
+export
+export hola
+export hola
+export hola
+export hola
+export hola=v1
+export hola
+export hola=v1
+export hola
+export hola=v1
+export hola
+export hola=v1
+export hola
+export hola
+export hola=v1
+export
+export hola
+export hola2
+export hola
+export hola2
+export hola
+export hola2
+export hol<
+export hola
+export hola2
+export  hola
+export hola2
+export hola2 hola
+export hola2=value1
+export hola1 hola2=v2 hola3=v3 hola4
+export hola1 hola2=v2 hola3=v3 hola4 hola2
+export hola
+export hola
+export hola2
+export hola2=v2
+export hola=v1
+export hola=v5 hola2=v534 hola= hola123123
+export hola=v5 hola2=v534 hola= hola123123
+export hola
+hola
+export hola
+export hola
+export hola2
+export hola
+export hola
+export hola
+hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola2
+export hola2=v1
+export hola
+export hola
+export hola1
+export hola=v1
+export hola
+export hola1
+hola=value1
+export hola
+export hola
+export hola1
+export hola1=va
+export hola1=va2
+export hola=va1
+export
+hola
+export hola
+export hola1
+hola=v1
+./minishell 
+export hola
+export hola
+export hola
+export holA1
+export hola=va
+export hola
+export hola=v1
+hola 
+export hola
+export hola
+hola=v1
+export hola=v1
+export hola
+export hola
+export hola
+export hola1
+export hola=v1 hola1=v2
+export hola1=v3
+export hola1
+                                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+make clean
+make fclean
+export var
+export var=v1
+export var
+var=v1
+./minishell 
+export var1
+var1=v1
+export var1=v1
+export var var2 var3=v3
+export hola
+export hola=1
+export hola
+export hola
+export hola=v1
+export hola
+export hola
+export hola
+export hola
+export hola=v1
+export hola
+export hola=v1
+export hola
+export hola
+pwd
