@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 20:30:42 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/18 21:24:19 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/19 21:51:47 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ char *get_env(char *env_name, char **env, int last_exit)
 	i = -1;
 	if (env_name[1] == '?')
 		return (ft_itoa(last_exit));
-	else if (contains_only(env_name, '$'))
-		return (ft_strdup(env_name));
 	else if (env_name[1] == '$')
 		return (ft_strdup("$"));
+	else if (contains_only(env_name, '$'))
+		return (ft_strdup(env_name));
 	else if (env_name[1] == '\'' || env_name[1] == '\"')
 		return (ft_strdup("$"));
 	else if (!ft_isalpha(env_name[1]) && env_name[1] != '_')

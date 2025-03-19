@@ -113,3 +113,170 @@ echo "$HOME"
 echo "$HOME S"
 echo "$HOMEA"
 echo "$HOMEA"
+echo "hola"
+echo "hola $USER"
+echo "hola $USER y $PWD"
+echo "$HOME"
+echo "$HOME Y "
+echo "$HOME Y PWD"
+echo "$hola"
+echo "$HOME"
+echo "$ASD"
+echo "$AD SAD"
+echo "$HOME"
+echo "$HOME" DFS
+echo "$HOME"
+cd "$HOME"
+cd $HOME
+echo "HOLA"
+echo "HOLA """
+echo "GIAK ''"
+echo $HOME
+cd $HOME
+echo '$HOME'
+echo "hoal"
+echo "hoal $USER"
+echo "hoal $USER 66 &HOME"
+echo "hoal $USER 66 &HOME ''"
+echo '$HOME'
+echo '$HOME Y'
+echo "$HOME"
+echo "$HOME DF"
+echo "$HOME DF ''"
+echo "dsfsdfd ''dsf s"
+echo "hoal"
+echo "hola"
+echo "hola"
+echo hola
+echo "hola"
+echo "$HOME y asdkds $PWD DSF"
+echo $HOME y asdkds $PWD DSF
+echo "$HOME y asdkds ''  $PWD DSF"
+'$HOME'
+ECHO "HOADS"
+echo "hoaasd $HOME ''"
+echo $_
+echo $^
+echo $1
+echo $hbghb
+echo $$/
+echo $
+echo $$$
+echo $$$$
+echo $$
+echo $
+echo $/
+echo "$/"
+echo 1
+echo $1
+echo $654
+echo $6asdsad
+echo $65asdsa
+echo "hola ''"
+echo "hola "
+echo 'sf'
+echo ""
+echo "
+echo "2
+echo ""
+echo "hola"
+echo '$hola"
+echo '$hola''
+echo '$HOME'
+echo "$HOME"
+echo "$HOME"
+echo "$HOME fsd"
+echo "hoa"
+echo "hola"
+echo "ada $dfs"
+echo ''
+echo ''
+echo 'asd'
+echo 'asd $hola'
+echo 'asd $HOME'
+echo "$HOME"
+echo "$HOME DSFDSF ''"
+echo ""
+echo ""
+echo " $HOME"
+echo "$HOME"
+echo "hola"
+echo "HOLA"
+echo ""
+echo "$sd"
+echo "$HOME"
+echo "HOLA "
+echo "hola"
+echo "hola $HOME"
+echo "hola"
+echo "hola"
+echo "hola"
+echo "hol"
+echo"jooa"
+echo "hola"
+echo "hola"
+echo "hola $HOME"
+echo 'hola $HOME'
+echo 'hola $HOME ""'
+echo "HOLA"
+echo "HOLA $PWD" 
+echo "HOLA $PWD SFS $PWD" 
+echo "hola"
+echo "hola "
+echo "hola"
+echo "hola $HOME"
+echo "hola $HOME ''"
+ECHO $home
+echo $home
+echo '$home'
+echo '$home $?'
+echo '$home "$?"'
+echo "$home '$?'"
+echo "$HOME '$?'"
+echo $_
+echo "buenas $USER, estoy en el directorio $HOME. Mi PWD es: $PWD."
+echo 'buenas $USER, estoy en el directorio $HOME. Mi PWD es: $PWD.'
+echo "buenas $USER, estoy en el directorio $HOME. Mi PWD es: $PWDs."
+echo $$
+echo $$/
+echo $^
+echo $1
+echo $dskfsid
+echo $
+echo $1$$
+echo $dfhdsbf$$
+echo $dfhdsbf$$$sjfsdn
+echo $$$djfnsd
+echo $$$1
+echo $1$$
+echo 1$$
+echo $$1
+echo $HOME11111111
+echo 11111111$HOME
+echo -n $HOME11111111
+echo -nnnnnnnnnnnn $HOME
+echo -n-n-n-n-
+echo -n-n-n-n- -nnnnn
+echo -nnnnnnnnn -n-n-n-n-
+echo " $PWD,"
+echo " $PWDs,"
+echo $HOME$USER
+echo $HOME/$USER
+echo $""
+echo $fskmds$$
+echo $PATH:paula$HOME:holamundo:$USER
+echo $PATH--paula$HOME--holamundo--$USER
+echo $HOME/$PWD/buenas
+echo $"$"/""
+echo '$"$"/"'
+echo "$HOMEd"
+echo "$HOMEd"
+echo "$/$"
+echo "$$"
+echo "$"
+echo "$$"
+echo "$$"
+echo "$$$"
+echo "$"
+echo "$$/"
+echo "$/$"

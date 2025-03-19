@@ -67,8 +67,10 @@ char *replace_env(char *arg, char **env, int last_exit)
 	int i;
 	int quotes;
 	int n_args;
+	int iset_quotes;
 	char *new_arg;
 	char *var_val;
+	char quotee;
 
 	i = -1;
 	quotes = 0;
@@ -76,18 +78,28 @@ char *replace_env(char *arg, char **env, int last_exit)
 	new_arg = malloc_new_arg(arg, env, last_exit); //AQUI LE TENGO QUE DAR ESPACIO CON LAS VARIABLES DE ENTORNO
 	if (!new_arg)
 		return (NULL);
+	quotee = arg[0];
 	while (arg[++i])
 	{
-		if (set_quotes(arg[i], &quotes) == quotes)
+		iset_quotes = set_quotes(arg[i], &quotes);
+		if (((arg[i] == '\''|| arg[i] == '\"')  && quotee == arg[i]))
+			continue;
+		if (quotes == 1)
+		{
 			new_arg[n_args++] = arg[i];
+			continue;
+		}
 		if (quotes != 1 && arg[i] == '$')
 		{
 			var_val = get_env(arg + i, env, last_exit);
 			if (!(replace_var(var_val, new_arg, &n_args)))
 				return (NULL);
-			i += get_env_len(arg + i);
+			i += get_env_len(arg + i) - 1;
 		}
+		else
+			new_arg[n_args++] = arg[i];
 	}
+	new_arg[n_args] = 0;
 	return (new_arg);
 }
 size_t	ft_strcat(char *dest, const char *src)
@@ -105,11 +117,10 @@ size_t	ft_strcat(char *dest, const char *src)
 }
 int replace_var(char *arg, char *new_args, int *n_args)
 {
-	//new_args[(*n_args) - 1] = 0;
+
 	if (!arg)
 		return (free_array(&new_args));
-	
-	*n_args = ft_strcat(new_args + (*n_args) -1 , arg) - 1 ;
+	*n_args += ft_strcat(new_args + (*n_args), arg);
 	free(arg);
 	return (1); 
 }
