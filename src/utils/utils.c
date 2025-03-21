@@ -88,7 +88,7 @@ char	**add_str_to_array(char **array, char *str)
 		return (array);
 	if (!array)
 	{
-		new_array = ft_calloc(2, sizeof(char **));
+		new_array = ft_calloc(2, sizeof(char *));
 		new_array[0] = ft_strdup(str);
 		new_array[1] = NULL;
 		return (new_array);

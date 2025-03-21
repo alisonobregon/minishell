@@ -63,6 +63,7 @@ int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *str);
+char	*ft_strndup(const char *str, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_substr(char const *str, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);

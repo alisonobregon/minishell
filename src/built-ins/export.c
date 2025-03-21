@@ -12,6 +12,16 @@
 
 #include "../../include/minishell.h"
 
+char *get_var_name(char *var)
+{
+	char	*eq;
+
+	eq = ft_strchr(var, '=');
+	if (eq)
+		return (ft_strndup(var, eq - var));
+	return (ft_strdup(var));
+}
+
 int	index_array(char **array, char *str)
 {
 	int	i;
@@ -35,8 +45,6 @@ int	str_in_array(char **array, char *str)
 	{
 		if (!ft_strcmp(array[i], str))
 			return (1);
-		/* if (ft_strncmp(array[i], str, ft_strlen(array[i])) == 0)
-			return (1); */
 		i++;
 	}
 	return (0);
@@ -79,44 +87,57 @@ char	**check_vars(char **args)
 	return (vars);
 }
 
-void	check_repeats(t_minishell *shell, char **var)
+char	**rm_env_var(t_minishell *shell, char *var)
 {
 	int		i;
 	int		j;
-	int		k;
-	//int		index;
+	char	*var_name;
+	char	**new_env;
 
 	i = 0;
-	while (var[i])
+	j = 0;
+	new_env = ft_calloc(ft_len(shell->env), sizeof(char *) + 1);
+	if (!new_env)
+		return (NULL);
+	while (shell->env[i] != NULL)
 	{
-		j = 0;
-		k = 0;
-		while (shell->env[j])
+		var_name = get_var_name(shell->env[i]);
+		if (ft_strcmp(var_name, var))
 		{
-			if (!ft_strncmp(shell->env[j], var[i], ft_strlen(shell->env[j])))
-			{
-				if (!ft_strcmp(shell->env[j], var[i]) || !ft_strchr(var[i], '='))
-					break;
-				if (ft_strlen(shell->env[j]) >= ft_strlen(var[i]))
-					break;
-				free(shell->env[j]);
-				shell->env[j] = ft_strdup(var[i]);
-				var = rm_str_from_array(var, var[i]);
-				k = i;
-				i = -1;
-				break;
-			}
+			new_env[j] = ft_strdup(shell->env[i]);
 			j++;
-			if (str_in_array(shell->env, var[i]))
-			{
-				if (ft_strchr(var[i], '='))
-					var = rm_str_from_array(var, var[i]);
-				else
-					i++;
-			}
 		}
-		shell->env = add_str_to_array(shell->env, var[k]);
+		free(var_name);
 		i++;
+	}
+	new_env[j] = NULL;
+	free_arrays(shell->env, NULL);
+	return (new_env);
+}
+
+
+
+void	check_export(t_minishell *shell, char **vars)
+{
+	int	i;
+	char	*full_var;
+	char	*name;
+	i = -1;
+	while(vars[++i])
+	{
+		full_var = vars[i];
+		name = get_var_name(full_var);
+		if (ft_strchr(full_var, '='))
+		{
+			shell->env = rm_env_var(shell, name);
+			shell->env = add_str_to_array(shell->env, full_var);
+		}
+		else
+		{
+			if (!str_in_array(shell->env, name))
+				shell->env = add_str_to_array(shell->env, full_var);
+		}
+		free(name);
 	}
 }
 
@@ -132,18 +153,17 @@ int	ft_export(t_minishell *shell, char **args)
 		ft_printf("inside of export null args\n");
 		return (1);
 	}
-	if (!ft_strncmp(args[0], "export", 7) && !args[1])
+	if (!args[1])
 	{
 		while(shell->env[i] != NULL)
-			ft_printf("declare -x %s\n", shell->env[i++]);
+			ft_printf("declare -x ""%s""\n", shell->env[i++]);
 		return (1);
 	}
-	if (ft_len(args) >= 1)
+	if (ft_len(args) > 1)
 	{
 		vars = check_vars(args);
-		check_repeats(shell, vars);
+		check_export(shell, vars);
 		free_arrays(vars, NULL);
-		print_array(shell->env);
 	}
 	return (1);
 }
