@@ -82,8 +82,12 @@ int free_shell(t_minishell *shell)
 	{
 		if (shell->prompt->str)
 			free(shell->prompt->str);
+		if (shell->prompt->cwd)
+			free(shell->prompt->cwd);
 		free(shell->prompt);
 	}
+	if (shell->exec)
+		command_list_clear(&(shell->exec));
 	if (shell->env)
 		free_array(shell->env);
 	if(shell->args)

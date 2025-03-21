@@ -409,3 +409,249 @@ export hola2=V2 hola=v1
 export hola2=V2 hola1=v0
 export hola2=V2 hola1=v0 new=new1
 export hola= hola2=v02 hola1=v055 new=
+export hola
+export hola=v1
+export hola
+export
+export hola
+export hola
+export
+export hola=v1
+export
+export hola
+export
+export hola
+export hola=v1
+export
+export hola
+export
+export hola
+export hola=v1
+export
+export hola
+export
+export hola
+export hola1=v1 hola= hola2=v2
+export
+unset hola
+export
+unset hola1 hola2
+export
+unset hola
+export
+export | grep HOME
+export | grep HOME
+export > out1
+export > put1
+export out1
+export > out1
+asd
+ls -la | export > out1
+export
+export > out1
+export > out1
+export > out1
+export > out1
+export > out1
+export > out1
+export > out1
+export > out1
+export > out2
+das
+asd
+asd
+export
+export > out1
+export
+export > out1
+export > out1
+< Make export > out1
+< Make export > out1
+< Makefile export > output
+DEFAULT= \033[0;39m
+GRAY= \033[0;90m
+RED= \033[0;91m
+GREEN= \033[0;92m
+YELLOW= \033[0;93m
+BLUE= \033[0;94m
+MAGENTA= \033[0;95m
+CYAN= \033[0;96m
+WHITE= \033[0;97m
+NAME= minishell
+SRC=./src/minishell.c \
+./src/built-ins/builtins-utils.c \
+./src/built-ins/export.c \
+./src/built-ins/unset.c \
+./src/built-ins/env.c \
+./src/built-ins/exit.c \
+./src/built-ins/cd.c \
+./src/built-ins/echo.c \
+./src/parsing/parsing.c \
+./src/parsing/checker.c \
+./src/parsing/utils_parsing.c \
+./src/parsing/create_command.c \
+./src/parsing/outfiles.c \
+./src/parsing/pipes.c \
+./src/utils/utils.c \
+./src/utils/utils2.c \
+./src/exec/exec_utils.c \
+./src/exec/exec.c \
+./src/exec/get_path.c \
+./src/exec/redirections.c \
+./src/exec/here_doc.c \
+./src/exec/free_exec.c \
+./src/prompt/prompt_utils.c \
+./src/prompt/prompt.c \
+./src/signals/signals.c \
+OBJ= $(SRC:.c=.o)
+INCLUDES = -I/mingw64/include
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+CC = cc
+#-no-pie
+all: $(NAME) show_progress
+$(NAME): $(OBJ)
+@make -s -C libft
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+debug: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+fd: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+run: $(NAME)
+make && ./$(NAME)
+lsl -la > output
+ls -la > output
+export > out
+export > out
+export > out
+export > out
+< Makefile cat
+DEFAULT= \033[0;39m
+GRAY= \033[0;90m
+RED= \033[0;91m
+GREEN= \033[0;92m
+YELLOW= \033[0;93m
+BLUE= \033[0;94m
+MAGENTA= \033[0;95m
+CYAN= \033[0;96m
+WHITE= \033[0;97m
+NAME= minishell
+SRC=./src/minishell.c \
+./src/built-ins/builtins-utils.c \
+./src/built-ins/export.c \
+./src/built-ins/unset.c \
+./src/built-ins/env.c \
+./src/built-ins/exit.c \
+./src/built-ins/cd.c \
+./src/built-ins/echo.c \
+./src/parsing/parsing.c \
+./src/parsing/checker.c \
+./src/parsing/utils_parsing.c \
+./src/parsing/create_command.c \
+./src/parsing/outfiles.c \
+./src/parsing/pipes.c \
+./src/utils/utils.c \
+./src/utils/utils2.c \
+./src/exec/exec_utils.c \
+./src/exec/exec.c \
+./src/exec/get_path.c \
+./src/exec/redirections.c \
+./src/exec/here_doc.c \
+./src/exec/free_exec.c \
+./src/prompt/prompt_utils.c \
+./src/prompt/prompt.c \
+./src/signals/signals.c \
+OBJ= $(SRC:.c=.o)
+INCLUDES = -I/mingw64/include
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+CC = cc
+#-no-pie
+all: $(NAME) show_progress
+$(NAME): $(OBJ)
+@make -s -C libft
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+debug: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+fd: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+run: $(NAME)
+make && ./$(NAME)
+ls -la
+ls -la > output
+ls -la > out
+ls -la
+ls -la > out
+ls -la > out1 > out2
+ls -la | grep Makefile 
+ls -la
+ls -la | grep Makefile 
+ls -la | grep Makefile 
+ls -la
+export
+ls -la
+ls -la | grep Makefile 
+ls -la
+ls -la | grep Makefile 
+export > out
+ls -la | grep Makefile | wc -l
+cat < Makefile |  grep exec
+DEFAULT= \033[0;39m
+GRAY= \033[0;90m
+RED= \033[0;91m
+GREEN= \033[0;92m
+YELLOW= \033[0;93m
+BLUE= \033[0;94m
+MAGENTA= \033[0;95m
+CYAN= \033[0;96m
+WHITE= \033[0;97m
+NAME= minishell
+SRC=./src/minishell.c \
+./src/built-ins/builtins-utils.c \
+./src/built-ins/export.c \
+./src/built-ins/unset.c \
+./src/built-ins/env.c \
+./src/built-ins/exit.c \
+./src/built-ins/cd.c \
+./src/built-ins/echo.c \
+./src/parsing/parsing.c \
+./src/parsing/checker.c \
+./src/parsing/utils_parsing.c \
+./src/parsing/create_command.c \
+./src/parsing/outfiles.c \
+./src/parsing/pipes.c \
+./src/utils/utils.c \
+./src/utils/utils2.c \
+./src/exec/exec_utils.c \
+./src/exec/exec.c \
+./src/exec/get_path.c \
+./src/exec/redirections.c \
+./src/exec/here_doc.c \
+./src/exec/free_exec.c \
+./src/prompt/prompt_utils.c \
+./src/prompt/prompt.c \
+./src/signals/signals.c \
+OBJ= $(SRC:.c=.o)
+INCLUDES = -I/mingw64/include
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+CC = cc
+#-no-pie
+all: $(NAME) show_progress
+$(NAME): $(OBJ)
+@make -s -C libft
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+debug: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+fd: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+run: $(NAME)
+make && ./$(NAME)
+ls -la
+ls -la | grep Makefile 
+ls -la > out
+ls -la > out
+ls -la
+< Makefile cat
+cat < Makefile 
+cat < Makefile  | grep exec > out

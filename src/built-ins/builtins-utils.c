@@ -14,10 +14,13 @@
 
 int is_builtin(t_minishell *shell, char *cmd)
 {
-	if (!shell->exec->args || !shell->exec)
+	if (!shell->exec->args || !shell->exec->args[0] || !shell->exec)
 		return (0);
-	if (!shell->exec->args[0])
-		return (0);
+	if (shell->exec->infile || shell->exec->outfile)
+	{
+		if (!fd_checker(&shell->exec))
+			return (1);
+	}
 	if (!ft_strncmp(cmd, "echo", 5))
 		return (ft_echo(shell->exec->args));
 	else if (!ft_strncmp(cmd, "cd", 3))
@@ -27,7 +30,7 @@ int is_builtin(t_minishell *shell, char *cmd)
 	else if (!ft_strncmp(cmd, "export", 7) && !shell->exec->todo_next)
 		return (ft_export(shell, shell->exec->args));
 	else if (!ft_strncmp(cmd, "unset", 6))
-		return (1);
+		return (ft_unset(shell, shell->exec->args), 1);
 	else if (!ft_strncmp(cmd, "env", 4) && !shell->exec->args[1])
 		return (ft_env(shell));
 	else if (!ft_strncmp(cmd, "exit", 5))

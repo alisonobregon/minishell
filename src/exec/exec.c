@@ -62,7 +62,10 @@ void	handler_fd(t_minishell *s, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		}
 	}
 	unlinker(exec->heredoc);
-	exec_cmd(s, exec);
+	if (is_builtin(s, exec->cmd))
+		free_shell(s);
+	else
+		exec_cmd(s, exec);
 }
 
 int	child_maker(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
@@ -130,7 +133,6 @@ void	exec(t_minishell *shell)
 	if (!shell->exec)
 		return ;
 	exec = shell->exec;
-	//print_command_list(exec);
 	if (exec && exec->todo_next == 0)
 		one_cmd(shell);
 	else if (exec && exec->todo_next == 2)

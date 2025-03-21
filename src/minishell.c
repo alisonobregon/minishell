@@ -70,12 +70,14 @@ int	main(int argc, char **argv, char **env)
 		parsing(shell);
 		if (!shell->exec || !shell->exec->cmd)
 			continue ;
-		else if (!is_builtin(shell, shell->exec->cmd))
-			exec(shell);
-		free(shell->prompt->str);// este tener cuidado
+	/* 	if (is_builtin(shell, shell->exec->cmd) && !shell->exec->todo_next)
+		{
+			multi_dup(0, 1);
+		}
+		else */
+		exec(shell);
+		free(shell->prompt->str);
 		command_list_clear(&(shell->exec));
-		/* free(shell->prompt->cwd);
-		free(shell->prompt); */
 	}
 	rl_clear_history();
 	free_shell(shell);

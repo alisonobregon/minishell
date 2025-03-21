@@ -13,7 +13,9 @@ NAME	= minishell
 SRC	=	./src/minishell.c \
 		./src/built-ins/builtins-utils.c \
 		./src/built-ins/export.c \
+		./src/built-ins/unset.c \
 		./src/built-ins/env.c \
+		./src/built-ins/exit.c \
 		./src/built-ins/cd.c \
 		./src/built-ins/echo.c \
 		./src/parsing/parsing.c \

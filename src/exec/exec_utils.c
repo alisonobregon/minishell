@@ -30,11 +30,9 @@ int	len_pipes(t_exec *exec)
 
 void	multi_dup(int read, int write)
 {
+	dup2(read, STDIN_FILENO);
 	if (read != 0)
-	{
-		dup2(read, STDIN_FILENO);
 		close(read);
-	}
 	dup2(write, STDOUT_FILENO);
 	if (write > 1)
 		close(write);
@@ -45,16 +43,10 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 	char	*path;
 
 	if (exec->cmd == NULL)
-		free_exec_node(&exec);
-	// check for a builting cmd and exit stats
+		free_shell(shell);
 	path = find_path(shell, exec->cmd);
 	if (path == NULL)
 		free_exec_node(&exec);
-	if (!ft_strncmp(exec->cmd, "exit", 4))
-	{
-		exit(0);
-		free_exec_node(&exec);
-	}
 	execve(path, exec->args, shell->env);
 	perror("Error excecuting execve\n");
 	free_exec_node(&exec);
@@ -77,8 +69,12 @@ void	one_cmd(t_minishell *shell)
 		}
 		if (shell->exec->heredoc)
 			unlinker(shell->exec->heredoc);
+		/* if (is_builtin(shell, shell->exec->cmd))
+			free_shell(shell);
+		else */
 		exec_cmd(shell, shell->exec);
 	}
 	while (wait(NULL) > 0)
 		;
+	//kill(shell->pid, SIGTERM);
 }

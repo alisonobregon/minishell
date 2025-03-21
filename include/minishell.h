@@ -59,8 +59,7 @@ typedef struct s_exec
 	int			i;
 	int			fd_in;
 	int			fd_out;
-	//int			type;
-	struct s_exec *next;
+	struct		s_exec *next;
 }	t_exec;
 
 typedef struct s_prompt
@@ -146,13 +145,17 @@ int		cd(t_minishell *shell, char **arr);
 int		ft_echo(char **args);
 void	echo_args(char *str);
 int		pwd(void);
+void	ft_unset(t_minishell *shell, char **args);
 int		ft_env(t_minishell *shell);
 int		ft_export(t_minishell *shell, char **args);
 /* built-ins tools */
-int		just_export(char *str);
 void	free_arrays(char **array1, char **array2);
 int		is_builtin(t_minishell *shell, char *cmd);
-
+char	*get_var_name(char *var);
+int		str_in_array(char **array, char *str);
+char	**rm_env_var(t_minishell *shell, char *var);
+int		index_array(char **array, char *str);
+int		ft_chrlen(char *str, char c);
 /* builtins utils */
 void	free_arrays(char **array1, char **array2);
 void	print_array(char **array);

@@ -22,50 +22,6 @@ char *get_var_name(char *var)
 	return (ft_strdup(var));
 }
 
-int	index_array(char **array, char *str)
-{
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		if (!ft_strncmp(array[i], str, ft_strlen(array[i])))
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int	str_in_array(char **array, char *str)
-{
-	int	i;
-
-	i = 0;
-	while (array[i] != NULL)
-	{
-		if (!ft_strcmp(array[i], str))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_chrlen(char *str, char c)
-{
-	int		i;
-	int		counter;
-
-	i = 0;
-	counter = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			counter++;
-		i++;
-	}
-	return (counter);
-}
-
 char	**check_vars(char **args)
 {
 	int		i;
@@ -77,7 +33,6 @@ char	**check_vars(char **args)
 	{
 		if (ft_isalpha(args[i][0]) || args[i][0] == '_')
 		{
-			printf("times in check vars %d\n", i);
 			vars = add_str_to_array(vars, args[i]);
 		}
 		else
@@ -115,15 +70,14 @@ char	**rm_env_var(t_minishell *shell, char *var)
 	return (new_env);
 }
 
-
-
 void	check_export(t_minishell *shell, char **vars)
 {
-	int	i;
+	int		i;
 	char	*full_var;
 	char	*name;
+
 	i = -1;
-	while(vars[++i])
+	while (vars[++i])
 	{
 		full_var = vars[i];
 		name = get_var_name(full_var);
@@ -147,12 +101,8 @@ int	ft_export(t_minishell *shell, char **args)
 	char	**vars;
 
 	i = 0;
-	ft_printf("inside of export\n");
 	if (!args || !args[0])
-	{
-		ft_printf("inside of export null args\n");
 		return (1);
-	}
 	if (!args[1])
 	{
 		while(shell->env[i] != NULL)

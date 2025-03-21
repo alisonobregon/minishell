@@ -16,10 +16,10 @@ int	infile_checker(t_exec **exec)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if ((*exec)->infile)
 	{
-		while (i < ft_len((*exec)->infile))
+		while (++i < ft_len((*exec)->infile))
 		{
 			if (access((*exec)->infile[i], F_OK))
 				return(perror("File not found"), 0);
@@ -36,7 +36,6 @@ int	infile_checker(t_exec **exec)
 					close((*exec)->fd_in);
 				}
 			}
-			i++;
 		}
 	}
 	return (1);
@@ -45,24 +44,23 @@ int	infile_checker(t_exec **exec)
 t_exec	*outfile_checker(t_exec **exec)
 {
 	t_exec	*t;
-	int fd = -1;
 
 	t = (*exec);
 	while (t->outfile->next != NULL)
 	{
 		if (t->outfile->action == 0)
 		{
-			fd = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-			if (fd == -1)
+			t->fd_out = open(t->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+			if (t->fd_out == -1)
 				return (perror("Error opening file here"), NULL);
-			close(fd);
+			close(t->fd_out);
 		}
 		else
 		{
-			fd = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-			if (fd == -1)
+			t->fd_out = open(t->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
+			if (t->fd_out == -1)
 				return (perror("Error opening file here"), NULL);
-			close(fd);
+			close(t->fd_out);
 		}
 		t->outfile = t->outfile->next;
 	}
@@ -104,17 +102,12 @@ int	fd_checker(t_exec **exec)
 	if ((*exec)->infile)
 	{
 		if (!infile_checker(exec))
-		{
-			ft_putstr_fd("infile checker: fail ", 2);
 			return (0);
-		}
 	}
 	if (!(*exec)->outfile)
 		return (2);
 	tmp = outfile_checker(exec);
 	if (!tmp)
-		return (0);
-	if ((*exec) == NULL)
 		return (0);
 	return (take_outfile(&tmp));
 }
