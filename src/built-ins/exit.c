@@ -12,7 +12,7 @@
 
 #include "../../include/minishell.h"
 
-void	exit_shell(t_minishell *shell, long status)
+void	ft_exit(t_minishell *shell, long status)
 {
 	if (status >= LONG_MAX)
 	{

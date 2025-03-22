@@ -59,6 +59,8 @@ typedef struct s_exec
 	int			i;
 	int			fd_in;
 	int			fd_out;
+	int			stdin;
+	int			stdout;
 	struct		s_exec *next;
 }	t_exec;
 
@@ -148,9 +150,11 @@ int		pwd(void);
 void	ft_unset(t_minishell *shell, char **args);
 int		ft_env(t_minishell *shell);
 int		ft_export(t_minishell *shell, char **args);
+void	ft_exit(t_minishell *shell, long status);
 /* built-ins tools */
 void	free_arrays(char **array1, char **array2);
-int		is_builtin(t_minishell *shell, char *cmd);
+int		exec_builtin(t_minishell *shell, char *cmd);
+int		builtin_checker(t_minishell *shell, char *cmd);
 char	*get_var_name(char *var);
 int		str_in_array(char **array, char *str);
 char	**rm_env_var(t_minishell *shell, char *var);

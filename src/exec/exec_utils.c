@@ -42,8 +42,8 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 {
 	char	*path;
 
-	if (exec->cmd == NULL)
-		free_shell(shell);
+	/* if (exec->cmd == NULL)
+		free_shell(shell); */
 	path = find_path(shell, exec->cmd);
 	if (path == NULL)
 		free_exec_node(&exec);
@@ -54,27 +54,35 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 
 void	one_cmd(t_minishell *shell)
 {
-	shell->pid = fork();
-	if (shell->pid == -1)
-	{
-		perror("fork");
-		return ;
-	}
-	if (shell->pid == 0)
+	if (builtin_checker(shell, shell->exec->cmd))
 	{
 		if (shell->exec->outfile || shell->exec->infile)
 		{
 			if (!fd_checker(&shell->exec))
 				return ;
 		}
-		if (shell->exec->heredoc)
-			unlinker(shell->exec->heredoc);
-		/* if (is_builtin(shell, shell->exec->cmd))
-			free_shell(shell);
-		else */
-		exec_cmd(shell, shell->exec);
+		if (exec_builtin(shell, shell->exec->cmd) == -1)
+			return ;
+		multi_dup(shell->exec->stdin, shell->exec->stdout);
+	}
+	else
+	{
+		shell->pid = fork();
+		if (shell->pid == -1)
+			return (perror("fork"));
+		if (shell->pid == 0)
+		{
+			if (shell->exec->outfile || shell->exec->infile)
+			{
+				if (!fd_checker(&shell->exec))
+				return ;
+			}
+			if (shell->exec->heredoc)
+				unlinker(shell->exec->heredoc);
+			exec_cmd(shell, shell->exec);
+			exit(1);
+		}
 	}
 	while (wait(NULL) > 0)
 		;
-	//kill(shell->pid, SIGTERM);
 }

@@ -62,10 +62,9 @@ void	handler_fd(t_minishell *s, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		}
 	}
 	unlinker(exec->heredoc);
-	if (is_builtin(s, exec->cmd))
-		free_shell(s);
-	else
+	if (!exec_builtin(s, exec->cmd))
 		exec_cmd(s, exec);
+	exit(1);
 }
 
 int	child_maker(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)

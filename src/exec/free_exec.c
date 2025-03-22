@@ -41,7 +41,8 @@ int command_list_clear(t_exec **command_list)
 
 	while (*command_list)
 	{
-		temp = (*command_list)->next;
+		if ((*command_list)->next)
+			temp = (*command_list)->next;
 		free((*command_list)->cmd);
 		if((*command_list)->args)
 			free_array((*command_list)->args);

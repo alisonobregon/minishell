@@ -655,3 +655,133 @@ ls -la
 < Makefile cat
 cat < Makefile 
 cat < Makefile  | grep exec > out
+ls -la
+cat < Makefile | grep src
+export
+export > out
+export
+cd ..
+env                                                                                                                                                                                                
+env
+export | grep USER
+export | grep USER
+export | grep HOME
+export | grep HOME
+export | grep HOME
+export | grep HOME
+export | grep USER
+export | grep USER
+export
+export | grep WSL
+export | grep WSl
+export | grep WSL
+env | WSL
+env | grep WSL
+env | grep HOME
+export | grep WSL
+export | grep USER
+export > out
+das
+dasd
+asd
+export > out
+export
+< Makefile cat
+DEFAULT= \033[0;39m
+GRAY= \033[0;90m
+RED= \033[0;91m
+GREEN= \033[0;92m
+YELLOW= \033[0;93m
+BLUE= \033[0;94m
+MAGENTA= \033[0;95m
+CYAN= \033[0;96m
+WHITE= \033[0;97m
+NAME= minishell
+SRC=./src/minishell.c \
+./src/built-ins/builtins-utils.c \
+./src/built-ins/export.c \
+./src/built-ins/unset.c \
+./src/built-ins/env.c \
+./src/built-ins/exit.c \
+./src/built-ins/cd.c \
+./src/built-ins/echo.c \
+./src/parsing/parsing.c \
+./src/parsing/checker.c \
+./src/parsing/utils_parsing.c \
+./src/parsing/create_command.c \
+./src/parsing/outfiles.c \
+./src/parsing/pipes.c \
+./src/utils/utils.c \
+./src/utils/utils2.c \
+./src/exec/exec_utils.c \
+./src/exec/exec.c \
+./src/exec/get_path.c \
+./src/exec/redirections.c \
+./src/exec/here_doc.c \
+./src/exec/free_exec.c \
+./src/prompt/prompt_utils.c \
+./src/prompt/prompt.c \
+./src/signals/signals.c \
+OBJ= $(SRC:.c=.o)
+INCLUDES = -I/mingw64/include
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+CC = cc
+#-no-pie
+all: $(NAME) show_progress
+$(NAME): $(OBJ)
+@make -s -C libft
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+debug: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+fd: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+run: $(NAME)
+make && ./$(NAME)
+export | grep USER
+export | grep USER
+echo "hola que tal" | grep hola
+echo hola
+echo "hola que tal" | grep hola
+echo "test" > out
+echo " test2 " > out
+dcdahora
+echo hola 
+echo  vamos a ver > out2
+porque cpño
+adsas
+dasdad
+asd
+ad
+export
+export > out
+ahora todo esta en el archivo
+delete
+export > out
+export > out
+export > out
+export > out
+export > out
+cat out 
+export > out2
+cat out2
+export
+export > out
+env > out2
+cd ..
+ls -la
+ls -la | grep Makefile 
+export | grep USER
+export | grep USER
+ls -la | grep Makefile 
+export | grep USER
+ls -la | grep Makefile 
+ls -la | grep Makefile > out | export
+ls -la | grep Makefile > out | export
+export | grep USER
+export > output
+cat out
+cat output
+ls -la | export > out2 | ls -la | grep Makefile 
+cat out2
+cat out2
