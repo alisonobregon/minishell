@@ -59,17 +59,26 @@ void	one_cmd(t_minishell *shell)
 		if (shell->exec->outfile || shell->exec->infile)
 		{
 			if (!fd_checker(&shell->exec))
+			{
+				shell->status = 1;
 				return ;
+			}
 		}
 		if (exec_builtin(shell, shell->exec->cmd) == -1)
+		{
+			//shell->status = 127; //en plan hay que ir poniendo de estos en la ejecucion
 			return ;
-		multi_dup(shell->exec->stdin, shell->exec->stdout);
+		}
+		multi_dup(shell->exec->stdin, shell->exec->stdout); //aqui puede estarya que no lo asignas
 	}
 	else
 	{
 		shell->pid = fork();
 		if (shell->pid == -1)
+		{
+			shell->status = 100;
 			return (perror("fork"));
+		}
 		if (shell->pid == 0)
 		{
 			if (shell->exec->outfile || shell->exec->infile)
@@ -85,4 +94,5 @@ void	one_cmd(t_minishell *shell)
 	}
 	while (wait(NULL) > 0)
 		;
+	//WAIEEXITED
 }

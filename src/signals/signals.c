@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:39:57 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/15 19:06:34 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/22 23:44:50 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ static void signal_handler(int sig)
 	else if (sig == SIGQUIT)
 	{
 		rl_on_new_line();
-		rl_redisplay();
-		g_sigint = 2; //2 es el valor que se le asigna a g_pid cuando se presiona ctrl + 
+		rl_redisplay();//2 es el valor que se le asigna a g_pid cuando se presiona ctrl + 
 	}
-	return ;
 	/*else if (sig == SIGTERM)
 		g_sigint = 3; //3 es el valor que se le asigna a g_pid cuando se presiona ctrl + d*/
 }
@@ -36,27 +34,27 @@ static void signal_handler(int sig)
 static void child_handler(int sig)
 {
 	if (sig == SIGINT)
-		g_sigint = 130;
-	else if (sig == SIGQUIT)
+	{
+		ft_printf("\n");
+		exit(130);
+	}
+	/*else if (sig == SIGQUIT)
 	{
 		ft_printf("Quit: 3\n");
-		g_sigint = 131;
-	}
-	/*else if (sig == SIGTERM)
-		g_sigint = 3;*/
-	return ;
+		exit(131);
+	}*/ //la quito porque se supone que no hace nada en bash
 }
 
 void wait_signal(int sig)
 {
 	struct sigaction	struct_s;
 	
+	sigemptyset(&struct_s.sa_mask);
+	struct_s.sa_flags = SA_RESTART;
 	if (sig)
 		struct_s.sa_handler = signal_handler;
 	else
 		struct_s.sa_handler = child_handler;
-	sigemptyset(&struct_s.sa_mask);
-	struct_s.sa_flags = SA_RESTART;
 	sigaction(SIGINT, &struct_s, NULL);
 	sigaction(SIGQUIT, &struct_s, NULL);
 	sigaction(SIGTERM, &struct_s, NULL);

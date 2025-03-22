@@ -64,5 +64,6 @@ void	here_doc(t_exec **exec, char *limiter)
 		doc_infile	= doc_fd(limiter);
 	if (doc_infile)
 		(*exec)->infile = add_str_to_array((*exec)->infile, doc_infile);
+	wait_signal(1);
 	return ;
 }
