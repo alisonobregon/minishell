@@ -25,11 +25,18 @@ char	*ft_strdup(const char *str)
 	return (point);
 }
 
-/*int	main(void)
+char	*ft_strndup(const char *str, size_t n)
 {
-	char	*str;
+	char	*point;
+	size_t	len;
 
-	str = ft_strdup("Hello World");
-	printf("valor de str es %s\n", str);
-	return (0);
-}*/
+	len = ft_strlen(str);
+	if (n < len)
+		len = n;
+	point = (char *)malloc(sizeof(*point) * (len + 1));
+	if (!point)
+		return (NULL);
+	ft_memcpy (point, str, len);
+	point[len] = '\0';
+	return (point);
+}

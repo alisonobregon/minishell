@@ -1,29 +1,31 @@
-DEFAULT = \033[0;39m
-GRAY = \033[0;90m
-RED = \033[0;91m
-GREEN = \033[0;92m
-YELLOW = \033[0;93m
-BLUE = \033[0;94m
-MAGENTA = \033[0;95m
-CYAN = \033[0;96m
+DEFAULT	= \033[0;39m
+GRAY	= \033[0;90m
+RED		= \033[0;91m
+GREEN	= \033[0;92m
+YELLOW	= \033[0;93m
+BLUE	= \033[0;94m
+MAGENTA	= \033[0;95m
+CYAN	= \033[0;96m
+WHITE	= \033[0;97m
 
-WHITE = \033[0;97m
+NAME	= minishell
 
-NAME = minishell
-
-SRC = 	./src/minishell.c \
+SRC	=	./src/minishell.c \
 		./src/built-ins/builtins-utils.c \
 		./src/built-ins/export.c \
+		./src/built-ins/unset.c \
 		./src/built-ins/env.c \
+		./src/built-ins/exit.c \
 		./src/built-ins/cd.c \
 		./src/built-ins/echo.c \
 		./src/parsing/parsing.c \
 		./src/parsing/checker.c \
 		./src/parsing/utils_parsing.c \
 		./src/parsing/create_command.c \
-		./src/utils/utils.c \
 		./src/parsing/outfiles.c \
 		./src/parsing/pipes.c \
+		./src/utils/utils.c \
+		./src/utils/utils2.c \
 		./src/exec/exec_utils.c \
 		./src/exec/exec.c \
 		./src/exec/get_path.c \
@@ -37,8 +39,7 @@ SRC = 	./src/minishell.c \
 		./src/parsing/env.c \
 		./src/prompt/init_text.c \
 
-
-OBJ = $(SRC:.c=.o)
+OBJ	= $(SRC:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
@@ -57,6 +58,12 @@ $(NAME): $(OBJ)
 
 debug: $(NAME)
 	@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+
+fd: $(NAME)
+	@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+
+run: $(NAME)
+	make && ./$(NAME)
 
 show_progress:
 		@for file in $(SRC); do \

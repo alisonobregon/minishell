@@ -58,10 +58,13 @@ void	handler_fd(t_minishell *s, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		{
 			dup2(pipe_fd[READ], STDIN_FILENO);
 			close(pipe_fd[READ]);
+			close(pre_pipe[WRITE]);
 		}
 	}
 	unlinker(exec->heredoc);
-	exec_cmd(s, exec);
+	if (!exec_builtin(s, exec->cmd))
+		exec_cmd(s, exec);
+	exit(1);
 }
 
 int	child_maker(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
@@ -117,6 +120,8 @@ static int	pipex(t_minishell *shell)
 	}
 	while (wait(NULL) > 0)
 		;
+	close(pipe_fd[READ]);
+	close(pre_pipe[WRITE]);
 	return (free(pre_pipe), free(pipe_fd), 1);
 }
 
@@ -127,7 +132,6 @@ void	exec(t_minishell *shell)
 	if (!shell->exec)
 		return ;
 	exec = shell->exec;
-	//print_command_list(exec);
 	if (exec && exec->todo_next == 0)
 		one_cmd(shell);
 	else if (exec && exec->todo_next == 2)

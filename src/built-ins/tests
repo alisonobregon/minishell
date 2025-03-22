@@ -1,0 +1,39 @@
+cases for export
+
+
+just export  // print all it's variables
+
+export variable=
+
+export variable=value
+
+export variable=value variable=value
+
+
+check for mutiples variables
+
+check if a correct variable (none numbers  or special characters at the beginning)
+
+
+
+env var1=value1
+
+export var1=value2
+
+
+array shell, array var
+
+while var
+{
+    while(shell->ev)
+    {
+        if shell->env[] == var[]
+        free shell->env[]
+        shell->env[] = strdup(var[])
+        let's remove that variable from var
+        var = rm_str_from_array(var, var[])
+        break;
+    }
+    ++;
+    add var[] to shell->env
+}

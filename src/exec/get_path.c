@@ -31,7 +31,7 @@ char	*find_path(t_minishell *shell, char *cmd)
 	{
 		goodpath = ft_gnlstrjoin(paths[i], cmd, ft_strlen(cmd));
 		if (access(goodpath, 0) == 0)
-			return (goodpath);
+			return (free(cmd), goodpath);
 		free(goodpath);
 	}
 	ft_putstr_fd(cmd, 2);

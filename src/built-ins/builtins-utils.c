@@ -12,40 +12,66 @@
 
 #include "../../include/minishell.h"
 
-int is_builtin(t_minishell *shell, char *cmd)
+int exec_builtin(t_minishell *shell, char *cmd)
 {
+	if (!shell->exec->args || !shell->exec->args[0] || !shell->exec)
+		return (0);
 	if (!ft_strncmp(cmd, "echo", 5))
-	{
-		printf("echo\n");
-	}
-	if (!ft_strncmp(cmd, "cd", 3))
+		return (ft_echo(shell->exec->args));
+	else if (!ft_strncmp(cmd, "cd", 3))
 		return (cd(shell, shell->exec->args));
-	if (!ft_strncmp(cmd, "pwd", 4))
+	else if (!ft_strncmp(cmd, "pwd", 4))
 		return (pwd());
-	if (!ft_strncmp(cmd, "export", 7))
+	else if (!ft_strncmp(cmd, "export", 7))
+		return (ft_export(shell, shell->exec->args));
+	else if (!ft_strncmp(cmd, "unset", 6))
+		return (ft_unset(shell, shell->exec->args), 1);
+	else if (!ft_strncmp(cmd, "env", 4) && !shell->exec->args[1])
+		return (ft_env(shell));
+	else if (!ft_strncmp(cmd, "exit", 5))
+		return (ft_exit(shell, ft_atol(shell->exec->args[1])), 1);
+	return (0);
+}
+
+int	builtin_checker(t_minishell *shell, char *cmd)
+{
+	if (!shell->exec->args || !shell->exec->args[0] || !shell->exec)
+		return (0);
+	if (!ft_strncmp(cmd, "echo", 5))
 		return (1);
-	if (!ft_strncmp(cmd, "unset", 6))
+	else if (!ft_strncmp(cmd, "cd", 3))
 		return (1);
-	if (!ft_strncmp(cmd, "env", 4))
+	else if (!ft_strncmp(cmd, "pwd", 4))
 		return (1);
-	if (!ft_strncmp(cmd, "exit", 5))
+	else if (!ft_strncmp(cmd, "export", 7))
+		return (1);
+	else if (!ft_strncmp(cmd, "unset", 6))
+		return (1);
+	else if (!ft_strncmp(cmd, "env", 4) && !shell->exec->args[1])
+		return (1);
+	else if (!ft_strncmp(cmd, "exit", 5))
 		return (1);
 	return (0);
 }
+
 
 void	free_arrays(char **array1, char **array2)
 {
 	int	i;
 
 	i = 0;
-	if (array1)
+	if (!array1 || !array2)
+		return ;
+	if (*array1)
 	{
 		while (array1[i] != NULL)
 			free(array1[i++]);
 		if (array1)
 			free(array1);
 	}
-	if (array2)
+	if (!array2)
+		return ;
+	if (*array2 && array2)
 	{
 		i = 0;
 		while (array2[i] != NULL)

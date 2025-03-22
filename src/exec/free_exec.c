@@ -14,25 +14,24 @@
 
 void	free_exec_node(t_exec **exec)
 {
-	//t_exec	*tmp;
+	t_exec	*temp;
 
 	while (*exec)
 	{
-		//tmp = (*exec)->next;
-		free_array((*exec)->args);
-		free_arrays((*exec)->infile, (*exec)->heredoc);
+		temp = (*exec)->next;
+		free((*exec)->cmd);
+		if((*exec)->args)
+			free_array((*exec)->args);
+		if((*exec)->infile)
+			free_array((*exec)->infile);
 		if ((*exec)->outfile)
-		{
-			while ((*exec)->outfile)
-			{
-				if ((*exec)->outfile->file)
-					free((*exec)->outfile->file);
-				free((*exec)->outfile);
-				(*exec)->outfile = (*exec)->outfile->next;
-			}
-		}
+			free_output(&(*exec)->outfile);
+		if ((*exec)->heredoc)
+			free_array((*exec)->heredoc);
 		free(*exec);
+		*exec = temp;
 	}
+	*exec = NULL;
 	exit(0);
 }
 
@@ -42,7 +41,8 @@ int command_list_clear(t_exec **command_list)
 
 	while (*command_list)
 	{
-		temp = (*command_list)->next;
+		if ((*command_list)->next)
+			temp = (*command_list)->next;
 		free((*command_list)->cmd);
 		if((*command_list)->args)
 			free_array((*command_list)->args);
@@ -83,8 +83,12 @@ int free_shell(t_minishell *shell)
 	{
 		if (shell->prompt->str)
 			free(shell->prompt->str);
+		if (shell->prompt->cwd)
+			free(shell->prompt->cwd);
 		free(shell->prompt);
 	}
+	if (shell->exec)
+		command_list_clear(&(shell->exec));
 	if (shell->env)
 		free_array(shell->env);
 	if(shell->args)

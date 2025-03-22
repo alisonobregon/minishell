@@ -84,6 +84,8 @@ char	**add_str_to_array(char **array, char *str)
 	int		i;
 
 	i = 0;
+	if (!str)
+		return (array);
 	if (!array)
 	{
 		new_array = ft_calloc(2, sizeof(char *));
@@ -145,4 +147,15 @@ char	*ft_str2join(char *s1, char *s2, int f1, int f2)
 	if (f2)
 		free(s2);
 	return (substr);
+}
+void	print_array(char **array)
+{
+	int i;
+
+	i = 0;
+	while (array[i] != NULL)
+	{
+		ft_printf("%s\n", array[i]);
+		i++;
+	}
 }

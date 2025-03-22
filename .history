@@ -1,405 +1,787 @@
-car hoa
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export | grep hola
+export | grep NAME
+export | grep NAME
 ls
 ls -la
-cat "hola"
-echo "hola"
-echo $$
-echo "$$"
-cat hola
-echo hola
-echo "hola"
-echo "$$"
-echo "
-make 
-echo "$$"
-echo ""
-echo "echo"
-echo $hola
-echo $HOME
-echo "$HOME"
-echo "$"
-echo '$JP'
-echo '$HOME'
-echo "$HOME"
-echo "$$"
-echo "$$"
-echo "$HOME"
-echo "Hola $USER estoy en $HOME"
-echo "Hola $USER
-echo "Hola $USER"
-echo "Hola $USER como estas" 
-cat "$HOME"
-echo "$HOME"
-echo "hola"
-echo "hola $USER estoy en $HOME"
-echo "hola $USER estoy"
-echo "hola soy $USER y $HOME"
-echo "$HOME y $HOME
-echo "$HOME y $USER"
-echo "$HOME y $USER SAD"
-echo "$HOME y $USER SAD"
-echo "$HOME y $USER"
-echo "$HOME y $USER SAD" 
-echo "$HOME y $USER" 
-echo " WJPASD $HOME y $USER" 
-echo "EJOAD $HOME y $USER" 
-echo "HOLA $HOME y $USER"
-cat "hola"
-cat "hola $jpña"
-cat hola
-echo "hoola $HOME Y $USER"
-echo "$HOME"
-echo "$HOME $HOME"
-echo "$HOME y $HOME"
-echo "$HOME y asdas $PWD"
-cat hola
-echo "es $HOME"
-echo "$HOME"
-echo "$HOME"
-echo "hola"
-echo "hola $HOME"
-echo "hola $PWD"
-echo "$PWD"
-echo "$HOME"
-echo "$PWD"
-echo "$PWD Y $HOME"
-echo "$HOME"
-echo "$HOME"
-echo "$HOME"
-echo "$HOME Y $PWD"
-echo "$HOME"
-echo "WERWEREW"
-echo "WERWEREW $HOME"
-echo "$HOME"
-echo "$HOME Y $PWD"
-echo "$HOME PORFA NO TE ALOCQUES $PWD"
-echo "$HOME  PORFA NO TE ALOCQUES $PWD"
-echo "$USER  PORFA NO TE ALOCQUES $PWD"
-echo "$USER"
-echo "$USER "
-echo "$USER  "
-echo "$"
-echo "$$"
-echo "$$$$"
-echo "$USER"
-echo "$USER y pad"
-echo "$HOME"
-echo "$HOME ASD"
-echo "$HOME"
-echo "$HOME "
-echo "$HOME  "
-echo "$HOME    D" 
-echo "$HOME" 
-echo "$HOME SADASD" 
-echo "$HOME" 
-echo "$HOME HOLA" 
-echo "$HOME"
-echo "$HOME A"
-echo "$HOME Y $PWD"
-echo "$HOME Y $PWD Y "
-echo "$HOME"
-echo "$HOME Y"
-echo "$HOME"
-echo "$HOME"
-echo "$HOME"
-echo "$HOME tyy"
-echo "$HOME"
-echo "$HOME y $PWD"
-echo "$HOME y $PWD"
-echo "$HOME"
-echo "$HOME y $PWD"
-make
-echo "$HOME"
-echo "$HOME S"
-echo "$HOMEA"
-echo "$HOMEA"
-echo "hola"
-echo "hola $USER"
-echo "hola $USER y $PWD"
-echo "$HOME"
-echo "$HOME Y "
-echo "$HOME Y PWD"
-echo "$hola"
-echo "$HOME"
-echo "$ASD"
-echo "$AD SAD"
-echo "$HOME"
-echo "$HOME" DFS
-echo "$HOME"
-cd "$HOME"
-cd $HOME
-echo "HOLA"
-echo "HOLA """
-echo "GIAK ''"
-echo $HOME
-cd $HOME
-echo '$HOME'
-echo "hoal"
-echo "hoal $USER"
-echo "hoal $USER 66 &HOME"
-echo "hoal $USER 66 &HOME ''"
-echo '$HOME'
-echo '$HOME Y'
-echo "$HOME"
-echo "$HOME DF"
-echo "$HOME DF ''"
-echo "dsfsdfd ''dsf s"
-echo "hoal"
-echo "hola"
-echo "hola"
-echo hola
-echo "hola"
-echo "$HOME y asdkds $PWD DSF"
-echo $HOME y asdkds $PWD DSF
-echo "$HOME y asdkds ''  $PWD DSF"
-'$HOME'
-ECHO "HOADS"
-echo "hoaasd $HOME ''"
-echo $_
-echo $^
-echo $1
-echo $hbghb
-echo $$/
-echo $
-echo $$$
-echo $$$$
-echo $$
-echo $
-echo $/
-echo "$/"
-echo 1
-echo $1
-echo $654
-echo $6asdsad
-echo $65asdsa
-echo "hola ''"
-echo "hola "
-echo 'sf'
-echo ""
-echo "
-echo "2
-echo ""
-echo "hola"
-echo '$hola"
-echo '$hola''
-echo '$HOME'
-echo "$HOME"
-echo "$HOME"
-echo "$HOME fsd"
-echo "hoa"
-echo "hola"
-echo "ada $dfs"
-echo ''
-echo ''
-echo 'asd'
-echo 'asd $hola'
-echo 'asd $HOME'
-echo "$HOME"
-echo "$HOME DSFDSF ''"
-echo ""
-echo ""
-echo " $HOME"
-echo "$HOME"
-echo "hola"
-echo "HOLA"
-echo ""
-echo "$sd"
-echo "$HOME"
-echo "HOLA "
-echo "hola"
-echo "hola $HOME"
-echo "hola"
-echo "hola"
-echo "hola"
-echo "hol"
-echo"jooa"
-echo "hola"
-echo "hola"
-echo "hola $HOME"
-echo 'hola $HOME'
-echo 'hola $HOME ""'
-echo "HOLA"
-echo "HOLA $PWD" 
-echo "HOLA $PWD SFS $PWD" 
-echo "hola"
-echo "hola "
-echo "hola"
-echo "hola $HOME"
-echo "hola $HOME ''"
-ECHO $home
-echo $home
-echo '$home'
-echo '$home $?'
-echo '$home "$?"'
-echo "$home '$?'"
-echo "$HOME '$?'"
-echo $_
-echo "buenas $USER, estoy en el directorio $HOME. Mi PWD es: $PWD."
-echo 'buenas $USER, estoy en el directorio $HOME. Mi PWD es: $PWD.'
-echo "buenas $USER, estoy en el directorio $HOME. Mi PWD es: $PWDs."
-echo $$
-echo $$/
-echo $^
-echo $1
-echo $dskfsid
-echo $
-echo $1$$
-echo $dfhdsbf$$
-echo $dfhdsbf$$$sjfsdn
-echo $$$djfnsd
-echo $$$1
-echo $1$$
-echo 1$$
-echo $$1
-echo $HOME11111111
-echo 11111111$HOME
-echo -n $HOME11111111
-echo -nnnnnnnnnnnn $HOME
-echo -n-n-n-n-
-echo -n-n-n-n- -nnnnn
-echo -nnnnnnnnn -n-n-n-n-
-echo " $PWD,"
-echo " $PWDs,"
-echo $HOME$USER
-echo $HOME/$USER
-echo $""
-echo $fskmds$$
-echo $PATH:paula$HOME:holamundo:$USER
-echo $PATH--paula$HOME--holamundo--$USER
-echo $HOME/$PWD/buenas
-echo $"$"/""
-echo '$"$"/"'
-echo "$HOMEd"
-echo "$HOMEd"
-echo "$/$"
-echo "$$"
-echo "$"
-echo "$$"
-echo "$$"
-echo "$$$"
-echo "$"
-echo "$$/"
-echo "$/$"
-echo $hola
-echo $HOME
-echo $?
-echo $/
-echo $1A
-echo $1HOME
-echo $HOME
-echo $HOMES
-echo $HOMEsssss
-echo $HOMEsssss
-echo $
-echo $$
-echo $$$
-make
-./minishell 
-echo $$
-echo $
-echo $&
-$$$
-echo $$$
-echo "$$"
-echo $$
-echo $
-echo $$$
-echo "$"
-echo "$$"
-echo "$A"
-echo ""
-echo "hola"
-echo "hola $"
-echo "hola $$"
-echo "hola $$$"
-echo "hola $HOMES"
-echo "hola $HOMES"
-echo "hola $HOME"
-echo "$$
-echo "$$"
-echo $$
-echo "$HOME"
-echo $HOME
-echo $HOMEs
-echo "$HOMEs"
-echo "$$$"
-echo $$$
-echo "$$"
-echo "$"
-echo "$$"
-echo "$$$"
-echo $$$
-echo $HOME
-echo $HOMes
-echo $HOME
-echo "$HOME"
-echo hola
-echo $HOME
-echo $HOMEs
-echo $HOME
-echo $HOMEs
-echo "HOLA"
-echo "HOLA $HOME"
-echo "$HOME"
-echo "hola"
-echo "$HOME"
-echo "$HOME DS"
-echo "$HOME DASDASDSAD"
-echo "$HOMES"
-echo "$HOMESD"
-echo "$HOMESDDFDFD"
-echo "$HOMW"
-echo "$HOME"
-echo "$HOMESD"
-echo "hola"
-echo "hola $HOMEa"
-echo "$HOME"
-echo "HOLA"
-echo "HOLA $HOME"
-echo "hola $HOME"
-echo "HOLA $HOME"
-echo "home $HOME"
-echo "home $HOMES"
-echo "$HOME"
-echo "HOME"
-echo "HOME $HOME""
-echo "HOME $HOME"
-echo "HOME $HOMES"
-echo "HOME $HOMEs"
-echo "HOME $HOME"
-"$$"
-echo "$$"
-echo "hola $HOME Soy $USER Y auqi doy fallo $ASDSAD"
-echo "$?"
-echo "$$"
-echo $HOME | echo $PWD
-echo JOASD | echo sdasd
-echo $home y $asdsad
-echo $HOME y $asdsad
-echo $HOME y $PWD
-echo $HOME y $P
-echo $$$
-"$$$"
-echo "$$$"
-echo "$$"
-echo "$$$"
-echo $$$
-echo "$$$"
-echo "$$"
-echo "$$$"
-echo $$$
-echo $/$/$
-echo "$/"
-echo "$/$//"
-echo "$/$$"
-echo "$/$-"
-echo "$/$-"
-echo "$%"
-echo "$-"
-echo "$*"
-echo "$-"
-echo "$@"
-echo "$*"
-echo "$* $HOMEASAS $HOME/$PWD"
-LS
+export
+export | grep USER
+export | grep USER
+/bin/export | grep USER
+env | grep USER
+exit | grep USER
+pwd | grep hla
+cd
 ls
+export hola
+export hola
+export hola
+export hola
+export
+export hola
+export
+export hola=value1 hola2 hola3=
+export
+export hola=value1 hola2 hola3=
+export
+cat
+                                                                                       
+< Makefile cat ./include/minishell.h  .history | grep hola | wc -l > output
+cat output 
+< Makefile cat ./include/minishell.h  .history
+ls > ls > out >> out2 < cat Makefile < Makefile -e << END ls
+ls Makefile 
+ls Makefile -e
+ls Makefile ls
+ls > ls > out >> out2 < cat Makefile < Makefile -e << END ls
+cat out2
+clear
+cat out2
+ls > ls > out >> out4 < cat Makefile < Makefile -e << END ls
+cat out4
+exit
+ls > ls > out >> out4 < cat Makefile < Makefile -e << END ls
+ls >> out4 Makefile ls
+ls >> out4 Makefile > out2 ls
+lss
+ls
+ls >> out4 Makefile > out2 ls
+ls >> out4 Makefile > out ls
+ls >> out4 Makefile > out > out3
+ls >> out4 Makefile > out > out3
+ls >> out4 Makefile > out > out3
+ls >> out4 Makefile > out > out3
+ls >> out4 Makefile > out > out3
+ls >> out2 > out ls
+ls >> out2 > out3 ls
+lss >> out2 > out23
+ls >> out2 > out23
+ls > out333 > out23
+ls > out333 > out23
+ls > out > out2
+ls > out33 > out33
+ls > out33 > out34
+ls > out32 > out366
+ls >> out > out1 >> out2 ls << END < inf -e
+ls >> out > out1 >> out2 ls 
+ls >> out > out1 >> out2 ls << END
+ls >> out > out1 >> out2 ls < inf << END
+ls >> out > out1 >> out2 ls < inf << END
+ls >> out > out1 >> out2 ls < inf << END
+ls >> out > out1 >> out2 ls  << END
+ls >> out > out1 >> out2  << END
+ls >> out > out1 >> out2  ls << END
+ls >> out > out1 >> out2  ls << END
+ls >> out > out1 >> out2  << END
+ls >> out > out1 >> out2  ls  << END
+                                                               
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+asd
+l
+ 
+ 
+l
+l
+l
+l
+l
+l
+l
+export hola
+export hola
+export hola
+export hola
+export hola
+ls
+export hol
+export hola
+export
+export hola=2
+export
+export hola=3
+export
+export hola=1
+export
+export hola=3
+export var1=v1 var2=v2 var3=v3
+ake
+k
+export hola=1 hola2=2
+ls -la
+export hola hola2=v2 hola3=
+export hola
+export
+export hola=val1
+export
+export hola=val3
+export
+export hola=val434 var1=value1
+export hola hola2
+export hola=var1 hola2=var2
+export
+./minishell 
+export hola
+export hola=val1 hola2=value2
+export
+export hola=val4 hola2=value4
+export hola
+export hola=val1 hola2=value2
+export
+export hola
+export hola=val1
+export
+export hola
+export hoal=val1
+export
+export hola=val1
+export
+export hola
+export hola=val1
+export hola
+export hola=value1
+export hola
+export hola=var1
+export
+export hola
+export hola=var1
+export hola
+export hola=var1
+export
+export hola=var3
+export
+export hola=var4
+export
+expor
+export
+export
+export hola
+export hola=var1
+export
+export hola=var2
+export
+export hola=var3
+export
+export hola=var3 hola1=var4
+export
+export hola=var1
+export
+export hola
+export hola=var1
+export
+export hola
+export
+export hola
+export hola
+export
+export hola
+export
+export hola
+export hola
+export
+export hola=va1
+export
+./minishell 
+export hola
+export hola=va1
+export
+export hola
+export hola
+export hola
+export hola
+export hola=v1
+export hola
+export hola=v1
+export hola
+export hola=v1
+export hola
+export hola=v1
+export hola
+export hola
+export hola=v1
+export
+export hola
+export hola2
+export hola
+export hola2
+export hola
+export hola2
+export hol<
+export hola
+export hola2
+export  hola
+export hola2
+export hola2 hola
+export hola2=value1
+export hola1 hola2=v2 hola3=v3 hola4
+export hola1 hola2=v2 hola3=v3 hola4 hola2
+export hola
+export hola
+export hola2
+export hola2=v2
+export hola=v1
+export hola=v5 hola2=v534 hola= hola123123
+export hola=v5 hola2=v534 hola= hola123123
+export hola
+hola
+export hola
+export hola
+export hola2
+export hola
+export hola
+export hola
+hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola2
+export hola2=v1
+export hola
+export hola
+export hola1
+export hola=v1
+export hola
+export hola1
+hola=value1
+export hola
+export hola
+export hola1
+export hola1=va
+export hola1=va2
+export hola=va1
+export
+hola
+export hola
+export hola1
+hola=v1
+./minishell 
+export hola
+export hola
+export hola
+export holA1
+export hola=va
+export hola
+export hola=v1
+hola 
+export hola
+export hola
+hola=v1
+export hola=v1
+export hola
+export hola
+export hola
+export hola1
+export hola=v1 hola1=v2
+export hola1=v3
+export hola1
+                                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+make clean
+make fclean
+export var
+export var=v1
+export var
+var=v1
+./minishell 
+export var1
+var1=v1
+export var1=v1
+export var var2 var3=v3
+export hola
+export hola=1
+export hola
+export hola
+export hola=v1
+export hola
+export hola
+export hola
+export hola
+export hola=v1
+export hola
+export hola=v1
+export hola
+export hola
+pwd
+ls
+export
+export hola
+export hola
+export
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola=v1
+export hola
+export hola
+export hola
+export hola=v1
+export hola
+export hola
+export hola=V1
+export hola=V1
+export hola=V2
+export hola=V3
+export hola
+export hola=v1
+export hola
+export hola
+export hola=v1
+export hola
+export hola1
+export hola
+export hola
+export hola=v1
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export hola
+export
+export hola
+export hola
+export
+export hola
+export hola
+export
+export hola
+export hola
+export
+export hola
+export hola
+export
+export hola
+export
+export hola
+export hola
+export
+export hola
+export hola
+export
+export
+export hola
+export hola
+export
+export hola=v1
+export hola
+export hola
+export hola=V1
+export hola
+export hola1
+export hola2
+export hola2=v1
+export hola
+export hola1
+export hola=v1
+export hola1=v2
+export hola hola1=v1 hola2=v2 hola3=v3
+export hola
+export hola
+export hola1
+export hola2=V2 hola=v1
+export hola2=V2 hola1=v0
+export hola2=V2 hola1=v0 new=new1
+export hola= hola2=v02 hola1=v055 new=
+export hola
+export hola=v1
+export hola
+export
+export hola
+export hola
+export
+export hola=v1
+export
+export hola
+export
+export hola
+export hola=v1
+export
+export hola
+export
+export hola
+export hola=v1
+export
+export hola
+export
+export hola
+export hola1=v1 hola= hola2=v2
+export
+unset hola
+export
+unset hola1 hola2
+export
+unset hola
+export
+export | grep HOME
+export | grep HOME
+export > out1
+export > put1
+export out1
+export > out1
+asd
+ls -la | export > out1
+export
+export > out1
+export > out1
+export > out1
+export > out1
+export > out1
+export > out1
+export > out1
+export > out1
+export > out2
+das
+asd
+asd
+export
+export > out1
+export
+export > out1
+export > out1
+< Make export > out1
+< Make export > out1
+< Makefile export > output
+DEFAULT= \033[0;39m
+GRAY= \033[0;90m
+RED= \033[0;91m
+GREEN= \033[0;92m
+YELLOW= \033[0;93m
+BLUE= \033[0;94m
+MAGENTA= \033[0;95m
+CYAN= \033[0;96m
+WHITE= \033[0;97m
+NAME= minishell
+SRC=./src/minishell.c \
+./src/built-ins/builtins-utils.c \
+./src/built-ins/export.c \
+./src/built-ins/unset.c \
+./src/built-ins/env.c \
+./src/built-ins/exit.c \
+./src/built-ins/cd.c \
+./src/built-ins/echo.c \
+./src/parsing/parsing.c \
+./src/parsing/checker.c \
+./src/parsing/utils_parsing.c \
+./src/parsing/create_command.c \
+./src/parsing/outfiles.c \
+./src/parsing/pipes.c \
+./src/utils/utils.c \
+./src/utils/utils2.c \
+./src/exec/exec_utils.c \
+./src/exec/exec.c \
+./src/exec/get_path.c \
+./src/exec/redirections.c \
+./src/exec/here_doc.c \
+./src/exec/free_exec.c \
+./src/prompt/prompt_utils.c \
+./src/prompt/prompt.c \
+./src/signals/signals.c \
+OBJ= $(SRC:.c=.o)
+INCLUDES = -I/mingw64/include
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+CC = cc
+#-no-pie
+all: $(NAME) show_progress
+$(NAME): $(OBJ)
+@make -s -C libft
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+debug: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+fd: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+run: $(NAME)
+make && ./$(NAME)
+lsl -la > output
+ls -la > output
+export > out
+export > out
+export > out
+export > out
+< Makefile cat
+DEFAULT= \033[0;39m
+GRAY= \033[0;90m
+RED= \033[0;91m
+GREEN= \033[0;92m
+YELLOW= \033[0;93m
+BLUE= \033[0;94m
+MAGENTA= \033[0;95m
+CYAN= \033[0;96m
+WHITE= \033[0;97m
+NAME= minishell
+SRC=./src/minishell.c \
+./src/built-ins/builtins-utils.c \
+./src/built-ins/export.c \
+./src/built-ins/unset.c \
+./src/built-ins/env.c \
+./src/built-ins/exit.c \
+./src/built-ins/cd.c \
+./src/built-ins/echo.c \
+./src/parsing/parsing.c \
+./src/parsing/checker.c \
+./src/parsing/utils_parsing.c \
+./src/parsing/create_command.c \
+./src/parsing/outfiles.c \
+./src/parsing/pipes.c \
+./src/utils/utils.c \
+./src/utils/utils2.c \
+./src/exec/exec_utils.c \
+./src/exec/exec.c \
+./src/exec/get_path.c \
+./src/exec/redirections.c \
+./src/exec/here_doc.c \
+./src/exec/free_exec.c \
+./src/prompt/prompt_utils.c \
+./src/prompt/prompt.c \
+./src/signals/signals.c \
+OBJ= $(SRC:.c=.o)
+INCLUDES = -I/mingw64/include
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+CC = cc
+#-no-pie
+all: $(NAME) show_progress
+$(NAME): $(OBJ)
+@make -s -C libft
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+debug: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+fd: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+run: $(NAME)
+make && ./$(NAME)
+ls -la
+ls -la > output
+ls -la > out
+ls -la
+ls -la > out
+ls -la > out1 > out2
+ls -la | grep Makefile 
+ls -la
+ls -la | grep Makefile 
+ls -la | grep Makefile 
+ls -la
+export
+ls -la
+ls -la | grep Makefile 
+ls -la
+ls -la | grep Makefile 
+export > out
+ls -la | grep Makefile | wc -l
+cat < Makefile |  grep exec
+DEFAULT= \033[0;39m
+GRAY= \033[0;90m
+RED= \033[0;91m
+GREEN= \033[0;92m
+YELLOW= \033[0;93m
+BLUE= \033[0;94m
+MAGENTA= \033[0;95m
+CYAN= \033[0;96m
+WHITE= \033[0;97m
+NAME= minishell
+SRC=./src/minishell.c \
+./src/built-ins/builtins-utils.c \
+./src/built-ins/export.c \
+./src/built-ins/unset.c \
+./src/built-ins/env.c \
+./src/built-ins/exit.c \
+./src/built-ins/cd.c \
+./src/built-ins/echo.c \
+./src/parsing/parsing.c \
+./src/parsing/checker.c \
+./src/parsing/utils_parsing.c \
+./src/parsing/create_command.c \
+./src/parsing/outfiles.c \
+./src/parsing/pipes.c \
+./src/utils/utils.c \
+./src/utils/utils2.c \
+./src/exec/exec_utils.c \
+./src/exec/exec.c \
+./src/exec/get_path.c \
+./src/exec/redirections.c \
+./src/exec/here_doc.c \
+./src/exec/free_exec.c \
+./src/prompt/prompt_utils.c \
+./src/prompt/prompt.c \
+./src/signals/signals.c \
+OBJ= $(SRC:.c=.o)
+INCLUDES = -I/mingw64/include
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+CC = cc
+#-no-pie
+all: $(NAME) show_progress
+$(NAME): $(OBJ)
+@make -s -C libft
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+debug: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+fd: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+run: $(NAME)
+make && ./$(NAME)
+ls -la
+ls -la | grep Makefile 
+ls -la > out
+ls -la > out
+ls -la
+< Makefile cat
+cat < Makefile 
+cat < Makefile  | grep exec > out
+ls -la
+cat < Makefile | grep src
+export
+export > out
+export
+cd ..
+env                                                                                                                                                                                                
+env
+export | grep USER
+export | grep USER
+export | grep HOME
+export | grep HOME
+export | grep HOME
+export | grep HOME
+export | grep USER
+export | grep USER
+export
+export | grep WSL
+export | grep WSl
+export | grep WSL
+env | WSL
+env | grep WSL
+env | grep HOME
+export | grep WSL
+export | grep USER
+export > out
+das
+dasd
+asd
+export > out
+export
+< Makefile cat
+DEFAULT= \033[0;39m
+GRAY= \033[0;90m
+RED= \033[0;91m
+GREEN= \033[0;92m
+YELLOW= \033[0;93m
+BLUE= \033[0;94m
+MAGENTA= \033[0;95m
+CYAN= \033[0;96m
+WHITE= \033[0;97m
+NAME= minishell
+SRC=./src/minishell.c \
+./src/built-ins/builtins-utils.c \
+./src/built-ins/export.c \
+./src/built-ins/unset.c \
+./src/built-ins/env.c \
+./src/built-ins/exit.c \
+./src/built-ins/cd.c \
+./src/built-ins/echo.c \
+./src/parsing/parsing.c \
+./src/parsing/checker.c \
+./src/parsing/utils_parsing.c \
+./src/parsing/create_command.c \
+./src/parsing/outfiles.c \
+./src/parsing/pipes.c \
+./src/utils/utils.c \
+./src/utils/utils2.c \
+./src/exec/exec_utils.c \
+./src/exec/exec.c \
+./src/exec/get_path.c \
+./src/exec/redirections.c \
+./src/exec/here_doc.c \
+./src/exec/free_exec.c \
+./src/prompt/prompt_utils.c \
+./src/prompt/prompt.c \
+./src/signals/signals.c \
+OBJ= $(SRC:.c=.o)
+INCLUDES = -I/mingw64/include
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+CC = cc
+#-no-pie
+all: $(NAME) show_progress
+$(NAME): $(OBJ)
+@make -s -C libft
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+debug: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+fd: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+run: $(NAME)
+make && ./$(NAME)
+export | grep USER
+export | grep USER
+echo "hola que tal" | grep hola
+echo hola
+echo "hola que tal" | grep hola
+echo "test" > out
+echo " test2 " > out
+dcdahora
+echo hola 
+echo  vamos a ver > out2
+porque cpño
+adsas
+dasdad
+asd
+ad
+export
+export > out
+ahora todo esta en el archivo
+delete
+export > out
+export > out
+export > out
+export > out
+export > out
+cat out 
+export > out2
+cat out2
+export
+export > out
+env > out2
+cd ..
+ls -la
+ls -la | grep Makefile 
+export | grep USER
+export | grep USER
+ls -la | grep Makefile 
+export | grep USER
+ls -la | grep Makefile 
+ls -la | grep Makefile > out | export
+ls -la | grep Makefile > out | export
+export | grep USER
+export > output
+cat out
+cat output
+ls -la | export > out2 | ls -la | grep Makefile 
+cat out2
+cat out2

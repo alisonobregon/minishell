@@ -12,116 +12,108 @@
 
 #include "../../include/minishell.h"
 
-/* static char	*add_var(t_minishell *shell, char *str)
+char *get_var_name(char *var)
 {
-	char	**new_env;
+	char	*eq;
 
-	new_env = add_str_to_array(shell->env, str);
-	shell->env = new_env;
-	return (NULL);
-} */
-
-// crear una function que separa el string en dos partes, la variable y el valor
-// y luego llamar a add_var para agregarla al env
-// si no hay valor, agregarla con valor NULL
-// if  on str it has = it must be saved as a variable with a value
-// if it doesn't have = it must be saved as a variable without a value
-
-int	ft_chrlen(char *str, char c)
-{
-	int		i;
-	int		counter;
-
-	i = 0;
-	counter = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			counter++;
-		i++;
-	}
-	return (counter);
+	eq = ft_strchr(var, '=');
+	if (eq)
+		return (ft_strndup(var, eq - var));
+	return (ft_strdup(var));
 }
 
-/* char	*check_var(char *str)
+char	**check_vars(char **args)
 {
 	int		i;
-	char	*var;
+	char	**vars;
 
-	i = 0;
-	//if (ft_chrlen(str))
-	//check for quotes if it closes for ""  and test ' ' es missing;
-	//if we found quotes in export it has to count, if we found quotes in str it has to be counter
-	// as just one variable with all text inside
-	// if there are  many of them, it has to be separated in different variables
-	return (var);
-} */
-
-int	just_export(char *str)
-{
-	char	*export;
-	int		len;
-
-	if (ft_chrlen(str, '"') > 4 || ft_chrlen(str, 39) > 4) // in export just quotes for "expor" and all next variable are accepted
-		return (0);
-	if ((ft_chrlen(str, '"') % 2 ) != 0 || ((ft_chrlen(str, 39)) % 2 ) != 0)
-		return (0);
-	if (ft_strlen(str) < 6)
-		return (0);
-	export = ft_strnstr(str, "export", ft_strlen(str));
-	ft_printf(" in just_export: %s\n", export);
-	len = 7;
-	ft_printf("result of strncmp %d\n", ft_strncmp(export, "export", len));
-	if ((ft_chrlen(str, '"') % 2 ) != 0 || ((ft_chrlen(str, 39)) % 2 ) != 0)
-		len--;
-	if (!ft_strncmp(export, "export", len))
+	i = 1;
+	vars = NULL;
+	while (args[i])
 	{
-		//free(export);
-		return (1);
+		if (ft_isalpha(args[i][0]) || args[i][0] == '_')
+		{
+			vars = add_str_to_array(vars, args[i]);
+		}
+		else
+			ft_printf("minishell: export: `%s': not a valid identifier\n", args[i]);
+		i++;
 	}
-	//free(export);
-	return (0);
-} 
-// this function willl receive cmd = export  and the rest of the value
-void	ft_export(t_minishell *shell)
+	return (vars);
+}
+
+char	**rm_env_var(t_minishell *shell, char *var)
 {
-	//char	*new_var;
-	char	**args;
-	char	*cmd;
-	char	**tmp;
-	char	*tmp2;
 	int		i;
-	int	quotes = 1;
+	int		j;
+	char	*var_name;
+	char	**new_env;
 
 	i = 0;
-	tmp = NULL;
-	ft_printf("inside of export\n");
-	cmd = ft_strdup("export");
-	args = ft_split(shell->prompt->str, ' ');
-	ft_printf("just export aoutput %d\n", just_export(cmd));
-	if (!ft_strncmp(cmd, "export", ft_strlen(cmd)) && ft_len(args) == 1) // nada que exportar, check for space before export
+	j = 0;
+	new_env = ft_calloc(ft_len(shell->env), sizeof(char *) + 1);
+	if (!new_env)
+		return (NULL);
+	while (shell->env[i] != NULL)
+	{
+		var_name = get_var_name(shell->env[i]);
+		if (ft_strcmp(var_name, var))
+		{
+			new_env[j] = ft_strdup(shell->env[i]);
+			j++;
+		}
+		free(var_name);
+		i++;
+	}
+	new_env[j] = NULL;
+	free_arrays(shell->env, NULL);
+	return (new_env);
+}
+
+void	check_export(t_minishell *shell, char **vars)
+{
+	int		i;
+	char	*full_var;
+	char	*name;
+
+	i = -1;
+	while (vars[++i])
+	{
+		full_var = vars[i];
+		name = get_var_name(full_var);
+		if (ft_strchr(full_var, '='))
+		{
+			shell->env = rm_env_var(shell, name);
+			shell->env = add_str_to_array(shell->env, full_var);
+		}
+		else
+		{
+			if (!str_in_array(shell->env, name))
+				shell->env = add_str_to_array(shell->env, full_var);
+		}
+		free(name);
+	}
+}
+
+int	ft_export(t_minishell *shell, char **args)
+{
+	int		i;
+	char	**vars;
+
+	i = 0;
+	if (!args || !args[0])
+		return (1);
+	if (!args[1])
 	{
 		while(shell->env[i] != NULL)
-			ft_printf("declare -x %s\n", shell->env[i++]);
-		if (args)
-			free_arrays(args, NULL);
-		return ;
+			ft_printf("declare -x ""%s""\n", shell->env[i++]);
+		return (1);
 	}
-	else if (ft_len(args) > 1 && !quotes) //exportar  variable sin valor
+	if (ft_len(args) > 1)
 	{
-		tmp = ft_arrjoin(shell->env, args);
-		shell->env = tmp;
-		free_arrays(args, NULL);
+		vars = check_vars(args);
+		check_export(shell, vars);
+		free_arrays(vars, NULL);
 	}
-	else if (ft_len(args) > 1 && quotes) //exportar  variable sin valor
-	{
-		tmp2 = ft_array_to_str(args);
-		tmp = add_str_to_array(shell->env, tmp2);
-		shell->env = tmp;
-		free(tmp2);
-		free_arrays(args, NULL);
-	}
-	if (args)
-		free_arrays(args, NULL);
-	return ;
+	return (1);
 }
