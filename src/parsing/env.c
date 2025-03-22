@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 20:30:42 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/19 21:51:47 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/22 19:13:34 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,24 @@ char *get_env(char *env_name, char **env, int last_exit)
 	i = -1;
 	if (env_name[1] == '?')
 		return (ft_itoa(last_exit));
-	else if (env_name[1] == '$')
-		return (ft_strdup("$"));
-	else if (contains_only(env_name, '$'))
+	else if (contains_only(env_name , '$'))
 		return (ft_strdup(env_name));
+	else if (env_name[1] == '$' || env_name[1] == '/' || env_name[1] == '.'
+		|| env_name[1] == ':' || env_name[1] == 45 || env_name[1] == '!'
+		|| env_name[1] == '@' || env_name[1] == '#'	|| env_name[1] == '%'
+		|| env_name[1] == '^' || env_name[1] == '&' || env_name[1] == '*')
+		return (ft_strdup("$"));
+	else if (env_name[1] == '/')
+		return (ft_strdup("/"));
 	else if (env_name[1] == '\'' || env_name[1] == '\"')
 		return (ft_strdup("$"));
 	else if (!ft_isalpha(env_name[1]) && env_name[1] != '_')
 		return (ft_strdup(""));
 	while (env[++i])
 	{
-		if (!(ft_strncmp(env[i], env_name + 1, env_name_len(env[i]))))
-			return (ft_strdup(env[i] + env_name_len(env[i]) + 1));
+		if ((ft_strncmp(env[i], env_name + 1, env_name_len(env[i])) == 0) 
+			&& env[i][get_env_len(env_name + 1)] == '=')
+			return (ft_strdup(env[i] + get_env_len(env_name) ));
 	}
 	return (ft_strdup(""));
 } 

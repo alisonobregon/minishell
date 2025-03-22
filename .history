@@ -280,3 +280,126 @@ echo "$$$"
 echo "$"
 echo "$$/"
 echo "$/$"
+echo $hola
+echo $HOME
+echo $?
+echo $/
+echo $1A
+echo $1HOME
+echo $HOME
+echo $HOMES
+echo $HOMEsssss
+echo $HOMEsssss
+echo $
+echo $$
+echo $$$
+make
+./minishell 
+echo $$
+echo $
+echo $&
+$$$
+echo $$$
+echo "$$"
+echo $$
+echo $
+echo $$$
+echo "$"
+echo "$$"
+echo "$A"
+echo ""
+echo "hola"
+echo "hola $"
+echo "hola $$"
+echo "hola $$$"
+echo "hola $HOMES"
+echo "hola $HOMES"
+echo "hola $HOME"
+echo "$$
+echo "$$"
+echo $$
+echo "$HOME"
+echo $HOME
+echo $HOMEs
+echo "$HOMEs"
+echo "$$$"
+echo $$$
+echo "$$"
+echo "$"
+echo "$$"
+echo "$$$"
+echo $$$
+echo $HOME
+echo $HOMes
+echo $HOME
+echo "$HOME"
+echo hola
+echo $HOME
+echo $HOMEs
+echo $HOME
+echo $HOMEs
+echo "HOLA"
+echo "HOLA $HOME"
+echo "$HOME"
+echo "hola"
+echo "$HOME"
+echo "$HOME DS"
+echo "$HOME DASDASDSAD"
+echo "$HOMES"
+echo "$HOMESD"
+echo "$HOMESDDFDFD"
+echo "$HOMW"
+echo "$HOME"
+echo "$HOMESD"
+echo "hola"
+echo "hola $HOMEa"
+echo "$HOME"
+echo "HOLA"
+echo "HOLA $HOME"
+echo "hola $HOME"
+echo "HOLA $HOME"
+echo "home $HOME"
+echo "home $HOMES"
+echo "$HOME"
+echo "HOME"
+echo "HOME $HOME""
+echo "HOME $HOME"
+echo "HOME $HOMES"
+echo "HOME $HOMEs"
+echo "HOME $HOME"
+"$$"
+echo "$$"
+echo "hola $HOME Soy $USER Y auqi doy fallo $ASDSAD"
+echo "$?"
+echo "$$"
+echo $HOME | echo $PWD
+echo JOASD | echo sdasd
+echo $home y $asdsad
+echo $HOME y $asdsad
+echo $HOME y $PWD
+echo $HOME y $P
+echo $$$
+"$$$"
+echo "$$$"
+echo "$$"
+echo "$$$"
+echo $$$
+echo "$$$"
+echo "$$"
+echo "$$$"
+echo $$$
+echo $/$/$
+echo "$/"
+echo "$/$//"
+echo "$/$$"
+echo "$/$-"
+echo "$/$-"
+echo "$%"
+echo "$-"
+echo "$*"
+echo "$-"
+echo "$@"
+echo "$*"
+echo "$* $HOMEASAS $HOME/$PWD"
+LS
+ls

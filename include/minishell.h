@@ -24,7 +24,12 @@
 
 # define CYAN "\033[36m"
 # define YELLOW "\033[33m"
+# define GREEN   "\033[32m"
 # define DEFAULT "\033[0m"
+# define RED     "\033[31m"
+# define WHITE   "\033[37m"
+# define BOLD    "\033[1m"
+# define BLUE    "\033[34m"
 # define READ 0
 # define WRITE 1
 # define MAX_ARGUMENTS 256
@@ -174,5 +179,6 @@ char	**ft_arrjoin(char **arr1, char **arr2);
 char	*ft_str2join(char *s1, char *s2, int f1, int f2);
 size_t	ft_strcat(char *dest, const char *src);
 int		contains_only(char *str, int c);
+int		print_shell(void);
 
 #endif

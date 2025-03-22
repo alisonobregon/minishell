@@ -67,7 +67,6 @@ char *replace_env(char *arg, char **env, int last_exit)
 	int i;
 	int quotes;
 	int n_args;
-	int iset_quotes;
 	char *new_arg;
 	char *var_val;
 	char quotee;
@@ -81,7 +80,7 @@ char *replace_env(char *arg, char **env, int last_exit)
 	quotee = arg[0];
 	while (arg[++i])
 	{
-		iset_quotes = set_quotes(arg[i], &quotes);
+		set_quotes(arg[i], &quotes);
 		if (((arg[i] == '\''|| arg[i] == '\"')  && quotee == arg[i]))
 			continue;
 		if (quotes == 1)

@@ -35,6 +35,7 @@ SRC = 	./src/minishell.c \
 		./src/signals/signals.c \
 		./src/parsing/quotes.c \
 		./src/parsing/env.c \
+		./src/prompt/init_text.c \
 
 
 OBJ = $(SRC:.c=.o)
