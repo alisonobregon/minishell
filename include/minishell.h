@@ -83,7 +83,7 @@ typedef struct s_minishell
 
 /*parsing functions*/
 void	parsing(t_minishell *shell);
-void	check_quotes(char **buf, int simple_quote, int double_quote);
+int		check_quotes(char **buf, int simple_quote, int double_quote);
 int		check_other_quote(char **buf, int *i, char c);
 int		split_args(t_minishell *shell, char *str);
 int		get_end_index(char *str, int end);
@@ -117,7 +117,11 @@ int			free_output(t_output **output);
 int			check_specials(char **args);
 
 /*Signals :)*/
-void	wait_signal(int sig);
+void	wait_signal(void);
+void children_signal(void);
+void children_handler(int signal);
+void other_handler(int signal);
+void other_signals(void);
 
 /*vars y env*/
 int replace_quotes(char ***args, char **env, int last_exit);

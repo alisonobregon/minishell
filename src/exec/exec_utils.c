@@ -54,6 +54,7 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 
 void	one_cmd(t_minishell *shell)
 {
+	children_signal();
 	if (builtin_checker(shell, shell->exec->cmd))
 	{
 		if (shell->exec->outfile || shell->exec->infile)
@@ -66,7 +67,7 @@ void	one_cmd(t_minishell *shell)
 		}
 		if (exec_builtin(shell, shell->exec->cmd) == -1)
 		{
-			//shell->status = 127; //en plan hay que ir poniendo de estos en la ejecucion
+			shell->status = 127; //en plan hay que ir poniendo de estos en la ejecucion
 			return ;
 		}
 		multi_dup(shell->exec->stdin, shell->exec->stdout); //aqui puede estarya que no lo asignas
@@ -81,18 +82,24 @@ void	one_cmd(t_minishell *shell)
 		}
 		if (shell->pid == 0)
 		{
+			signal(SIGQUIT, SIG_DFL);
 			if (shell->exec->outfile || shell->exec->infile)
 			{
 				if (!fd_checker(&shell->exec))
-				return ;
+				{
+					shell->status = 1;
+					return ;
+				}
 			}
 			if (shell->exec->heredoc)
 				unlinker(shell->exec->heredoc);
 			exec_cmd(shell, shell->exec);
+			signal(SIGQUIT, SIG_IGN);
 			exit(1);
 		}
 	}
 	while (wait(NULL) > 0)
 		;
 	//WAIEEXITED
+
 }
