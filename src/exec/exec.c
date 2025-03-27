@@ -120,8 +120,7 @@ static int	pipex(t_minishell *shell)
 	}
 	while (wait(NULL) > 0)
 		;
-	close(pipe_fd[READ]);
-	close(pre_pipe[WRITE]);
+	(close(pipe_fd[READ]), close(pre_pipe[WRITE]));
 	return (free(pre_pipe), free(pipe_fd), 1);
 }
 
