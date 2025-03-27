@@ -61,7 +61,7 @@ void	one_cmd(t_minishell *shell)
 			if (!fd_checker(&shell->exec))
 				return ;
 		}
-		if (exec_builtin(shell, shell->exec->cmd) == -1)
+		if (exec_builtin(shell, shell->exec->cmd, shell->exec->args) == -1)
 			return ;
 		multi_dup(shell->exec->stdin, shell->exec->stdout);
 	}

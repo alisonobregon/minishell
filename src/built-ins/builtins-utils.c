@@ -12,24 +12,24 @@
 
 #include "../../include/minishell.h"
 
-int exec_builtin(t_minishell *shell, char *cmd)
+int exec_builtin(t_minishell *shell, char *cmd, char **args)
 {
-	if (!shell->exec->args || !shell->exec->args[0] || !shell->exec)
+	if (!args || !shell->exec->args[0] || !shell->exec)
 		return (0);
 	if (!ft_strncmp(cmd, "echo", 5))
-		return (ft_echo(shell->exec->args));
+		return (ft_echo(args));
 	else if (!ft_strncmp(cmd, "cd", 3))
-		return (cd(shell, shell->exec->args));
+		return (cd(shell, args));
 	else if (!ft_strncmp(cmd, "pwd", 4))
 		return (pwd());
 	else if (!ft_strncmp(cmd, "export", 7))
-		return (ft_export(shell, shell->exec->args));
+		return (ft_export(shell, args));
 	else if (!ft_strncmp(cmd, "unset", 6))
-		return (ft_unset(shell, shell->exec->args), 1);
-	else if (!ft_strncmp(cmd, "env", 4) && !shell->exec->args[1])
+		return (ft_unset(shell, args), 1);
+	else if (!ft_strncmp(cmd, "env", 4) && !args[1])
 		return (ft_env(shell));
 	else if (!ft_strncmp(cmd, "exit", 5))
-		return (ft_exit(shell, ft_atol(shell->exec->args[1])), 1);
+		return (ft_exit(shell, ft_atol(args[1])), 1);
 	return (0);
 }
 

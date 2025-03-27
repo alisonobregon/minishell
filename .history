@@ -785,3 +785,40 @@ cat output
 ls -la | export > out2 | ls -la | grep Makefile 
 cat out2
 cat out2
+ls
+ls  -la
+export
+echo hola
+ls -la
+echo hola
+ 
+l
+export | grep USER
+ls -la | export | grep USER
+export | grep HOME
+echo $HOME
+$HOME
+sleep 1 | export | grep HOME
+sleep 1 | export | grep USER
+export | grep USER
+ls -la | export | grep USER
+ls -la | export > out | grep USER
+cat out
+ls
+cat out
+export | grep USER
+ls -la | export | grep USER
+l
+ls -la
+cd
+export
+export Milica=26
+export | grep 
+export | grep Milica
+export | grep Milica > output
+cat output
+< Makefile  cat > output | sleep 3 | ls -la
+echo "hola"
+echo "hola -n
+echo "hola" -n
+echo -n "hola"

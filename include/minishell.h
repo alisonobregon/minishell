@@ -153,7 +153,7 @@ int		ft_export(t_minishell *shell, char **args);
 void	ft_exit(t_minishell *shell, long status);
 /* built-ins tools */
 void	free_arrays(char **array1, char **array2);
-int		exec_builtin(t_minishell *shell, char *cmd);
+int		exec_builtin(t_minishell *shell, char *cmd, char **args);
 int		builtin_checker(t_minishell *shell, char *cmd);
 char	*get_var_name(char *var);
 int		str_in_array(char **array, char *str);

@@ -62,7 +62,7 @@ void	handler_fd(t_minishell *s, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		}
 	}
 	unlinker(exec->heredoc);
-	if (!exec_builtin(s, exec->cmd))
+	if (!exec_builtin(s, exec->cmd, exec->args))
 		exec_cmd(s, exec);
 	exit(1);
 }
