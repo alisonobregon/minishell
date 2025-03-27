@@ -19,13 +19,24 @@ void ft_pipes(char **buf)
 				i++;
 			if ((*buf)[i] == '\0')
 			{
-				while (1)
+				while (1 && !g_sigint)
 				{
 					pipe = readline("pipe>");
+					if (g_sigint)
+					{
+						ft_printf("\n");
+						break;
+					}
+					if (!pipe)
+					{
+						ft_printf("bash: syntax error\n");
+						exit(2);
+					}
 					if (pipe && *pipe)
 					{
 						//if (get_arg_type(pipe) == 0)
 						//{
+						
 							temp = ft_strjoin(*buf, pipe);
 							free(pipe);
 							free(*buf); //free array verifico que libere

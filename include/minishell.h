@@ -24,23 +24,18 @@
 
 # define CYAN "\033[36m"
 # define YELLOW "\033[33m"
+# define GREEN   "\033[32m"
 # define DEFAULT "\033[0m"
+# define RED     "\033[31m"
+# define WHITE   "\033[37m"
+# define BOLD    "\033[1m"
+# define BLUE    "\033[34m"
 # define READ 0
 # define WRITE 1
 # define MAX_ARGUMENTS 256
 
 extern sig_atomic_t	 g_sigint;
 
-/*enum e_arg_type
-{
-	CMD,
-	PIPE,
-	REDIR_IN,
-	REDIR_OUT,
-	REDIR_APPEND,
-	HEREDOC
-};
-*/
 typedef struct s_output
 {
 	int				action; // 0 = write, 1 = append
@@ -79,7 +74,6 @@ typedef struct s_minishell
 	char		**path;
 	char		*pwd;
 	char		*cwd;
-	int			cwd_int;
 	int			status;
 	t_prompt	*prompt;
 	t_exec		*exec;
@@ -89,7 +83,7 @@ typedef struct s_minishell
 
 /*parsing functions*/
 void	parsing(t_minishell *shell);
-void	check_quotes(char **buf, int simple_quote, int double_quote);
+int		check_quotes(char **buf, int simple_quote, int double_quote);
 int		check_other_quote(char **buf, int *i, char c);
 int		split_args(t_minishell *shell, char *str);
 int		get_end_index(char *str, int end);
@@ -123,7 +117,22 @@ int			free_output(t_output **output);
 int			check_specials(char **args);
 
 /*Signals :)*/
-void	wait_signal(int sig);
+void	wait_signal(void);
+void children_signal(void);
+void children_handler(int signal);
+void other_handler(int signal);
+void other_signals(void);
+
+/*vars y env*/
+int replace_quotes(char ***args, char **env, int last_exit);
+int replace_var(char *arg, char *new_args, int *n_args);
+char	*replace_env(char *arg, char **env, int last_exit);
+char	*malloc_new_arg(char *arg, char **env, int lex);
+int		get_future_arglen(char *arg, char **env, int lex);
+int 	set_quotes(char c, int *quotes);
+int		get_env_len(char *str);
+char *get_env(char *env_name, char **env, int last_exit);
+int env_name_len(char *env_name);
 
 /*PROMPT*/
 char	*get_prompt(t_minishell *shell);
@@ -170,6 +179,10 @@ char	*ft_array_to_str(char **array);
 char	**add_str_to_array(char **array, char *str);
 char	**ft_arrjoin(char **arr1, char **arr2);
 char	*ft_str2join(char *s1, char *s2, int f1, int f2);
+size_t	ft_strcat(char *dest, const char *src);
+int		contains_only(char *str, int c);
+int		print_shell(void);
+
 /* utils 2 */
 char	**rm_str_from_array(char **array, char *str);
 #endif

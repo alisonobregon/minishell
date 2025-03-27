@@ -17,8 +17,6 @@ int	g_sigint;
 void	memory_allocated(t_minishell *shell)
 {
 	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char *));
-	shell->cwd_int = 0;
-	shell->status = 0;
 	shell->prompt = ft_calloc(1, sizeof(t_prompt));
 	shell->exec = NULL;
 	if (!shell->prompt)
@@ -51,16 +49,15 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	t_minishell	*shell;
-
+	print_shell();
 	shell = ft_calloc(1, sizeof(t_minishell));
-	if (!shell)
-		return (1);
 	shell->env = strarray_copy(env);
 	shell->path = ft_split(getenv("PATH"), ':');
-	g_sigint = 0;
-	wait_signal(1);
+	shell->status = 0;
+	wait_signal();
 	while (1)
 	{
+		g_sigint = 0;
 		memory_allocated(shell);
 		shell->prompt->str = get_input(shell);
 		if (!shell->prompt->str)
@@ -68,6 +65,13 @@ int	main(int argc, char **argv, char **env)
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
 		parsing(shell);
+		if (!shell->exec)
+			continue ;
+		replace_quotes(&shell->exec->args, shell->env, shell->status);
+		/*if (!is_builtin(shell, shell->exec->cmd))
+			exec(shell);*/
+		//free(shell->prompt->cwd);
+		//free(shell->prompt);
 		if (!shell->exec || !shell->exec->cmd)
 			continue ;
 		exec(shell);

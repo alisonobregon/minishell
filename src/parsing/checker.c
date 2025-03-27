@@ -27,7 +27,7 @@ int check_other_quote(char **buf, int *i, char c)
 
 }
 
-void	check_quotes(char **buf, int simple_quote, int double_quote)
+int	check_quotes(char **buf, int simple_quote, int double_quote)
 {
 	int	i;
 	char *temp;
@@ -45,6 +45,11 @@ void	check_quotes(char **buf, int simple_quote, int double_quote)
 	if ((double_quote % 2 != 0) || (simple_quote % 2 != 0))
 	{
 		dquote = readline("dquote>");
+		if (!dquote)
+		{
+			ft_printf("bash: syntax error\n");
+			return (0);
+		}
 		temp = ft_strjoin(*buf, "\n");
 		temp2 = ft_strjoin(temp, dquote);
 		free(temp);
@@ -54,7 +59,7 @@ void	check_quotes(char **buf, int simple_quote, int double_quote)
 		//free(temp);
 		check_quotes(buf, 0, 0);			
 	}
-	return ;
+	return (2);
 }
 /*
 int check_specials(char **buf)

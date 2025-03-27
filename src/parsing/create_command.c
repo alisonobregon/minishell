@@ -11,31 +11,8 @@ int ft_strarr_len(char **array)
 			i++;
 	}
 	return (i);
-}/*
-int strarr_append(char ***array, char *str)
-{
-	char	**new;
-	int		i;
+}
 
-	i = -1;
-	new = ft_calloc(sizeof(char *), ft_strarr_len(array) + 2);
-	if (!new)
-		return (1);
-	while ((*array)[++i])
-	{
-		new[i] = ft_strdup((*array)[i]);
-		if (!new[i])
-			return (1);
-	}
-	new[i] = ft_strdup(str);
-	if (!new[i])
-		return (1);
-	free(*array);
-	*array = new;
-	return (0);	
-	
-	
-}*/
 t_exec	*exec_lstlast(t_exec *lst)
 {
 	if (!lst)

@@ -30,7 +30,7 @@ int exec_builtin(t_minishell *shell, char *cmd, char **args)
 		return (ft_env(shell));
 	else if (!ft_strncmp(cmd, "exit", 5))
 		return (ft_exit(shell, ft_atol(args[1])), 1);
-	return (0);
+	return (-1);
 }
 
 int	builtin_checker(t_minishell *shell, char *cmd)

@@ -827,3 +827,160 @@ echo $?
 ./minishell 
 ls
 ./minishell 
+holaaa
+echo hola
+echo "$HOME"
+echo hola
+echo hola
+echo hola
+echo sad
+sad
+e
+echo
+sadsa
+ dasds adss
+echo hola+
+echo hola
+echo "asdsad"
+echo "asdsad $asda"
+echo "asdsad $HOME"
+echo "asdsad $HOME/$HOME"
+LS
+ls
+cat Makefile 
+cat Makefile > out
+cat Makefile > out >> out2
+cat Makefile > out >> out2
+cat < src/parsing/parsing  > out >> out2
+cat < src/parsing/parsing.c  > out >> out2
+cat < src/parsing/parsing.c  > out >> out2 | grep
+cat < src/parsing/parsing.c  > out >> out2 | grep parsing
+cat < src/parsing/parsing.c | grep parsing
+cat < src/parsing/parsing.c | echo Hola
+cat < src/parsing/parsing.c | echo Hola | wc -l
+cat < src/parsing/parsing.c | echo Hola | export
+cat < src/parsing/parsing.c < Makefile
+cat < src/parsing/parsing.c < Makef
+echo HOla > ""
+echo HOla > ''
+echo HOla > "out"1
+bash
+echo hola
+echo mio
+echo mio
+echo -n hola
+echo -nn hola12
+echo --nn hola12
+cat << end
+cat << end
+cat << end
+cat << end
+echo >> hola
+echo << hola
+echo << end
+asd
+echo << end
+echo << end
+sd
+echo << end
+cat << end
+ls
+la
+ls -la
+echo "$HOME/$PWD"
+echo "$HOME $PWD"
+echo "$HOME $PWD" $/$
+echo "$HOME $PWD" $//$
+export
+export a=a
+export
+a=
+export
+export a=a
+export a=
+export
+echo "hola que tal" > out1
+cat out1
+export
+export  "test=ls -la | grep Makefile > out1"
+echo test
+echo $test
+echo "cat lol.c | cat > lol.c"
+cat lol.c | cat > lol.c
+ls
+export > out
+cat out
+cat << end
+cat << end
+cat << end
+cat << end
+cat << end
+ajjs
+cat << end
+cat << end
+cat "
+cat
+cat
+cat
+hgygu
+cat
+cat
+cat
+cat
+cat
+cat
+cat
+cat
+cat
+cat
+cat << end
+echo | 
+cat
+echo |
+echo dasdsa|
+echo |
+echo "
+echo "
+echo "
+echo "
+echo "
+dcjopczopcpzxojcpxzpcpzxczxc
+cat << hola
+cat << end
+echo sadas |
+echi asdsad |
+cat << end
+cat << end
+cat << end
+cat << end
+cat << end
+echo << end
+asdsadas
+cat <<  end
+cat <<  end
+cat << end
+cat << end
+cat << end
+cat << end
+cat << end
+cat << end
+cat Makefile 
+cat << end
+cat << end
+echo |
+echo "
+echo $?
+echo asdsad
+ech
+echo $?
+ecsad
+echo $?
+echo "
+"
+echo "
+echo "
+echo "
+echo "
+echo $?
+ech
+echo $?
