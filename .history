@@ -984,3 +984,178 @@ echo "
 echo $?
 ech
 echo $?
+export test=a
+asd
+asdas 
+export
+cat ª·─::_ÑP^DDGDFªª!"·$%&/()=)==?^*¨Ñ
+cat << her
+cat << her
+cat < Makefile << her
+make clean
+make fclean
+echo hola
+ls
+cat << asdas
+cat << asdas < Makefile
+cat << asdas < Makefile > out1 > out2
+echo hola
+export
+export test=$HOME
+export
+/bin/ls
+/bin/env
+                                         
+/bin/cat Makefile 
+echo Hola mund
+echo Hola "mund"
+echo "Hola mund"o
+echo -n "Hola mund"o
+exit
+exit 123
+/bin/ls ahrgfuayr
+echo $?
+echo $?
+expr $? + $?
+expr $? + $?
+expr $? + $?
+cat
+cat
+cat
+cat
+cat << end
+cat << end
+cat
+cat
+cat
+cat
+cat
+cat asdsa
+cat asdsa
+cat 
+cat 
+cat 
+cat 
+cat 
+cd ..
+ls
+rm -r end
+cd ..
+export test=$HOME
+export
+export test="$HOME"
+export 
+export "$HOME"
+export test
+export
+unset test
+export
+export test
+export
+unset test
+export
+env
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit xfd
+exit
+cat
+cat
+cat
+echo "cat lol.c | grep lol.c"
+echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDd"
+echo '$USER'
+echo '$HOME'
+env
+export
+export a=a b= c
+export
+'ls'
+"ls"
+export
+unset a
+export
+cd
+pwd
+ls
+cat Makefile 
+echo Hola > out
+>b>c>d>e>f
+>a>b>c>d>e
+cat < src/parsing/parsing.c
+cat << end << end
+cat << end | cat << end
+cat << end | cat << end2
+pwd
+pwd
+cd ..
+ls
+cd ..
+pwd
+pwd
+cd ..
+pwd
+cd ..
+pwd
+cd ..
+pwd
+cd ..
+cd ..
+env | grep PWD
+env
+cd ..
+.
+"ls            "
+" ls            "
+cat << end""
+'ls'
+"ls"
+"           ls"
+"           ls                       "
+                                      ls
+'ls'
+"ls"
+export a="ls -la"
+export a="ls -la"
+$a
+export a="ls"
+$a
+$HOME
+"
+"
+'ls'
+'echo'
+./minishell 
+./minishell 
+make
+./minishell 
+'ls'
+'ls'
+'                  ls                  '
+'ls'
+'    ls      '
+             echo
+             echo    'hola'
+                 echo 'hola'
+./minishell 
+./minishell 
+env
+'ls'
+ls
+minishell
+ls
+./minishell 
+./minishell 
+./minishell 
+'ls'
+ls

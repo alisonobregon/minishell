@@ -91,8 +91,10 @@ int free_shell(t_minishell *shell)
 		command_list_clear(&(shell->exec));
 	if (shell->env)
 		free_array(shell->env);
-	if(shell->args)
-		free_array(shell->args);
-	free(shell);
+	printf("paaaaaaaa\n");
+	/*if(shell->args)
+		free_array(shell->args);*/ //seguro que ya lo libere antes :)))))
+	if (shell)
+		free(shell);
 	return (exit_status);
 }

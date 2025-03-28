@@ -42,9 +42,10 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 {
 	char	*path;
 
-	/* if (exec->cmd == NULL)
-		free_shell(shell); */
+	if (exec->cmd == NULL)
+		free_shell(shell);
 	path = find_path(shell, exec->cmd);
+	//*Modificado por Gabo :)
 	if (path == NULL)
 		free_exec_node(&exec);
 	execve(path, exec->args, shell->env);
@@ -65,7 +66,7 @@ void	one_cmd(t_minishell *shell)
 				return ;
 			}
 		}
-		if (exec_builtin(shell, shell->exec->cmd) == -1)
+		if (!exec_builtin(shell, shell->exec->cmd, shell->exec->args))
 		{
 			shell->status = 127; //en plan hay que ir poniendo de estos en la ejecucion
 			return ;
@@ -93,7 +94,10 @@ void	one_cmd(t_minishell *shell)
 			}
 			if (shell->exec->heredoc)
 				unlinker(shell->exec->heredoc);
-			exec_cmd(shell, shell->exec);
+			//* Movido por Gabo
+			if (!g_sigint)
+				exec_cmd(shell, shell->exec);
+			// exec_cmd(shell, shell->exec);
 			signal(SIGQUIT, SIG_IGN);
 			exit(1);
 		}

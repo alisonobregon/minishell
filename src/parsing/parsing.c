@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/24 22:05:42 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/28 21:11:08 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,10 @@ void parsing(t_minishell *shell)
 	}
 	if (!create_command_lst(shell))
 		return ;
+	if (shell->exec->cmd[0] == '\"')
+		shell->exec->cmd = ft_strtrim(shell->exec->cmd, "\"");
+	else if (shell->exec->cmd[0] == '\'')
+		shell->exec->cmd = ft_strtrim(shell->exec->cmd, "\'");
 	free_array(shell->args);
 	print_command_list(shell->exec); //acordate de borrar
 }

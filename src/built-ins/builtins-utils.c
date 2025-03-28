@@ -29,7 +29,13 @@ int exec_builtin(t_minishell *shell, char *cmd, char **args)
 	else if (!ft_strncmp(cmd, "env", 4) && !args[1])
 		return (ft_env(shell));
 	else if (!ft_strncmp(cmd, "exit", 5))
-		return (ft_exit(shell, ft_atol(args[1])), 1);
+	{
+		//*Movido Por Gabo. Cualquier reclamo, al negro (Es decir Gabo) :)
+		if (args[1])
+			return (ft_exit(shell, ft_atol(args[1])), 1);
+		else
+			return (ft_exit(shell, 0), 1);
+	}
 	return (-1);
 }
 

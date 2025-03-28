@@ -54,8 +54,11 @@ int cd(t_minishell *shell, char **arr)
 {
 	char	*home;
 
-	home = getenv("HOME");
-	if (!home || !arr || !*arr)
+	if (ft_len(arr) > 2)
+		home = getenv("HOME");
+	else
+		home = NULL;
+	if (!arr || !*arr)
 	{
 		ft_printf("minishell: cd: HOME not set\n");
 		return (1);

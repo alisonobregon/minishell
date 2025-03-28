@@ -110,14 +110,27 @@ char	**add_str_to_array(char **array, char *str)
 char	**strarray_copy(char **array)
 {
 	char	**copy;
+	char	*pwd;
 	int		i;
+	int		len;
 
 	i = 0;
+	//Cambiado por Paula ;)
 	if (!array || !*array)
-		return (NULL);
-	copy = ft_calloc(ft_len(array) + 1, sizeof(char *));
+		len = 1;
+	else
+		len = ft_len(array);
+	copy = ft_calloc(len + 1, sizeof(char *));
 	if (!copy)
 		return (NULL);
+	if (!array || !*array)
+	{
+		pwd = getcwd(NULL, 0);
+		copy[0] = ft_strjoin("PWD=", pwd);
+		printf("PWD=%s\n", copy[0]);
+		copy[1] = NULL;
+		return (copy);
+	}
 	while (array[i] != NULL)
 	{
 		copy[i] = ft_strdup(array[i]);

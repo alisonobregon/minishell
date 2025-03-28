@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:39:57 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/24 20:48:05 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:45:54 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ void children_signal(void)
 	
 	sigemptyset(&struct_c.sa_mask);
 	struct_c.sa_flags = SA_RESTART;
-	// if (sig)
-		struct_c.sa_handler = children_handler;
-	// else
+	struct_c.sa_handler = children_handler;
 	sigaction(SIGINT, &struct_c, NULL);
 	sigaction(SIGQUIT, &struct_c, NULL);
 }
