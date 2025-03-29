@@ -1119,3 +1119,18 @@ ls -la | grep Makefile
 echo $?
 ls -la | grep 
 echo $?
+cat << end | grep hola
+<< end
+./minishell 
+./minishell 
+./minishell 
+./minishell 
+./minishell 
+./minishell 
+env
+export
+ls
+cd ..
+ls
+ls -la
+./minishell 

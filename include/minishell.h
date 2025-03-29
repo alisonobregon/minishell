@@ -143,6 +143,7 @@ int		add_history_to_file(char *str);
 void	exec(t_minishell *shell);
 void	one_cmd(t_minishell *shell);
 char	*find_path(t_minishell *shell, char *cmd);
+int		check_binary(t_minishell *shell, t_exec *exec, char *cmd);
 int		len_pipes(t_exec *exec);
 int		fd_checker(t_exec **exec);
 void	multi_dup(int read, int write);
