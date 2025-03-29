@@ -115,6 +115,7 @@ int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
 int			 free_shell(t_minishell *shell);
 int			free_output(t_output **output);
 int			check_specials(char **args);
+char		*quit_quotes(char *argument);
 
 /*Signals :)*/
 void	wait_signal(void);

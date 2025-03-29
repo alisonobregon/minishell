@@ -21,6 +21,7 @@ int	infile_checker(t_exec **exec)
 	{
 		while (++i < ft_len((*exec)->infile))
 		{
+			(*exec)->infile[i] = quit_quotes((*exec)->infile[i]); //esto puse para el < si no quitalo :)
 			if (access((*exec)->infile[i], F_OK))
 				return(perror("File not found"), 0);
 			if (access((*exec)->infile[i], R_OK))

@@ -1171,3 +1171,18 @@ cat << end
 'ls'
 '        ls        '
 make clean
+ls
+ls
+ls
+cd ..
+ls
+cd
+cd ..
+' ls '
+./minishell 
+cat << ms
+cat 'ms'
+cat << 'ms'
+cat << '   ms     '
+cat < 'Makefile'
+./minishell 
