@@ -43,7 +43,7 @@ OBJ	= $(SRC:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 #-fsanitize=address,leak
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
 
 FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
 

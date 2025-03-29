@@ -21,13 +21,12 @@ char	*get_prompt(t_minishell *shell)
 	char	*temp3;
 
 	(void)shell;
-	if (shell->cwd)
+/* 	if (shell->cwd)
 	{
 		free(shell->cwd);
 		shell->cwd = NULL;
-	}
+	} */
 	cwd = getcwd(NULL, 0);
-	//printf("pwd in get_prompt: %s\n", pwd);
 	if (cwd)
 	{
 		temp1 = ft_strjoin(CYAN, getenv("USER"));
@@ -38,6 +37,5 @@ char	*get_prompt(t_minishell *shell)
 	}
 	else
 		cwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
-	//free(shell->cwd); hay que verlo
 	return(cwd);
 }

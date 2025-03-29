@@ -65,7 +65,7 @@ void	one_cmd(t_minishell *shell)
 				return ;
 			}
 		}
-		if (exec_builtin(shell, shell->exec->cmd) == -1)
+		if (exec_builtin(shell, shell->exec->cmd, shell->exec->args) == -1)
 		{
 			shell->status = 127; //en plan hay que ir poniendo de estos en la ejecucion
 			return ;

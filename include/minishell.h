@@ -19,8 +19,10 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <sys/stat.h>
+# include <sys/ioctl.h>
 # include <signal.h>
 # include <errno.h>
+# include <termcap.h>
 
 # define CYAN "\033[36m"
 # define YELLOW "\033[33m"
@@ -118,21 +120,21 @@ int			check_specials(char **args);
 
 /*Signals :)*/
 void	wait_signal(void);
-void children_signal(void);
-void children_handler(int signal);
-void other_handler(int signal);
-void other_signals(void);
+void	children_signal(void);
+void	children_handler(int signal);
+void	other_handler(int signal);
+void	other_signals(void);
 
 /*vars y env*/
-int replace_quotes(char ***args, char **env, int last_exit);
-int replace_var(char *arg, char *new_args, int *n_args);
+int		replace_quotes(char ***args, char **env, int last_exit);
+int		replace_var(char *arg, char *new_args, int *n_args);
 char	*replace_env(char *arg, char **env, int last_exit);
 char	*malloc_new_arg(char *arg, char **env, int lex);
 int		get_future_arglen(char *arg, char **env, int lex);
 int 	set_quotes(char c, int *quotes);
 int		get_env_len(char *str);
-char *get_env(char *env_name, char **env, int last_exit);
-int env_name_len(char *env_name);
+char	*get_env(char *env_name, char **env, int last_exit);
+int		env_name_len(char *env_name);
 
 /*PROMPT*/
 char	*get_prompt(t_minishell *shell);
@@ -146,6 +148,8 @@ int		fd_checker(t_exec **exec);
 void	multi_dup(int read, int write);
 void	exec_cmd(t_minishell *shell, t_exec *exec);
 void	free_exec_node(t_exec **exec);
+void	free_exec(t_exec **exec);
+void	free_child_shell(t_minishell *shell);
 
 /*HERE DOC*/
 void	here_doc(t_exec **exec, char *limiter);

@@ -31,11 +31,16 @@ char	*find_path(t_minishell *shell, char *cmd)
 	{
 		goodpath = ft_gnlstrjoin(paths[i], cmd, ft_strlen(cmd));
 		if (access(goodpath, 0) == 0)
+		{
+			free_arrays(paths, NULL);
 			return (free(cmd), goodpath);
+		}
 		free(goodpath);
 	}
-	ft_putstr_fd(cmd, 2);
-	perror("Command not found");
+	free_arrays(paths, NULL);
+	(ft_putstr_fd("-bash: ", 2), ft_putstr_fd(cmd, 2));
+	perror( "Command not found");
+	free(cmd);
 	return (NULL);
 	
 }

@@ -12,6 +12,53 @@
 
 #include "../../include/minishell.h"
 
+void	free_exec(t_exec **exec)
+{
+	t_exec	*temp;
+
+	temp = *exec;
+	while (*exec)
+	{
+		if ((*exec)->cmd)
+			free((*exec)->cmd);
+		if ((*exec)->args)
+			free_arrays((*exec)->args, NULL);
+		if ((*exec)->infile)
+			free_arrays((*exec)->infile, NULL);
+		if ((*exec)->outfile)
+			free_output(&(*exec)->outfile);
+		if ((*exec)->heredoc)
+			free_arrays((*exec)->heredoc, NULL);
+		(*exec) = (*exec)->next;
+	}
+	free(temp);
+}
+
+void	free_prompt(t_prompt **prompt)
+{
+	//if ((*prompt)->cwd)
+	//	free((*prompt)->cwd);
+	if ((*prompt)->str)
+		free((*prompt)->str);
+	free(*prompt);
+}
+
+void	free_child_shell(t_minishell *shell)
+{
+	if (shell->args)
+		free_arrays(shell->args, NULL);
+	if (shell->env)
+		free_arrays(shell->env, NULL);
+	if (shell->path)
+		free_arrays(shell->path, NULL);
+	if (shell->prompt)
+		free_prompt(&shell->prompt);
+	if (shell->exec)
+		free_exec(&(shell->exec));
+	free(shell);
+	exit(127);
+}
+
 void	free_exec_node(t_exec **exec)
 {
 	t_exec	*temp;
@@ -32,7 +79,7 @@ void	free_exec_node(t_exec **exec)
 		*exec = temp;
 	}
 	*exec = NULL;
-	exit(0);
+	exit(127);
 }
 
 int command_list_clear(t_exec **command_list)
@@ -63,10 +110,13 @@ int free_output(t_output **output)
 {
 	t_output	*temp;
 
+	if (!output)
+		return (0);
 	while (*output)
 	{
 		temp = (*output)->next;
-		free((*output)->file);
+		if ((*output)->file)
+			free((*output)->file);
 		free(*output);
 		*output = temp;
 	}
