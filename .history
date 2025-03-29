@@ -1159,3 +1159,15 @@ ls
 ./minishell 
 'ls'
 ls
+ls
+cat << ls
+cat << ls
+ls
+echo hola
+sñdsa
+make
+ls
+cat << end
+'ls'
+'        ls        '
+make clean

@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:39:57 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/28 18:45:54 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/29 18:05:31 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ void wait_signal(void)
 	struct sigaction	struct_q;
 	
 	sigemptyset(&struct_c.sa_mask);
+	sigemptyset(&struct_q.sa_mask);
 	struct_c.sa_flags = SA_RESTART;
+	struct_q.sa_flags = SA_RESTART;
 	// if (sig)
 		struct_c.sa_handler = signal_handler;
 	// else
