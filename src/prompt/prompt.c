@@ -21,15 +21,10 @@ char	*get_prompt(t_minishell *shell)
 	char	*temp3;
 
 	(void)shell;
-/* 	if (shell->cwd)
-	{
-		free(shell->cwd);
-		shell->cwd = NULL;
-	} */
 	cwd = getcwd(NULL, 0);
 	if (cwd)
 	{
-		temp1 = ft_strjoin(CYAN, getenv("USER"));
+		temp1 = ft_str2join(CYAN, ft_strjoin(getenv("USER"), "@"), 0, 1);
 		temp2 = ft_str2join(temp1, cwd, 1 ,1);
 		temp1 = ft_strjoin(YELLOW, "->thelatambash$ ");
 		temp3 = ft_str2join(temp2, temp1, 1, 1);

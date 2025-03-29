@@ -24,14 +24,16 @@
 # include <errno.h>
 # include <termcap.h>
 
-# define CYAN "\033[36m"
-# define YELLOW "\033[33m"
-# define GREEN   "\033[32m"
-# define DEFAULT "\033[0m"
-# define RED     "\033[31m"
-# define WHITE   "\033[37m"
-# define BOLD    "\033[1m"
-# define BLUE    "\033[34m"
+# define CYAN    "\001\033[36m\002"
+# define YELLOW  "\001\033[33m\002"
+# define GREEN   "\001\033[32m\002"
+# define DEFAULT "\001\033[0m\002"
+# define RED     "\001\033[31m\002"
+# define WHITE   "\001\033[37m\002"
+# define BOLD    "\001\033[1m\002"
+# define BLUE    "\001\033[34m\002"
+
+
 # define READ 0
 # define WRITE 1
 # define MAX_ARGUMENTS 256

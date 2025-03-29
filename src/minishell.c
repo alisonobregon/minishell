@@ -59,7 +59,7 @@ char	*get_input(t_minishell *shell)
 	char	*prompt;
 	char	*buf;
 
-	init_terminal();
+	//init_terminal();
 	prompt = get_prompt(shell);
 	buf = readline(prompt);
 	free(prompt);
