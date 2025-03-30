@@ -22,6 +22,6 @@ void	ft_exit(t_minishell *shell, long status)
 	}
 	if (status > 255)
 		status = status % 256;
-	free_shell(shell);
+	free_child_shell(shell);
 	exit(status);
 }

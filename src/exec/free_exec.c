@@ -56,7 +56,6 @@ void	free_child_shell(t_minishell *shell)
 	if (shell->exec)
 		free_exec(&(shell->exec));
 	free(shell);
-	exit(127);
 }
 
 void	free_exec_node(t_exec **exec)

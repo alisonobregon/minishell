@@ -143,7 +143,7 @@ char	*get_prompt(t_minishell *shell);
 int		add_history_to_file(char *str);
 /* Execution */
 void	exec(t_minishell *shell);
-void	one_cmd(t_minishell *shell);
+int		one_cmd(t_minishell *shell);
 char	*find_path(t_minishell *shell, char *cmd);
 int		check_binary(t_minishell *shell, t_exec *exec, char *cmd);
 int		len_pipes(t_exec *exec);

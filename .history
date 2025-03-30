@@ -1171,3 +1171,72 @@ minishell
 ls -la
 ls -la
                                                                                                                   
+cat << end > output
+cat output 
+export > out > out2 > out3
+export > output > out2 > out3
+ls -la | grep Makefile 
+sleep 3 | ls -la > output | cat << end > out
+echo hola > out
+minishell
+./minishell 
+exit 240
+echo $?
+ls -la
+export | grep USER
+./minishell 
+exit 100
+echo $?
+./minishell 
+ls -la | grep Makefile 
+echo $?
+exit 100
+export | SHLVL
+export | grep SHLVL
+export | grep SHLVL
+./minishell 
+./minishell 
+env
+export
+export v1
+export
+export v1=valu1 v2=v2
+export
+ls
+ls -la
+ls -la
+echo $?
+ls -la
+echo $?
+grep
+echo $?
+ls -la
+echo $?
+grep
+echo $?
+ls -la | grep
+echo $?
+ls -la | export
+echo $?
+ls -la | export
+echo $?
+ls -la | export
+ls -la | export
+echo $?
+ls -la | grep Makefile 
+ls -la
+ls -la | grep Makefile 
+ls -la | grep Makefile 
+ls -al
+ls -la
+grep
+echo $?
+./minishell 
+exit 100
+echo $?
+./minishell 
+exit 20
+echo $?
+./minishell 
+exit 20
+echo $?

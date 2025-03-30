@@ -46,7 +46,7 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 	{
 		shell->status = 127;
 		free_child_shell(shell);
-		return ;
+		exit(127);
 	}
 	path = find_path(shell, exec->cmd);
 	if (path == NULL)
@@ -54,9 +54,10 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 	execve(path, exec->args, shell->env);
 	perror("Error excecuting execve\n");
 	free_exec_node(&exec);
+	exit(127);
 }
 
-void	one_cmd(t_minishell *shell)
+int	one_cmd(t_minishell *shell)
 {
 	children_signal();
 	if (builtin_checker(shell, shell->exec->cmd))
@@ -66,15 +67,15 @@ void	one_cmd(t_minishell *shell)
 			if (!fd_checker(&shell->exec))
 			{
 				shell->status = 1;
-				return ;
+				return (shell->status);
 			}
 		}
 		if (exec_builtin(shell, shell->exec->cmd, shell->exec->args) == -1)
 		{
 			shell->status = 127; //en plan hay que ir poniendo de estos en la ejecucion
-			return ;
+			return (shell->status);
 		}
-		multi_dup(shell->exec->stdin, shell->exec->stdout); //aqui puede estarya que no lo asignas
+		return (multi_dup(shell->exec->stdin, shell->exec->stdout), shell->status);
 	}
 	else
 	{
@@ -82,7 +83,7 @@ void	one_cmd(t_minishell *shell)
 		if (shell->pid == -1)
 		{
 			shell->status = 100;
-			return (perror("fork"));
+			return (perror("fork"), shell->status);
 		}
 		if (shell->pid == 0)
 		{
@@ -92,7 +93,7 @@ void	one_cmd(t_minishell *shell)
 				if (!fd_checker(&shell->exec))
 				{
 					shell->status = 1;
-					return ;
+					return (-1);
 				}
 			}
 			if (shell->exec->heredoc)
@@ -102,8 +103,12 @@ void	one_cmd(t_minishell *shell)
 			exit(1);
 		}
 	}
-	while (wait(NULL) > 0)
-		;
-	//WAIEEXITED
-
+	while(waitpid(shell->pid, &shell->status, 0) > 0)
+	{
+		if (WIFEXITED(shell->status))
+			shell->status = WEXITSTATUS(shell->status);
+		else if (WIFSIGNALED(shell->status))
+			shell->status = WTERMSIG(shell->status) + 128;
+	}
+	return (shell->status);
 }

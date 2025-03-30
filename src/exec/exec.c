@@ -66,7 +66,7 @@ void	handler_fd(t_minishell *s, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		exec_cmd(s, exec);
 	(free(pre_pipe), free(pipe_fd));
 	free_child_shell(s);
-	exit(1);
+	exit(0);
 }
 
 int	child_maker(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
@@ -102,6 +102,7 @@ static int	pipex(t_minishell *shell)
 	t_exec	*exec;
 	int		*pipe_fd;
 	int		*pre_pipe;
+//	int		status;
 
 	exec = shell->exec;
 	shell->exec->i = 0;
@@ -120,10 +121,17 @@ static int	pipex(t_minishell *shell)
 		exec = exec->next;
 		shell->exec->i++;
 	}
-	while (wait(NULL) > 0)
-		;
+	while(waitpid(-1, &shell->status, 0) > 0)
+	{
+		if (WIFEXITED(shell->status))
+			shell->status = WEXITSTATUS(shell->status);
+		else if (WIFSIGNALED(shell->status))
+			shell->status = WTERMSIG(shell->status) + 128;
+	}
+	/* while (wait(NULL) > 0)
+		; */
 	(close(pipe_fd[READ]), close(pre_pipe[WRITE]));
-	return (free(pre_pipe), free(pipe_fd), 1);
+	return (free(pre_pipe), free(pipe_fd), shell->status);
 }
 
 void	exec(t_minishell *shell)
@@ -139,9 +147,10 @@ void	exec(t_minishell *shell)
 	{
 		if (!pipex(shell))
 		{
-			ft_putstr_fd("Error in pipex\n", 2);
+			//ft_putstr_fd("Error in pipex\n", 2);
 			shell->status = 1;
-			exit(1);
+			return ;
+			//exit(1);
 		}
 	}
 	wait_signal();
