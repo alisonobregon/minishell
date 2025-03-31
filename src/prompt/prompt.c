@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 18:19:13 by marvin            #+#    #+#             */
-/*   Updated: 2025/03/28 19:44:33 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:45:00 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,16 @@ char	*get_prompt(t_minishell *shell)
 	char	*temp3;
 
 	(void)shell;
-	if (shell->cwd)
-	{
-		free(shell->cwd);
-		shell->cwd = NULL;
-	}
 	cwd = getcwd(NULL, 0);
-	//printf("pwd in get_prompt: %s\n", pwd);
-	// if (cwd)
-	// {
-	// 	temp1 = ft_strjoin(CYAN, getenv("USER"));
-	// 	temp2 = ft_str2join(temp1, cwd, 1 ,1);
-	// 	temp1 = ft_strjoin(YELLOW, "->thelatambash$ ");
-	// 	temp3 = ft_str2join(temp2, temp1, 1, 1);
-	// 	cwd = ft_str2join(temp3, DEFAULT, 1, 0);
-	// }
-	// else
-	// 	cwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
-	if (ft_len(shell->env) > 2)
+	if (cwd)
 	{
-		temp1 = ft_strjoin(CYAN, getenv("USER"));
+		temp1 = ft_str2join(CYAN, ft_strjoin(getenv("USER"), "@"), 0, 1);
 		temp2 = ft_str2join(temp1, cwd, 1 ,1);
 		temp1 = ft_strjoin(YELLOW, "->thelatambash$ ");
 		temp3 = ft_str2join(temp2, temp1, 1, 1);
 		cwd = ft_str2join(temp3, DEFAULT, 1, 0);
 	}
 	else
-		cwd = ft_strdup(CYAN "\nminishell$ " DEFAULT);
-	//free(shell->cwd); hay que verlo
+		cwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
 	return(cwd);
 }

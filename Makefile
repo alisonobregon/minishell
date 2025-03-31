@@ -26,6 +26,7 @@ SRC	=	./src/minishell.c \
 		./src/parsing/pipes.c \
 		./src/utils/utils.c \
 		./src/utils/utils2.c \
+		./src/exec/exec_utils2.c \
 		./src/exec/exec_utils.c \
 		./src/exec/exec.c \
 		./src/exec/get_path.c \
@@ -43,7 +44,7 @@ OBJ	= $(SRC:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) #-g3 -fsanitize=address,leak
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
 
 FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
 

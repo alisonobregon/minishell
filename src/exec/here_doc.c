@@ -30,7 +30,7 @@ char	*doc_fd(char *limiter)
 	char *tmp;
 
 	tmp = NULL;
-	other_signals();
+	other_signals();//ver que hace esta funcion
 	if (limiter[0] == '\'')
 	{
 		tmp = ft_strdup(limiter);

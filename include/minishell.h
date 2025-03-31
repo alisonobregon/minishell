@@ -19,17 +19,21 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <sys/stat.h>
+# include <sys/ioctl.h>
 # include <signal.h>
 # include <errno.h>
+# include <termcap.h>
 
-# define CYAN "\033[36m"
-# define YELLOW "\033[33m"
-# define GREEN   "\033[32m"
-# define DEFAULT "\033[0m"
-# define RED     "\033[31m"
-# define WHITE   "\033[37m"
-# define BOLD    "\033[1m"
-# define BLUE    "\033[34m"
+# define CYAN    "\001\033[36m\002"
+# define YELLOW  "\001\033[33m\002"
+# define GREEN   "\001\033[32m\002"
+# define DEFAULT "\001\033[0m\002"
+# define RED     "\001\033[31m\002"
+# define WHITE   "\001\033[37m\002"
+# define BOLD    "\001\033[1m\002"
+# define BLUE    "\001\033[34m\002"
+
+
 # define READ 0
 # define WRITE 1
 # define MAX_ARGUMENTS 256
@@ -119,34 +123,40 @@ char		*quit_quotes(char *argument);
 
 /*Signals :)*/
 void	wait_signal(void);
-void children_signal(void);
-void children_handler(int signal);
-void other_handler(int signal);
-void other_signals(void);
+void	children_signal(void);
+void	children_handler(int signal);
+void	other_handler(int signal);
+void	other_signals(void);
 
 /*vars y env*/
-int replace_quotes(char ***args, char **env, int last_exit);
-int replace_var(char *arg, char *new_args, int *n_args);
+int		replace_quotes(char ***args, char **env, int last_exit);
+int		replace_var(char *arg, char *new_args, int *n_args);
 char	*replace_env(char *arg, char **env, int last_exit);
 char	*malloc_new_arg(char *arg, char **env, int lex);
 int		get_future_arglen(char *arg, char **env, int lex);
 int 	set_quotes(char c, int *quotes);
 int		get_env_len(char *str);
-char *get_env(char *env_name, char **env, int last_exit);
-int env_name_len(char *env_name);
+char	*get_env(char *env_name, char **env, int last_exit);
+int		env_name_len(char *env_name);
 
 /*PROMPT*/
 char	*get_prompt(t_minishell *shell);
 int		add_history_to_file(char *str);
 /* Execution */
 void	exec(t_minishell *shell);
-void	one_cmd(t_minishell *shell);
+int		one_cmd(t_minishell *shell);
 char	*find_path(t_minishell *shell, char *cmd);
+int		check_binary(t_minishell *shell, t_exec *exec, char *cmd);
 int		len_pipes(t_exec *exec);
 int		fd_checker(t_exec **exec);
 void	multi_dup(int read, int write);
 void	exec_cmd(t_minishell *shell, t_exec *exec);
+void	exec_cmds(t_minishell *shell, t_exec *exec);
+int		one_cmd_waiter(t_minishell *shell);
+int		any_cmd_waiter(t_minishell *shell);
 void	free_exec_node(t_exec **exec);
+void	free_exec(t_exec **exec);
+void	free_child_shell(t_minishell *shell);
 
 /*HERE DOC*/
 void	here_doc(t_exec **exec, char *limiter);

@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 20:36:09 by gongarci          #+#    #+#             */
-/*   Updated: 2025/03/28 19:13:11 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:41:28 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	ft_exit(t_minishell *shell, long status)
 	if (status >= LONG_MAX)
 	{
 		ft_printf("bash: exit: %ld: numeric argument required\n", status);
-		free_shell(shell);
+		free_child_shell(shell);
 		exit(2);
 	}
 	if (status > 255)
 		status = status % 256;
-	free_shell(shell);
-	printf("Saaaaaaaaaale  por acaso\n");
+	ft_printf("exit\n");
+	free_child_shell(shell);
 	exit(status);
 }

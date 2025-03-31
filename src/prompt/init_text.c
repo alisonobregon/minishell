@@ -1,4 +1,5 @@
 #include "../../include/minishell.h"
+
 int print_shell(void)
 {
     printf(GREEN BOLD "        ████████╗██╗  ██╗███████╗    ██╗      █████╗ ████████╗ █████╗ ███╗   ███╗     ██████╗██╗  ██╗███████╗██╗     ██╗\n" DEFAULT);
