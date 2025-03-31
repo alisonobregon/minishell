@@ -7,3 +7,9 @@ cat < Makefile > out1 > out 2 | sleep 2 | ls -la > out 2 | cat << end  not worki
 
 
 < Makefile echo "hola" > out "< is taken as a cmd" 
+aliobreg@/home/aliobreg/alumni->thelatambash$ cat < minishell/Makefile | grep PHONY > out
+mios
+aliobreg@/home/aliobreg/alumni->thelatambash$ >a>b>c>d>e
+aliobreg@/home/aliobreg/alumni/minishell->thelatambash$ cat | cat | cat 
+ << end
+

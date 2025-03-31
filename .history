@@ -1482,3 +1482,38 @@ export
 export | grep SHLVL
 exit
 minishell
+echo Hola
+echo -nnnn Hola
+echo -nnna Hola
+pwd
+cd 
+pwd
+cd
+cd
+cd ..
+cat Makefile > out
+cat Makefile > out >> out2
+cat Makefile > out >> out2
+echo Hola > out >> out2
+cat Makefile | grep PHONY
+cat Makefile | grep PHONY | wc -l
+cat | cat | cat 
+cat 
+cat 
+cat 
+./minishell 
+ls
+exit ebvbsvebsiubis
+exit 1 2 3 
+dfgm,
+sleep 5 | sleep 5
+sleep 5 | echo Hola | sleep 5
+cat < Makefile < src/parsing/parsing.c
+cat < Makefile > src/parsing/parsing.c
+cat hola
+cat Makefile 
+cat
+la
+ls
+<< end
+<< end

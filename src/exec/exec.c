@@ -138,9 +138,9 @@ void	exec(t_minishell *shell)
 		{
 			//ft_putstr_fd("Error in pipex\n", 2);
 			//shell->status = 1;
-			wait_signal();
 			return ;
 			//exit(1);
 		}
 	}
+	wait_signal();
 }
