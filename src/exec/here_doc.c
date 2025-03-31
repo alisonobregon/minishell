@@ -27,9 +27,22 @@ char	*doc_fd(char *limiter)
 {
 	char	*line;
 	int		temp_fd;
+	char *tmp;
 
-	printf("limiter %s\n", limiter);
+	tmp = NULL;
 	other_signals();
+	if (limiter[0] == '\'')
+	{
+		tmp = ft_strdup(limiter);
+		limiter = ft_strtrim(tmp, "'");
+		free(tmp);
+	}
+	if (limiter[0] == '\"')
+	{
+		tmp = ft_strdup(limiter);
+		limiter = ft_strtrim(tmp, "\"");
+		free(tmp);
+	}
 	temp_fd = open(limiter, O_CREAT | O_WRONLY, 0644);
 	if (temp_fd < 0)
 		return (ft_printf("Error creating temp file\n"), NULL);
@@ -64,12 +77,11 @@ void	here_doc(t_exec **exec, char *limiter)
 {
 	char	*doc_infile;
 
-	printf("HERE DOC\n");
-	doc_infile = NULL;
 	if (!exec)
 		return ;
+	doc_infile = NULL;
 	if (!(*exec)->heredoc)
-	return ;
+		return ;
 	if ((*exec)->heredoc)
 		doc_infile	= doc_fd(limiter);
 	if (doc_infile)

@@ -16,7 +16,8 @@ int	g_sigint;
 
 void	memory_allocated(t_minishell *shell)
 {
-	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char *));
+	shell->prompt = ft_calloc(1, sizeof(t_prompt));
+	shell->exec = NULL;
 	if (!shell->prompt)
 		shell->prompt = ft_calloc(1, sizeof(t_prompt));
 	//	shell->exec = NULL;
@@ -85,7 +86,8 @@ int	main(int argc, char **argv, char **env)
 	print_shell();
 	shell = ft_calloc(1, sizeof(t_minishell));
 	shell->env = strarray_copy(env);
-	shell->path = ft_split(getenv("PATH"), ':');
+	if (env)
+		shell->path = ft_split(getenv("PATH"), ':');
 	shell->status = 0;
 	wait_signal();
 	while (1)

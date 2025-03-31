@@ -984,487 +984,205 @@ echo "
 echo $?
 ech
 echo $?
-                                                                                                                               
-ls -la
-ls -la > output
-cat output 
-                                                                                                                            
-echo "hola"
-echo "hola"
-export "test=ls -la | grep Makefile | wc -l"
-echo test
-echo $test
-$test
-ls -la
-export "cd=../../../"
-cd $cd
-ls -la
-ls -la | grep Makefile
-ls
-ls -la
-l
-cat Makefile 
-ls -la | grep Makefile 
-echo $?
-echo "HOla" -n
-echo -n "HOla" 
-echo -  n "HOla" 
-echo-n
-./minishell 
-/bin/ls
-/bin/ls -la
-"bin/ls -la"
-"/bin/ls -la"
-l
-l
-l
-l
-l
-l
-ls -la
-ls -la | grep Makefile 
-export
-ls -la | export
-ls -la | grep Makefile 
-echo $?
-<< end
-<< end > output
-<< ls -la
-export "test=ls -la"
-$test
-export | grep Makefile 
-export | grep Makefile 
-ls-
-ls
-ls -la
-echo $?
-l
-echo $?
-export
-ls -la | export
-ls -la
-ls -la | grep Makefile 
-echo $?
-ls -la | grep asd
-echo $?
-ls -la | grep asd
-ls -la | export
-ls -la | export
-ls -la | export
-echo $?
-ls -la | export
-ls -la | export
-ls -la | env
-export "test=ls -la"
-$test
-export hola=v1
-export | grep hola
-export | grep USER
-echo $?
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-ls -al
-ls 
-echo $?
-,s
-ls
-l
-ls
-ls
-l
-env
-exit 20
-l
-l
-s
-l
-l
-l
-l
-l
-ls -la
-ls -la
-echo hola
-echo "hola"
-echo $USER
-echo -n $USER
-ls -la | grep Makefile 
-ls -la | grep Makefile | export
-                                                                 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);cdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmk
-cdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmk
-                                                                                                                                                                 
+export test=a
 asd
-l
-ls -la
-ls -la | grep Makefile 
+asdas 
 export
-                                                                       
-ls -la | grep Makefile 
+cat ª·─::_ÑP^DDGDFªª!"·$%&/()=)==?^*¨Ñ
+cat << her
+cat << her
+cat < Makefile << her
+make clean
+make fclean
+echo hola
+ls
+cat << asdas
+cat << asdas < Makefile
+cat << asdas < Makefile > out1 > out2
+echo hola
+export
+export test=$HOME
+export
+/bin/ls
+/bin/env
+                                         
+/bin/cat Makefile 
+echo Hola mund
+echo Hola "mund"
+echo "Hola mund"o
+echo -n "Hola mund"o
+exit
+exit 123
+/bin/ls ahrgfuayr
 echo $?
-ls -la | grep 
 echo $?
-cat << end | grep hola
-<< end
+expr $? + $?
+expr $? + $?
+expr $? + $?
+cat
+cat
+cat
+cat
+cat << end
+cat << end
+cat
+cat
+cat
+cat
+cat
+cat asdsa
+cat asdsa
+cat 
+cat 
+cat 
+cat 
+cat 
+cd ..
+ls
+rm -r end
+cd ..
+export test=$HOME
+export
+export test="$HOME"
+export 
+export "$HOME"
+export test
+export
+unset test
+export
+export test
+export
+unset test
+export
+env
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit xfd
+exit
+cat
+cat
+cat
+echo "cat lol.c | grep lol.c"
+echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDd"
+echo '$USER'
+echo '$HOME'
+env
+export
+export a=a b= c
+export
+'ls'
+"ls"
+export
+unset a
+export
+cd
+pwd
+ls
+cat Makefile 
+echo Hola > out
+>b>c>d>e>f
+>a>b>c>d>e
+cat < src/parsing/parsing.c
+cat << end << end
+cat << end | cat << end
+cat << end | cat << end2
+pwd
+pwd
+cd ..
+ls
+cd ..
+pwd
+pwd
+cd ..
+pwd
+cd ..
+pwd
+cd ..
+pwd
+cd ..
+cd ..
+env | grep PWD
+env
+cd ..
+.
+"ls            "
+" ls            "
+cat << end""
+'ls'
+"ls"
+"           ls"
+"           ls                       "
+                                      ls
+'ls'
+"ls"
+export a="ls -la"
+export a="ls -la"
+$a
+export a="ls"
+$a
+$HOME
+"
+"
+'ls'
+'echo'
 ./minishell 
 ./minishell 
+make
 ./minishell 
-./minishell 
+'ls'
+'ls'
+'                  ls                  '
+'ls'
+'    ls      '
+             echo
+             echo    'hola'
+                 echo 'hola'
 ./minishell 
 ./minishell 
 env
-export
+'ls'
+ls
+minishell
+ls
+./minishell 
+./minishell 
+./minishell 
+'ls'
+ls
+ls
+cat << ls
+cat << ls
+ls
+echo hola
+sñdsa
+make
+ls
+cat << end
+'ls'
+'        ls        '
+make clean
+ls
+ls
 ls
 cd ..
 ls
-ls -la
+cd
+cd ..
+' ls '
 ./minishell 
-minishell
+cat << ms
+cat 'ms'
+cat << 'ms'
+cat << '   ms     '
+cat < 'Makefile'
 ./minishell 
-./minishell 
-minishell
-minishell
-minishell
-minishell
-minishell
-minishell 
-minishell
-minishell
-minishell
-minishell
-minishell
-minishell
-minishell
-./minishell 
-minishell
-minishell
-minishell
-minishell
-minishell
-minishell
-ls
-ls -la
-minishell
-minishell
-minishell
-./minishell 
-minishell
-l
-make fclean
-minishell
-                                                                                                                                                           ls -la
-ls -la
-ls -la
-                                                                                                                  
-cat << end > output
-cat output 
-export > out > out2 > out3
-export > output > out2 > out3
-ls -la | grep Makefile 
-sleep 3 | ls -la > output | cat << end > out
-echo hola > out
-minishell
-./minishell 
-exit 240
-echo $?
-ls -la
-export | grep USER
-./minishell 
-exit 100
-echo $?
-./minishell 
-ls -la | grep Makefile 
-echo $?
-exit 100
-export | SHLVL
-export | grep SHLVL
-export | grep SHLVL
-./minishell 
-./minishell 
-env
-export
-export v1
-export
-export v1=valu1 v2=v2
-export
-ls
-ls -la
-ls -la
-echo $?
-ls -la
-echo $?
-grep
-echo $?
-ls -la
-echo $?
-grep
-echo $?
-ls -la | grep
-echo $?
-ls -la | export
-echo $?
-ls -la | export
-echo $?
-ls -la | export
-ls -la | export
-echo $?
-ls -la | grep Makefile 
-ls -la
-ls -la | grep Makefile 
-ls -la | grep Makefile 
-ls -al
-ls -la
-grep
-echo $?
-./minishell 
-exit 100
-echo $?
-./minishell 
-exit 20
-echo $?
-./minishell 
-exit 20
-echo $?
-ls
-ls -la
-ls -la > out
-cat out 
-cat " hola que tal
-echo "hola
-echo 'hola'
-echo "hola"
-./minishell 
-export
-./minishell 
-ls -la
-echo $?
-ls -la | grep
-echo $?
-exit 100
-echo $?
-echo $?
-echo $?
-./minishell 
-exit 100
-./minishell 
-exit 100
-./minishell 
-exit 100
-./minishell 
-./minishell 
-ls -la
-echo $?
-ls -la | grep
-echo $?
-exit 100
-echo $?
-./minishell 
-exit 100
-echo $?
-./minishell 
-unset asd1 asd2 asd3
-unset
-unset abc
-unset "abc"
-unset "abc "
-export
-unset wsl
-unset WS
-export
-export
-export > out
-cat out 
-echo "hola que tal " > out
-< Makefile echo hola que tal
-DEFAULT= \033[0;39m
-GRAY= \033[0;90m
-RED= \033[0;91m
-GREEN= \033[0;92m
-YELLOW= \033[0;93m
-BLUE= \033[0;94m
-MAGENTA= \033[0;95m
-CYAN= \033[0;96m
-WHITE= \033[0;97m
-NAME= minishell
-SRC=./src/minishell.c \
-./src/built-ins/builtins-utils.c \
-./src/built-ins/export.c \
-./src/built-ins/unset.c \
-./src/built-ins/env.c \
-./src/built-ins/exit.c \
-./src/built-ins/cd.c \
-./src/built-ins/echo.c \
-./src/parsing/parsing.c \
-./src/parsing/checker.c \
-./src/parsing/utils_parsing.c \
-./src/parsing/create_command.c \
-./src/parsing/outfiles.c \
-./src/parsing/pipes.c \
-./src/utils/utils.c \
-./src/utils/utils2.c \
-./src/exec/exec_utils.c \
-./src/exec/exec.c \
-./src/exec/get_path.c \
-./src/exec/redirections.c \
-./src/exec/here_doc.c \
-./src/exec/free_exec.c \
-./src/prompt/prompt_utils.c \
-./src/prompt/prompt.c \
-./src/signals/signals.c \
-./src/parsing/quotes.c \
-./src/parsing/env.c \
-./src/prompt/init_text.c \
-OBJ= $(SRC:.c=.o)
-INCLUDES = -I/mingw64/include
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
-FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
-CC = cc
-#-no-pie
-all: $(NAME) show_progress
-$(NAME): $(OBJ)
-@make -s -C libft
-$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
-debug: $(NAME)
-@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
-fd: $(NAME)
-@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
-run: $(NAME)
-make && ./$(NAME)
-< out echo "hola"
-hola que tal 
-asd
-asds
-asda
-sda
-sdad
-sads
-asd
-< Makefile echo hola
-< Makefile echo hola
-DEFAULT= \033[0;39m
-GRAY= \033[0;90m
-RED= \033[0;91m
-GREEN= \033[0;92m
-YELLOW= \033[0;93m
-BLUE= \033[0;94m
-MAGENTA= \033[0;95m
-CYAN= \033[0;96m
-WHITE= \033[0;97m
-NAME= minishell
-SRC=./src/minishell.c \
-./src/built-ins/builtins-utils.c \
-./src/built-ins/export.c \
-./src/built-ins/unset.c \
-./src/built-ins/env.c \
-./src/built-ins/exit.c \
-./src/built-ins/cd.c \
-./src/built-ins/echo.c \
-./src/parsing/parsing.c \
-./src/parsing/checker.c \
-./src/parsing/utils_parsing.c \
-./src/parsing/create_command.c \
-./src/parsing/outfiles.c \
-./src/parsing/pipes.c \
-./src/utils/utils.c \
-./src/utils/utils2.c \
-./src/exec/exec_utils.c \
-./src/exec/exec.c \
-./src/exec/get_path.c \
-./src/exec/redirections.c \
-./src/exec/here_doc.c \
-./src/exec/free_exec.c \
-./src/prompt/prompt_utils.c \
-./src/prompt/prompt.c \
-./src/signals/signals.c \
-./src/parsing/quotes.c \
-./src/parsing/env.c \
-./src/prompt/init_text.c \
-OBJ= $(SRC:.c=.o)
-INCLUDES = -I/mingw64/include
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
-FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
-CC = cc
-#-no-pie
-all: $(NAME) show_progress
-$(NAME): $(OBJ)
-@make -s -C libft
-$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
-debug: $(NAME)
-@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
-fd: $(NAME)
-@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
-run: $(NAME)
-make && ./$(NAME)
-< Makefile echo "hola"
-< Makefile echo "hola"
-< Makefile echo hola
-<< end
-< Makefile cat > out > out2 | ls -la > out | cat < Makefile 
-cat out
-cat out2
-< Makefile cat > out > out2 | ls -la > out |  sleep 2 | cat < Makefile 
-< Makefile cat > out > out2 | ls -la > out |  sleep 2 | cat < Makefile 
-< Makefile cat > out > out2 | ls -la > out |  sleep 2 | cat < Makefile 
-ls -la
-echo vamos a ver qlq > out
-cat out
-l
-l
-echo $?
-ls -la | l
-echo $?
-ls -la | grep Makefile 
-ls -la | grep
-echo $?
-ls -la | l
-                                                                                                                                            
-< Makefile echo "hola"
-< Makefile echo "hola" > out
-cat out
-< Makefile echo "hola" > out
-norminette
-norminette utils
-norminette /utils
-norminette /utils/
-norminette utils
-norminette /utils
- norminette /src/utils
- norminette /src/utils/
- norminette /src/utils
- norminette ./src/utils
- norminette ./src/utils
- norminette ./src/prompt
-norminette ./src/prompt
-norminette ./src/utils
-norminette ./src/prompt
-norminette ./src/prompt
-norminette ./src/prompt
-norminette ./src/prompt
-norminette ./src/prompt
-norminette ./src/built-ins/
-norminette ./src/built-ins/
-norminette ./src/built-ins/
-make run
-./minishell 
-export _v
-export 2v
-minishell
-/bin/ls
-/bin/ls
-/bin/ss
-/bin/ls

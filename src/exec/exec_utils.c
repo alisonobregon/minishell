@@ -49,6 +49,7 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 		exit(127);
 	}
 	path = find_path(shell, exec->cmd);
+	//*Modificado por Gabo :)
 	if (path == NULL)
 		((free_child_shell(shell)), exit(127));
 	execve(path, exec->args, shell->env);
@@ -105,7 +106,10 @@ int	one_cmd(t_minishell *shell)
 			}
 			if (shell->exec->heredoc)
 				unlinker(shell->exec->heredoc);
-			exec_cmd(shell, shell->exec);
+			//* Movido por Gabo
+			if (!g_sigint)
+				exec_cmd(shell, shell->exec);
+			// exec_cmd(shell, shell->exec);
 			signal(SIGQUIT, SIG_IGN);
 			exit(1);
 		}

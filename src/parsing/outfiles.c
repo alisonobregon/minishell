@@ -19,6 +19,7 @@ t_output	*outlst_new(char *filename, int action)
 	new = ft_calloc(sizeof(t_output), 1);
 	if (!new)
 		return (NULL); //recordatorio amable para mejor cambiar a 0 y por 1 guapa
+	filename = quit_quotes(filename);
 	new->file = ft_strdup(filename);
 	if(!new->file)
 	{

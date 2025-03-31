@@ -6,7 +6,7 @@
 /*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 20:36:09 by gongarci          #+#    #+#             */
-/*   Updated: 2025/03/21 20:43:10 by gongarci         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:21:38 by gongarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_exit(t_minishell *shell, long status)
 	}
 	if (status > 255)
 		status = status % 256;
-	ft_printf("exit\n");
-	free_child_shell(shell);
+	free_shell(shell);
+	printf("Saaaaaaaaaale  por acaso\n");
 	exit(status);
 }

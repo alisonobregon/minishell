@@ -153,6 +153,26 @@ int create_command_lst(t_minishell *shell)
 	}
 	return (1);
 }
+
+char *quit_quotes(char *argument)
+{
+	char *tmp;
+
+	tmp = NULL;
+	if (argument[0] == '\'')
+	{
+		tmp = ft_strdup(argument);
+		argument = ft_strtrim(tmp, "'");
+		free(tmp);
+	}
+	if (argument[0] == '\"')
+	{
+		tmp = ft_strdup(argument);
+		argument = ft_strtrim(tmp, "\"");
+		free(tmp);
+	}
+	return (argument);
+}
 int print_command_list(t_exec *command_list)
 {
 	t_exec	*temp;

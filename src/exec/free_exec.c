@@ -139,9 +139,11 @@ int free_shell(t_minishell *shell)
 	if (shell->exec)
 		command_list_clear(&(shell->exec));
 	if (shell->env)
+	{
+		free_array(shell->path);
 		free_array(shell->env);
-	if(shell->args)
-		free_array(shell->args);
-	free(shell);
+	}
+	if (shell)
+		free(shell);
 	return (exit_status);
 }
