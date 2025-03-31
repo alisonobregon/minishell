@@ -1432,3 +1432,8 @@ ls -la | grep Makefile
 ls -la | grep
 echo $?
 ls -la | l
+                                                                                                                                            
+< Makefile echo "hola"
+< Makefile echo "hola" > out
+cat out
+< Makefile echo "hola" > out

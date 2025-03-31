@@ -4,3 +4,6 @@
 
 
 cat < Makefile > out1 > out 2 | sleep 2 | ls -la > out 2 | cat << end  not working maybe 
+
+
+< Makefile echo "hola" > out "< is taken as a cmd" 
