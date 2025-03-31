@@ -12,7 +12,7 @@
 
 #include "../../include/minishell.h"
 
-char *get_var_name(char *var)
+char	*get_var_name(char *var)
 {
 	char	*eq;
 
@@ -36,7 +36,7 @@ char	**check_vars(char **args)
 			vars = add_str_to_array(vars, args[i]);
 		}
 		else
-			ft_printf("minishell: export: `%s': not a valid identifier\n", args[i]);
+			ft_printf("shell: export: `%s': not a valid identifier\n", args[i]);
 		i++;
 	}
 	return (vars);

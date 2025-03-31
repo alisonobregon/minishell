@@ -32,6 +32,8 @@ char	*find_path(t_minishell *shell, char *cmd)
 	int		i;
 
 	i = 0;
+	if (access(cmd, F_OK) == 0 && access(cmd, X_OK) == 0)
+		return ((cmd));
 	while(shell->env[i] && ft_strncmp(shell->env[i], "PATH=", 5))
 		i++;
 	paths = ft_split(shell->env[i] + 5, ':');

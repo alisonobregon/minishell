@@ -6,12 +6,11 @@
 /*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 18:19:13 by marvin            #+#    #+#             */
-/*   Updated: 2025/03/17 16:00:30 by gongarci         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:19:10 by gongarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
 
 char	*get_prompt(t_minishell *shell)
 {
@@ -25,12 +24,12 @@ char	*get_prompt(t_minishell *shell)
 	if (cwd)
 	{
 		temp1 = ft_str2join(CYAN, ft_strjoin(getenv("USER"), "@"), 0, 1);
-		temp2 = ft_str2join(temp1, cwd, 1 ,1);
+		temp2 = ft_str2join(temp1, cwd, 1, 1);
 		temp1 = ft_strjoin(YELLOW, "->thelatambash$ ");
 		temp3 = ft_str2join(temp2, temp1, 1, 1);
 		cwd = ft_str2join(temp3, DEFAULT, 1, 0);
 	}
 	else
 		cwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
-	return(cwd);
+	return (cwd);
 }

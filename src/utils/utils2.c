@@ -6,7 +6,7 @@
 /*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 20:35:54 by gongarci          #+#    #+#             */
-/*   Updated: 2025/03/18 20:58:22 by gongarci         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:53:29 by gongarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,29 @@ char	**rm_str_from_array(char **array, char *str)
 	new_array[j] = NULL;
 	free_arrays(array, NULL);
 	return (new_array);
+}
+
+int	contains_only(char *str, int c)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] != c)
+			return (0);
+	}
+	return (1);
+}
+
+void	print_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i] != NULL)
+	{
+		ft_printf("%s\n", array[i]);
+		i++;
+	}
 }

@@ -49,8 +49,7 @@ static int	new_path(t_minishell *shell, char **arr)
 	return (1);
 }
 
-
-int cd(t_minishell *shell, char **arr)
+int	cd(t_minishell *shell, char **arr)
 {
 	char	*home;
 

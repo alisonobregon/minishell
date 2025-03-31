@@ -1437,3 +1437,34 @@ ls -la | l
 < Makefile echo "hola" > out
 cat out
 < Makefile echo "hola" > out
+norminette
+norminette utils
+norminette /utils
+norminette /utils/
+norminette utils
+norminette /utils
+ norminette /src/utils
+ norminette /src/utils/
+ norminette /src/utils
+ norminette ./src/utils
+ norminette ./src/utils
+ norminette ./src/prompt
+norminette ./src/prompt
+norminette ./src/utils
+norminette ./src/prompt
+norminette ./src/prompt
+norminette ./src/prompt
+norminette ./src/prompt
+norminette ./src/prompt
+norminette ./src/built-ins/
+norminette ./src/built-ins/
+norminette ./src/built-ins/
+make run
+./minishell 
+export _v
+export 2v
+minishell
+/bin/ls
+/bin/ls
+/bin/ss
+/bin/ls

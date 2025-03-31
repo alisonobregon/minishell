@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 18:34:19 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/03/24 22:16:44 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:21:34 by gongarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-//le paso los argumentos y la idea principal es imprimirlo con printfd
-void echo_args(char *str)
+/*le paso los argumentos y la idea principal es imprimirlo con printfd*/
+void	echo_args(char *str)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	while(str[++i])
+	while (str[++i])
 	{
-		if(ft_strncmp(str + i, "\n", 2) == 0)
+		if (ft_strncmp(str + i, "\n", 2) == 0)
 		{
 			ft_putchar_fd('\n', 1);
 			continue ;
@@ -29,10 +29,11 @@ void echo_args(char *str)
 			ft_putchar_fd(str[i], 1);
 	}
 }
-int ft_echo(char **args)
+
+int	ft_echo(char **args)
 {
-	int i;
-	int n_flag;
+	int	i;
+	int	n_flag;
 
 	i = 0;
 	n_flag = 0;
