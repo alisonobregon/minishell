@@ -61,6 +61,8 @@ void	ft_unset(t_minishell *shell, char **args)
 	int	i;
 
 	i = 0;
+	if (!args[0] || !args[1])
+		return ;
 	while (args[i])
 	{
 		if (str_in_array(shell->env, args[i]))

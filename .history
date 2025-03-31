@@ -1240,3 +1240,195 @@ echo $?
 ./minishell 
 exit 20
 echo $?
+ls
+ls -la
+ls -la > out
+cat out 
+cat " hola que tal
+echo "hola
+echo 'hola'
+echo "hola"
+./minishell 
+export
+./minishell 
+ls -la
+echo $?
+ls -la | grep
+echo $?
+exit 100
+echo $?
+echo $?
+echo $?
+./minishell 
+exit 100
+./minishell 
+exit 100
+./minishell 
+exit 100
+./minishell 
+./minishell 
+ls -la
+echo $?
+ls -la | grep
+echo $?
+exit 100
+echo $?
+./minishell 
+exit 100
+echo $?
+./minishell 
+unset asd1 asd2 asd3
+unset
+unset abc
+unset "abc"
+unset "abc "
+export
+unset wsl
+unset WS
+export
+export
+export > out
+cat out 
+echo "hola que tal " > out
+< Makefile echo hola que tal
+DEFAULT= \033[0;39m
+GRAY= \033[0;90m
+RED= \033[0;91m
+GREEN= \033[0;92m
+YELLOW= \033[0;93m
+BLUE= \033[0;94m
+MAGENTA= \033[0;95m
+CYAN= \033[0;96m
+WHITE= \033[0;97m
+NAME= minishell
+SRC=./src/minishell.c \
+./src/built-ins/builtins-utils.c \
+./src/built-ins/export.c \
+./src/built-ins/unset.c \
+./src/built-ins/env.c \
+./src/built-ins/exit.c \
+./src/built-ins/cd.c \
+./src/built-ins/echo.c \
+./src/parsing/parsing.c \
+./src/parsing/checker.c \
+./src/parsing/utils_parsing.c \
+./src/parsing/create_command.c \
+./src/parsing/outfiles.c \
+./src/parsing/pipes.c \
+./src/utils/utils.c \
+./src/utils/utils2.c \
+./src/exec/exec_utils.c \
+./src/exec/exec.c \
+./src/exec/get_path.c \
+./src/exec/redirections.c \
+./src/exec/here_doc.c \
+./src/exec/free_exec.c \
+./src/prompt/prompt_utils.c \
+./src/prompt/prompt.c \
+./src/signals/signals.c \
+./src/parsing/quotes.c \
+./src/parsing/env.c \
+./src/prompt/init_text.c \
+OBJ= $(SRC:.c=.o)
+INCLUDES = -I/mingw64/include
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+CC = cc
+#-no-pie
+all: $(NAME) show_progress
+$(NAME): $(OBJ)
+@make -s -C libft
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+debug: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+fd: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+run: $(NAME)
+make && ./$(NAME)
+< out echo "hola"
+hola que tal 
+asd
+asds
+asda
+sda
+sdad
+sads
+asd
+< Makefile echo hola
+< Makefile echo hola
+DEFAULT= \033[0;39m
+GRAY= \033[0;90m
+RED= \033[0;91m
+GREEN= \033[0;92m
+YELLOW= \033[0;93m
+BLUE= \033[0;94m
+MAGENTA= \033[0;95m
+CYAN= \033[0;96m
+WHITE= \033[0;97m
+NAME= minishell
+SRC=./src/minishell.c \
+./src/built-ins/builtins-utils.c \
+./src/built-ins/export.c \
+./src/built-ins/unset.c \
+./src/built-ins/env.c \
+./src/built-ins/exit.c \
+./src/built-ins/cd.c \
+./src/built-ins/echo.c \
+./src/parsing/parsing.c \
+./src/parsing/checker.c \
+./src/parsing/utils_parsing.c \
+./src/parsing/create_command.c \
+./src/parsing/outfiles.c \
+./src/parsing/pipes.c \
+./src/utils/utils.c \
+./src/utils/utils2.c \
+./src/exec/exec_utils.c \
+./src/exec/exec.c \
+./src/exec/get_path.c \
+./src/exec/redirections.c \
+./src/exec/here_doc.c \
+./src/exec/free_exec.c \
+./src/prompt/prompt_utils.c \
+./src/prompt/prompt.c \
+./src/signals/signals.c \
+./src/parsing/quotes.c \
+./src/parsing/env.c \
+./src/prompt/init_text.c \
+OBJ= $(SRC:.c=.o)
+INCLUDES = -I/mingw64/include
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
+CC = cc
+#-no-pie
+all: $(NAME) show_progress
+$(NAME): $(OBJ)
+@make -s -C libft
+$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
+debug: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full ./$(NAME)
+fd: $(NAME)
+@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+run: $(NAME)
+make && ./$(NAME)
+< Makefile echo "hola"
+< Makefile echo "hola"
+< Makefile echo hola
+<< end
+< Makefile cat > out > out2 | ls -la > out | cat < Makefile 
+cat out
+cat out2
+< Makefile cat > out > out2 | ls -la > out |  sleep 2 | cat < Makefile 
+< Makefile cat > out > out2 | ls -la > out |  sleep 2 | cat < Makefile 
+< Makefile cat > out > out2 | ls -la > out |  sleep 2 | cat < Makefile 
+ls -la
+echo vamos a ver qlq > out
+cat out
+l
+l
+echo $?
+ls -la | l
+echo $?
+ls -la | grep Makefile 
+ls -la | grep
+echo $?
+ls -la | l

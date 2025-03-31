@@ -26,6 +26,7 @@ SRC	=	./src/minishell.c \
 		./src/parsing/pipes.c \
 		./src/utils/utils.c \
 		./src/utils/utils2.c \
+		./src/exec/exec_utils2.c \
 		./src/exec/exec_utils.c \
 		./src/exec/exec.c \
 		./src/exec/get_path.c \
