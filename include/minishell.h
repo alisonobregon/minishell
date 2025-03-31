@@ -192,7 +192,7 @@ char	**ft_arrjoin(char **arr1, char **arr2);
 char	*ft_str2join(char *s1, char *s2, int f1, int f2);
 size_t	ft_strcat(char *dest, const char *src);
 int		contains_only(char *str, int c);
-int		print_shell(void);
+void	print_shell(void);
 
 /* utils 2 */
 char	**rm_str_from_array(char **array, char *str);

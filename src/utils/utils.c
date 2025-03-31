@@ -12,18 +12,6 @@
 
 #include "../../include/minishell.h"
 
-int contains_only(char *str, int c)
-{
-	int i;
-
-	i = -1;
-	while(str[++i])
-	{
-		if (str[i] != c)
-			return (0);
-	}
-	return (1);
-}
 char	*ft_array_to_str(char **array)
 {
 	char	*str;
@@ -160,15 +148,4 @@ char	*ft_str2join(char *s1, char *s2, int f1, int f2)
 	if (f2)
 		free(s2);
 	return (substr);
-}
-void	print_array(char **array)
-{
-	int i;
-
-	i = 0;
-	while (array[i] != NULL)
-	{
-		ft_printf("%s\n", array[i]);
-		i++;
-	}
 }

@@ -12,7 +12,7 @@
 
 #include "../../include/minishell.h"
 
-int exec_builtin(t_minishell *shell, char *cmd, char **args)
+int	exec_builtin(t_minishell *shell, char *cmd, char **args)
 {
 	if (!args || !shell->exec->args[0] || !shell->exec)
 		return (0);
@@ -59,7 +59,6 @@ int	builtin_checker(t_minishell *shell, char *cmd)
 		return (1);
 	return (0);
 }
-
 
 void	free_arrays(char **array1, char **array2)
 {

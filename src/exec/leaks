@@ -6,3 +6,8 @@ segvfault al terminar here_doc con delimiter
 segvfault al presionar ctrl + D en el here_doc;
 
 export "test=ls -la" and then $test
+
+
+export 2v  failing
+
+< Makefile echo "hola" > out "< is taken as a cmd" 

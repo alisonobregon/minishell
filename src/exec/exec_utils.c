@@ -42,8 +42,6 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 {
 	char	*path;
 
-	if (exec->cmd == NULL)
-		free_shell(shell);
 	if (check_binary(shell, exec, exec->cmd) == -1)
 	{
 		shell->status = 127;

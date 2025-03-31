@@ -1,16 +1,5 @@
-export hola
-export hola
-export hola
-export hola
-export hola
-export hola
-export hola
-export hola
-export | grep hola
-export | grep NAME
-export | grep NAME
-ls
 ls -la
+<<<<<<< HEAD
 export
 export | grep USER
 export | grep USER
@@ -1004,156 +993,11 @@ echo hola
 export
 export test=$HOME
 export
+=======
+>>>>>>> origin/gonzo
 /bin/ls
-/bin/env
-                                         
-/bin/cat Makefile 
-echo Hola mund
-echo Hola "mund"
-echo "Hola mund"o
-echo -n "Hola mund"o
-exit
-exit 123
-/bin/ls ahrgfuayr
-echo $?
-echo $?
-expr $? + $?
-expr $? + $?
-expr $? + $?
-cat
-cat
-cat
-cat
-cat << end
-cat << end
-cat
-cat
-cat
-cat
-cat
-cat asdsa
-cat asdsa
-cat 
-cat 
-cat 
-cat 
-cat 
-cd ..
-ls
-rm -r end
-cd ..
-export test=$HOME
-export
-export test="$HOME"
-export 
-export "$HOME"
-export test
-export
-unset test
-export
-export test
-export
-unset test
-export
-env
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit
-exit xfd
-exit
-cat
-cat
-cat
-echo "cat lol.c | grep lol.c"
-echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDd"
-echo '$USER'
-echo '$HOME'
-env
-export
-export a=a b= c
-export
-'ls'
-"ls"
-export
-unset a
-export
-cd
-pwd
-ls
-cat Makefile 
-echo Hola > out
->b>c>d>e>f
->a>b>c>d>e
-cat < src/parsing/parsing.c
-cat << end << end
-cat << end | cat << end
-cat << end | cat << end2
-pwd
-pwd
-cd ..
-ls
-cd ..
-pwd
-pwd
-cd ..
-pwd
-cd ..
-pwd
-cd ..
-pwd
-cd ..
-cd ..
-env | grep PWD
-env
-cd ..
-.
-"ls            "
-" ls            "
-cat << end""
-'ls'
-"ls"
-"           ls"
-"           ls                       "
-                                      ls
-'ls'
-"ls"
-export a="ls -la"
-export a="ls -la"
-$a
-export a="ls"
-$a
-$HOME
-"
-"
-'ls'
-'echo'
-./minishell 
-./minishell 
-make
-./minishell 
-'ls'
-'ls'
-'                  ls                  '
-'ls'
-'    ls      '
-             echo
-             echo    'hola'
-                 echo 'hola'
-./minishell 
-./minishell 
-env
-'ls'
-ls
 minishell
+<<<<<<< HEAD
 ls
 ./minishell 
 ./minishell 
@@ -1231,145 +1075,25 @@ export
 ls -la | export
 ls -la | grep Makefile 
 echo $?
+=======
+./minishell
+export 2v
+expot 2v
+export 2v
+export 2v
+
+< Makefile echo "hola" > out "
 << end
-<< end > output
-<< ls -la
-export "test=ls -la"
-$test
-export | grep Makefile 
-export | grep Makefile 
-ls-
-ls
-ls -la
-echo $?
-l
-echo $?
-export
-ls -la | export
+cat << end
+>>>>>>> origin/gonzo
+<< end
 ls -la
 ls -la | grep Makefile 
-echo $?
-ls -la | grep asd
-echo $?
-ls -la | grep asd
-ls -la | export
-ls -la | export
-ls -la | export
-echo $?
-ls -la | export
-ls -la | export
-ls -la | env
-export "test=ls -la"
-$test
-export hola=v1
-export | grep hola
-export | grep USER
-echo $?
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
-export | grep USER
+< Makefile echo hola
+< Makefile echo hola > out
 ls -al
-ls 
-echo $?
-,s
-ls
-l
-ls
-ls
-l
-env
-exit 20
-l
-l
-s
-l
-l
-l
-l
-l
-ls -la
-ls -la
-echo hola
-echo "hola"
-echo $USER
-echo -n $USER
-ls -la | grep Makefile 
-ls -la | grep Makefile | export
-                                                                 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);		//free_arrays(shell->args, NULL);cdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmk
-cdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmkcdjvdjvnzlfdjvndljvnldjknvkdlzmzkmfzmk
-                                                                                                                                                                 
-asd
-l
-ls -la
-ls -la | grep Makefile 
-export
-                                                                       
-ls -la | grep Makefile 
-echo $?
-ls -la | grep 
-echo $?
-cat << end | grep hola
-<< end
-./minishell 
-./minishell 
-./minishell 
-./minishell 
-./minishell 
-./minishell 
-env
-export
-ls
-cd ..
-ls
-ls -la
-./minishell 
-minishell
-./minishell 
-./minishell 
-minishell
-minishell
-minishell
-minishell
-minishell
-minishell 
-minishell
-minishell
-minishell
-minishell
-minishell
-minishell
-minishell
-./minishell 
-minishell
-minishell
-minishell
-minishell
-minishell
-minishell
-ls
-ls -la
-minishell
-minishell
-minishell
-./minishell 
-minishell
-l
 make fclean
+<<<<<<< HEAD
 minishell
                                                                                                                                                            ls -la
 ls -la
@@ -1734,3 +1458,27 @@ echo $?
 cat Makefile | ls | sleep 2 | cat
 cat Makefile | ls | sleep 2 | cat > out
 cat out
+=======
+>>>>>>> origin/gonzo
+minishell 
+./minishell 
+ls
+cat < minishell
+cat < Makefile 
+echo "hola aaaaa $USER AAAAA" > out
+< Makefile echo "hola" > out "< is taken as a cmd" 
+< Makefile echo "hola" > out
+export
+export | grep USER
+ls -la | export
+echo $?
+minishell
+exit 20i0
+echo $?
+minishell
+exit 200
+echo $?
+export
+export | grep SHLVL
+exit
+minishell
