@@ -42,13 +42,15 @@ int	check_quotes(char **buf, int simple_quote, int double_quote)
 		if ((*buf)[i] == 39)
 			simple_quote += check_other_quote(buf, &i, (*buf)[i]);
 	}
-	if ((double_quote % 2 != 0) || (simple_quote % 2 != 0))
+	if (((double_quote % 2 != 0) || (simple_quote % 2 != 0)) && !g_sigint)
 	{
+		other_signals();
 		dquote = readline("dquote>");
-		if (!dquote)
+		if (!dquote || g_sigint)
 		{
-			ft_printf("bash: syntax error\n");
-			return (0);
+			ft_printf("Error quotes don't close\n");
+			free(*buf);
+			return (1);
 		}
 		temp = ft_strjoin(*buf, "\n");
 		temp2 = ft_strjoin(temp, dquote);
@@ -56,10 +58,19 @@ int	check_quotes(char **buf, int simple_quote, int double_quote)
 		free(dquote);
 		free(*buf);
 		*buf = temp2;
-		//free(temp);
-		check_quotes(buf, 0, 0);			
+		return (check_quotes(buf, 0, 0));		
 	}
+	wait_signal();
 	return (2);
+}
+int free_return(char **buf)
+{
+	if (buf)
+	{
+		free(buf);
+		buf = NULL;
+	}
+	return (1);
 }
 /*
 int check_specials(char **buf)

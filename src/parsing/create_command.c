@@ -76,14 +76,12 @@ int	str_array_append(char ***array, char *str)
 		}
 	}
 	new[i] = ft_strdup(str);
-	//printf("new[%d]: %s\n", i, new[i]);
 	if (!new[i])
 		return (0);
 	if (*array)
 		free_array(*array);
 	new[i + 1] = NULL;
 	*array = new;
-	//printf("array[%d] 2: %s\n", i, (*array)[i]);
 	return (1);
 }
 
@@ -159,21 +157,26 @@ int create_command_lst(t_minishell *shell)
 char *quit_quotes(char *argument)
 {
 	char *tmp;
+	char *new_arg;
 
 	tmp = NULL;
+	if (!argument)
+		return (NULL);
 	if (argument[0] == '\'')
 	{
 		tmp = ft_strdup(argument);
-		argument = ft_strtrim(tmp, "'");
+		new_arg = ft_strtrim(tmp, "'");
 		free(tmp);
+		return (new_arg);
 	}
 	if (argument[0] == '\"')
 	{
 		tmp = ft_strdup(argument);
-		argument = ft_strtrim(tmp, "\"");
+		new_arg = ft_strtrim(tmp, "\"");
 		free(tmp);
+		return (new_arg);
 	}
-	return (argument);
+	return (ft_strdup(argument));
 }
 int print_command_list(t_exec *command_list)
 {

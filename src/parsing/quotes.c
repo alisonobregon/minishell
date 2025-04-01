@@ -130,6 +130,8 @@ int replace_quotes(char ***args, char **env, int last_exit)
 	int i;
 
 	i = 0;
+	if (!args || !*args)
+		return (0);
 	new_args = ft_calloc(ft_len(*args) + 1, sizeof(char *));
 	if (!new_args)
 		return (0);

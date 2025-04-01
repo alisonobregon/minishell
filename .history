@@ -1517,3 +1517,135 @@ la
 ls
 << end
 << end
+>> end
+>> end
+<< end
+<< end
+a>b>c>d>e
+>a>b>c>d>e
+cat | cat | cat
+cat | cat | cat
+cat
+cat
+cat | cat | cat 
+cat
+cat | cat
+cat
+cat | cat
+cat | cat
+<<< wr rfjiosoifh
+<< end 
+make
+<< end
+>> end
+<< end
+<< end cat
+>a>b>c>d>f
+>a>b
+>a>b>c
+>a>b>c>d
+>> end
+<< end
+<< end cat
+cat < Makefile 
+ls
+>a>b>c>d>e>f
+cat Makefile | grep PHONY
+cat Makefile | grep PHONY
+cat Makefile | grep PHONY | wc -l
+cat < Makefile | grep PHONY > out
+< Makefile echo "hola" > out
+cat | cat | cat
+cat | cat | cat
+cat | cat | cat
+cat |
+"end
+ls
+'ls'
+ls
+ls -la
+'ls' -la
+ls
+asdasd |
+cat hola
+adasdasdas
+cat "
+"
+"
+"
+ls "
+ls "
+"
+"
+"
+<< end
+<< end
+"
+"
+asda
+"
+ls "
+ps
+"
+"ls
+<< end
+<< end
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"sad
+"
+make
+"
+"
+"
+"
+"
+" ad
+make
+"as
+2
+"
+"
+"asd
+"
+"
+"
+"
+"
+"
+"
+ls |
+echo "hola
+echo "
+"
+"
+asd"
+ls
+"
+"
+make
+" 
+"
+"
+"
+"
+make debug
+"
+"
+"
+"
+"
+"
+"
+"
