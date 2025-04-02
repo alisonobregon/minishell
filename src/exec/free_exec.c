@@ -50,8 +50,8 @@ void	free_child_shell(t_minishell **shell)
 		free_arrays((*shell)->env, NULL);
 	if ((*shell)->path)
 		free_arrays((*shell)->path, NULL);
-/* 	if ((*shell)->prompt)
-		free_prompt(&(*shell)->prompt); */
+	if ((*shell)->prompt)
+		free_prompt(&(*shell)->prompt);
 	if ((*shell)->exec)
 		free_exec(&((*shell)->exec));
 	free((*shell));
@@ -80,7 +80,7 @@ void	free_exec_node(t_exec **exec)
 	exit(127);
 }
 
-int command_list_clear(t_exec **command_list)
+int	command_list_clear(t_exec **command_list)
 {
 	t_exec	*temp;
 
@@ -104,7 +104,7 @@ int command_list_clear(t_exec **command_list)
 	return (0);
 }
 
-int free_output(t_output **output)
+int	free_output(t_output **output)
 {
 	t_output	*temp;
 
@@ -122,7 +122,7 @@ int free_output(t_output **output)
 	return (0);
 }
 
-int free_shell(t_minishell *shell)
+int	free_shell(t_minishell *shell)
 {
 	int exit_status;
 

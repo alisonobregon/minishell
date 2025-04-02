@@ -77,6 +77,8 @@ void	check_export(t_minishell *shell, char **vars)
 	char	*name;
 
 	i = -1;
+	if (!vars || !vars[0])
+		return ;
 	while (vars[++i])
 	{
 		full_var = vars[i];
@@ -99,14 +101,28 @@ int	ft_export(t_minishell *shell, char **args)
 {
 	int		i;
 	char	**vars;
+	int		abcd;
 
 	i = 0;
 	if (!args || !args[0])
 		return (1);
 	if (!args[1])
 	{
-		while(shell->env[i] != NULL)
-			ft_printf("declare -x ""%s""\n", shell->env[i++]);
+		abcd = 101;
+		while (abcd >= 101 && abcd <= 132)
+		{
+			if (shell->env[i][0] == abcd)
+			{
+				while (shell->env[i] != NULL)
+				ft_printf("declare -x ""%s""\n", shell->env[i++]);
+			}
+			i++;
+			if (shell->env[i] == NULL)
+			{
+				i = 0;
+				abcd++;
+			}
+		}
 		return (1);
 	}
 	if (ft_len(args) > 1)

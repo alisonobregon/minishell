@@ -92,3 +92,29 @@ l
 ls -al
 exit
 exit
+l
+ls -la
+export
+export c1= c2=v2
+export
+env
+export
+export c3
+env
+export
+l
+echo $?
+l
+l
+export 0v
+export 1v
+export 1v v1
+export
+cd ..
+ls
+export
+asdasd
+export
+export
+export
+export
