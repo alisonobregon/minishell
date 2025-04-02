@@ -118,13 +118,6 @@ static int	pipex(t_minishell *shell)
 		exec = exec->next;
 		shell->exec->i++;
 	}
-/* 	while(waitpid(-1, &shell->status, 0) > 0)
-	{
-		if (WIFEXITED(shell->status))
-			shell->status = WEXITSTATUS(shell->status);
-		else if (WIFSIGNALED(shell->status))
-			shell->status = WTERMSIG(shell->status) + 128;
-	}*/
 	(close(pipe_fd[READ]), close(pre_pipe[WRITE]));
 	any_cmd_waiter(shell);
 	return (free(pre_pipe), free(pipe_fd), shell->status);

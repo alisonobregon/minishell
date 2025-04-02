@@ -117,14 +117,5 @@ int	one_cmd(t_minishell *shell)
 			exit(1);
 		}
 	}
-/* 	while(waitpid(shell->pid, &shell->status, 0) > 0)
-	{
-		if (WIFEXITED(shell->status))
-			shell->status = WEXITSTATUS(shell->status);
-		else if (WIFSIGNALED(shell->status))
-			shell->status = WTERMSIG(shell->status) + 128;
-	} 
-	return (shell->status);*/
-	//return (waitpid(shell->pid, &shell->status, 0), shell->status);
 	return (one_cmd_waiter(shell));
 }

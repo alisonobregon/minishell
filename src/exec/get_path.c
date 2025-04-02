@@ -44,12 +44,12 @@ char	*find_path(t_minishell *shell, char *cmd)
 		{
 			goodpath = ft_strjoin(paths[i], bar_cmd);
 			if (access(goodpath, 0) == 0)
-			return (free(bar_cmd), free_arrays(paths, NULL), goodpath);
+			return (free(bar_cmd), free_array(paths), goodpath);
 			free(goodpath);
 		}
 	}
 	(ft_putstr_fd("-bash: ", 2), ft_putstr_fd(cmd, 2));
-	perror(" Command not found");
-	return (NULL);
+	if (ft_strlen(cmd) > 1)
+		(free_array(paths), free(bar_cmd));
+	return (perror(" Command not found"), NULL);
 }
-//, free(bar_cmd)

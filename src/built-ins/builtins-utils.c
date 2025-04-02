@@ -16,21 +16,20 @@ int	exec_builtin(t_minishell *shell, char *cmd, char **args)
 {
 	if (!args || !shell->exec->args[0] || !shell->exec)
 		return (0);
-	if (!ft_strncmp(cmd, "echo", 5))
+	if (!ft_strncmp(cmd, "echo", 5) && ft_strlen(cmd) == 4)
 		return (ft_echo(args));
-	else if (!ft_strncmp(cmd, "cd", 3))
+	else if (!ft_strncmp(cmd, "cd", 3) && ft_strlen(cmd) == 2)
 		return (cd(shell, args));
-	else if (!ft_strncmp(cmd, "pwd", 4))
+	else if (!ft_strncmp(cmd, "pwd", 4) && ft_strlen(cmd) == 3)
 		return (pwd());
-	else if (!ft_strncmp(cmd, "export", 7))
+	else if (!ft_strncmp(cmd, "export", 7) && ft_strlen(cmd) == 6)
 		return (ft_export(shell, args));
-	else if (!ft_strncmp(cmd, "unset", 6))
+	else if (!ft_strncmp(cmd, "unset", 6) && ft_strlen(cmd) == 5)
 		return (ft_unset(shell, args), 1);
 	else if (!ft_strncmp(cmd, "env", 4) && !args[1])
 		return (ft_env(shell));
-	else if (!ft_strncmp(cmd, "exit", 5))
+	else if (!ft_strncmp(cmd, "exit", 5) && ft_strlen(cmd) == 4)
 	{
-		//*Movido Por Gabo. Cualquier reclamo, al negro (Es decir Gabo) :)
 		if (args[1])
 			return (ft_exit(shell, ft_atol(args[1])), 1);
 		else
@@ -84,4 +83,25 @@ void	free_arrays(char **array1, char **array2)
 		if (array2)
 			free(array2);
 	}
+}
+
+int	valid_str(char *str)
+{
+	int	i;
+
+	i = 1;
+	if (!str)
+		return (0);
+	if (ft_isalpha(str[0]) || str[0] == '_') // a valid str has to start with an alpha char or an underscore
+	{
+		while(str[i] != '\0')
+		{
+			if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]) && str[i] != '_')
+				return (0);
+			i++;
+		}
+		return (1);
+	}
+	else
+			return (0);
 }

@@ -11,3 +11,5 @@ export "test=ls -la" and then $test
 export 2v  failing
 
 < Makefile echo "hola" > out "< is taken as a cmd" 
+
+ls|lsfggd |grep Makefile | wc -l

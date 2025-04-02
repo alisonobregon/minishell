@@ -31,7 +31,7 @@ char	**check_vars(char **args)
 	vars = NULL;
 	while (args[i])
 	{
-		if (ft_isalpha(args[i][0]) || args[i][0] == '_')
+		if (valid_str(args[i]))
 		{
 			vars = add_str_to_array(vars, args[i]);
 		}
@@ -97,34 +97,37 @@ void	check_export(t_minishell *shell, char **vars)
 	}
 }
 
-int	ft_export(t_minishell *shell, char **args)
+int	print_export(t_minishell *shell)
 {
 	int		i;
-	char	**vars;
-	int		abcd;
+	char	chr;
 
 	i = 0;
+	chr = 'A';
+	while ((chr >= 'A' && chr <= 'Z' ) || (chr >= 'a' && chr <= 'z'))
+	{
+		while (shell->env[i] != NULL && shell->env[i][0] == chr)
+			ft_printf("declare -x ""%s""\n", shell->env[i++]);
+		if (shell->env[i] == NULL)
+		{
+			i = 0;
+			chr++;
+			if (chr == 'Z')
+				chr = 'a';
+		}
+		else
+			i++;
+	}
+	return (1);
+}
+
+int	ft_export(t_minishell *shell, char **args)
+{
+	char	**vars;
 	if (!args || !args[0])
 		return (1);
 	if (!args[1])
-	{
-		abcd = 101;
-		while (abcd >= 101 && abcd <= 132)
-		{
-			if (shell->env[i][0] == abcd)
-			{
-				while (shell->env[i] != NULL)
-				ft_printf("declare -x ""%s""\n", shell->env[i++]);
-			}
-			i++;
-			if (shell->env[i] == NULL)
-			{
-				i = 0;
-				abcd++;
-			}
-		}
-		return (1);
-	}
+		return (print_export(shell));
 	if (ft_len(args) > 1)
 	{
 		vars = check_vars(args);

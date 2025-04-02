@@ -110,6 +110,6 @@ int	main(int argc, char **argv, char **env)
 		//command_list_clear(&(shell->exec));
 	}
 	rl_clear_history();
-	free_shell(shell);
+	free_child_shell(&shell);
 	return (0);
 }
