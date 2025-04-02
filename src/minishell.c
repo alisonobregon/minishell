@@ -12,54 +12,13 @@
 
 #include "../include/minishell.h"
 
+int	g_sigint;
 
-/* Aqui vamos a crear el while loop principal
-	*/
-
-/*Aqui le doy los colorinchis y ademas si escuentra la ruta osea
-el pwd imprime eso si no pues imprime la palabra minishell*/
-void memory_allocated(t_minishell *shell)
+void	memory_allocated(t_minishell *shell)
 {
-	shell->prompt = ft_calloc(1, sizeof(t_prompt));
-	shell->args = ft_calloc(1, sizeof(char *));
+	shell->exec = NULL;
 	if (!shell->prompt)
-		return ;
-}
-
-char	*get_prompt(t_minishell *shell)
-{
-	char	*pwd;
-	char	*temp1;
-	char	*temp2;
-
-	(void)shell;
-	pwd = getenv("PWD"); //hacer una funcion porque retorna int y quiero el char
-	//user = getenv("USER");
-	if(pwd)
-	{
-		temp1 = ft_strjoin(CYAN, pwd);
-		temp2 = ft_strjoin(temp1, "$ ");
-		free(temp1);
-		pwd = ft_strjoin(temp2, DEFAULT);
-		free(temp2);
-		//de esta manera nos ahorramos una variable y se puede imprimir el usuario tambien
-		//free(tmp);
-	}
-	else
-		pwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
-	//AQUI PONDRIAMOS YA SI EL COMANDO FUE EXITOSO O NO
-	return(pwd);
-}
-int free_shell(t_minishell *shell)
-{
-	free(shell->prompt->cwd);
-	free(shell->prompt->str);
-	free(shell->prompt);
-	free(shell->args);
-	free(shell->path);
-	free(shell->exec);
-	free(shell);
-	return (0);
+		shell->prompt = ft_calloc(1, sizeof(t_prompt));
 }
 
 char	*get_input(t_minishell *shell)
@@ -67,64 +26,56 @@ char	*get_input(t_minishell *shell)
 	char	*prompt;
 	char	*buf;
 
-	//shell->pwd = get_prompt(shell);
 	prompt = get_prompt(shell);
 	buf = readline(prompt);
 	free(prompt);
-	if (!buf) //no ha ingresado nada
+	if (!buf)
 	{
 		ft_printf("\n");
+		exit(free_shell(shell));
+	}
+	if (ft_strlen(buf) == 0)
+	{
+		free(buf);
+		return (NULL);
 	}
 	return(buf);
-}
-int command_list_clear(t_exec *command_list)
-{
-	t_exec	*temp;
-
-	while (command_list)
-	{
-		temp = command_list->next;
-		free(command_list->cmd);
-		free(command_list->args);
-		free(command_list->infile);
-		free(command_list->outfile);
-		free(command_list);
-		
-		command_list = temp;
-	}
-
-	return (0);
 }
 
 int	main(int argc, char **argv, char **env)
 {
-	t_minishell	*shell;
-
-	shell = ft_calloc(1, sizeof(t_minishell));
-	if (!shell)
-		return (1);
 	(void)argc;
 	(void)argv;
+	t_minishell	*shell;
+
+	print_shell();
+	shell = ft_calloc(1, sizeof(t_minishell));
 	shell->env = strarray_copy(env);
-	//if (shell->env == NULL) no tenemos enviroment
-	memory_allocated(shell);
-	/* if (getenv("PATH") == NULL)
-	{
-		 buscar path find_path y asignar o de lo contrario
-		return 
-	} */
-	shell->path = ft_split(getenv("PATH"), ':');
-	if (!shell->path)
-		shell->path[0] = ft_strdup("./") ;
-	ft_printf("\033[1;1H\033[2J");
+	if (env)
+		shell->path = ft_split(getenv("PATH"), ':');
+	shell->status = 0;
+	wait_signal();
 	while (1)
 	{
-		if (shell->cwd_int == 0)
-			shell->cwd = get_prompt(shell);
-		shell->prompt->str = readline(shell->cwd);
+		memory_allocated(shell);
+		g_sigint = 0;
+		shell->prompt->str = get_input(shell);
+		if (!shell->prompt->str)
+			continue ;
+		add_history(shell->prompt->str);
+		add_history_to_file(shell->prompt->str);
+		if (!check_prompt_str(shell))
+			continue;
 		parsing(shell);
+		if (!shell->exec)
+			continue ;
+		replace_quotes(&shell->exec->args, shell->env, shell->status);
+		if (!shell->exec || !shell->exec->cmd)
+			continue ;
 		exec(shell);
-		printf("prompt: %s\n", shell->prompt->str);
+		//round_frees(&shell);
 	}
+	rl_clear_history();
+	free_child_shell(&shell);
 	return (0);
 }

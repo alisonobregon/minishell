@@ -58,8 +58,6 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "*.embeddedhtml": "html",
-    "compare": "c",
-    "type_traits": "c",
     "minishell.h": "c"
   }
 }

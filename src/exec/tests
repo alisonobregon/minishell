@@ -1,0 +1,25 @@
+< Makefile cat ./include/minishell.h < .history
+
+< Makefile cat ./include/minishell.h < .gitignore
+
+
+cat < Makefile > out1 > out 2 | sleep 2 | ls -la > out 2 | cat << end  not working maybe 
+
+
+< Makefile echo "hola" > out "< is taken as a cmd" 
+
+
+
+task;
+
+1.- fix export when there is no a right value
+
+2.- binary has to run ./minishell, no minishell and also /bin/ls  ->>>>// done
+
+3.- check exit
+aliobreg@/home/aliobreg/alumni->thelatambash$ cat < minishell/Makefile | grep PHONY > out
+mios
+aliobreg@/home/aliobreg/alumni->thelatambash$ >a>b>c>d>e
+aliobreg@/home/aliobreg/alumni/minishell->thelatambash$ cat | cat | cat 
+ << end
+

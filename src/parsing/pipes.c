@@ -1,37 +1,53 @@
 #include "../../include/minishell.h"
 
-int ft_countpipes(char *str)
+void ft_pipes(char **buf)
 {
 	int i;
-	int res;
-	char quote;
+	char *pipe;
+	char *temp;
 
 	i = -1;
-	res = 0;
-	while (str[++i])
+	while ((*buf)[++i])
 	{
-		if (str[i] == 34 || str[i] == 39)
+		if (get_arg_type(&((*buf)[i])) == 2)
 		{
-			quote = str[i];
-			i++;
-			while(str[i] && str[i] != quote)
+			if (i == 0)
+				return ;
+			else
 				i++;
+			while ((*buf)[i] >= 1 && (*buf)[i] <= 32)
+				i++;
+			if ((*buf)[i] == '\0')
+			{
+				while (1 && !g_sigint)
+				{
+					pipe = readline("pipe>");
+					if (g_sigint)
+					{
+						ft_printf("\n");
+						break;
+					}
+					if (!pipe)
+					{
+						ft_printf("bash: syntax error\n");
+						exit(2);
+					}
+					if (pipe && *pipe)
+					{
+						//if (get_arg_type(pipe) == 0)
+						//{
+						
+							temp = ft_strjoin(*buf, pipe);
+							free(pipe);
+							free(*buf); //free array verifico que libere
+							*buf = temp;
+							break;
+						//}
+					}
+					free(pipe);
+				}
+			}
 		}
-		if ((str[i] == '|' && (str[i + 1] == '|' || str[i + 1] == '\0' || ft_blank(str[i + 1]) != 1)) || str[0] == '|')
-			ft_printf("syntax error near unexpected token '|'");
-		if (str[i] == '|')
-			res++;
 	}
-	return(res);
 }
 
-char **split_pipes(char *str)
-{
-	char	**res;
-	int		i;
-
-	i = -1;
-	res = ft_calloc(sizeof(char *), ft_countpipes(str) + 2);
-	if(!res)
-		exit(1); //aqui poner o hacer una funcion de mensaje de error
-}

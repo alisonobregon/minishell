@@ -1,3 +1,12 @@
 *.o
 minishell
-.a
+*.a
+.vscode
+.history
+output
+output1
+output2
+output3
+output4
+output5
+output6

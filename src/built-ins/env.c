@@ -12,32 +12,7 @@
 
 #include "../../include/minishell.h"
 
-	
-//(ft_error(": command not found\n", 127, data, vals), NULL);
-/*  gongarci@c3r6s2:~/Documents/Cursus/Projects/minishell/minishell$ << a < Makefile cat >a | << b ls
-> asd
-> a
-> asd
-> b
-a  b  c  include  libft  Makefile  minishell  README.md  src
-gongarci@c3r6s2:~/Documents/Cursus/Projects/minishell/minishell$ << a < Makefile ls | << b ls
-asd
-a
-asd
-b
-a  b  c  include  libft  Makefile  minishell  README.md  src
-gongarci@c3r6s2:~/Documents/Cursus/Projects/minishell/minishell$ << a < Makefile ls | << b ls
-   
-> asd
-> asd
-> a
-> lk
-> b
-a  b  c  include  libft  Makefile  minishell  README.md  src
-gongarci@c3r6s2:~/Documents/Cursus/Projects/minishell/minishell$ 
-*/
-
-void	ft_env(t_minishell *shell)
+int	ft_env(t_minishell *shell)
 {
 	int	i;
 
@@ -48,4 +23,5 @@ void	ft_env(t_minishell *shell)
 			ft_printf("%s\n", shell->env[i]);
 		i++;
 	}
+	return (1);
 }

@@ -12,52 +12,6 @@
 
 #include "../../include/minishell.h"
 
-/*char	*find_path(t_minishell *shell)
-{
-	//char	**paths;
-	//char	*goodpath;
-	//char	*command;
-	int		i;
-
-	i = 0;
-	command = ft_strdup(cmd);
-	if ((cmd[0] == '/' && access(cmd, 0) == 0))
-		return (cmd); 
-	while (shell->env[i] && ft_strncmp(shell->env[i], "PATH=", 5))
-		i++;
-	//shell->path = ft_split(shell->env[i] + 5, ':');
-	shell->path = shell->env[i];
-	printf("paths: %s\n", shell->path);
-	return (NULL);
- 	cmd = ft_strjoin("/", cmd);
-	i = -1;
-	while (paths[++i])
-	{
-		goodpath = ft_gnlstrjoin(paths[i], cmd, ft_strlen(cmd));
-		if (access(goodpath, 0) == 0)
-			return (goodpath);
-		free(goodpath);
-	}
-	ft_putstr_fd(command, 2);
-	return (ft_error(": command not found\n", 127, data, vals), NULL); 
-}*/
-
-/* void	check_prompt(t_minishell *shell)
-{
-	int i;
-
-	i = 0;
-	shell->prompt->prompt = ft_split(shell->prompt->line, ' ');
-	while(shell->prompt->prompt[i] != NULL)
-	{
-		if (ft_strmcmp(shell->prompt->prompt[i]), "<<", 2 == 0)
-		{
-			//heredoc++;
-		}
-		else if (ft_strmcmp)
-	}
-} */
-
 char	*ft_array_to_str(char **array)
 {
 	char	*str;
@@ -118,6 +72,8 @@ char	**add_str_to_array(char **array, char *str)
 	int		i;
 
 	i = 0;
+	if (!str)
+		return (array);
 	if (!array)
 	{
 		new_array = ft_calloc(2, sizeof(char *));
@@ -142,14 +98,27 @@ char	**add_str_to_array(char **array, char *str)
 char	**strarray_copy(char **array)
 {
 	char	**copy;
+	char	*pwd;
 	int		i;
+	int		len;
 
 	i = 0;
+	//Cambiado por Paula ;)
 	if (!array || !*array)
-		return (NULL);
-	copy = ft_calloc(ft_len(array) + 1, sizeof(char *));
+		len = 1;
+	else
+		len = ft_len(array);
+	copy = ft_calloc(len + 1, sizeof(char *));
 	if (!copy)
 		return (NULL);
+	if (!array || !*array)
+	{
+		pwd = getcwd(NULL, 0);
+		copy[0] = ft_strjoin("PWD=", pwd);
+		printf("PWD=%s\n", copy[0]);
+		copy[1] = NULL;
+		return (copy);
+	}
 	while (array[i] != NULL)
 	{
 		copy[i] = ft_strdup(array[i]);
@@ -157,4 +126,26 @@ char	**strarray_copy(char **array)
 	}
 	copy[i] = NULL;
 	return (copy);
+}
+
+char	*ft_str2join(char *s1, char *s2, int f1, int f2)
+{
+	char	*substr;
+	size_t	len;
+
+	len = (ft_strlen(s1) + (ft_strlen(s2)) + 1);
+	substr = (char *)ft_calloc(len, sizeof(char));
+	if (!substr)
+		return (NULL);
+	else
+	{
+		ft_memcpy(substr, s1, ft_strlen(s1));
+		ft_memcpy(substr + ft_strlen(s1), s2, ft_strlen(s2));
+		substr[len - 1] = '\0';
+	}
+	if (f1)
+		free(s1);
+	if (f2)
+		free(s2);
+	return (substr);
 }

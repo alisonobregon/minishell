@@ -27,10 +27,11 @@ int check_other_quote(char **buf, int *i, char c)
 
 }
 
-void	check_quotes(char **buf, int simple_quote, int double_quote)
+int	check_quotes(char **buf, int simple_quote, int double_quote)
 {
 	int	i;
 	char *temp;
+	char *temp2;
 	char *dquote;
 
 	i = -1;
@@ -41,19 +42,37 @@ void	check_quotes(char **buf, int simple_quote, int double_quote)
 		if ((*buf)[i] == 39)
 			simple_quote += check_other_quote(buf, &i, (*buf)[i]);
 	}
-	if ((double_quote % 2 != 0) || (simple_quote % 2 != 0))
+	if (((double_quote % 2 != 0) || (simple_quote % 2 != 0)) && !g_sigint)
 	{
+		other_signals();
 		dquote = readline("dquote>");
-		temp = ft_strjoin(*buf, dquote);
+		if (!dquote || g_sigint)
+		{
+			ft_printf("Error quotes don't close\n");
+			free(*buf);
+			return (1);
+		}
+		temp = ft_strjoin(*buf, "\n");
+		temp2 = ft_strjoin(temp, dquote);
+		free(temp);
 		free(dquote);
 		free(*buf);
-		*buf = temp;
-		//free(temp);
-		check_quotes(buf, 0, 0);			
+		*buf = temp2;
+		return (check_quotes(buf, 0, 0));		
 	}
-	return ;
+	wait_signal();
+	return (2);
 }
-
+int free_return(char **buf)
+{
+	if (buf)
+	{
+		free(buf);
+		buf = NULL;
+	}
+	return (1);
+}
+/*
 int check_specials(char **buf)
 {
 	int		i;
@@ -72,3 +91,4 @@ int check_specials(char **buf)
 	}
 	return (0);
 }
+*/

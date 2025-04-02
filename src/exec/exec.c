@@ -12,62 +12,144 @@
 
 #include "../../include/minishell.h"
 
-/* int pipex(t_minishell *shell)
+static void	middle_case(t_exec *exec, int *pipe_fd, int *pre_pipe)
 {
-	int	*pipe_fd;
-	int	*pre_pipe;
-	int	i;
+	if (exec->fd_in != 0 && !exec->outfile)
+	{
+		close(pre_pipe[READ]);
+		dup2(pipe_fd[WRITE], STDOUT_FILENO);
+		close(pipe_fd[WRITE]);
+	}
+	else if (exec->fd_in != 0 && exec->outfile)
+	{
+		close(pipe_fd[WRITE]);
+		close(pre_pipe[READ]);
+	}
+	else if (!exec->infile && exec->outfile)
+	{
+		close(pipe_fd[WRITE]);
+		dup2(pre_pipe[READ], STDIN_FILENO);
+		close(pre_pipe[READ]);
+	}
+	else
+		multi_dup(pre_pipe[READ], pipe_fd[WRITE]);
+	close(pipe_fd[READ]);
+	close(pre_pipe[WRITE]);
+}
 
-	i = 0;
+void	handler_fd(t_minishell *s, t_exec *exec, int *pipe_fd, int *pre_pipe)
+{
+	if (s->exec->i == 0 && exec->todo_next == 2)
+	{
+		close(pipe_fd[READ]);
+		if (exec->fd_out > 1)
+			close(pipe_fd[WRITE]);
+		else
+			multi_dup(exec->fd_in, pipe_fd[WRITE]);
+	}
+	else if (s->exec->i <= (len_pipes(s->exec) - 1))
+		middle_case(exec, pipe_fd, pre_pipe);
+	else
+	{
+		close(pipe_fd[WRITE]);
+		if (exec->fd_in != 0 && exec->infile)
+			close(pipe_fd[READ]);
+		else
+		{
+			dup2(pipe_fd[READ], STDIN_FILENO);
+			(close(pipe_fd[READ]), close(pre_pipe[WRITE]));
+		}
+	}
+	unlinker(exec->heredoc);
+	if (exec_builtin(s, exec->cmd, exec->args) == -1)
+		exec_cmd(s, exec);
+	(free(pre_pipe), free(pipe_fd));
+	dprintf(2, "\n\n\naasdasdas case\n\n");
+	(free_child_shell(&s), exit(127));
+}
 
+int	child_maker(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
+{
+	if (exec->todo_next == 2)
+	{
+		if (pipe(pipe_fd) == -1)
+		{
+			perror("Error creating pipe");
+			return ((free(pipe_fd), free(pre_pipe), 0));
+		}
+	}
+	shell->pid = fork();
+	if (shell->pid == -1)
+	{
+		perror("error in fork");
+		return ((free(pipe_fd), free(pre_pipe), 1));
+	}
+	if (shell->pid == 0)
+	{
+		if (exec->outfile || exec->infile)
+		{
+			if (!fd_checker(&exec))
+				return ((free(pipe_fd), free(pre_pipe)), 0);
+		}
+		handler_fd(shell, exec, pipe_fd, pre_pipe);
+	}
+	return (1);
+}
+
+static int	pipex(t_minishell *shell)
+{
+	t_exec	*exec;
+	int		*pipe_fd;
+	int		*pre_pipe;
+
+	exec = shell->exec;
+	shell->exec->i = 0;
 	pipe_fd = ft_calloc(2, sizeof(int));
 	pre_pipe = ft_calloc(2, sizeof(int));
 	if (!pipe_fd || !pre_pipe)
-		return (1);
-	while(shell->exec != NULL)
+		return (0);
+	while (exec)
 	{
-		shell->pid = fork();
-		if (shell->pid == -1)
-		{
-			perror("fork");
-			return (1);
-		}
-		
+		children_signal();
+		signal(SIGQUIT, SIG_DFL);
+		if (!child_maker(shell, exec, pipe_fd, pre_pipe))
+			return (0);
+		if (shell->exec->i >= 1)
+			close(pre_pipe[READ]);
+		ft_int_memcpy(pre_pipe, pipe_fd, 2);
+		close(pipe_fd[WRITE]);
+		exec = exec->next;
+		shell->exec->i++;
+		signal(SIGQUIT, SIG_IGN);
 	}
-} */
+	(close(pipe_fd[READ]), close(pre_pipe[WRITE]));
+	any_cmd_waiter(shell);
+	return (free(pre_pipe), free(pipe_fd), shell->status);
+}
 
 void	exec(t_minishell *shell)
 {
 	t_exec	*exec;
-	
-	char *path;
-	//char **all_cmd;
-	if (!shell->exec || ft_strlen(shell->prompt->str) <= 1)
+
+	if (!shell->exec)
 		return ;
+	if (!shell->exec->args && shell->exec->heredoc)
+	{
+		unlinker(shell->exec->heredoc);
+		return ;
+	}
 	exec = shell->exec;
-	printf("father\n");
-	//print_command_list(exec);
-	if (exec && exec->todo_next == 0) // 1 cmd case
+	if (exec && exec->todo_next == 0)
+		one_cmd(shell);
+	else if (exec && exec->todo_next == 2)
 	{
-		shell->pid = fork();
-		if (shell->pid == -1)
+		if (!pipex(shell))
 		{
-			perror("fork");
+			//ft_putstr_fd("Error in pipex\n", 2);
+			//shell->status = 1;
 			return ;
-		}
-		else if (shell->pid == 0)
-		{
-			//all_cmd = ft_split(exec->cmd, ' ');
-			path = find_path(shell);
-			if (execve(path, exec->args, shell->env) == -1)
-			{
-				perror("execve");
-				exit(1);
-			}
+			//exit(1);
 		}
 	}
-	else if (exec && exec->todo_next) // 2 cmd case
-	{
-		//pipex(shell);
-	}
+	wait_signal();
 }
