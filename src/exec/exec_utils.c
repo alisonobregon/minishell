@@ -109,10 +109,7 @@ int	one_cmd(t_minishell *shell)
 			}
 			if (shell->exec->heredoc)
 				unlinker(shell->exec->heredoc);
-			//* Movido por Gabo
-			if (!g_sigint)
-				exec_cmd(shell, shell->exec);
-			// exec_cmd(shell, shell->exec);
+			exec_cmd(shell, shell->exec);
 			signal(SIGQUIT, SIG_IGN);
 			exit(1);
 		}

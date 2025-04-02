@@ -76,14 +76,12 @@ int	str_array_append(char ***array, char *str)
 		}
 	}
 	new[i] = ft_strdup(str);
-	//printf("new[%d]: %s\n", i, new[i]);
 	if (!new[i])
 		return (0);
 	if (*array)
 		free_array(*array);
 	new[i + 1] = NULL;
 	*array = new;
-	//printf("array[%d] 2: %s\n", i, (*array)[i]);
 	return (1);
 }
 
@@ -104,6 +102,7 @@ int command_lstappend(t_exec *new, char ***buf)
 {
 	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1)) //*buf
 	{
+		printf("buf en comand: %s\n", **buf);
 		if (!(append_out_args(buf, ">", &(new->outfile))))
 			return (0);
 		else if (!(append_in_args(buf, "<", &(new->infile))))
@@ -142,12 +141,13 @@ int create_command_lst(t_minishell *shell)
 		new->cmd = ft_strdup(*buf);
 		if(new->cmd == NULL)
 			return (0);
-		if (!(command_lstappend(new, &buf)))
-			return (1); 
+		command_lstappend(new, &buf);//si no funiona lo anoas aqui 
 		if (*buf != NULL)
 			new->todo_next = get_arg_type(*buf);
 		if (get_arg_type(new->cmd) == 1 && new->args)
+		{
 			new->cmd = ft_strdup(new->args[0]);
+		}
 		if (*buf && **buf)
     		buf++;
 	}
@@ -157,21 +157,26 @@ int create_command_lst(t_minishell *shell)
 char *quit_quotes(char *argument)
 {
 	char *tmp;
+	char *new_arg;
 
 	tmp = NULL;
+	if (!argument)
+		return (NULL);
 	if (argument[0] == '\'')
 	{
 		tmp = ft_strdup(argument);
-		argument = ft_strtrim(tmp, "'");
+		new_arg = ft_strtrim(tmp, "'");
 		free(tmp);
+		return (new_arg);
 	}
 	if (argument[0] == '\"')
 	{
 		tmp = ft_strdup(argument);
-		argument = ft_strtrim(tmp, "\"");
+		new_arg = ft_strtrim(tmp, "\"");
 		free(tmp);
+		return (new_arg);
 	}
-	return (argument);
+	return (ft_strdup(argument));
 }
 int print_command_list(t_exec *command_list)
 {

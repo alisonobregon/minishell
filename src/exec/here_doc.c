@@ -30,19 +30,8 @@ char	*doc_fd(char *limiter)
 	char *tmp;
 
 	tmp = NULL;
-	other_signals();
-	if (limiter[0] == '\'')
-	{
-		tmp = ft_strdup(limiter);
-		limiter = ft_strtrim(tmp, "'");
-		free(tmp);
-	}
-	if (limiter[0] == '\"')
-	{
-		tmp = ft_strdup(limiter);
-		limiter = ft_strtrim(tmp, "\"");
-		free(tmp);
-	}
+	other_signals();//ver que hace esta funcion
+	limiter = quit_quotes(limiter);
 	temp_fd = open(limiter, O_CREAT | O_WRONLY, 0644);
 	if (temp_fd < 0)
 		return (ft_printf("Error creating temp file\n"), NULL);

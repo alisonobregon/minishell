@@ -106,6 +106,7 @@ int		print_command_list(t_exec *command_list);
 int		command_list_clear(t_exec **command_list);
 t_exec	*exec_new(void);
 int		free_array(char **array);
+int		free_return(char **buf);
 # define OUT_WRITE		0
 # define OUT_APPEND		1
 int		append_out_args(char ***buf, char *op, t_output **out);

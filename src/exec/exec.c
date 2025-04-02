@@ -109,6 +109,8 @@ static int	pipex(t_minishell *shell)
 		return (0);
 	while (exec)
 	{
+		children_signal();
+		signal(SIGQUIT, SIG_DFL);
 		if (!child_maker(shell, exec, pipe_fd, pre_pipe))
 			return (0);
 		if (shell->exec->i >= 1)
@@ -117,6 +119,7 @@ static int	pipex(t_minishell *shell)
 		close(pipe_fd[WRITE]);
 		exec = exec->next;
 		shell->exec->i++;
+		signal(SIGQUIT, SIG_IGN);
 	}
 	(close(pipe_fd[READ]), close(pre_pipe[WRITE]));
 	any_cmd_waiter(shell);
@@ -129,6 +132,11 @@ void	exec(t_minishell *shell)
 
 	if (!shell->exec)
 		return ;
+	if (!shell->exec->args && shell->exec->heredoc)
+	{
+		unlinker(shell->exec->heredoc);
+		return ;
+	}
 	exec = shell->exec;
 	if (exec && exec->todo_next == 0)
 		one_cmd(shell);
@@ -138,9 +146,9 @@ void	exec(t_minishell *shell)
 		{
 			//ft_putstr_fd("Error in pipex\n", 2);
 			//shell->status = 1;
-			wait_signal();
 			return ;
 			//exit(1);
 		}
 	}
+	wait_signal();
 }

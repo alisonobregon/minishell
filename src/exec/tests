@@ -17,3 +17,9 @@ task;
 2.- binary has to run ./minishell, no minishell and also /bin/ls  ->>>>// done
 
 3.- check exit
+aliobreg@/home/aliobreg/alumni->thelatambash$ cat < minishell/Makefile | grep PHONY > out
+mios
+aliobreg@/home/aliobreg/alumni->thelatambash$ >a>b>c>d>e
+aliobreg@/home/aliobreg/alumni/minishell->thelatambash$ cat | cat | cat 
+ << end
+
