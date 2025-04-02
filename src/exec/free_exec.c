@@ -44,16 +44,16 @@ void	free_prompt(t_prompt **prompt)
 
 void	free_child_shell(t_minishell **shell)
 {
-	if ((*shell)->args)
-		free_arrays((*shell)->args, NULL);
 	if ((*shell)->env)
-		free_arrays((*shell)->env, NULL);
+	free_array((*shell)->env);
 	if ((*shell)->path)
-		free_arrays((*shell)->path, NULL);
+	free_array((*shell)->path);
 	if ((*shell)->prompt)
-		free_prompt(&(*shell)->prompt);
+	free_prompt(&(*shell)->prompt);
 	if ((*shell)->exec)
-		free_exec(&((*shell)->exec));
+	free_exec(&((*shell)->exec));
+	/* if ((*shell)->args)
+		free_array((*shell)->args); */
 	free((*shell));
 }
 
@@ -131,8 +131,6 @@ int	free_shell(t_minishell *shell)
 	{
 		if (shell->prompt->str)
 			free(shell->prompt->str);
-		if (shell->prompt->cwd)
-			free(shell->prompt->cwd);
 		free(shell->prompt);
 	}
 	if (shell->exec)

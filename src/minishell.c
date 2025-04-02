@@ -16,43 +16,9 @@ int	g_sigint;
 
 void	memory_allocated(t_minishell *shell)
 {
-	shell->prompt = ft_calloc(1, sizeof(t_prompt));
 	shell->exec = NULL;
 	if (!shell->prompt)
 		shell->prompt = ft_calloc(1, sizeof(t_prompt));
-	//	shell->exec = NULL;
-}
-
-void	init_terminal(void)
-{
-	struct	winsize	tty_size;
-	char	*termtype;
-	int		tty;
-	int		columns;
-	
-	termtype = getenv("TERM");
-	tty = ioctl(1, TIOCGWINSZ, &tty_size);
-	if (tty == -1 || !termtype)
-	{
-		ft_putstr_fd("Error: Unable to get terminal size\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	if (tgetent(NULL, termtype) == -1)
-	{
-		ft_putstr_fd("Error: TERM environment variable not set\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	columns = tgetnum("co");
-	if (columns == -1)
-	{
-		ft_putstr_fd("Error: Unable to get terminal columns\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	if (tty_size.ws_col != columns)
-	{
-		tty_size.ws_col = columns;
-		ioctl(1, TIOCSWINSZ, &tty_size);
-	}
 }
 
 char	*get_input(t_minishell *shell)
@@ -60,7 +26,6 @@ char	*get_input(t_minishell *shell)
 	char	*prompt;
 	char	*buf;
 
-	//init_terminal();
 	prompt = get_prompt(shell);
 	buf = readline(prompt);
 	free(prompt);
@@ -87,7 +52,7 @@ int	main(int argc, char **argv, char **env)
 	shell = ft_calloc(1, sizeof(t_minishell));
 	shell->env = strarray_copy(env);
 	if (env)
-		shell->path = ft_split(getenv("PATH"), ':'); // getenv returns a string with memory allocated
+		shell->path = ft_split(getenv("PATH"), ':');
 	shell->status = 0;
 	wait_signal();
 	while (1)
@@ -99,6 +64,8 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
+		if (!check_prompt_str(shell))
+			continue;
 		parsing(shell);
 		if (!shell->exec)
 			continue ;
@@ -106,8 +73,7 @@ int	main(int argc, char **argv, char **env)
 		if (!shell->exec || !shell->exec->cmd)
 			continue ;
 		exec(shell);
-		free(shell->prompt->str);
-		//command_list_clear(&(shell->exec));
+		//round_frees(&shell);
 	}
 	rl_clear_history();
 	free_child_shell(&shell);

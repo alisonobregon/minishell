@@ -15,7 +15,7 @@
 int	exec_builtin(t_minishell *shell, char *cmd, char **args)
 {
 	if (!args || !shell->exec->args[0] || !shell->exec)
-		return (0);
+		return (-1);
 	if (!ft_strncmp(cmd, "echo", 5) && ft_strlen(cmd) == 4)
 		return (ft_echo(args));
 	else if (!ft_strncmp(cmd, "cd", 3) && ft_strlen(cmd) == 2)

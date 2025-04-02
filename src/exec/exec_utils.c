@@ -51,6 +51,7 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 	path = find_path(shell, exec->cmd);
 	if (path == NULL)
 	{
+		dprintf(2, "\n\ncommand not found: %s\n", exec->cmd);
 		(free_child_shell(&shell));
 		exit(127);
 	}
@@ -75,7 +76,7 @@ int	exec_a_builting(t_minishell *shell, t_exec *exec)
 	}
 	if (exec_builtin(shell, exec->cmd, exec->args) == -1)
 	{
-		shell->status = 127; //en plan hay que ir poniendo de estos en la ejecucion
+		shell->status = 127;
 		return (shell->status);
 	}
 	return (multi_dup(exec->stdin, exec->stdout), shell->status);

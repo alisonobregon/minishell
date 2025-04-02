@@ -27,9 +27,9 @@ char	*doc_fd(char *limiter)
 {
 	char	*line;
 	int		temp_fd;
-	char *tmp;
+	//char	*tmp;
 
-	tmp = NULL;
+	//tmp = NULL;
 	other_signals();//ver que hace esta funcion
 	limiter = quit_quotes(limiter);
 	temp_fd = open(limiter, O_CREAT | O_WRONLY, 0644);
@@ -62,7 +62,6 @@ char	*doc_fd(char *limiter)
 }
 
 void	here_doc(t_exec **exec, char *limiter)
-	
 {
 	char	*doc_infile;
 

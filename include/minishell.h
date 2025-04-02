@@ -65,7 +65,6 @@ typedef struct s_exec
 
 typedef struct s_prompt
 {
-	char	*cwd;
 	char	*str;
 
 }	t_prompt;
@@ -76,7 +75,7 @@ typedef struct s_minishell
 	char		**args;
 	char		**env;
 	char		**path;
-	char		*pwd;
+	//char		*pwd;
 	char		*cwd;
 	int			status;
 	t_prompt	*prompt;
@@ -195,7 +194,9 @@ char	*ft_str2join(char *s1, char *s2, int f1, int f2);
 size_t	ft_strcat(char *dest, const char *src);
 int		contains_only(char *str, int c);
 void	print_shell(void);
+void	round_frees(t_minishell **shell);
 
 /* utils 2 */
 char	**rm_str_from_array(char **array, char *str);
+int		check_prompt_str(t_minishell *shell);
 #endif
