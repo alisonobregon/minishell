@@ -61,7 +61,7 @@ debug: $(NAME)
 	@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all --suppressions=/home/$(USER)/alumni/minishell/valgrind.supp ./$(NAME)
 
 fd: $(NAME)
-	@valgrind -s --trace-children=yes --track-fds=yes ./$(NAME)
+	@valgrind -s --trace-children=yes --track-fds=yes --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 run: $(NAME)
 	make && ./$(NAME)

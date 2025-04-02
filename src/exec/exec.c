@@ -64,7 +64,7 @@ void	handler_fd(t_minishell *s, t_exec *exec, int *pipe_fd, int *pre_pipe)
 	if (exec_builtin(s, exec->cmd, exec->args) == -1)
 		exec_cmd(s, exec);
 	(free(pre_pipe), free(pipe_fd));
-	(free_child_shell(s), exit(127));
+	(free_child_shell(&s), exit(127));
 }
 
 int	child_maker(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)

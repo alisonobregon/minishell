@@ -87,6 +87,5 @@ char	*ft_gnlstrjoin(char *s1, char *s2, int len2)
 		substr[sub_len -1] = '\0';
 	}
 	free(s1);
-	printf("substr: %s\n", substr);
 	return (substr);
 }

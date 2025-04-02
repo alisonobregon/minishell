@@ -87,7 +87,7 @@ int	main(int argc, char **argv, char **env)
 	shell = ft_calloc(1, sizeof(t_minishell));
 	shell->env = strarray_copy(env);
 	if (env)
-		shell->path = ft_split(getenv("PATH"), ':');
+		shell->path = ft_split(getenv("PATH"), ':'); // getenv returns a string with memory allocated
 	shell->status = 0;
 	wait_signal();
 	while (1)

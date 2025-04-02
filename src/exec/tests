@@ -7,3 +7,13 @@ cat < Makefile > out1 > out 2 | sleep 2 | ls -la > out 2 | cat << end  not worki
 
 
 < Makefile echo "hola" > out "< is taken as a cmd" 
+
+
+
+task;
+
+1.- fix export when there is no a right value
+
+2.- binary has to run ./minishell, no minishell and also /bin/ls  ->>>>// done
+
+3.- check exit

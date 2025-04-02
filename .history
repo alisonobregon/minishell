@@ -17,3 +17,78 @@ ls -la | grep Makefile
 < Makefile echo hola > out
 ls -al
 make fclean
+/bin/ls
+minishell
+exit 100
+echo $?
+minishell
+minishell
+minishell
+/bin/ls
+minishell
+./minishell 
+/bin/ls
+bin/ls
+./bin/ls
+./minishell 
+minishell
+/bin/ls
+minishell
+/minishell
+./minishell
+/bin/ls -la
+minishell
+l
+ls
+ls
+ls
+l
+ls
+ls
+ls -la
+ls
+ls -la
+ls
+l
+ls
+ls -la
+l
+ls
+ls -la
+l
+l
+ls
+ls -la
+ls
+ls -la
+l
+ls
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+ls
+ls -la
+l
+l
+l
+ls
+l
+l
+ls
+l
+ls
+l
+l
+l
+ls -al
+exit
+exit

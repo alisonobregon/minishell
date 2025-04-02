@@ -45,16 +45,19 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 	if (check_binary(shell, exec, exec->cmd) == -1)
 	{
 		shell->status = 127;
-		free_child_shell(shell);
+		free_child_shell(&shell);
 		exit(127);
 	}
 	path = find_path(shell, exec->cmd);
-	//*Modificado por Gabo :)
 	if (path == NULL)
-		((free_child_shell(shell)), exit(127));
+	{
+		(free_child_shell(&shell));
+		exit(127);
+	}
 	execve(path, exec->args, shell->env);
 	perror("Error excecuting execve\n");
-	free_exec_node(&exec);
+	free(path);
+	free_child_shell(&shell);
 	exit(127);
 }
 

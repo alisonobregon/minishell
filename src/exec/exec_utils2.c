@@ -19,12 +19,12 @@ void	exec_cmds(t_minishell *shell, t_exec *exec)
 	if (check_binary(shell, exec, exec->cmd) == -1)
 	{
 		shell->status = 127;
-		free_child_shell(shell);
+		free_child_shell(&shell);
 		return ;
 	}
 	path = find_path(shell, exec->cmd);
 	if (path == NULL)
-		return ((free_child_shell(shell)));
+		return ((free_child_shell(&shell)));
 	if (execve(path, exec->args, shell->env) == -1)
 	{
 		if (path)

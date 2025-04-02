@@ -13,10 +13,10 @@
 #include "../../include/minishell.h"
 
 int	check_binary(t_minishell *shell, t_exec *exec, char *cmd)
-{	
+{
 	if (access(cmd, F_OK) == 0 && access(cmd, X_OK) == 0)
 	{
-		if (ft_strchr(cmd, '/') && ft_strchr(cmd, '.'))
+		if (ft_strchr(cmd, '/'))
 			return (execve(cmd, exec->args, shell->env), 1);
 		return (0);
 	}
@@ -29,28 +29,27 @@ char	*find_path(t_minishell *shell, char *cmd)
 {
 	char	**paths;
 	char	*goodpath;
+	char	*bar_cmd;
 	int		i;
 
 	i = 0;
-	if (access(cmd, F_OK) == 0 && access(cmd, X_OK) == 0)
-		return ((cmd));
-	while(shell->env[i] && ft_strncmp(shell->env[i], "PATH=", 5))
-		i++;
-	paths = ft_split(shell->env[i] + 5, ':');
-	cmd = ft_strjoin("/", cmd);
-	i = -1;
-	while (paths[++i])
+	if (ft_strlen(cmd) > 1)
 	{
-		goodpath = ft_gnlstrjoin(paths[i], cmd, ft_strlen(cmd));
-		if (access(goodpath, 0) == 0)
+		while(shell->env[i] && ft_strncmp(shell->env[i], "PATH=", 5))
+		i++;
+		paths = ft_split(shell->env[i] + 5, ':');
+		bar_cmd = ft_strjoin("/", cmd);
+		i = -1;
+		while (paths[++i])
 		{
-			free_arrays(paths, NULL);
-			return (free(cmd), goodpath);
+			goodpath = ft_strjoin(paths[i], bar_cmd);
+			if (access(goodpath, 0) == 0)
+			return (free(bar_cmd), free_arrays(paths, NULL), goodpath);
+			free(goodpath);
 		}
-		free(goodpath);
 	}
-	free_arrays(paths, NULL);
 	(ft_putstr_fd("-bash: ", 2), ft_putstr_fd(cmd, 2));
 	perror(" Command not found");
-	return (free(cmd), NULL);
+	return (NULL);
 }
+//, free(bar_cmd)
