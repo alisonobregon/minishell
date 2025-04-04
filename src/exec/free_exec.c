@@ -45,16 +45,25 @@ void	free_prompt(t_prompt **prompt)
 void	free_child_shell(t_minishell **shell)
 {
 	if ((*shell)->env)
-	free_array((*shell)->env);
+		free_array((*shell)->env);
 	if ((*shell)->path)
-	free_array((*shell)->path);
+		free_array((*shell)->path);
 	if ((*shell)->prompt)
-	free_prompt(&(*shell)->prompt);
+		free_prompt(&(*shell)->prompt);
 	if ((*shell)->exec)
-	free_exec(&((*shell)->exec));
-	/* if ((*shell)->args)
-		free_array((*shell)->args); */
+		free_exec(&((*shell)->exec));
+	if ((*shell)->args)
+		free_array((*shell)->args);
+	if ((*shell)->cwd)
+		free((*shell)->cwd);
+	(*shell)->env = NULL;
+	(*shell)->path = NULL;
+	(*shell)->args = NULL;
+	(*shell)->cwd = NULL;
+	(*shell)->prompt = NULL;
+	(*shell)->exec = NULL;
 	free((*shell));
+	*shell = NULL;
 }
 
 void	free_exec_node(t_exec **exec)

@@ -38,7 +38,7 @@ int append_in_args(char ***buf, char *op, char ***array)
 }
 int append_in_her_args(char ***buf, char *op, char ***array, t_exec *new)
 {
-	if (!(**buf))
+	if (!(**buf) || *array == NULL)
 		return (1);
 	if (ft_strlen(op) == ft_strlen(**buf)
 		&& !(ft_strncmp(**buf, op, ft_strlen(op))))
@@ -58,7 +58,9 @@ int	str_array_append(char ***array, char *str)
 	int		i;
 
 	i = 0;
-	new = ft_calloc(sizeof(char *), ft_strarr_len(*array) + 2);
+	if (!str)
+		return (0);
+	new = (char **)ft_calloc(ft_strarr_len(*array) + 2, sizeof(char *));
 	if (!new)
 	{
 		printf("no se pudo asignar memoria\n");
@@ -69,15 +71,15 @@ int	str_array_append(char ***array, char *str)
 		while ((*array)[i])
 		{
 			new[i] = ft_strdup((*array)[i]);
-			//printf("new[%d] 48: %s\n", i, new[i]);
 			if (!new[i])
-				return (0);
+				return (free_array(new), 0);
 			i++;
 		}
 	}
-	new[i] = ft_strdup(str);
+	if (str)
+		new[i] = ft_strdup(str);
 	if (!new[i])
-		return (0);
+		return (free_array(new), 0);
 	if (*array)
 		free_array(*array);
 	new[i + 1] = NULL;
@@ -93,6 +95,7 @@ int free_array(char **array)
 	while (array[i])
 	{
 		free(array[i]);
+		array[i] = NULL;
 		i++;
 	}
 	free(array);
@@ -109,11 +112,12 @@ int command_lstappend(t_exec *new, char ***buf)
 			return (0);
 		else if (!(append_out_args(buf, ">>", &(new->outfile))))
 			return (0);
-		else if (!(append_in_her_args(buf, "<<", &(new->heredoc), new)))
+		else if (!(append_in_her_args(buf, "<<", &(new->heredoc), new))) //while loo << end
 			return (0);
 		if ((**buf) && (!get_arg_type(**buf)))
 		{
-			if (!(str_array_append(&(new->args), **buf)))
+			//new->args = add_str_to_array(new->args, **buf);
+			if (!(str_array_append(&(new->args), **buf))) //leaks
 				return (0);
 			(*buf)++;
 		}
@@ -122,13 +126,17 @@ int command_lstappend(t_exec *new, char ***buf)
 }
 
 
+
 int create_command_lst(t_minishell *shell)
 {
 	t_exec	*new;
 	char	**buf;
 
+
 	shell->exec = NULL;
 	buf = shell->args;
+	printf("args en create_command_lst\t\n");
+	//print_array(shell->args);
 	while (*buf != NULL && (get_arg_type(*buf) == 0 || get_arg_type(*buf) == 1))
 	{
 		new = exec_new();
@@ -137,11 +145,13 @@ int create_command_lst(t_minishell *shell)
 		if (shell->exec != NULL)
 			exec_lstlast(shell->exec)->next = new;
 		else
+		{
 			shell->exec = new;
+		}
 		new->cmd = ft_strdup(*buf);
-		if(new->cmd == NULL)
+		if (new->cmd == NULL)
 			return (0);
-		command_lstappend(new, &buf);//si no funiona lo anoas aqui 
+		command_lstappend(new, &buf);//leaks
 		if (*buf != NULL)
 			new->todo_next = get_arg_type(*buf);
 		if (get_arg_type(new->cmd) == 1 && new->args)
@@ -149,34 +159,30 @@ int create_command_lst(t_minishell *shell)
 			new->cmd = ft_strdup(new->args[0]);
 		}
 		if (*buf && **buf)
-    		buf++;
+			buf++;
 	}
 	return (1);
 }
 
-char *quit_quotes(char *argument)
+char	*quit_quotes(char *argument)
 {
-	char *tmp;
-	char *new_arg;
+	char	*new_arg;
 
-	tmp = NULL;
 	if (!argument)
 		return (NULL);
 	if (argument[0] == '\'')
 	{
-		tmp = ft_strdup(argument);
-		new_arg = ft_strtrim(tmp, "'");
-		free(tmp);
+		new_arg = ft_strtrim(argument, "'");
+		free(argument);
 		return (new_arg);
 	}
 	if (argument[0] == '\"')
 	{
-		tmp = ft_strdup(argument);
-		new_arg = ft_strtrim(tmp, "\"");
-		free(tmp);
+		new_arg = ft_strtrim(argument, "\""); //possibly leak
+		free(argument);
 		return (new_arg);
 	}
-	return (ft_strdup(argument));
+	return (argument); // were returning the same string but allocating again
 }
 int print_command_list(t_exec *command_list)
 {

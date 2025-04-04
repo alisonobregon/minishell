@@ -48,8 +48,7 @@ char	*find_path(t_minishell *shell, char *cmd)
 			free(goodpath);
 		}
 	}
-	(ft_putstr_fd("-bash: ", 2), ft_putstr_fd(cmd, 2));
 	if (ft_strlen(cmd) > 1)
 		(free_array(paths), free(bar_cmd));
-	return (perror(" Command not found"), NULL);
+	return ((ft_putstr_fd("-bash: ", 2), NULL));
 }

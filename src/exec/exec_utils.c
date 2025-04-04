@@ -51,7 +51,7 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 	path = find_path(shell, exec->cmd);
 	if (path == NULL)
 	{
-		dprintf(2, "\n\ncommand not found: %s\n", exec->cmd);
+		(ft_putstr_fd(exec->cmd, 2), ft_putstr_fd(": command not found\n", 2));
 		(free_child_shell(&shell));
 		exit(127);
 	}

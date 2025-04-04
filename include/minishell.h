@@ -180,7 +180,7 @@ int		str_in_array(char **array, char *str);
 char	**rm_env_var(t_minishell *shell, char *var);
 int		index_array(char **array, char *str);
 int		ft_chrlen(char *str, char c);
-int	valid_str(char *str);
+int		valid_str(char *str);
 /* builtins utils */
 void	free_arrays(char **array1, char **array2);
 void	print_array(char **array);
@@ -199,4 +199,5 @@ void	round_frees(t_minishell **shell);
 /* utils 2 */
 char	**rm_str_from_array(char **array, char *str);
 int		check_prompt_str(t_minishell *shell);
+void	print_all_shell(t_minishell *shell);
 #endif

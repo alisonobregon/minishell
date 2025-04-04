@@ -31,5 +31,5 @@ char	*get_prompt(t_minishell *shell)
 	}
 	else
 		cwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
-	return(cwd);
+	return (cwd);
 }
