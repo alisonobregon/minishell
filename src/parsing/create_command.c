@@ -168,6 +168,7 @@ char *quit_quotes(char *argument)
 		tmp = ft_strdup(argument);
 		new_arg = ft_strtrim(tmp, "'");
 		free(tmp);
+		free(argument);
 		return (new_arg);
 	}
 	if (argument[0] == '\"')
@@ -175,6 +176,7 @@ char *quit_quotes(char *argument)
 		tmp = ft_strdup(argument);
 		new_arg = ft_strtrim(tmp, "\"");
 		free(tmp);
+		free(argument);
 		return (new_arg);
 	}
 	return ((argument));

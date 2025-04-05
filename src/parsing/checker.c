@@ -16,9 +16,9 @@
 int check_other_quote(char **buf, int *i, char c)
 {
 	int	n;
-		
+
 	n = 1;
-	while((*buf)[*i + 1] && (*buf)[*i + 1] != c)
+	while ((*buf)[*i + 1] && (*buf)[*i + 1] != c)
 		(*i)++;
 	if ((*buf)[*i + 1] == c)
 	{
@@ -26,7 +26,6 @@ int check_other_quote(char **buf, int *i, char c)
 		(*i)++;
 	}
 	return (n);
-
 }
 
 int	check_quotes(char **buf, int simple_quote, int double_quote)
@@ -60,7 +59,7 @@ int	check_quotes(char **buf, int simple_quote, int double_quote)
 		free(dquote);
 		free(*buf);
 		*buf = temp2;
-		return (check_quotes(buf, 0, 0));		
+		return (check_quotes(buf, 0, 0));
 	}
 	wait_signal();
 	return (2);

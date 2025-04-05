@@ -145,7 +145,7 @@ int check_specials(char **args)
 void parsing(t_minishell *shell)
 {
 	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char *));
-	if(!check_quotes(&(shell->prompt->str), 2, 2))
+	if(!check_quotes(&(shell->prompt->str), 0, 0)) // changed by Gonzalo
 	{
 		shell->status = 2;
 		return ;
@@ -163,5 +163,6 @@ void parsing(t_minishell *shell)
 		return ;
 	shell->exec->cmd = quit_quotes(shell->exec->cmd);
 	free_array(shell->args);
+	shell->args = NULL;
 	print_command_list(shell->exec);
 }
