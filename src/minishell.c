@@ -16,6 +16,7 @@ int	g_sigint;
 
 void	memory_allocated(t_minishell *shell)
 {
+	(void)shell;
 	shell->exec = NULL;
 	if (!shell->prompt)
 		shell->prompt = ft_calloc(1, sizeof(t_prompt));
@@ -64,14 +65,15 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
-		if (!check_prompt_str(shell))
-			continue;
+		/* if (!check_prompt_str(shell))
+			continue; */
 		parsing(shell);
-		if (!shell->exec)
+		if (!shell->exec || !shell->exec->cmd){
+			//round_frees(&shell);
 			continue ;
-		replace_quotes(&shell->exec->args, shell->env, shell->status);
-		if (!shell->exec || !shell->exec->cmd)
-			continue ;
+		}
+		//if (ft_strchr(shell->prompt->str, '$'))
+			replace_quotes(&shell->exec->args, shell->env, shell->status);
 		exec(shell);
 		//round_frees(&shell);
 	}

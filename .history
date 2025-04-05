@@ -86,3 +86,29 @@ export
 ls | ls -la
 cat << end | ls -la
 sfds
+<<
+<<
+<<
+>>
+end >>
+>> end
+cat >> end
+cat << end
+cat << end
+ls
+cat << end
+ls
+cat << rnd
+<< end
+cat << end
+"
+cat
+cat
+cat
+cat >> end
+cat >> end
+cat >> end
+'
+'
+'
+echo $HOME

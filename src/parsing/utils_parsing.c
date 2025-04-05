@@ -43,7 +43,7 @@ int index_of_newline(char *str)
 	return (index);
 }
 
-t_exec *exec_new(void)
+t_exec	*exec_new(void)
 {
 	t_exec	*new;
 
@@ -58,4 +58,4 @@ t_exec *exec_new(void)
 	new->todo_next = 0;
 	new->next = NULL;
 	return (new);
-}  
+}

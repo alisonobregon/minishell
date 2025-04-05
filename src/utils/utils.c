@@ -91,7 +91,7 @@ char	**add_str_to_array(char **array, char *str)
 	}
 	new_array[i] = ft_strdup(str);
 	new_array[i + 1] = NULL;
-	free_arrays(array, NULL);
+	free_array(array);
 	return (new_array);
 }
 

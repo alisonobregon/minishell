@@ -23,3 +23,15 @@ aliobreg@/home/aliobreg/alumni->thelatambash$ >a>b>c>d>e
 aliobreg@/home/aliobreg/alumni/minishell->thelatambash$ cat | cat | cat 
  << end
 
+
+
+
+while ls -la
+{
+	la
+	cmd = ls
+
+	while
+		args = ls
+		args = -la
+}
