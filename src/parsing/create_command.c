@@ -105,7 +105,6 @@ int command_lstappend(t_exec *new, char ***buf)
 {
 	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1)) //*buf
 	{
-		printf("buf en comand: %s\n", **buf);
 		if (!(append_out_args(buf, ">", &(new->outfile))))
 			return (0);
 		else if (!(append_in_args(buf, "<", &(new->infile))))

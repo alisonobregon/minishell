@@ -47,7 +47,6 @@ t_exec	*exec_new(void)
 {
 	t_exec	*new;
 
-
 	new = ft_calloc(1, sizeof(t_exec));
 	if (!new)
 		return (NULL);
