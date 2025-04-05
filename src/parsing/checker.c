@@ -21,8 +21,10 @@ int check_other_quote(char **buf, int *i, char c)
 	while((*buf)[*i + 1] && (*buf)[*i + 1] != c)
 		(*i)++;
 	if ((*buf)[*i + 1] == c)
+	{
 		n++;
-	(*i)++;
+		(*i)++;
+	}
 	return (n);
 
 }

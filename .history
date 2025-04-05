@@ -57,3 +57,32 @@ ls | cd
 ls | cd
 "
 echo "hola que tal
+ls
+cd ..
+ls -la
+"
+ls |
+ls
+"
+"
+make
+"
+"
+ls
+<< end cat
+<< end
+                                                                                                                     ls
+'ls' | grep 
+'ls'
+'ls' | grep 
+'ls' | cat < Makefile 
+'ls' | 'cat' < Makefile 
+'exit'
+<<
+>>
+<< end
+cd 
+export
+ls | ls -la
+cat << end | ls -la
+sfds
