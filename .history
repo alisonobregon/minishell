@@ -86,3 +86,20 @@ export
 ls | ls -la
 cat << end | ls -la
 sfds
+ls -la
+ls 
+ls -la | grep Makefile 
+ls  -la > out
+cat out
+cat < Makefile  > out
+cat out
+cat < Makefile  > out > out2
+cat out2
+<<
+asd
+cat << end
+cat << end
+cat << end
+asd
+asd
+cat << end

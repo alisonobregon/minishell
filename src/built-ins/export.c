@@ -124,6 +124,7 @@ int	print_export(t_minishell *shell)
 int	ft_export(t_minishell *shell, char **args)
 {
 	char	**vars;
+
 	if (!args || !args[0])
 		return (1);
 	if (!args[1])
