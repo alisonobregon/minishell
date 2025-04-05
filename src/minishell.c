@@ -75,7 +75,7 @@ int	main(int argc, char **argv, char **env)
 		}
 		replace_quotes(&shell->exec->args, shell->env, shell->status);
 		exec(shell);
-		round_frees(&shell);
+		//round_frees(&shell);
 	}
 	rl_clear_history();
 	free_child_shell(&shell);

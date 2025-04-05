@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aliobreg <aliobreg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/04/03 00:55:08 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/05 21:21:12 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int get_end_index(char *str, int end)
 int split_args(t_minishell *shell, char *str)
 {
 	int	i;
-	int	j;
-	int	end_index;
+	int j;
+	int end_index;
 
 	i = -1;
 	j = 0;
@@ -147,28 +147,21 @@ void parsing(t_minishell *shell)
 	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char *));
 	if(!check_quotes(&(shell->prompt->str), 2, 2))
 	{
-		free_array(shell->args);
 		shell->status = 2;
 		return ;
 	}
+	
 	ft_pipes(&(shell->prompt->str));
 	if(!split_args(shell, shell->prompt->str))
-	{
-		free_array(shell->args);
 		return ;
-	}
 	if (!check_specials(shell->args))
 	{
 		shell->status = 2;
-		free_array(shell->args);
 		return ;
 	}
-	if (!create_command_lst(shell)) //leaks
-	{
-		free_array(shell->args);
+	if (!create_command_lst(shell))
 		return ;
-	}
-	shell->exec->cmd = quit_quotes(shell->exec->cmd); //direct leaks
-	//free_array(shell->args);
+	shell->exec->cmd = quit_quotes(shell->exec->cmd);
+	free_array(shell->args);
 	print_command_list(shell->exec);
 }

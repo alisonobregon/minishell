@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aliobreg <aliobreg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 20:35:54 by gongarci          #+#    #+#             */
-/*   Updated: 2025/03/31 15:53:29 by gongarci         ###   ########.fr       */
+/*   Updated: 2025/04/05 21:26:28 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	print_array(char **array)
 	int	i;
 
 	i = 0;
-	if (!array || *array == NULL)
-		return ;
 	while (array[i] != NULL)
 	{
 		ft_printf("%s\n", array[i]);
@@ -65,46 +63,29 @@ void	print_array(char **array)
 }
 void	round_frees(t_minishell **shell)
 {
-	if ((*shell)->prompt)
+/* 	if ((*shell)->prompt)
 	{
 		free((*shell)->prompt->str);
-		(*shell)->prompt->str = NULL;
 		free((*shell)->prompt);
-		(*shell)->prompt = NULL;
-	}
-	if ((*shell)->exec)
+	} */
+/* 	if ((*shell)->exec)
 	{
 		if ((*shell)->exec->cmd)
-		{
 			free((*shell)->exec->cmd);
-			(*shell)->exec->cmd = NULL;
-		}
 		if ((*shell)->exec->args)
-		{
 			free_array((*shell)->exec->args);
-			(*shell)->exec->args = NULL;
-		}
 		if ((*shell)->exec->infile && ft_len((*shell)->exec->infile) > 0)
-		{
 			free_array((*shell)->exec->infile);
-			(*shell)->exec->infile = NULL;
-		}
 		if ((*shell)->exec->heredoc)
-		{
 			free_array((*shell)->exec->heredoc);
-			(*shell)->exec->heredoc = NULL;
-		}
 		if ((*shell)->exec->outfile)
-		{
 			free_output(&(*shell)->exec->outfile);
-			(*shell)->exec->outfile = NULL;
-		}
-		free((*shell)->exec);
-		(*shell)->exec = NULL;
-	}
- 	if ((*shell)->args)
-		free_array((*shell)->args);
-	(*shell)->args = NULL;
+	} */
+	/*if ((*shell)->args)
+		free_array((*shell)->args);*/
+	if ((*shell)->cwd)
+		free((*shell)->cwd);
+	
 }
 int	check_prompt_str(t_minishell *shell)
 {
@@ -133,23 +114,3 @@ int	check_prompt_str(t_minishell *shell)
 	}
 	return (1);
 }
-
-void	print_all_shell(t_minishell *shell)
-{
-	if ((shell) == NULL)
-		return ;
-	ft_printf("--shell");
-	if (shell->prompt)
-		ft_printf("shell->prompt: \n");
-	if (shell->env)
-		ft_printf("shell->env: \n");
-	if (shell->path)
-		ft_printf("shell->path: \n");
-	if (shell->exec)
-		ft_printf("shell->exec: \n");
-	if(shell->cwd)
-		ft_printf("shell->cwd: \n");
-	if (shell->args)
-		ft_printf("shell->args: \n");
-}
-

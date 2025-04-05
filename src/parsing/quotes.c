@@ -101,7 +101,6 @@ char *replace_env(char *arg, char **env, int last_exit)
 	new_arg[n_args] = 0;
 	return (new_arg);
 }
-
 size_t	ft_strcat(char *dest, const char *src)
 {
 	size_t	i;
@@ -125,13 +124,13 @@ int replace_var(char *arg, char *new_args, int *n_args)
 	return (1); 
 }
 
-int replace_quotes(char ***args, char **env, int last_exit) // expansion $$
+int replace_quotes(char ***args, char **env, int last_exit)
 {
 	char **new_args;
 	int i;
 
 	i = 0;
-	if (!args || !*args || !env)
+	if (!args || !*args)
 		return (0);
 	new_args = ft_calloc(ft_len(*args) + 1, sizeof(char *));
 	if (!new_args)
