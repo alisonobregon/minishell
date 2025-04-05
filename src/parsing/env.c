@@ -23,7 +23,7 @@ int env_name_len(char *env_name)
 }
 char *get_env(char *env_name, char **env, int last_exit)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (env_name[1] == '?')
@@ -48,7 +48,7 @@ char *get_env(char *env_name, char **env, int last_exit)
 			return (ft_strdup(env[i] + get_env_len(env_name) ));
 	}
 	return (ft_strdup(""));
-} 
+}
 
 int get_env_len(char *str)
 {

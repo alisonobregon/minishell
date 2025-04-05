@@ -177,6 +177,7 @@ int		exec_builtin(t_minishell *shell, char *cmd, char **args);
 int		builtin_checker(t_minishell *shell, char *cmd);
 char	*get_var_name(char *var);
 int		str_in_array(char **array, char *str);
+char	*ft_ptr_in_array(char **array, char *str);
 char	**rm_env_var(t_minishell *shell, char *var);
 int		index_array(char **array, char *str);
 int		ft_chrlen(char *str, char c);

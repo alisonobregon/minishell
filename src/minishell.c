@@ -68,12 +68,12 @@ int	main(int argc, char **argv, char **env)
 		/* if (!check_prompt_str(shell))
 			continue; */
 		parsing(shell);
-		if (!shell->exec || !shell->exec->cmd){
+		if (!shell->exec || !shell->exec->cmd)
+		{
 			round_frees(&shell);
 			continue ;
 		}
-		if (ft_strchr(shell->prompt->str, '$'))
-			replace_quotes(&shell->exec->args, shell->env, shell->status);
+		replace_quotes(&shell->exec->args, shell->env, shell->status);
 		exec(shell);
 		round_frees(&shell);
 	}

@@ -53,15 +53,7 @@ int	cd(t_minishell *shell, char **arr)
 {
 	char	*home;
 
-	if (ft_len(arr) > 2)
-		home = getenv("HOME");
-	else
-		home = NULL;
-	if (!arr || !*arr)
-	{
-		ft_printf("minishell: cd: HOME not set\n");
-		return (1);
-	}
+	home = get_env("$HOME", shell->env, shell->status);
 	if (ft_len(arr) > 2)
 	{
 		ft_printf("minishell: cd: too many arguments\n");
@@ -70,11 +62,15 @@ int	cd(t_minishell *shell, char **arr)
 	if (arr[1] == NULL || !ft_strncmp(arr[1], "~", 2))
 	{
 		ft_printf("home case\n");
+		printf("home: %s\n", home);
 		if (home == NULL)
-			return (1);
+		{
+			ft_printf("minishell: cd: HOME not set\n");
+			return (free(home), 1);
+		}
 		chdir(home);
 		shell->cwd = get_prompt(shell);
-		return (1);
+		return (free(home), 1);
 	}
 	return (new_path(shell, arr));
 }

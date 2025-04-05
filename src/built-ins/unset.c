@@ -26,6 +26,20 @@ int	index_array(char **array, char *str)
 	return (-1);
 }
 
+char	*ft_ptr_in_array(char **array, char *str)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		if (!ft_strncmp(array[i], str, ft_strlen(array[i])))
+			return (array[i]);
+		i++;
+	}
+	return (NULL);
+}
+
 int	str_in_array(char **array, char *str)
 {
 	int	i;

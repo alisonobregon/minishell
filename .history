@@ -103,3 +103,20 @@ cat << end
 asd
 asd
 cat << end
+cd
+cd ..
+pwd
+cd 
+cd
+unset HOME
+cd
+cd
+cd
+cd
+cd
+export | HOME
+export | grep HOME
+cd
+cd
+echo $?
+cd
