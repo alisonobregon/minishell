@@ -51,9 +51,11 @@ int	main(int argc, char **argv, char **env)
 
 	print_shell();
 	shell = ft_calloc(1, sizeof(t_minishell));
-	shell->env = strarray_copy(env);
 	if (env)
+	{
+		shell->env = strarray_copy(env);
 		shell->path = ft_split(getenv("PATH"), ':');
+	}
 	shell->status = 0;
 	wait_signal();
 	while (1)

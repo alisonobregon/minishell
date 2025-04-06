@@ -36,7 +36,9 @@ char	*find_path(t_minishell *shell, char *cmd)
 	if (ft_strlen(cmd) > 1)
 	{
 		while(shell->env[i] && ft_strncmp(shell->env[i], "PATH=", 5))
-		i++;
+			i++;
+		if (!shell->env[i])
+    		return (ft_putstr_fd("-bash: PATH not found\n", 2), NULL); //aqui hay que devolver algo que nos diga que estamos sin path
 		paths = ft_split(shell->env[i] + 5, ':');
 		bar_cmd = ft_strjoin("/", cmd);
 		i = -1;

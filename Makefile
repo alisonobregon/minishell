@@ -58,7 +58,7 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
 
 debug: $(NAME)
-	@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all --suppressions=/home/$(USER)/alumni/minishell/valgrind.supp ./$(NAME)
+	@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all --suppressions=/home/$(USER)/Desktop/minishell/valgrind.supp ./$(NAME)
 
 fd: $(NAME)
 	@valgrind -s --trace-children=yes --track-fds=yes --leak-check=full --show-leak-kinds=all ./$(NAME)
