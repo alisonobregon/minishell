@@ -229,3 +229,52 @@ ls -la > out
 cat out
 < Makefile echo "hola" "de nuevo
 < Makefile echo "hola" "de nuevo
+ls
+/bin/ls
+/bin/ls -la
+sds
+sds
+echo hola
+echo "hola"
+echo "hola $HOME estas en $USER"
+echo 'hola $HOME estas en $USER'
+echo 'hola $HOME estas en $USER
+SADAS |
+asdsa | asdas
+cat > output | ls
+cat < Makefile | grep NAME
+ls
+bin ls
+ls
+ls | ls
+echo hola
+echo -n sad
+exit
+exit 232
+sdsa
+echo $?
+ls
+echo $?
+expr $? + expr $?
+expr $? + $?
+expr $? 
+<< end
+<< end
+<< end
+cat
+'cat lol.c | cat > lol.c'
+pwd
+cd ..
+lws
+ls
+cd
+cd
+dfd
+ls
+pwd
+cd ..
+make
+pwd
+ls
+ls
+cd ..

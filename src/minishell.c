@@ -73,8 +73,7 @@ int	main(int argc, char **argv, char **env)
 			round_frees(&shell);
 			continue ;
 		}
-		/* if (ft_strchr(shell->prompt->str, '$')) */
-			replace_quotes(&shell->exec->args, shell->env, shell->status);
+		replace_quotes(&shell->exec->args, shell->env, shell->status);
 		exec(shell);
 		round_frees(&shell);
 	}

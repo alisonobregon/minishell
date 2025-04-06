@@ -72,5 +72,6 @@ int	cd(t_minishell *shell, char **arr)
 		shell->cwd = get_prompt(shell);
 		return (free(home), 1);
 	}
+	free(home);
 	return (new_path(shell, arr));
 }

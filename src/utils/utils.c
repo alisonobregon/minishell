@@ -115,8 +115,8 @@ char	**strarray_copy(char **array)
 	{
 		pwd = getcwd(NULL, 0);
 		copy[0] = ft_strjoin("PWD=", pwd);
-		printf("PWD=%s\n", copy[0]);
 		copy[1] = NULL;
+		free(pwd);
 		return (copy);
 	}
 	while (array[i] != NULL)

@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 20:35:54 by gongarci          #+#    #+#             */
-/*   Updated: 2025/04/05 21:26:28 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/04/06 10:43:06 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,13 @@ void	print_array(char **array)
 }
 void	round_frees(t_minishell **shell)
 {
-/*  	if ((*shell)->prompt)
+  	if ((*shell)->prompt)
 	{
-		free((*shell)->prompt->str);
+		if ((*shell)->prompt->str)
+			free((*shell)->prompt->str);
 		free((*shell)->prompt);
-	}  */
-
+		(*shell)->prompt = NULL;
+	} 
 	free_exec(&(*shell)->exec);
 	if ((*shell)->args)
 		free_array((*shell)->args);
