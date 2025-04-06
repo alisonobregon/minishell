@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 18:34:33 by gongarci          #+#    #+#             */
-/*   Updated: 2025/03/21 20:26:26 by gongarci         ###   ########.fr       */
+/*   Updated: 2025/04/05 22:19:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ int	index_array(char **array, char *str)
 		i++;
 	}
 	return (-1);
+}
+
+char	*ft_ptr_in_array(char **array, char *str)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		if (!ft_strncmp(array[i], str, ft_strlen(array[i])))
+			return (array[i]);
+		i++;
+	}
+	return (NULL);
 }
 
 int	str_in_array(char **array, char *str)

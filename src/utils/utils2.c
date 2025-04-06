@@ -33,7 +33,7 @@ char	**rm_str_from_array(char **array, char *str)
 		i++;
 	}
 	new_array[j] = NULL;
-	free_arrays(array, NULL);
+	free_array(array);
 	return (new_array);
 }
 
@@ -63,29 +63,20 @@ void	print_array(char **array)
 }
 void	round_frees(t_minishell **shell)
 {
-/* 	if ((*shell)->prompt)
+/*  	if ((*shell)->prompt)
 	{
 		free((*shell)->prompt->str);
 		free((*shell)->prompt);
-	} */
-/* 	if ((*shell)->exec)
-	{
-		if ((*shell)->exec->cmd)
-			free((*shell)->exec->cmd);
-		if ((*shell)->exec->args)
-			free_array((*shell)->exec->args);
-		if ((*shell)->exec->infile && ft_len((*shell)->exec->infile) > 0)
-			free_array((*shell)->exec->infile);
-		if ((*shell)->exec->heredoc)
-			free_array((*shell)->exec->heredoc);
-		if ((*shell)->exec->outfile)
-			free_output(&(*shell)->exec->outfile);
-	} */
-	/*if ((*shell)->args)
-		free_array((*shell)->args);*/
+	}  */
+
+	free_exec(&(*shell)->exec);
+	if ((*shell)->args)
+		free_array((*shell)->args);
 	if ((*shell)->cwd)
 		free((*shell)->cwd);
-	
+	(*shell)->exec = NULL;
+	(*shell)->args = NULL;
+	(*shell)->cwd = NULL;
 }
 int	check_prompt_str(t_minishell *shell)
 {

@@ -23,6 +23,7 @@ void	unlinker(char **heredoc)
 		unlink(heredoc[i++]);
 }
 /*che boluda acuerdate hay que hablar del gnl :)*/
+
 char	*doc_fd(char *limiter)
 {
 	char	*line;
@@ -37,6 +38,7 @@ char	*doc_fd(char *limiter)
 		return (ft_printf("Error creating temp file\n"), NULL);
 	// ft_printf("> ");
 	// line = get_next_line(0);
+	printf("limiter = : %s\n", limiter);
 	while (/*line &&*/ !g_sigint)
 	{
 		ft_printf("> ");

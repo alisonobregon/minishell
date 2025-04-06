@@ -22,13 +22,13 @@ void	free_exec(t_exec **exec)
 		if ((*exec)->cmd)
 			free((*exec)->cmd);
 		if ((*exec)->args)
-			free_arrays((*exec)->args, NULL);
+			free_array((*exec)->args);
 		if ((*exec)->infile)
-			free_arrays((*exec)->infile, NULL);
+			free_array((*exec)->infile);
 		if ((*exec)->outfile)
 			free_output(&(*exec)->outfile);
 		if ((*exec)->heredoc)
-			free_arrays((*exec)->heredoc, NULL);
+			free_array((*exec)->heredoc);
 		(*exec) = (*exec)->next;
 	}
 	free(temp);

@@ -100,15 +100,132 @@ cat << end
 ls
 cat << rnd
 << end
+cd 
+export
+ls | ls -la
+cat << end | ls -la
+sfds
+ls -la
+ls 
+ls -la | grep Makefile 
+ls  -la > out
+cat out
+cat < Makefile  > out
+cat out
+cat < Makefile  > out > out2
+cat out2
+<<
+asd
 cat << end
+cat << end
+cat << end
+asd
+asd
+cat << end
+cd
+cd ..
+pwd
+cd 
+cd
+unset HOME
+cd
+cd
+cd
+cd
+cd
+export | HOME
+export | grep HOME
+cd
+cd
+echo $?
+cd
+asd
+<< end
+<<
+asd
+cd
+ls -la
+ls -la | grep Makefile 
+ls -la | grep Makefile  > out
+cat out 
+ls -la | grep Makefile  > out > out2
+cat out2
+echo "HOLA"
+echo -n "   HOLA"
+asd
+<< end
+./minishell 
+exit 4
+echo $?
+minishell
+asd
+<< end
+<<
+<< end
+cat << end
+< Makefile cat << end
+hdgs < Makefile cat << end
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+               c
+a             
 "
-cat
-cat
-cat
-cat >> end
-cat >> end
-cat >> end
-'
-'
-'
-echo $HOME
+a
+c        
+asd
+@
+<<
+_.
+-.
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+asd
+commands
+.-dj
+""
+"
+shd suh uasd
+asd shdu udsh
+asd shdu udsh
+asd shdu udsh
+asd shdu udsh
+"
+" ls " "
+"ls" "
+echo "hola" "de nuevo
+ls -la
+ls -la > out
+cat out
+< Makefile echo "hola" "de nuevo
+< Makefile echo "hola" "de nuevo

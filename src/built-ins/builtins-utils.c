@@ -61,7 +61,9 @@ int	builtin_checker(t_minishell *shell, char *cmd)
 
 void	free_arrays(char **array1, char **array2)
 {
-	int	i;
+	free_array(array1);
+	free_array(array2);
+/* 	int	i;
 
 	i = 0;
 	if (!array1 || !array2)
@@ -82,7 +84,7 @@ void	free_arrays(char **array1, char **array2)
 			free(array2[i++]);
 		if (array2)
 			free(array2);
-	}
+	} */
 }
 
 int	valid_str(char *str)

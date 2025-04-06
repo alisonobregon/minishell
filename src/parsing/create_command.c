@@ -98,10 +98,12 @@ int free_array(char **array)
 	free(array);
 	return (0);
 }
+
 int command_lstappend(t_exec *new, char ***buf)
 {
 	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1)) //*buf
 	{
+		printf("inside of lstappend \n");
 		if (!(append_out_args(buf, ">", &(new->outfile))))
 			return (0);
 		else if (!(append_in_args(buf, "<", &(new->infile))))
@@ -166,6 +168,7 @@ char *quit_quotes(char *argument)
 		tmp = ft_strdup(argument);
 		new_arg = ft_strtrim(tmp, "'");
 		free(tmp);
+		free(argument);
 		return (new_arg);
 	}
 	if (argument[0] == '\"')
@@ -173,16 +176,19 @@ char *quit_quotes(char *argument)
 		tmp = ft_strdup(argument);
 		new_arg = ft_strtrim(tmp, "\"");
 		free(tmp);
+		free(argument);
 		return (new_arg);
 	}
-	return (ft_strdup(argument));
+	return ((argument));
 }
-int print_command_list(t_exec *command_list)
-{
-	t_exec	*temp;
-	t_output	*temp_out;
-	int i = 1;
 
+int	print_command_list(t_exec *command_list)
+{
+	t_exec		*temp;
+	t_output	*temp_out;
+	int			i;
+
+	i = 1;
 	temp = command_list;
 	while(temp)
 	{

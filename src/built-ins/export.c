@@ -66,7 +66,7 @@ char	**rm_env_var(t_minishell *shell, char *var)
 		i++;
 	}
 	new_env[j] = NULL;
-	free_arrays(shell->env, NULL);
+	free_array(shell->env);
 	return (new_env);
 }
 
@@ -124,6 +124,7 @@ int	print_export(t_minishell *shell)
 int	ft_export(t_minishell *shell, char **args)
 {
 	char	**vars;
+
 	if (!args || !args[0])
 		return (1);
 	if (!args[1])
@@ -132,7 +133,7 @@ int	ft_export(t_minishell *shell, char **args)
 	{
 		vars = check_vars(args);
 		check_export(shell, vars);
-		free_arrays(vars, NULL);
+		free_array(vars);
 	}
 	return (1);
 }

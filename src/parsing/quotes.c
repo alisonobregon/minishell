@@ -121,7 +121,7 @@ int replace_var(char *arg, char *new_args, int *n_args)
 		return (free_array(&new_args));
 	*n_args += ft_strcat(new_args + (*n_args), arg);
 	free(arg);
-	return (1); 
+	return (1);
 }
 
 int replace_quotes(char ***args, char **env, int last_exit)
