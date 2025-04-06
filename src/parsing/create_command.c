@@ -146,9 +146,9 @@ int create_command_lst(t_minishell *shell)
 		if (*buf != NULL)
 			new->todo_next = get_arg_type(*buf);
 		if (get_arg_type(new->cmd) == 1 && new->args)
-		{
 			new->cmd = ft_strdup(new->args[0]);
-		}
+		if (new->cmd)
+			new->cmd = quit_quotes(new->cmd);
 		if (*buf && **buf)
     		buf++;
 	}

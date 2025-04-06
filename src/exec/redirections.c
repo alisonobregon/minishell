@@ -45,25 +45,29 @@ int	infile_checker(t_exec **exec)
 t_exec	*outfile_checker(t_exec **exec)
 {
 	t_exec	*t;
+	t_output *out2;
 
 	t = (*exec);
-	while (t->outfile->next != NULL)
+	out2 = t->outfile;
+	//*modificado por gabo funciona y quita leaks (Comprobar que todo funcionamiento está en regla) :)
+	while (out2 != NULL)
 	{
-		if (t->outfile->action == 0)
+		if (out2->action == 0)
 		{
-			t->fd_out = open(t->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+			t->fd_out = open(out2->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 			if (t->fd_out == -1)
 				return (perror("Error opening file here"), NULL);
 			close(t->fd_out);
 		}
 		else
 		{
-			t->fd_out = open(t->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
+			t->fd_out = open(out2->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
 			if (t->fd_out == -1)
 				return (perror("Error opening file here"), NULL);
 			close(t->fd_out);
 		}
-		t->outfile = t->outfile->next;
+		printf("out2: %s\n", out2->file);
+		out2 = out2->next;
 	}
 	return (t);
 }

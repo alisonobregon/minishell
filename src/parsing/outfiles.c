@@ -15,7 +15,7 @@
 t_output	*outlst_new(char *filename, int action)
 {
 	t_output	*new;
-
+	
 	new = ft_calloc(sizeof(t_output), 1);
 	if (!new)
 		return (NULL);
@@ -43,8 +43,7 @@ int	outlst_append(t_output **out, char *filename, char *op)
 	t_output	*new;
 	int			action;
 
-	action = OUT_WRITE; // para >
-	//printf("op: %s\n", op);
+	action = OUT_WRITE;
 	if (ft_strlen(op) == 2) 
 		action = OUT_APPEND;
 	new = outlst_new(filename, action);
