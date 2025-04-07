@@ -42,17 +42,20 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 {
 	char	*path;
 
+	path = NULL;
 	if (check_binary(shell, exec, exec->cmd) == -1)
 	{
 		shell->status = 127;
 		free_child_shell(&shell);
 		exit(127);
 	}
-	path = find_path(shell, exec->cmd);
-	if (path == NULL)
+	if (str_in_array(shell->env, "PATH="))
+		path = find_path(shell, exec->cmd);
+	if (!path)
 	{
-		(ft_putstr_fd(exec->cmd, 2), ft_putstr_fd(": command not found\n", 2));
-		(free_child_shell(&shell));
+		ft_putstr_fd(exec->cmd, 2);
+		ft_putstr_fd(": command not found\n", 2);
+		free_child_shell(&shell);
 		exit(127);
 	}
 	execve(path, exec->args, shell->env);

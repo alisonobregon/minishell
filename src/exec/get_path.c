@@ -37,8 +37,6 @@ char	*find_path(t_minishell *shell, char *cmd)
 	{
 		while(shell->env[i] && ft_strncmp(shell->env[i], "PATH=", 5))
 			i++;
-		if (!shell->env[i])
-    		return (ft_putstr_fd("-bash: PATH not found\n", 2), NULL); //aqui hay que devolver algo que nos diga que estamos sin path
 		paths = ft_split(shell->env[i] + 5, ':');
 		bar_cmd = ft_strjoin("/", cmd);
 		i = -1;
@@ -46,11 +44,11 @@ char	*find_path(t_minishell *shell, char *cmd)
 		{
 			goodpath = ft_strjoin(paths[i], bar_cmd);
 			if (access(goodpath, 0) == 0)
-			return (free(bar_cmd), free_array(paths), goodpath);
+				return (free(bar_cmd), free_array(paths), goodpath);
 			free(goodpath);
 		}
 	}
 	if (ft_strlen(cmd) > 1)
 		(free_array(paths), free(bar_cmd));
-	return ((ft_putstr_fd("-bash: ", 2), NULL));
+	return ((ft_putstr_fd("-Minishell: ", 2), NULL));
 }
