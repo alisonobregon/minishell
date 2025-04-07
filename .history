@@ -382,3 +382,58 @@ rm a b B c d eoooof
 >a>b
 >a>b
 >a>b>c
+"
+"
+"
+"
+" 
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+ls
+cat nose 
+ls -la
+mkdir nose
+cd nose/
+ls
+open .
+ls
+ls
+mkdir hola?
+ls
+pwd
+ls
+cd hola?/
+ls
+rm -rf hola?/
+mkdir hola
+cd hola/
+ls
+rm -rf hola/
+asd 
+ls |
+ls |
+ls |
+ls
+"
+a |
+|
+ls |
+|
+ls | ls -la
+|
+ls |
+ls |>
+|>
+|
+ls
+|>
+>

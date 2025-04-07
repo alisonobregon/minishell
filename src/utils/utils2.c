@@ -69,8 +69,9 @@ void	round_frees(t_minishell **shell)
 			free((*shell)->prompt->str);
 		free((*shell)->prompt);
 		(*shell)->prompt = NULL;
-	} 
-	free_exec(&(*shell)->exec);
+	}
+	if ((*shell)->exec)
+		free_exec(&(*shell)->exec);
 	if ((*shell)->args)
 		free_array((*shell)->args);
 	if ((*shell)->cwd)

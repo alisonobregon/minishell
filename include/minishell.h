@@ -120,6 +120,9 @@ int			 free_shell(t_minishell *shell);
 int			free_output(t_output **output);
 int			check_specials(char **args);
 char		*quit_quotes(char *argument);
+char			*new_buf_quotes(char **buf, char *dquote);
+void signals_pipes(char **buf, char *pipe);
+int print_and_return(char *src, char *args, int i);
 
 /*Signals :)*/
 void	wait_signal(void);

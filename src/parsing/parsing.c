@@ -97,7 +97,6 @@ int split_args(t_minishell *shell, char *str)
 		i += ft_strlen(shell->args[j]) - 1;
 		j++;
 	}
-	//shell->args[j] = NULL;
 	return (1);
 }
 
@@ -108,49 +107,50 @@ int check_specials(char **args)
     int is_special2;
 
 	if (!args)
-        return 1;
+        return (0);
     while (args[i] != NULL)
     {
         is_special = get_arg_type(args[i]);
         if (is_special)
         {
             if (args[i + 1] == NULL)
-            {
-                printf("minishell: syntax error near unexpected token `newline'\n");
-                free_array(args);
-                return 0;
-            }
-
+                return (print_and_return("minishell: syntax error near unexpected token `newline'",
+				NULL, 0));
             is_special2 = get_arg_type(args[i + 1]);
-
             if ((is_special == 2 || is_special == 3 || is_special == 4) && is_special2)
-            {
-                printf("minishell: syntax error near unexpected token `%s'\n", args[i + 1]);
-                free_array(args);
-                return 0;
-            }
-
+           		return (print_and_return("minishell: syntax error near unexpected token :",
+				args[i + 1], 0));
             if (is_special == 1 && is_special2 == 1)
-            {
-                printf("minishell: syntax error near unexpected token `%s'\n", args[i + 1]);
-                free_array(args);
-                return 0;
-            }
+           		return (print_and_return("minishell: syntax error near unexpected token :",
+				args[i + 1], 0));
         }
         i++;
     }
-    return 1;
+    return (1);
+}
+int print_and_return(char *src, char *args, int i)
+{
+	if (args)
+	{
+		printf("%s %s\n",src, args);
+        return (i);
+	}
+	else
+	{
+		printf("%s\n",src);
+		return (i);
+	}
+	return (1);
 }
 
 void parsing(t_minishell *shell)
 {
 	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char *));
-	if(!check_quotes(&(shell->prompt->str), 0, 0)) // changed by Gonzalo
+	if (!check_quotes(&(shell->prompt->str), 0, 0))
 	{
 		shell->status = 2;
 		return ;
 	}
-	
 	ft_pipes(&(shell->prompt->str));
 	if(!split_args(shell, shell->prompt->str))
 		return ;
