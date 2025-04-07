@@ -229,3 +229,14 @@ ls -la > out
 cat out
 < Makefile echo "hola" "de nuevo
 < Makefile echo "hola" "de nuevo
+cd
+cd ~
+unset HOME
+cd
+cd minishell/../minishell/
+cd minishell/../minishell
+cd ../../minishell
+echo pwd
+echo pwd
+echo "pwd"
+Echo pwd
