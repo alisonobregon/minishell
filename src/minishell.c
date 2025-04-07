@@ -51,9 +51,11 @@ int	main(int argc, char **argv, char **env)
 
 	print_shell();
 	shell = ft_calloc(1, sizeof(t_minishell));
-	shell->env = strarray_copy(env);
 	if (env)
+	{
+		shell->env = strarray_copy(env);
 		shell->path = ft_split(getenv("PATH"), ':');
+	}
 	shell->status = 0;
 	wait_signal();
 	while (1)
@@ -73,8 +75,7 @@ int	main(int argc, char **argv, char **env)
 			round_frees(&shell);
 			continue ;
 		}
-		/* if (ft_strchr(shell->prompt->str, '$')) */
-			replace_quotes(&shell->exec->args, shell->env, shell->status);
+		replace_quotes(&shell->exec->args, shell->env, shell->status);
 		exec(shell);
 		round_frees(&shell);
 	}

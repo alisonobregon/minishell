@@ -16,9 +16,9 @@ void	free_exec(t_exec **exec)
 {
 	t_exec	*temp;
 
-	temp = *exec;
 	while (*exec)
 	{
+		temp = (*exec)->next;
 		if ((*exec)->cmd)
 			free((*exec)->cmd);
 		if ((*exec)->args)
@@ -29,9 +29,9 @@ void	free_exec(t_exec **exec)
 			free_output(&(*exec)->outfile);
 		if ((*exec)->heredoc)
 			free_array((*exec)->heredoc);
-		(*exec) = (*exec)->next;
+		free(*exec);
+		(*exec) = temp;
 	}
-	free(temp);
 }
 
 void	free_prompt(t_prompt **prompt)
@@ -146,7 +146,8 @@ int	free_shell(t_minishell *shell)
 		command_list_clear(&(shell->exec));
 	if (shell->env)
 	{
-		free_array(shell->path);
+		if (shell->path)
+			free_array(shell->path); 
 		free_array(shell->env);
 	}
 	if (shell)

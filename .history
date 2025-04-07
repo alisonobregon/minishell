@@ -229,6 +229,7 @@ ls -la > out
 cat out
 < Makefile echo "hola" "de nuevo
 < Makefile echo "hola" "de nuevo
+<<<<<<< HEAD
 cd
 cd ~
 unset HOME
@@ -240,3 +241,158 @@ echo pwd
 echo pwd
 echo "pwd"
 Echo pwd
+=======
+ls
+/bin/ls
+/bin/ls -la
+sds
+sds
+echo hola
+echo "hola"
+echo "hola $HOME estas en $USER"
+echo 'hola $HOME estas en $USER'
+echo 'hola $HOME estas en $USER
+SADAS |
+asdsa | asdas
+cat > output | ls
+cat < Makefile | grep NAME
+ls
+bin ls
+ls
+ls | ls
+echo hola
+echo -n sad
+exit
+exit 232
+sdsa
+echo $?
+ls
+echo $?
+expr $? + expr $?
+expr $? + $?
+expr $? 
+<< end
+<< end
+<< end
+cat
+'cat lol.c | cat > lol.c'
+pwd
+cd ..
+lws
+ls
+cd
+cd
+dfd
+ls
+pwd
+cd ..
+make
+pwd
+ls
+ls
+cd ..
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+make debug
+ls
+ls
+/bin/ls
+ls
+/bin/ls
+cd ..
+ls
+ls
+LS
+ls
+/bin/ls
+ls
+           
+'ls'
+'ls' | 'ls' -la
+        
+ls
+bin\ls
+/bin/ls
+cat
+<< end
+<< end
+echo
+echo hola
+echo -n hola 
+exit 
+exit 324
+echo "$HOME"
+echo "$HOME DSF"
+ENV
+env
+/bin/ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+                                                                                                       ls
+cat Hola
+cat Makefile 
+cat Makefile | grep PHONY
+echo Hola
+echo -n Hola
+echo -nnnnnnnnnnnn Hola
+echo -nnnnnnnnnnnna Hola
+env
+export
+export a=a b= c
+export
+export a=a
+export a
+export
+unset a
+export
+exit 1 2 3
+exit g
+exit 1 2 3 
+cd 
+cd ..
+cat |  cat | cat
+cat |  cat | cat
+grep
+sleep 5 | sleep 5
+< wvcbekuecuv
+>a>b>c>d>e
+rm b c d
+cat < src/parsing/parsing.c < Makefile | grep PHONY > out > out1
+cat < src/parsing/parsing.c < Makefile | grep PHONY > out >> out1
+cat < src/parsing/parsing.c << end | grep PHONY > out >> out1
+>a>b>c>d>e
+>a>b>c>d>e
+ls
+rm a b c d e
+cat > b
+cat > b > d
+>a>b>c
+>a>b>c>d
+>a>b
+>a>b
+>a>b
+>a>b
+>a>b
+>a>B
+cat<Makefile<Makefile 
+>a>b>c>d
+>a>b
+>a>b>c
+>a>b
+>eoooof>tuuuuuu
+rm a b B c d eoooof
+>a>b
+>a>b
+>a>b>c
+>>>>>>> origin/aliobreg
