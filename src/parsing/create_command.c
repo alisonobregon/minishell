@@ -60,16 +60,12 @@ int	str_array_append(char ***array, char *str)
 	i = 0;
 	new = ft_calloc(sizeof(char *), ft_strarr_len(*array) + 2);
 	if (!new)
-	{
-		printf("no se pudo asignar memoria\n");
-		return (0);
-	}
+		return (print_and_return("no memory allocated", NULL, 0));
 	if ((*array))
 	{
 		while ((*array)[i])
 		{
 			new[i] = ft_strdup((*array)[i]);
-			//printf("new[%d] 48: %s\n", i, new[i]);
 			if (!new[i])
 				return (0);
 			i++;
@@ -142,19 +138,22 @@ int create_command_lst(t_minishell *shell)
 		new->cmd = ft_strdup(*buf);
 		if(new->cmd == NULL)
 			return (0);
-		command_lstappend(new, &buf);//si no funiona lo anoas aqui 
+		command_lstappend(new, &buf);
+		new_cmd_asign(new);
 		if (*buf != NULL)
 			new->todo_next = get_arg_type(*buf);
-		if (get_arg_type(new->cmd) == 1 && new->args)
-			new->cmd = ft_strdup(new->args[0]);
-		if (new->cmd)
-			new->cmd = quit_quotes(new->cmd);
 		if (*buf && **buf)
     		buf++;
 	}
 	return (1);
 }
-
+void new_cmd_asign(t_exec *new)
+{
+	if (get_arg_type(new->cmd) == 1 && new->args)
+		new->cmd = ft_strdup(new->args[0]);
+	if (new->cmd)
+		new->cmd = quit_quotes(new->cmd);
+}
 char *quit_quotes(char *argument)
 {
 	char *tmp;

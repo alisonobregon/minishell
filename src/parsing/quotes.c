@@ -61,7 +61,45 @@ char *malloc_new_arg(char *arg, char **env, int lex)
 		return (NULL);
 	return (new_arg);
 }
+char *replace_env(char *arg, char **env, int last_exit, char quotee)
+{
+	int i;
+	int quotes;
+	int n_args;
+	t_env *envi;
 
+	i = -1;
+	quotes = 0;
+	n_args = 0;
+	envi = NULL;
+	envi->new_arg = malloc_new_arg(arg, env, last_exit);
+	while (arg[++i])
+	{
+		handle_quotes(arg, &quotes, quotee, &i);
+		if (quotes == 1)
+			envi->new_arg[n_args++] = arg[i++];
+		if (quotes != 1 && arg[i] == '$')
+		{
+			envi->var_val = get_env(arg + i, env, last_exit);
+			if (!(replace_var(envi->var_val, envi->new_arg, &n_args)))
+				return (NULL);
+			i += get_env_len(arg + i) - 1;
+		}
+		else
+			envi->new_arg[n_args++] = arg[i];
+	}
+	return (envi->new_arg);
+}
+void handle_quotes(char *arg, int *quotes, char quotee, int *i)
+{
+	set_quotes(arg[*i], quotes);
+	if (((arg[*i] == '\''|| arg[*i] == '\"')  && quotee == arg[*i]))
+	{
+		(*i)++;
+		return ;
+	}
+}
+/*
 char *replace_env(char *arg, char **env, int last_exit)
 {
 	int i;
@@ -74,7 +112,7 @@ char *replace_env(char *arg, char **env, int last_exit)
 	i = -1;
 	quotes = 0;
 	n_args = 0;
-	new_arg = malloc_new_arg(arg, env, last_exit); //AQUI LE TENGO QUE DAR ESPACIO CON LAS VARIABLES DE ENTORNO
+	new_arg = malloc_new_arg(arg, env, last_exit);
 	if (!new_arg)
 		return (NULL);
 	quotee = arg[0];
@@ -100,7 +138,7 @@ char *replace_env(char *arg, char **env, int last_exit)
 	}
 	new_arg[n_args] = 0;
 	return (new_arg);
-}
+}*/
 size_t	ft_strcat(char *dest, const char *src)
 {
 	size_t	i;
@@ -129,6 +167,7 @@ int replace_quotes(char ***args, char **env, int last_exit)
 	char **new_args;
 	int i;
 
+	printf("sdsad");
 	i = 0;
 	if (!args || !*args)
 		return (0);
@@ -136,8 +175,8 @@ int replace_quotes(char ***args, char **env, int last_exit)
 	if (!new_args)
 		return (0);
 	while ((*args)[i])
-	{
-		new_args[i] = replace_env((*args)[i], env, last_exit); //aqui hacerle comprobacion de errores
+	{	
+		new_args[i] = replace_env((*args)[i], env, last_exit, (*args)[i][0]); //aqui hacerle comprobacion de errores
 		i++;
 	}
 	new_args[i] = NULL;

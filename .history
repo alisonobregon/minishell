@@ -437,3 +437,39 @@ ls |>
 ls
 |>
 >
+'ls'
+ls
+echo "hola $HOME"
+echo "$HOME"
+echo "$HOME"
+echo "$HOME"
+echo "hola"
+echo "hola"
+echo "hola"
+echo "hola $HOMW"
+echo "hola $HOME"
+echo "HOME"
+echo 'HOME'
+echo 'HOLA $HOME'
+echo "HOLA $HOME"
+echo "hola"
+echo "hola"
+echo "hola"
+echo "hola"
+echo "hola $HOME"
+echo 'hola $HOME'
+echo HOLA
+echo HOLA $HOME
+echo "HOLA"
+echo "HOLA"
+echo hola
+echo "hola"
+echo "hola"
+echo "hola"
+echo "hola"
+echo hola
+echo hola
+echo hola
+echo "hola"
+echo hola
+echo hla
