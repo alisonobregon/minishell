@@ -22,6 +22,7 @@ SRC	=	./src/minishell.c \
 		./src/parsing/checker.c \
 		./src/parsing/utils_parsing.c \
 		./src/parsing/create_command.c \
+		./src/parsing/create_command_others.c \
 		./src/parsing/outfiles.c \
 		./src/parsing/pipes.c \
 		./src/utils/utils.c \
@@ -33,10 +34,13 @@ SRC	=	./src/minishell.c \
 		./src/exec/redirections.c \
 		./src/exec/here_doc.c \
 		./src/exec/free_exec.c \
+		./src/exec/other_free.c \
 		./src/prompt/prompt_utils.c \
 		./src/prompt/prompt.c \
 		./src/signals/signals.c \
+		./src/signals/other_signals.c\
 		./src/parsing/quotes.c \
+		./src/parsing/utils_quotes.c \
 		./src/parsing/env.c \
 		./src/prompt/init_text.c \
 
@@ -44,7 +48,7 @@ OBJ	= $(SRC:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 #-fsanitize=address,leak
 
 FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
 

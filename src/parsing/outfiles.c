@@ -15,21 +15,22 @@
 t_output	*outlst_new(char *filename, int action)
 {
 	t_output	*new;
-	
+
 	new = ft_calloc(sizeof(t_output), 1);
 	if (!new)
 		return (NULL);
 	filename = quit_quotes(filename);
 	new->file = ft_strdup(filename);
-	if(!new->file)
+	if (!new->file)
 	{
 		free(new);
-		return(NULL);
+		return (NULL);
 	}
 	new->action = action;
 	new->next = NULL;
 	return (new);
 }
+
 t_output	*out_lstlast(t_output *out)
 {
 	if (!out)
@@ -38,13 +39,14 @@ t_output	*out_lstlast(t_output *out)
 		out = out->next;
 	return (out);
 }
+
 int	outlst_append(t_output **out, char *filename, char *op)
 {
 	t_output	*new;
 	int			action;
 
 	action = OUT_WRITE;
-	if (ft_strlen(op) == 2) 
+	if (ft_strlen(op) == 2)
 		action = OUT_APPEND;
 	new = outlst_new(filename, action);
 	if (!new)
@@ -54,13 +56,13 @@ int	outlst_append(t_output **out, char *filename, char *op)
 	else
 		(*out) = new;
 	return (1);
-
 }
-int append_out_args(char ***buf, char *op, t_output **out)
+
+int	append_out_args(char ***buf, char *op, t_output **out)
 {
 	if (!(**buf))
 		return (0);
-	if (ft_strlen(op) == ft_strlen(**buf) 
+	if (ft_strlen(op) == ft_strlen(**buf)
 		&& !(ft_strncmp(**buf, op, ft_strlen(op))))
 	{
 		(*buf)++;
@@ -69,4 +71,4 @@ int append_out_args(char ***buf, char *op, t_output **out)
 		(*buf)++;
 	}
 	return (1);
-  }
+}

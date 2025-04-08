@@ -76,7 +76,7 @@ static int	new_path(t_minishell *shell, char **arr)
 	if (status == -1)
 	{
 		ft_printf("minishell: cd: %s: No such file or directory\n", new_path);
-		(free(new_path) , free(oldpwd));
+		(free(new_path), free(oldpwd));
 		return (1);
 	}
 	set_oldpwd(shell, oldpwd);

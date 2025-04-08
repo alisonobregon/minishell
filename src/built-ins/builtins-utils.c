@@ -69,7 +69,7 @@ int	valid_str(char *str)
 		return (0);
 	if (ft_isalpha(str[0]) || str[0] == '_')
 	{
-		while(str[i] != '\0')
+		while (str[i] != '\0')
 		{
 			if (!ft_isalnum(str[i]) && str[i] != '_' && str[i] != '=')
 				return (0);

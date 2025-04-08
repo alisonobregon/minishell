@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   quotes.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 20:53:36 by aliobreg          #+#    #+#             */
+/*   Updated: 2025/04/08 21:17:33 by aliobreg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/minishell.h"
 
-int set_quotes(char c, int *quotes)
+int	set_quotes(char c, int *quotes)
 {
-	int c_quotes;
+	int	c_quotes;
 
 	c_quotes = *quotes;
 	if (c == '\'')
@@ -21,12 +33,13 @@ int set_quotes(char c, int *quotes)
 	}
 	return (c_quotes);
 }
-int get_future_arglen(char *arg, char **env, int lex)
+
+int	get_future_arglen(char *arg, char **env, int lex)
 {
-	int i;
-	int quotes;
-	int len;
-	char *var_val;
+	int		i;
+	int		quotes;
+	int		len;
+	char	*var_val;
 
 	i = 0;
 	len = 0;
@@ -48,20 +61,69 @@ int get_future_arglen(char *arg, char **env, int lex)
 	}
 	return (len);
 }
-char *malloc_new_arg(char *arg, char **env, int lex)
-{
-	char *new_arg;
-	int future_len;
 
-	future_len = get_future_arglen(arg, env, lex);
-	if (future_len == -1)
-		return (NULL);
-	new_arg = ft_calloc(future_len + 1, sizeof(char));
-	if (!new_arg)
-		return (NULL);
-	return (new_arg);
+char	*replace_env(char *arg, char **env, int last_exit, t_env *envi)
+{
+	int	quotes;
+	int	n_args;
+	int	i;
+
+	quotes = 0;
+	n_args = 0;
+	i = -1;
+	envi->new_arg = malloc_new_arg(arg, env, last_exit);
+	while (arg[++i])
+	{
+		if (handle_quotes(arg, &quotes, envi->quotee, &i) == 1)
+			continue ;
+		if (quotes != 1 && arg[i] == '$')
+		{
+			envi->var_val = get_env(arg + i, env, last_exit);
+			replace_var(envi->var_val, envi->new_arg, &n_args);
+			i += get_env_len(arg + i) - 1;
+		}
+		else
+			envi->new_arg[n_args++] = arg[i];
+	}
+	return (envi->new_arg);
 }
 
+int	replace_var(char *arg, char *new_args, int *n_args)
+{
+	if (!arg)
+		return (free_array(&new_args));
+	*n_args += ft_strcat(new_args + (*n_args), arg);
+	free(arg);
+	return (1);
+}
+
+int	replace_quotes(char ***args, char **env, int last_exit)
+{
+	char	**new_args;
+	t_env	*envi;
+	int		i;
+
+	i = 0;
+	if (!args || !*args)
+		return (0);
+	envi = ft_calloc(1, sizeof(t_env));
+	new_args = ft_calloc(ft_len(*args) + 1, sizeof(char *));
+	if (!new_args)
+		return (0);
+	while ((*args)[i])
+	{
+		envi->quotee = (*args)[i][0];
+		new_args[i] = replace_env((*args)[i], env, last_exit, envi);
+		i++;
+	}
+	new_args[i] = NULL;
+	free_array(*args);
+	*args = new_args;
+	free(envi);
+	return (1);
+}
+
+/*
 char *replace_env(char *arg, char **env, int last_exit)
 {
 	int i;
@@ -74,7 +136,7 @@ char *replace_env(char *arg, char **env, int last_exit)
 	i = -1;
 	quotes = 0;
 	n_args = 0;
-	new_arg = malloc_new_arg(arg, env, last_exit); //AQUI LE TENGO QUE DAR ESPACIO CON LAS VARIABLES DE ENTORNO
+	new_arg = malloc_new_arg(arg, env, last_exit);
 	if (!new_arg)
 		return (NULL);
 	quotee = arg[0];
@@ -101,47 +163,4 @@ char *replace_env(char *arg, char **env, int last_exit)
 	new_arg[n_args] = 0;
 	return (new_arg);
 }
-size_t	ft_strcat(char *dest, const char *src)
-{
-	size_t	i;
-
-	i = 0;
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = 0;
-	return (i);
-}
-int replace_var(char *arg, char *new_args, int *n_args)
-{
-
-	if (!arg)
-		return (free_array(&new_args));
-	*n_args += ft_strcat(new_args + (*n_args), arg);
-	free(arg);
-	return (1);
-}
-
-int replace_quotes(char ***args, char **env, int last_exit)
-{
-	char **new_args;
-	int i;
-
-	i = 0;
-	if (!args || !*args)
-		return (0);
-	new_args = ft_calloc(ft_len(*args) + 1, sizeof(char *));
-	if (!new_args)
-		return (0);
-	while ((*args)[i])
-	{
-		new_args[i] = replace_env((*args)[i], env, last_exit); //aqui hacerle comprobacion de errores
-		i++;
-	}
-	new_args[i] = NULL;
-	free_array(*args);
-	*args = new_args;
-	return (1);
-}
+*/

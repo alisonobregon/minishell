@@ -20,6 +20,7 @@ void	memory_allocated(t_minishell *shell)
 	shell->exec = NULL;
 	if (!shell->prompt)
 		shell->prompt = ft_calloc(1, sizeof(t_prompt));
+	g_sigint = 0;
 }
 
 char	*get_input(t_minishell *shell)
@@ -61,7 +62,6 @@ int	main(int argc, char **argv, char **env)
 	while (1)
 	{
 		memory_allocated(shell);
-		g_sigint = 0;
 		shell->prompt->str = get_input(shell);
 		if (!shell->prompt->str)
 			continue ;

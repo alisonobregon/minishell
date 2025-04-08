@@ -55,10 +55,8 @@ void	handler_fd(t_minishell *s, t_exec *exec, int *pipe_fd, int *pre_pipe)
 		if (exec->fd_in != 0 && exec->infile)
 			close(pipe_fd[READ]);
 		else
-		{
-			dup2(pipe_fd[READ], STDIN_FILENO);
-			(close(pipe_fd[READ]), close(pre_pipe[WRITE]));
-		}
+			(dup2(pipe_fd[READ], STDIN_FILENO),
+				close(pipe_fd[READ]), close(pre_pipe[WRITE]));
 	}
 	unlinker(exec->heredoc);
 	if (exec_builtin(s, exec->cmd, exec->args) == -1)

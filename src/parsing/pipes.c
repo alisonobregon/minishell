@@ -1,12 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipes.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 20:53:31 by aliobreg          #+#    #+#             */
+/*   Updated: 2025/04/08 20:53:31 by aliobreg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/minishell.h"
 
-void ft_pipes(char **buf)
+void	signals_pipes(char **buf, char *pipe)
 {
-	int i;
-	char *pipe;
-	char *temp;
+	char	*temp;
+
+	while (1 && !g_sigint)
+	{
+		pipe = readline("pipe>");
+		if (g_sigint)
+		{
+			ft_printf("\n");
+			break ;
+		}
+		if (!pipe)
+		{
+			ft_printf("bash: syntax error\n");
+			exit(2);
+		}
+		if (pipe && *pipe)
+		{
+			temp = ft_strjoin(*buf, pipe);
+			free(pipe);
+			free(*buf);
+			*buf = temp;
+			break ;
+		}
+		free(pipe);
+	}
+}
+
+void	ft_pipes(char **buf)
+{
+	int		i;
+	char	*pipe;
 
 	i = -1;
+	pipe = NULL;
 	while ((*buf)[++i])
 	{
 		if (get_arg_type(&((*buf)[i])) == 2)
@@ -19,35 +60,8 @@ void ft_pipes(char **buf)
 				i++;
 			if ((*buf)[i] == '\0')
 			{
-				while (1 && !g_sigint)
-				{
-					pipe = readline("pipe>");
-					if (g_sigint)
-					{
-						ft_printf("\n");
-						break;
-					}
-					if (!pipe)
-					{
-						ft_printf("bash: syntax error\n");
-						exit(2);
-					}
-					if (pipe && *pipe)
-					{
-						//if (get_arg_type(pipe) == 0)
-						//{
-						
-							temp = ft_strjoin(*buf, pipe);
-							free(pipe);
-							free(*buf); //free array verifico que libere
-							*buf = temp;
-							break;
-						//}
-					}
-					free(pipe);
-				}
+				signals_pipes(buf, pipe);
 			}
 		}
 	}
 }
-

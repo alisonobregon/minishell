@@ -12,19 +12,30 @@
 
 #include "../../include/minishell.h"
 
-int get_arg_type(char *str)
+t_exec	*exec_lstlast(t_exec *lst)
 {
-	if (!ft_strncmp(str, ">>", 2) || !ft_strncmp(str, "<<", 2) 
-		|| !ft_strncmp(str, "<", 1) || !ft_strncmp(str, ">", 1) || !ft_strncmp(str, "&", 1)) // el & es para segundo plano
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+int	get_arg_type(char *str)
+{
+	if (!ft_strncmp(str, ">>", 2) || !ft_strncmp(str, "<<", 2)
+		|| !ft_strncmp(str, "<", 1) || !ft_strncmp(str, ">", 1) \
+		|| !ft_strncmp(str, "&", 1))
 		return (1);
-	else if (!ft_strncmp(str, "|", 1)) 
-		return (2); //devuelve 2 si es un pipe
+	else if (!ft_strncmp(str, "|", 1))
+		return (2);
 	else if (!ft_strncmp(str, "||", 2))
-		return (3); //devuelve 3 si es un or
+		return (3);
 	else if (!ft_strncmp(str, "&&", 2))
-		return (4); //devuelve 4 si es un and
+		return (4);
 	return (0);
 }
+
 int	index_of(char *str, char *search, int n)
 {
 	int	i;
@@ -36,15 +47,14 @@ int	index_of(char *str, char *search, int n)
 			n--;
 		if (n <= 0)
 			break ;
-		//printf("i de str: %s %d\n",str + i, i);
 	}
-	return (i); //verificar esta vaina
+	return (i);
 }
 
-int index_of_newline(char *str)
+int	index_of_newline(char *str)
 {
-	int index;
-	int temp;
+	int	index;
+	int	temp;
 
 	index = index_of(str, " ", 1);
 	temp = index_of(str, "\t", 1);
