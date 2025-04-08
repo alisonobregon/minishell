@@ -61,10 +61,11 @@ debug: $(NAME)
 	@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all --suppressions=/home/$(USER)/alumni/minishell/valgrind.supp ./$(NAME)
 
 fd: $(NAME)
-	@valgrind -s --trace-children=yes --track-fds=yes --leak-check=full --show-leak-kinds=all ./$(NAME)
+	@valgrind -s --trace-children=yes --track-fds=yes --leak-check=full ./$(NAME)
 
 run: $(NAME)
-	make && ./$(NAME)
+	make
+	./$(NAME)
 
 show_progress:
 		@for file in $(SRC); do \

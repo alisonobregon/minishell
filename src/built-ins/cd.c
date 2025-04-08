@@ -53,7 +53,7 @@ void	set_oldpwd(t_minishell *shell, char *oldpwd)
 		return ;
 	}
 	shell->env = rm_env_var(shell, "OLDPWD");
-	nuevo = ft_strjoin("OLDPWD=", oldpwd);
+	nuevo = ft_str2join("OLDPWD=", oldpwd, 0, 1);
 	shell->env = add_str_to_array(shell->env, nuevo);
 	free(nuevo);
 }
@@ -82,8 +82,6 @@ static int	new_path(t_minishell *shell, char **arr)
 	set_oldpwd(shell, oldpwd);
 	set_pwd(shell, getcwd(NULL, 0));
 	shell->cwd = get_prompt(shell);
-	if (oldpwd)
-		free(oldpwd);
 	return (free(new_path), 1);
 }
 
@@ -99,16 +97,17 @@ int	cd(t_minishell *shell, char **arr)
 	}
 	if (arr[1] == NULL || !ft_strncmp(arr[1], "~", 2))
 	{
+		printf("home case\n");
 		if (home == NULL)
 		{
 			ft_printf("minishell: cd: HOME not set\n");
 			return (free(home), 1);
 		}
 		set_oldpwd(shell, getcwd(NULL, 0));
-		set_pwd(shell, home);
 		chdir(home);
+		set_pwd(shell, home);
 		shell->cwd = get_prompt(shell);
-		return (free(home), 1);
+		return (1);
 	}
 	free(home);
 	return (new_path(shell, arr));

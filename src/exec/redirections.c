@@ -12,14 +12,14 @@
 
 #include "../../include/minishell.h"
 
-t_output	*lst_last_output(t_output *lst)
+/* t_output	*lst_last_output(t_output *lst)
 {
 	if (!lst)
 		return (NULL);
 	while (lst->next != NULL)
 		lst = lst->next;
 	return (lst);
-}
+} */
 
 int	infile_checker(t_exec **exec)
 {
@@ -104,7 +104,7 @@ int	take_outfile(t_exec **exec)
 
 int	fd_checker(t_exec **exec)
 {
-	t_exec	*tmp;
+	t_exec		*tmp;
 	t_output	*tmp2;
 	int		status;
 

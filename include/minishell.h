@@ -38,11 +38,14 @@
 # define WRITE 1
 # define MAX_ARGUMENTS 256
 
+# define OUT_WRITE		0
+# define OUT_APPEND		1
+
 extern sig_atomic_t	 g_sigint;
 
 typedef struct s_output
 {
-	int				action; // 0 = write, 1 = append
+	int				action;
 	char			*file;
 	struct	s_output *next;
 }					t_output;
@@ -54,7 +57,7 @@ typedef struct s_exec
 	char		**infile;
 	t_output	*outfile;
 	char		**heredoc;
-	int			todo_next; // 0 = nothing,  2 = pipe
+	int			todo_next;
 	int			i;
 	int			fd_in;
 	int			fd_out;
@@ -75,7 +78,6 @@ typedef struct s_minishell
 	char		**args;
 	char		**env;
 	char		**path;
-	//char		*pwd;
 	char		*cwd;
 	int			status;
 	t_prompt	*prompt;
@@ -85,9 +87,19 @@ typedef struct s_minishell
 
 
 /*parsing functions*/
-void	parsing(t_minishell *shell);
-int		check_quotes(char **buf, int simple_quote, int double_quote);
+
+/* CHECKER.C */
 int		check_other_quote(char **buf, int *i, char c);
+int		check_quotes(char **buf, int simple_quote, int double_quote);
+int		free_return(char **buf);
+/* CREATE_COMMAND.C */
+int		ft_strarr_len(char **array);
+t_exec	*exec_lstlast(t_exec *lst);
+int		append_in_args(char ***buf, char *op, char ***array);
+int		append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
+int		str_array_append(char ***array, char *str);
+
+void	parsing(t_minishell *shell);
 int		split_args(t_minishell *shell, char *str);
 int		get_end_index(char *str, int end);
 int		get_quotes_end(char *str, int end);
@@ -95,19 +107,12 @@ int		get_arg_end(char *str, int end_index);
 int		index_of_newline(char *str);
 int		index_of(char *str, char *search, int n);
 int 	get_arg_type(char *str);
-int		ft_strarr_len(char **array);
 int		create_command_lst(t_minishell *shell);
 int		command_lstappend(t_exec *new, char ***buf);
-int		append_in_args(char ***buf, char *op, char ***array);
-int		str_array_append(char ***array, char *str);
-t_exec	*exec_lstlast(t_exec *lst);
 int		print_command_list(t_exec *command_list);
 int		command_list_clear(t_exec **command_list);
 t_exec	*exec_new(void);
 int		free_array(char **array);
-int		free_return(char **buf);
-# define OUT_WRITE		0
-# define OUT_APPEND		1
 int		append_out_args(char ***buf, char *op, t_output **out);
 int		outlst_append(t_output **out, char *filename, char *op);
 t_output	*out_lstlast(t_output *out);
@@ -115,7 +120,6 @@ t_output	*outlst_new(char *filename, int action);
 int			add_history_to_file(char *str);
 int			check_specials(char **args);
 void		ft_pipes(char **buf);
-int			append_in_her_args(char ***buf, char *op, char ***array, t_exec *new);
 int			 free_shell(t_minishell *shell);
 int			free_output(t_output **output);
 int			check_specials(char **args);
@@ -170,7 +174,8 @@ int		pwd(t_minishell *shell);
 void	ft_unset(t_minishell *shell, char **args);
 int		ft_env(t_minishell *shell);
 int		ft_export(t_minishell *shell, char **args);
-void	ft_exit(t_minishell *shell, long status);
+void	ft_exit(t_minishell *shell, char **args);
+
 /* built-ins tools */
 int		exec_builtin(t_minishell *shell, char *cmd, char **args);
 int		builtin_checker(t_minishell *shell, char *cmd);

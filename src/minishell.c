@@ -67,8 +67,6 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		add_history(shell->prompt->str);
 		add_history_to_file(shell->prompt->str);
-		/* if (!check_prompt_str(shell))
-			continue; */
 		parsing(shell);
 		if (!shell->exec || !shell->exec->cmd)
 		{
