@@ -97,30 +97,6 @@ void	check_export(t_minishell *shell, char **vars)
 	}
 }
 
-int	print_export(t_minishell *shell)
-{
-	int		i;
-	char	chr;
-
-	i = 0;
-	chr = 'A';
-	while ((chr >= 'A' && chr <= 'Z' ) || (chr >= 'a' && chr <= 'z'))
-	{
-		while (shell->env[i] != NULL && shell->env[i][0] == chr)
-			ft_printf("declare -x ""%s""\n", shell->env[i++]);
-		if (shell->env[i] == NULL)
-		{
-			i = 0;
-			chr++;
-			if (chr == 'Z')
-				chr = 'a';
-		}
-		else
-			i++;
-	}
-	return (1);
-}
-
 int	ft_export(t_minishell *shell, char **args)
 {
 	char	**vars;

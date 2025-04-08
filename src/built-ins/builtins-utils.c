@@ -21,7 +21,7 @@ int	exec_builtin(t_minishell *shell, char *cmd, char **args)
 	else if (!ft_strncmp(cmd, "cd", 3) && ft_strlen(cmd) == 2)
 		return (cd(shell, args));
 	else if (!ft_strncmp(cmd, "pwd", 4) && ft_strlen(cmd) == 3)
-		return (pwd());
+		return (pwd(shell));
 	else if (!ft_strncmp(cmd, "export", 7) && ft_strlen(cmd) == 6)
 		return (ft_export(shell, args));
 	else if (!ft_strncmp(cmd, "unset", 6) && ft_strlen(cmd) == 5)
@@ -63,28 +63,6 @@ void	free_arrays(char **array1, char **array2)
 {
 	free_array(array1);
 	free_array(array2);
-/* 	int	i;
-
-	i = 0;
-	if (!array1 || !array2)
-		return ;
-	if (*array1)
-	{
-		while (array1[i] != NULL)
-			free(array1[i++]);
-		if (array1)
-			free(array1);
-	}
-	if (!array2)
-		return ;
-	if (*array2 && array2)
-	{
-		i = 0;
-		while (array2[i] != NULL)
-			free(array2[i++]);
-		if (array2)
-			free(array2);
-	} */
 }
 
 int	valid_str(char *str)
@@ -94,16 +72,39 @@ int	valid_str(char *str)
 	i = 1;
 	if (!str)
 		return (0);
-	if (ft_isalpha(str[0]) || str[0] == '_') // a valid str has to start with an alpha char or an underscore
+	if (ft_isalpha(str[0]) || str[0] == '_')
 	{
 		while(str[i] != '\0')
 		{
-			if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]) && str[i] != '_')
+			if (!ft_isalnum(str[i]) && str[i] != '_' && str[i] != '=')
 				return (0);
 			i++;
 		}
 		return (1);
 	}
-	else
-			return (0);
+	return (0);
+}
+
+int	print_export(t_minishell *shell)
+{
+	int		i;
+	char	chr;
+
+	i = 0;
+	chr = 'A';
+	while ((chr >= 'A' && chr <= 'Z' ) || (chr >= 'a' && chr <= 'z'))
+	{
+		while (shell->env[i] != NULL && shell->env[i][0] == chr)
+			ft_printf("declare -x ""%s""\n", shell->env[i++]);
+		if (shell->env[i] == NULL)
+		{
+			i = 0;
+			chr++;
+			if (chr == 'Z')
+				chr = 'a';
+		}
+		else
+			i++;
+	}
+	return (1);
 }

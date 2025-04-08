@@ -16,6 +16,7 @@ void	ft_exit(t_minishell *shell, long status)
 {
 	if (status >= LONG_MAX)
 	{
+		ft_printf("exit\n");
 		ft_printf("bash: exit: %ld: numeric argument required\n", status);
 		free_child_shell(&shell);
 		exit(2);

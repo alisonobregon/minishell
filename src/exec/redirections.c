@@ -12,6 +12,15 @@
 
 #include "../../include/minishell.h"
 
+t_output	*lst_last_output(t_output *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
+}
+
 int	infile_checker(t_exec **exec)
 {
 	int	i;
@@ -21,7 +30,7 @@ int	infile_checker(t_exec **exec)
 	{
 		while (++i < ft_len((*exec)->infile))
 		{
-			(*exec)->infile[i] = quit_quotes((*exec)->infile[i]); //esto puse para el < si no quitalo :)
+			(*exec)->infile[i] = quit_quotes((*exec)->infile[i]);
 			if (access((*exec)->infile[i], F_OK))
 				return(perror("File not found"), 0);
 			if (access((*exec)->infile[i], R_OK))
@@ -32,10 +41,7 @@ int	infile_checker(t_exec **exec)
 				if ((*exec)->fd_in == -1)
 					return(perror("Error opening file here"), 0);
 				if ((*exec)->fd_in != 0)
-				{
-					dup2((*exec)->fd_in, STDIN_FILENO);
-					close((*exec)->fd_in);
-				}
+					(dup2((*exec)->fd_in, STDIN_FILENO), close((*exec)->fd_in));
 			}
 		}
 	}
@@ -45,29 +51,25 @@ int	infile_checker(t_exec **exec)
 t_exec	*outfile_checker(t_exec **exec)
 {
 	t_exec	*t;
-	t_output *out2;
 
 	t = (*exec);
-	out2 = t->outfile;
-	//*modificado por gabo funciona y quita leaks (Comprobar que todo funcionamiento está en regla) :)
-	while (out2 != NULL)
+	while (t->outfile->next != NULL)
 	{
-		if (out2->action == 0)
+		if (t->outfile->action == 0)
 		{
-			t->fd_out = open(out2->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+			t->fd_out = open(t->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 			if (t->fd_out == -1)
 				return (perror("Error opening file here"), NULL);
 			close(t->fd_out);
 		}
 		else
 		{
-			t->fd_out = open(out2->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
+			t->fd_out = open(t->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
 			if (t->fd_out == -1)
 				return (perror("Error opening file here"), NULL);
 			close(t->fd_out);
 		}
-		printf("out2: %s\n", out2->file);
-		out2 = out2->next;
+		t->outfile = t->outfile->next;
 	}
 	return (t);
 }
@@ -103,7 +105,10 @@ int	take_outfile(t_exec **exec)
 int	fd_checker(t_exec **exec)
 {
 	t_exec	*tmp;
+	t_output	*tmp2;
+	int		status;
 
+	tmp2 = (*exec)->outfile;
 	if ((*exec)->infile)
 	{
 		if (!infile_checker(exec))
@@ -114,5 +119,9 @@ int	fd_checker(t_exec **exec)
 	tmp = outfile_checker(exec);
 	if (!tmp)
 		return (0);
-	return (take_outfile(&tmp));
+	status = take_outfile(&tmp);
+	(*exec)->outfile = tmp2;
+	if (!status)
+		return (0);
+	return (1);
 }

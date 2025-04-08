@@ -229,6 +229,19 @@ ls -la > out
 cat out
 < Makefile echo "hola" "de nuevo
 < Makefile echo "hola" "de nuevo
+<<<<<<< HEAD
+cd
+cd ~
+unset HOME
+cd
+cd minishell/../minishell/
+cd minishell/../minishell
+cd ../../minishell
+echo pwd
+echo pwd
+echo "pwd"
+Echo pwd
+=======
 ls
 /bin/ls
 /bin/ls -la
@@ -382,6 +395,7 @@ rm a b B c d eoooof
 >a>b
 >a>b
 >a>b>c
+<<<<<<< HEAD
 "
 "
 "
@@ -580,3 +594,254 @@ echo '$HOME ADASD'
 echo ASDASDAS
 echo "Hla "
 echo "Hla $HOME"
+=======
+>>>>>>> origin/aliobreg
+ls -la
+ls -la > out > out2
+cat out2
+minishell
+./minishell 
+exit 
+echo $?
+./minishell 
+exit 100
+echo $?
+./minishell 
+exit 100a
+echo $?
+export | grep SHLVL
+exit 100
+exit
+exit
+                                                                                                                                                                                                           
+asd
+asd
+export "TEST=ls -la | grep Makefile"
+export "TEST=ls -la | grep Makefile"
+ls -la "
+export var1=v1
+code .
+export var1
+export var1=
+export var
+export var1=v1
+export var1=v1
+export | grep var1
+export =
+export a==b
+export
+export var1=v1
+export var1*v1
+export va1
+export 1va
+export 1va
+export 1va
+asd
+asd
+asd
+asd
+asd  asd
+>a>b>c
+export > out > ou1 > out3
+echo "hola" > out > ou1 > out3
+a>b>c
+> a > b > c
+> a > b > c
+ls
+rm a b c
+ls
+rm ou1 out out3
+ls -la > out > out2
+> a > b > c
+ls
+echo > out > out2
+ls
+rm a b c out out2
+echo > a > b > c
+ls
+rm a b c
+>a>b>c
+ls
+echo " holis " > a > b > c
+cat c
+rm a b c
+> a > b > c
+ls
+rm a b c
+>a > b > c
+ls
+ls -la > a > b > c
+cat c
+rm a b c
+> a > b > c
+> a > b
+> a > b > c
+ls -la > a > b > c
+cat c
+ls  -la
+> a > b  >c
+ls
+rm a b c
+ls -al > a > b > c
+ls
+ls
+rm  a b c
+ls
+> a > b  > c
+ls
+ls -la > a > b > c
+cat c
+cat c
+ls -la >  a > b > c
+cat c
+rm a b c
+> a > b > c
+ls
+< Makefile cat > a > b > c
+cat c
+cat a
+cat b
+cat b
+cat c
+normientte ./src/exec
+asd
+asd
+asd
+sad aasd
+asd
+asd
+asd
+asd
+ls -la > a > b > c
+asd
+qwe
+llls /src/exec
+asd
+llls ./src/exec
+asd
+normientte ./src/exec
+asd
+asd
+sdadasd 
+asd !"
+asd !"
+asd !"
+< Makefile cat
+< Makefile cat > a
+cat a
+ls
+rm a b c
+ls -la > a > b > c
+asasdd ""
+cat < Makefile 
+echo "hola"
+asdadsa ""
+exit 100
+cd
+exprot abc
+export abv
+exprot abc
+asdasd
+asd
+asd
+asd
+export abc
+export abd
+export
+export abc
+exprto
+ls
+export
+export a b c
+export a=a b=b 1c
+asd
+export asd asd asd
+export asd asd asd123
+expor
+./minishell 
+exit 100a
+cd 
+asd
+export a b  c
+asdasd
+asdas -
+< <  
+< < 
+export | grep CWD
+echo > asd
+asd
+ls -la | grep Makefile  | wc -l
+cd
+cd mini
+ls
+<
+< <
+< <
+< <
+> >
+ls
+rm a b c asd
+export a b c
+export a=a
+export a=a b=c c=b
+export
+unset a b c
+export
+export | SHLVL
+export a=a b=c c=b
+export
+env
+export | grep SHLVL
+export | grep SHLV
+export | grep SHL
+export | grep SHLll
+export
+unset a b c
+export | grep SHLVL
+export | grep SHasd
+export CWD
+export PWD
+export
+cd ..
+export
+cd ..
+export
+cd ..
+cd
+cd
+export
+cd ..
+cd ..
+cd
+cd 
+cd ..
+cd ..
+export
+cd ..
+cd ..
+cd
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+unset PATH
+ls -la
+unset PATH
+ls -la
+unset PATH
+ls -la
+unset path
+ls -la
+unset PATH
+ls -la
+ls -la
+unset PATH
+ls -la
+s
+ñs
+/bin/ls
+/bin/ls la
+/bin/ls -la
+/bin/ls la
+>>>>>>> origin/gonzo

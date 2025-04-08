@@ -175,7 +175,7 @@ void	unlinker(char **heredoc);
 int		cd(t_minishell *shell, char **arr);
 int		ft_echo(char **args);
 void	echo_args(char *str);
-int		pwd(void);
+int		pwd(t_minishell *shell);
 void	ft_unset(t_minishell *shell, char **args);
 int		ft_env(t_minishell *shell);
 int		ft_export(t_minishell *shell, char **args);
@@ -189,6 +189,7 @@ char	*ft_ptr_in_array(char **array, char *str);
 char	**rm_env_var(t_minishell *shell, char *var);
 int		index_array(char **array, char *str);
 int		ft_chrlen(char *str, char c);
+int		print_export(t_minishell *shell);
 int		valid_str(char *str);
 /* builtins utils */
 void	free_arrays(char **array1, char **array2);
