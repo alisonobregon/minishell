@@ -66,6 +66,7 @@ typedef struct s_env
 {
 	char	*new_arg;
 	char	*var_val;
+	char	quotee;
 }	t_env;
 typedef struct s_prompt
 {
@@ -138,14 +139,14 @@ void	other_signals(void);
 /*vars y env*/
 int		replace_quotes(char ***args, char **env, int last_exit);
 int		replace_var(char *arg, char *new_args, int *n_args);
-char 	*replace_env(char *arg, char **env, int last_exit, char quotee);
+char 	*replace_env(char *arg, char **env, int last_exit, t_env *envi, int i);
 char	*malloc_new_arg(char *arg, char **env, int lex);
 int		get_future_arglen(char *arg, char **env, int lex);
 int 	set_quotes(char c, int *quotes);
 int		get_env_len(char *str);
 char	*get_env(char *env_name, char **env, int last_exit);
 int		env_name_len(char *env_name);
-void handle_quotes(char *arg, int *quotes, char quotee, int *i);
+int handle_quotes(char *arg, int *quotes, char quotee, int *i);
 
 /*PROMPT*/
 char	*get_prompt(t_minishell *shell);

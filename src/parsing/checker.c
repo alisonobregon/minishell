@@ -12,8 +12,7 @@
 
 #include "../../include/minishell.h"
 
-
-int check_other_quote(char **buf, int *i, char c)
+int	check_other_quote(char **buf, int *i, char c)
 {
 	int	n;
 
@@ -30,8 +29,8 @@ int check_other_quote(char **buf, int *i, char c)
 
 int	check_quotes(char **buf, int simple_quote, int double_quote)
 {
-	int	i;
-	char *dquote;
+	int		i;
+	char	*dquote;
 
 	i = -1;
 	while ((*buf)[++i])
@@ -56,10 +55,11 @@ int	check_quotes(char **buf, int simple_quote, int double_quote)
 	wait_signal();
 	return (2);
 }
-char *new_buf_quotes(char **buf, char *dquote)
+
+char	*new_buf_quotes(char **buf, char *dquote)
 {
-	char *temp;
-	char *temp2;
+	char	*temp;
+	char	*temp2;
 
 	temp = ft_strjoin(*buf, "\n");
 	temp2 = ft_strjoin(temp, dquote);
@@ -68,6 +68,7 @@ char *new_buf_quotes(char **buf, char *dquote)
 	free(*buf);
 	return (temp2);
 }
+
 /*int free_return(char **buf)
 {
 	ft_printf("Error quotes don't close\n");

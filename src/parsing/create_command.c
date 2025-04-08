@@ -1,6 +1,6 @@
 #include "../../include/minishell.h"
 
-int ft_strarr_len(char **array)
+int	ft_strarr_len(char **array)
 {
 	int	i;
 
@@ -22,11 +22,11 @@ t_exec	*exec_lstlast(t_exec *lst)
 	return (lst);
 }
 
-int append_in_args(char ***buf, char *op, char ***array)
+int	append_in_args(char ***buf, char *op, char ***array)
 {
 	if (!(**buf))
 		return (1);
-	if (ft_strlen(op) == ft_strlen(**buf) 
+	if (ft_strlen(op) == ft_strlen(**buf) \
 		&& !(ft_strncmp(**buf, op, ft_strlen(op))))
 	{
 		(*buf)++;
@@ -36,11 +36,12 @@ int append_in_args(char ***buf, char *op, char ***array)
 	}
 	return (1);
 }
-int append_in_her_args(char ***buf, char *op, char ***array, t_exec *new)
+
+int	append_in_her_args(char ***buf, char *op, char ***array, t_exec *new)
 {
 	if (!(**buf))
 		return (1);
-	if (ft_strlen(op) == ft_strlen(**buf)
+	if (ft_strlen(op) == ft_strlen(**buf) \
 		&& !(ft_strncmp(**buf, op, ft_strlen(op))))
 	{
 		(*buf)++;
@@ -81,9 +82,9 @@ int	str_array_append(char ***array, char *str)
 	return (1);
 }
 
-int free_array(char **array)
+int	free_array(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i])
@@ -95,9 +96,10 @@ int free_array(char **array)
 	return (0);
 }
 
-int command_lstappend(t_exec *new, char ***buf)
+int	command_lstappend(t_exec *new, char ***buf)
 {
-	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 || get_arg_type(**buf) == 1)) //*buf
+	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 \
+		|| get_arg_type(**buf) == 1)) 
 	{
 		printf("inside of lstappend \n");
 		if (!(append_out_args(buf, ">", &(new->outfile))))
@@ -118,8 +120,7 @@ int command_lstappend(t_exec *new, char ***buf)
 	return (1);
 }
 
-
-int create_command_lst(t_minishell *shell)
+int	create_command_lst(t_minishell *shell)
 {
 	t_exec	*new;
 	char	**buf;
@@ -136,28 +137,30 @@ int create_command_lst(t_minishell *shell)
 		else
 			shell->exec = new;
 		new->cmd = ft_strdup(*buf);
-		if(new->cmd == NULL)
+		if (new->cmd == NULL)
 			return (0);
 		command_lstappend(new, &buf);
 		new_cmd_asign(new);
 		if (*buf != NULL)
 			new->todo_next = get_arg_type(*buf);
 		if (*buf && **buf)
-    		buf++;
+			buf++;
 	}
 	return (1);
 }
-void new_cmd_asign(t_exec *new)
+
+void	new_cmd_asign(t_exec *new)
 {
 	if (get_arg_type(new->cmd) == 1 && new->args)
 		new->cmd = ft_strdup(new->args[0]);
 	if (new->cmd)
 		new->cmd = quit_quotes(new->cmd);
 }
-char *quit_quotes(char *argument)
+
+char	*quit_quotes(char *argument)
 {
-	char *tmp;
-	char *new_arg;
+	char	*tmp;
+	char	*new_arg;
 
 	tmp = NULL;
 	if (!argument)
@@ -181,7 +184,7 @@ char *quit_quotes(char *argument)
 	return ((argument));
 }
 
-int	print_command_list(t_exec *command_list)
+int	print_command_list(t_exec *command_list) //! Borrar esta funcion
 {
 	t_exec		*temp;
 	t_output	*temp_out;
@@ -189,7 +192,7 @@ int	print_command_list(t_exec *command_list)
 
 	i = 1;
 	temp = command_list;
-	while(temp)
+	while (temp)
 	{
 		printf("comando %d\n", i);
 		printf("cmd: %s\n", temp->cmd);

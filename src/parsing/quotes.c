@@ -61,23 +61,22 @@ char *malloc_new_arg(char *arg, char **env, int lex)
 		return (NULL);
 	return (new_arg);
 }
-char *replace_env(char *arg, char **env, int last_exit, char quotee)
+char *replace_env(char *arg, char **env, int last_exit, t_env *envi, int i)
 {
-	int i;
 	int quotes;
-	int n_args;
-	t_env *envi;
+	int	n_args;
 
-	i = -1;
-	quotes = 0;
-	n_args = 0;
-	envi = NULL;
+	(quotes = 0, n_args = 0);
 	envi->new_arg = malloc_new_arg(arg, env, last_exit);
 	while (arg[++i])
 	{
-		handle_quotes(arg, &quotes, quotee, &i);
+		if (handle_quotes(arg, &quotes, envi->quotee, &i) == 1)
+			continue;
 		if (quotes == 1)
-			envi->new_arg[n_args++] = arg[i++];
+		{
+			envi->new_arg[n_args++] = arg[i];
+			continue ;
+		}
 		if (quotes != 1 && arg[i] == '$')
 		{
 			envi->var_val = get_env(arg + i, env, last_exit);
@@ -90,55 +89,16 @@ char *replace_env(char *arg, char **env, int last_exit, char quotee)
 	}
 	return (envi->new_arg);
 }
-void handle_quotes(char *arg, int *quotes, char quotee, int *i)
+
+
+int handle_quotes(char *arg, int *quotes, char quotee, int *i)
 {
 	set_quotes(arg[*i], quotes);
 	if (((arg[*i] == '\''|| arg[*i] == '\"')  && quotee == arg[*i]))
-	{
-		(*i)++;
-		return ;
-	}
+		return (1);
+	return (0);
 }
-/*
-char *replace_env(char *arg, char **env, int last_exit)
-{
-	int i;
-	int quotes;
-	int n_args;
-	char *new_arg;
-	char *var_val;
-	char quotee;
 
-	i = -1;
-	quotes = 0;
-	n_args = 0;
-	new_arg = malloc_new_arg(arg, env, last_exit);
-	if (!new_arg)
-		return (NULL);
-	quotee = arg[0];
-	while (arg[++i])
-	{
-		set_quotes(arg[i], &quotes);
-		if (((arg[i] == '\''|| arg[i] == '\"')  && quotee == arg[i]))
-			continue;
-		if (quotes == 1)
-		{
-			new_arg[n_args++] = arg[i];
-			continue;
-		}
-		if (quotes != 1 && arg[i] == '$')
-		{
-			var_val = get_env(arg + i, env, last_exit);
-			if (!(replace_var(var_val, new_arg, &n_args)))
-				return (NULL);
-			i += get_env_len(arg + i) - 1;
-		}
-		else
-			new_arg[n_args++] = arg[i];
-	}
-	new_arg[n_args] = 0;
-	return (new_arg);
-}*/
 size_t	ft_strcat(char *dest, const char *src)
 {
 	size_t	i;
@@ -165,22 +125,64 @@ int replace_var(char *arg, char *new_args, int *n_args)
 int replace_quotes(char ***args, char **env, int last_exit)
 {
 	char **new_args;
+	t_env *envi;
 	int i;
 
-	printf("sdsad");
 	i = 0;
 	if (!args || !*args)
 		return (0);
+	envi = ft_calloc(1, sizeof(t_env));
 	new_args = ft_calloc(ft_len(*args) + 1, sizeof(char *));
 	if (!new_args)
 		return (0);
 	while ((*args)[i])
 	{	
-		new_args[i] = replace_env((*args)[i], env, last_exit, (*args)[i][0]); //aqui hacerle comprobacion de errores
+		envi->quotee = (*args)[i][0];
+		new_args[i] = replace_env((*args)[i], env, last_exit, envi, -1);
 		i++;
 	}
 	new_args[i] = NULL;
 	free_array(*args);
 	*args = new_args;
+	free(envi);
 	return (1);
 }
+// char *replace_env(char *arg, char **env, int last_exit)
+// {
+// 	int i;
+// 	int quotes;
+// 	int n_args;
+// 	char *new_arg;
+// 	char *var_val;
+// 	char quotee;
+
+// 	i = -1;
+// 	quotes = 0;
+// 	n_args = 0;
+// 	new_arg = malloc_new_arg(arg, env, last_exit);
+// 	if (!new_arg)
+// 		return (NULL);
+// 	quotee = arg[0];
+// 	while (arg[++i])
+// 	{
+// 		set_quotes(arg[i], &quotes);
+// 		if (((arg[i] == '\''|| arg[i] == '\"')  && quotee == arg[i]))
+// 			continue;
+// 		if (quotes == 1)
+// 		{
+// 			new_arg[n_args++] = arg[i];
+// 			continue;
+// 		}
+// 		if (quotes != 1 && arg[i] == '$')
+// 		{
+// 			var_val = get_env(arg + i, env, last_exit);
+// 			if (!(replace_var(var_val, new_arg, &n_args)))
+// 				return (NULL);
+// 			i += get_env_len(arg + i) - 1;
+// 		}
+// 		else
+// 			new_arg[n_args++] = arg[i];
+// 	}
+// 	new_arg[n_args] = 0;
+// 	return (new_arg);
+// }
