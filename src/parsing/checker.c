@@ -69,29 +69,47 @@ char	*new_buf_quotes(char **buf, char *dquote)
 	return (temp2);
 }
 
-/*int free_return(char **buf)
+int	check_specials(char **args)
 {
-	ft_printf("Error quotes don't close\n");
-	//free(*buf);
-	return (0);
-}*/
-/*
-int check_specials(char **buf)
-{
-	int		i;
+	int	i;
+	int	is_special;
+	int	is_special2;
 
 	i = -1;
-	while(buf[++i])
+	if (!args)
+		return (0);
+	while (args[++i] != NULL)
 	{
-		if (get_arg_type(buf[i]))
+		is_special = get_arg_type(args[i]);
+		if (is_special)
 		{
-			if (buf[i + 1] == NULL || get_arg_type(buf[i + 1]))
-			{
-				ft_printf("syntax error near unexpected token '%s'\n", buf[i]);
-				return (1);
-			}
+			if (args[i + 1] == NULL)
+				return (print_and_return("minishell: syntax error near \
+			unexpected token `newline'", NULL, 0));
+			is_special2 = get_arg_type(args[i + 1]);
+			if ((is_special == 2 || is_special == 3 || is_special == 4) \
+			&& is_special2)
+				return (print_and_return("minishell: syntax error near \
+			unexpected token :", args[i + 1], 0));
+			if (is_special == 1 && is_special2 == 1)
+				return (print_and_return("minishell: syntax error near \
+			unexpected token :", args[i + 1], 0));
 		}
 	}
-	return (0);
+	return (1);
 }
-*/
+
+int	print_and_return(char *src, char *args, int i)
+{
+	if (args)
+	{
+		printf("%s %s\n", src, args);
+		return (i);
+	}
+	else
+	{
+		printf("%s\n", src);
+		return (i);
+	}
+	return (1);
+}

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_command.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/08 20:53:25 by aliobreg          #+#    #+#             */
+/*   Updated: 2025/04/08 20:53:25 by aliobreg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/minishell.h"
 
 int	ft_strarr_len(char **array)
@@ -11,15 +23,6 @@ int	ft_strarr_len(char **array)
 			i++;
 	}
 	return (i);
-}
-
-t_exec	*exec_lstlast(t_exec *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
 }
 
 int	append_in_args(char ***buf, char *op, char ***array)
@@ -53,53 +56,10 @@ int	append_in_her_args(char ***buf, char *op, char ***array, t_exec *new)
 	return (1);
 }
 
-int	str_array_append(char ***array, char *str)
-{
-	char	**new;
-	int		i;
-
-	i = 0;
-	new = ft_calloc(sizeof(char *), ft_strarr_len(*array) + 2);
-	if (!new)
-		return (print_and_return("no memory allocated", NULL, 0));
-	if ((*array))
-	{
-		while ((*array)[i])
-		{
-			new[i] = ft_strdup((*array)[i]);
-			if (!new[i])
-				return (0);
-			i++;
-		}
-	}
-	new[i] = ft_strdup(str);
-	if (!new[i])
-		return (0);
-	if (*array)
-		free_array(*array);
-	new[i + 1] = NULL;
-	*array = new;
-	return (1);
-}
-
-int	free_array(char **array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-	return (0);
-}
-
 int	command_lstappend(t_exec *new, char ***buf)
 {
 	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 \
-		|| get_arg_type(**buf) == 1)) 
+		|| get_arg_type(**buf) == 1))
 	{
 		printf("inside of lstappend \n");
 		if (!(append_out_args(buf, ">", &(new->outfile))))
@@ -149,80 +109,45 @@ int	create_command_lst(t_minishell *shell)
 	return (1);
 }
 
-void	new_cmd_asign(t_exec *new)
-{
-	if (get_arg_type(new->cmd) == 1 && new->args)
-		new->cmd = ft_strdup(new->args[0]);
-	if (new->cmd)
-		new->cmd = quit_quotes(new->cmd);
-}
+// int	print_command_list(t_exec *command_list) //! Borrar esta funcion
+// {
+// 	t_exec		*temp;
+// 	t_output	*temp_out;
+// 	int			i;
 
-char	*quit_quotes(char *argument)
-{
-	char	*tmp;
-	char	*new_arg;
-
-	tmp = NULL;
-	if (!argument)
-		return (NULL);
-	if (argument[0] == '\'')
-	{
-		tmp = ft_strdup(argument);
-		new_arg = ft_strtrim(tmp, "'");
-		free(tmp);
-		free(argument);
-		return (new_arg);
-	}
-	if (argument[0] == '\"')
-	{
-		tmp = ft_strdup(argument);
-		new_arg = ft_strtrim(tmp, "\"");
-		free(tmp);
-		free(argument);
-		return (new_arg);
-	}
-	return ((argument));
-}
-
-int	print_command_list(t_exec *command_list) //! Borrar esta funcion
-{
-	t_exec		*temp;
-	t_output	*temp_out;
-	int			i;
-
-	i = 1;
-	temp = command_list;
-	while (temp)
-	{
-		printf("comando %d\n", i);
-		printf("cmd: %s\n", temp->cmd);
-		temp_out = temp->outfile;
-		if (temp->args)
-		{
-			for (int i = 0; temp->args[i]; i++)
-			{
-				printf("args[%d]: %s\n", i, temp->args[i]);
-			}
-		}
-		if (temp->infile)
-		{
-			for (int i = 0; temp->infile[i]; i++)
-				printf("infile[%d]: %s\n", i, temp->infile[i]);
-		}
-		while (temp_out)
-		{	
-			printf("outfile: %s\n", temp_out->file);
-			printf("action: %d\n", temp_out->action);
-			temp_out = temp_out->next;
-		}
-		if (temp->heredoc)
-		{
-			for (int i = 0; temp->heredoc[i]; i++)
-				printf("heredoc[%d]: %s\n", i, temp->heredoc[i]);
-		}
-		printf("todo_next: %d\n\n", temp->todo_next);
-		temp = temp->next;
-		i++;
-	}
-	return (0);
-}
+// 	i = 1;
+// 	temp = command_list;
+// 	while (temp)
+// 	{
+// 		printf("comando %d\n", i);
+// 		printf("cmd: %s\n", temp->cmd);
+// 		temp_out = temp->outfile;
+// 		if (temp->args)
+// 		{
+// 			for (int i = 0; temp->args[i]; i++)
+// 			{
+// 				printf("args[%d]: %s\n", i, temp->args[i]);
+// 			}
+// 		}
+// 		if (temp->infile)
+// 		{
+// 			for (int i = 0; temp->infile[i]; i++)
+// 				printf("infile[%d]: %s\n", i, temp->infile[i]);
+// 		}
+// 		while (temp_out)
+// 		{
+// 			printf("outfile: %s\n", temp_out->file);
+// 			printf("action: %d\n", temp_out->action);
+// 			temp_out = temp_out->next;
+// 		}
+// 		if (temp->heredoc)
+// 		{
+// 			for (int i = 0; temp->heredoc[i]; i++)
+// 				printf("heredoc[%d]: %s\n", i, temp->heredoc[i]);
+// 		}
+// 		printf("todo_next: %d\n\n", temp->todo_next);
+// 		temp = temp->next;
+// 		i++;
+// 	}
+// 	return (0);
+// }

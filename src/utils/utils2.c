@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliobreg <aliobreg@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 20:35:54 by gongarci          #+#    #+#             */
-/*   Updated: 2025/04/06 10:43:06 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/04/08 20:32:21 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ void	print_array(char **array)
 		i++;
 	}
 }
+
 void	round_frees(t_minishell **shell)
 {
-  	if ((*shell)->prompt)
+	if ((*shell)->prompt)
 	{
 		if ((*shell)->prompt->str)
 			free((*shell)->prompt->str);
@@ -80,12 +81,13 @@ void	round_frees(t_minishell **shell)
 	(*shell)->args = NULL;
 	(*shell)->cwd = NULL;
 }
+
 int	check_prompt_str(t_minishell *shell)
 {
 	int	i;
 	int	chars;
 	int	check;
-	
+
 	i = 0;
 	chars = 0;
 	if (!shell || !shell->prompt || shell->prompt->str == NULL)
@@ -100,7 +102,7 @@ int	check_prompt_str(t_minishell *shell)
 		}
 		i++;
 	}
-	if ((chars == 0 || chars == 1 ) && i > 1)
+	if ((chars == 0 || chars == 1) && i > 1)
 	{
 		ft_printf("%c: command not found\n", check);
 		return (0);

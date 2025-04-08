@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliobreg <aliobreg@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 18:19:13 by marvin            #+#    #+#             */
-/*   Updated: 2025/04/06 11:45:06 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/04/08 20:33:20 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_prompt(t_minishell *shell)
 	char	*temp1;
 	char	*temp2;
 	char	*temp3;
-	char 	*user;
+	char	*user;
 
 	(void)shell;
 	cwd = getcwd(NULL, 0);
@@ -34,5 +34,5 @@ char	*get_prompt(t_minishell *shell)
 	}
 	else
 		cwd = ft_strdup(CYAN "\nminishell$" DEFAULT);
-	return(cwd);
+	return (cwd);
 }

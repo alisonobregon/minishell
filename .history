@@ -845,3 +845,13 @@ s
 /bin/ls -la
 /bin/ls la
 >>>>>>> origin/gonzo
+echo hola
+echo 'hola'
+echo 'hola $HOME'
+echo "hola $HOME"
+echo "hola $HOME SDA"
+echo "Hola"
+echo "Hola soy $USER y estoy en $HOME"
+ls
+cat Makefile 
+echo -n $HOME

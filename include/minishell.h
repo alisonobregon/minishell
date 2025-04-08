@@ -139,7 +139,7 @@ void	other_signals(void);
 /*vars y env*/
 int		replace_quotes(char ***args, char **env, int last_exit);
 int		replace_var(char *arg, char *new_args, int *n_args);
-char 	*replace_env(char *arg, char **env, int last_exit, t_env *envi, int i);
+char 	*replace_env(char *arg, char **env, int last_exit, t_env *envi);
 char	*malloc_new_arg(char *arg, char **env, int lex);
 int		get_future_arglen(char *arg, char **env, int lex);
 int 	set_quotes(char c, int *quotes);

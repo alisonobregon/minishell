@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/04/07 19:10:36 by gongarci         ###   ########.fr       */
+/*   Updated: 2025/04/08 21:14:43 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int get_arg_end(char *str, int end_index)
+int	get_arg_end(char *str, int end_index)
 {
 	char	**split;
 	int		is_sp;
@@ -24,19 +24,19 @@ int get_arg_end(char *str, int end_index)
 	if (!split)
 		return (-1);
 	is_sp = index_of_newline(str + end_index);
-	while(split[++i])
+	while (split[++i])
 	{
 		is_sep = index_of(str + end_index, split[i], 1);
 		if (is_sep < is_sp)
-			return ((end_index + is_sep) + free_array(split)); 
-	}	
+			return ((end_index + is_sep) + free_array(split));
+	}
 	return ((end_index + is_sp) + free_array(split));
 }
 
-int get_quotes_end(char *str, int end)
+int	get_quotes_end(char *str, int end)
 {
-	int end_index;
-	
+	int	end_index;
+
 	end_index = -2;
 	if (str[0] == 39)
 		end_index = get_arg_end(str, index_of(str + 1, "'", 1) + 2);
@@ -48,7 +48,8 @@ int get_quotes_end(char *str, int end)
 		end_index = get_arg_end(str + 1, index_of(str, "\"", 2) + 2);
 	return (end_index);
 }
-int get_end_index(char *str, int end)
+
+int	get_end_index(char *str, int end)
 {
 	char	**split;
 	int		end_index;
@@ -57,7 +58,7 @@ int get_end_index(char *str, int end)
 	i = -1;
 	split = ft_split("<< < >> > || | && &", ' ');
 	if (!split)
-		return(0);
+		return (0);
 	end_index = get_quotes_end(str, end);
 	if (end_index == 0)
 		return ((0) + free_array(split));
@@ -67,27 +68,26 @@ int get_end_index(char *str, int end)
 	{
 		if ((end > -1 && index_of(str, split[i], 1) < end))
 			return (index_of(str, split[i], 1) + free_array(split));
-		
 		if (index_of(str, split[i], 1) == 0)
 			return (ft_strlen(split[i]) + free_array(split));
 	}
 	return (end + free_array(split));
 }
 
-int split_args(t_minishell *shell, char *str)
+int	split_args(t_minishell *shell, char *str)
 {
 	int	i;
-	int j;
-	int end_index;
+	int	j;
+	int	end_index;
 
 	i = -1;
 	j = 0;
-	while(str[++i])
-	{ 
+	while (str[++i])
+	{
 		if (str[i] == '\t' || str[i] == ' ')
-			continue;
-		if (str[i] == '>' || str[i] == '<' || str[i] == 34 || str[i] == 39 
-		|| str[i] == '|' || str[i] == '&')
+			continue ;
+		if (str[i] == '>' || str[i] == '<' || str[i] == 34 || str[i] == 39
+			|| str[i] == '|' || str[i] == '&')
 			end_index = get_end_index(str + i, -1);
 		else
 			end_index = get_end_index(str + i, get_arg_end(str + i, 0));
@@ -100,50 +100,7 @@ int split_args(t_minishell *shell, char *str)
 	return (1);
 }
 
-int check_specials(char **args)
-{
-    int i = 0;
-    int is_special;
-    int is_special2;
-
-	if (!args)
-        return (0);
-    while (args[i] != NULL)
-    {
-        is_special = get_arg_type(args[i]);
-        if (is_special)
-        {
-            if (args[i + 1] == NULL)
-                return (print_and_return("minishell: syntax error near unexpected token `newline'",
-				NULL, 0));
-            is_special2 = get_arg_type(args[i + 1]);
-            if ((is_special == 2 || is_special == 3 || is_special == 4) && is_special2)
-           		return (print_and_return("minishell: syntax error near unexpected token :",
-				args[i + 1], 0));
-            if (is_special == 1 && is_special2 == 1)
-           		return (print_and_return("minishell: syntax error near unexpected token :",
-				args[i + 1], 0));
-        }
-        i++;
-    }
-    return (1);
-}
-int print_and_return(char *src, char *args, int i)
-{
-	if (args)
-	{
-		printf("%s %s\n",src, args);
-        return (i);
-	}
-	else
-	{
-		printf("%s\n",src);
-		return (i);
-	}
-	return (1);
-}
-
-void parsing(t_minishell *shell)
+void	parsing(t_minishell *shell)
 {
 	shell->args = (char **)ft_calloc(MAX_ARGUMENTS, sizeof(char *));
 	if (!check_quotes(&(shell->prompt->str), 0, 0))
@@ -152,7 +109,7 @@ void parsing(t_minishell *shell)
 		return ;
 	}
 	ft_pipes(&(shell->prompt->str));
-	if(!split_args(shell, shell->prompt->str))
+	if (!split_args(shell, shell->prompt->str))
 		return ;
 	if (!check_specials(shell->args))
 	{
@@ -163,5 +120,5 @@ void parsing(t_minishell *shell)
 		return ;
 	free_array(shell->args);
 	shell->args = NULL;
-	print_command_list(shell->exec);
+	//print_command_list(shell->exec);
 }

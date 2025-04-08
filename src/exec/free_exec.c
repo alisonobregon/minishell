@@ -35,7 +35,8 @@ void	free_exec(t_exec **exec)
 }
 
 void	free_prompt(t_prompt **prompt)
-{	if (!prompt || !*prompt)
+{
+	if (!prompt || !*prompt)
 		return ;
 	if ((*prompt)->str)
 		free((*prompt)->str);
@@ -74,9 +75,9 @@ void	free_exec_node(t_exec **exec)
 	{
 		temp = (*exec)->next;
 		free((*exec)->cmd);
-		if((*exec)->args)
+		if ((*exec)->args)
 			free_array((*exec)->args);
-		if((*exec)->infile)
+		if ((*exec)->infile)
 			free_array((*exec)->infile);
 		if ((*exec)->outfile)
 			free_output(&(*exec)->outfile);
@@ -98,9 +99,9 @@ int	command_list_clear(t_exec **command_list)
 		if ((*command_list)->next)
 			temp = (*command_list)->next;
 		free((*command_list)->cmd);
-		if((*command_list)->args)
+		if ((*command_list)->args)
 			free_array((*command_list)->args);
-		if((*command_list)->infile)
+		if ((*command_list)->infile)
 			free_array((*command_list)->infile);
 		if ((*command_list)->outfile)
 			free_output(&(*command_list)->outfile);
@@ -111,46 +112,4 @@ int	command_list_clear(t_exec **command_list)
 	}
 	*command_list = NULL;
 	return (0);
-}
-
-int	free_output(t_output **output)
-{
-	t_output	*temp;
-
-	if (!output || !*output)
-		return (0);
-	while (*output)
-	{
-		temp = (*output)->next;
-		if ((*output)->file)
-			free((*output)->file);
-		free(*output);
-		*output = temp;
-	}
-	*output = NULL;
-	return (0);
-}
-
-int	free_shell(t_minishell *shell)
-{
-	int exit_status;
-
-	exit_status = shell->status;
-	if (shell->prompt)
-	{
-		if (shell->prompt->str)
-			free(shell->prompt->str);
-		free(shell->prompt);
-	}
-	if (shell->exec)
-		command_list_clear(&(shell->exec));
-	if (shell->env)
-	{
-		if (shell->path)
-			free_array(shell->path); 
-		free_array(shell->env);
-	}
-	if (shell)
-		free(shell);
-	return (exit_status);
 }

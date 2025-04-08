@@ -102,8 +102,7 @@ char	**strarray_copy(char **array)
 	int		i;
 	int		len;
 
-	i = 0;
-	//Cambiado por Paula ;)
+	i = -1;
 	if (!array || !*array)
 		len = 1;
 	else
@@ -119,11 +118,8 @@ char	**strarray_copy(char **array)
 		free(pwd);
 		return (copy);
 	}
-	while (array[i] != NULL)
-	{
+	while (array[++i] != NULL)
 		copy[i] = ft_strdup(array[i]);
-		i++;
-	}
 	copy[i] = NULL;
 	return (copy);
 }
