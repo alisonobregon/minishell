@@ -16,7 +16,7 @@ char	*ft_strldup(const char *str, int size)
 {
 	char	*point;
 	int		len;
-	
+
 	len = ft_strlen(str);
 	if (len > size)
 		len = size;

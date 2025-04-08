@@ -142,10 +142,7 @@ void	exec(t_minishell *shell)
 	{
 		if (!pipex(shell))
 		{
-			//ft_putstr_fd("Error in pipex\n", 2);
-			//shell->status = 1;
 			return ;
-			//exit(1);
 		}
 	}
 	wait_signal();

@@ -1,0 +1,133 @@
+<
+< <
+cat cat cat
+ls -la | < Makefile > out | < out > out2
+ls -la
+ls -la > a > b > c
+cat c
+< Makefile ls
+< Makefile ls - la
+< Makefile ls -la
+< Makefile ls -la > a > b > c
+cat c
+< Makefile ls -la > a > b > c | ls -la | < Makefile cat
+cat < Makefile 
+< Makefile cat
+< Makefile cat c
+< Makefile cat c ./src/exec.c
+< Makefile cat c /src/exec.c
+< Makefile cat c /src/exec/exec.c
+< Makefile cat c ./src/exec/exec.c
+cat c ./src/exec/exec.c < Makefile 
+cd ..
+cd ..
+ls -la
+asd
+ls -la | Makefile 
+asd
+asd
+cd ..
+cat < Makefile c
+asd
+cat < Makefile c ./src/exec/exec.c
+asd
+ls -la
+ls -la
+ls -la
+ls -la <
+asd
+< <
+asd
+< >
+asd
+ls -la
+asd
+ls -la | < Makefile < c ls -la  | < Makefile  < c ls -la
+asd
+_
+asd
+sad asda asdasd 11 12 asd
+asd
+asd
+ls -la
+     asdasd__________
+""
+"<"
+"<<"
+asdasd asdasd
+ls -al
+asd
+< Makefile < c cat c
+< Makefile < c cat c ./src/exec/exec.c
+asd
+< Makefile < c cat c ./src/exec/exec.c
+asd
+< Makefile < c cat c ./src/exec/exec.c
+asd
+< Makefile < ccc cat c ./src/exec/exec.c
+asd
+< Makefile < ccc cat c ./src/exec/exec.c
+asd
+export
+asd
+minishell
+./minishell 
+export
+env
+export a b c
+aSD
+export a=a b=b c=c
+asd
+exit 100
+echo $?
+ls -la
+cat < Makefile > out1 > out 2 | sleep 2 | ls -la > out 2 | cat << end
+cat out 2
+cat out2
+rm a b c
+rm out out1
+asd
+asdl
+as
+asd
+ls -la | grep Makefile | cat
+ls -la | grep Makefile | cat > out > out1
+cat out1
+< Makefile ls -la > out | ls -la | grep Makefile | cat > out
+cat out
+< Makefile ls -la > out | ls -la | grep Makefile | cat  out
+< Makefile ls -la > out | ls -la | grep Makefile | cat  out
+< Makefile ls -la > out | ls -la | grep Makefile | cat 
+< Makefile ls -la > out | ls -la | grep Makefile | cat out
+< Makefile ls -la > out | ls -la | grep Makefile | cat  out
+< Makefile ls -la > out | < Makefile ls -la | grep Makefile | cat  out
+< Makefile ls -la > out | ls -la > a > b > c | grep Makefile | cat  out
+< Makefile ls -la > out | ls -la > a > b > c | ls -la > a > b > c | cat  out
+< Makefile < a < b < c cat
+< Makefile < a < b < c cat | cat < Makefile < a < b < c | ls -la
+  
+asd
+asd
+echo "hola que tal"
+asd
+echo -n "hola que tal"
+asd
+echo -n "hola que tal" > a > b > c
+asd
+< Makefile echo -n "hola que tal" > a > b > c
+asd
+< Makefile cat
+asd
+ls -la | ls -la | ls -la | grep Makefile | cat
+ls -la > a | ls -la | ls -la | grep Makefile | cat  a
+ls -la > a | ls -la | ls -la | grep Makefile | cat > a
+cat a
+ls -la > a | ls -la | ls -la | grep Makefile | ls > a
+cat a
+ls -la > a | ls -la | ls -la | grep Makefile | cat Makefile > a
+cat a
+ls -la > a | ls -la | ls -la | grep Makefile | cat < Makefile > a
+cat a
+asd
+norminette
+norminette ./src/exec

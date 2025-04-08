@@ -1,15 +1,3 @@
-pressing any letter and enter without a command
+< Makefile < c cat c ./src/exec/exec.c
 
-command + pipe like "ls -la | grep Makefile" segfault in create_command.c line :135 function exec_new utils_parsing.c line:51
-
-segvfault al terminar here_doc con delimiter
-segvfault al presionar ctrl + D en el here_doc;
-
-export "test=ls -la" and then $test
-
-
-export 2v  failing
-
-< Makefile echo "hola" > out "< is taken as a cmd" 
-
-ls|lsfggd |grep Makefile | wc -l
+< Makefile ls -la > out | ls -la | grep Makefile | cat  out
