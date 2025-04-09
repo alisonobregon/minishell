@@ -12,6 +12,15 @@
 
 #include "../../include/minishell.h"
 
+void	shell_exception(t_minishell *shell)
+{
+	if (ft_strnstr(shell->exec->cmd, "minishell", ft_strlen(shell->exec->cmd)))
+	{
+		signal(SIGQUIT, SIG_IGN);
+		signal(SIGINT, SIG_IGN);
+	}
+}
+
 void	exec_cmds(t_minishell *shell, t_exec *exec)
 {
 	char	*path;

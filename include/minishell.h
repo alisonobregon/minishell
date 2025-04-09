@@ -209,6 +209,7 @@ int			any_cmd_waiter(t_minishell *shell);
 void		free_exec_node(t_exec **exec);
 void		free_exec(t_exec **exec);
 void		free_child_shell(t_minishell **shell);
+void		shell_exception(t_minishell *shell);
 /*HERE DOC*/
 void		here_doc(t_exec **exec, char *limiter);
 void		unlinker(char **heredoc);
