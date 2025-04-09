@@ -117,6 +117,3 @@ int	main(int argc, char **argv, char **env)
 	free_child_shell(&shell);
 	return (0);
 }
-//export a="a a "
-//ITERAR $SHLVL
-//SIGNIAL ctr c añade salto de linea en cada minicshel con mas nivel

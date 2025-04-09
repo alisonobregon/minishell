@@ -1,0 +1,38 @@
+ls
+ls -la
+echo "jpña"
+echo "jpña asdas"
+ls -la
+cat < Makefile >> out1
+cat < Makefile >> out1 | ls -la << end
+<
+< >
+>>
+<<
+<< emd
+cat < Makefile >> out1 | ls -la << end
+cat < Makefile >> out1 | ls -la << end
+cat < Makefile >> out1 | ls -la << end
+echo "end"
+echo "cat | odsd"
+echo "ls | ls -la "
+export a= "ls | ls -la "
+export a="ls | ls -la "
+asfaf
+afsasd
+sd
+s
+fasfasfasf
+123
+123.123
+123.123>232
+hoa>ds
+echo $?
+<b>b
+<<d>d
+<<cc >d
+echo de lo que sea  > d
+cat d
+> a > b > c
+ls
+rm a b c
