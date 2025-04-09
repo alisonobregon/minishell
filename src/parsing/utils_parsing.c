@@ -40,13 +40,14 @@ int	index_of(char *str, char *search, int n)
 {
 	int	i;
 
-	i = -1;
-	while (str[++i])
+	i = 0;
+	while (str[i] != '\0')
 	{
 		if (ft_strncmp(str + i, search, ft_strlen(search)) == 0)
 			n--;
 		if (n <= 0)
 			break ;
+		i++;
 	}
 	return (i);
 }
@@ -55,7 +56,8 @@ int	index_of_newline(char *str)
 {
 	int	index;
 	int	temp;
-
+	if (!str)
+		return (0);
 	index = index_of(str, " ", 1);
 	temp = index_of(str, "\t", 1);
 	if (temp || str[0] == '\t')

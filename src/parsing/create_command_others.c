@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_commamd_others.c                            :+:      :+:    :+:   */
+/*   create_command_others.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:58:14 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/04/08 21:01:48 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/04/09 19:18:59 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	free_array(char **array)
 	int	i;
 
 	i = 0;
+	if (!array)
+		return (0);
 	while (array[i])
 	{
 		free(array[i]);

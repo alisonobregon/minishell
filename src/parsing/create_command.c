@@ -106,10 +106,11 @@ int	create_command_lst(t_minishell *shell)
 		if (*buf && **buf)
 			buf++;
 	}
+	print_command_list(new);
 	return (1);
 }
 
-/* int	print_command_list(t_exec *command_list)
+int	print_command_list(t_exec *command_list)
 {
 	t_exec		*temp;
 	t_output	*temp_out;
@@ -150,4 +151,4 @@ int	create_command_lst(t_minishell *shell)
 		i++;
 	}
 	return (0);
-} */
+}
