@@ -1,3 +1,5 @@
 < Makefile < c cat c ./src/exec/exec.c
 
 < Makefile ls -la > out | ls -la | grep Makefile | cat  out
+
+export v="v"

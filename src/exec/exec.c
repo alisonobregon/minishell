@@ -96,38 +96,34 @@ int	child_maker(t_minishell *shell, t_exec *exec, int *pipe_fd, int *pre_pipe)
 static int	pipex(t_minishell *shell)
 {
 	t_exec	*exec;
-	int		*pipe_fd;
-	int		*pre_pipe;
+	t_pipe	p;
 
 	exec = shell->exec;
-	shell->exec->i = 0;
-	pipe_fd = ft_calloc(2, sizeof(int));
-	pre_pipe = ft_calloc(2, sizeof(int));
-	if (!pipe_fd || !pre_pipe)
+	p.pipe_fd = ft_calloc(2, sizeof(int));
+	p.pre_pipe = ft_calloc(2, sizeof(int));
+	if (!p.pipe_fd || !p.pre_pipe)
 		return (0);
 	while (exec)
 	{
 		children_signal();
 		signal(SIGQUIT, SIG_DFL);
-		if (!child_maker(shell, exec, pipe_fd, pre_pipe))
+		if (!child_maker(shell, exec, p.pipe_fd, p.pre_pipe))
 			return (0);
 		if (shell->exec->i >= 1)
-			close(pre_pipe[READ]);
-		ft_int_memcpy(pre_pipe, pipe_fd, 2);
-		close(pipe_fd[WRITE]);
+			close(p.pre_pipe[READ]);
+		ft_int_memcpy(p.pre_pipe, p.pipe_fd, 2);
+		close(p.pipe_fd[WRITE]);
 		exec = exec->next;
 		shell->exec->i++;
 		signal(SIGQUIT, SIG_IGN);
 	}
-	(close(pipe_fd[READ]), close(pre_pipe[WRITE]));
+	(close(p.pipe_fd[READ]), close(p.pre_pipe[WRITE]));
 	any_cmd_waiter(shell);
-	return (free(pre_pipe), free(pipe_fd), shell->status);
+	return (free(p.pre_pipe), free(p.pipe_fd), shell->status);
 }
 
 void	exec(t_minishell *shell)
 {
-	t_exec	*exec;
-
 	if (!shell->exec)
 		return ;
 	if (!shell->exec->args && shell->exec->heredoc)
@@ -135,11 +131,14 @@ void	exec(t_minishell *shell)
 		unlinker(shell->exec->heredoc);
 		return ;
 	}
-	exec = shell->exec;
-	if (exec && exec->todo_next == 0)
-		one_cmd(shell);
-	else if (exec && exec->todo_next == 2)
+	if (shell->exec && shell->exec->todo_next == 0)
 	{
+		if (one_cmd(shell) == -1)
+			exit(2);
+	}
+	else if (shell->exec && shell->exec->todo_next == 2)
+	{
+		shell->exec->i = 0;
 		if (!pipex(shell))
 		{
 			return ;

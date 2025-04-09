@@ -35,7 +35,7 @@ char	*find_path(t_minishell *shell, char *cmd)
 	i = 0;
 	if (ft_strlen(cmd) > 1)
 	{
-		while(shell->env[i] && ft_strncmp(shell->env[i], "PATH=", 5))
+		while (shell->env[i] && ft_strncmp(shell->env[i], "PATH=", 5))
 			i++;
 		paths = ft_split(shell->env[i] + 5, ':');
 		bar_cmd = ft_strjoin("/", cmd);

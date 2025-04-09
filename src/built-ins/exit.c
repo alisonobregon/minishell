@@ -12,10 +12,10 @@
 
 #include "../../include/minishell.h"
 
-int is_bigger_than_long(const char *str)
+int	is_bigger_than_long(const char *str)
 {
 	int			i;
-	long long		result;
+	long long	result;
 
 	i = 0;
 	result = 0;
@@ -25,7 +25,7 @@ int is_bigger_than_long(const char *str)
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if(result > (str[i] - '0') + (result * 10))
+		if (result > (str[i] - '0') + (result * 10))
 			return (1);
 		result = (str[i] - '0') + (result * 10);
 		i++;

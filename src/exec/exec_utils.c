@@ -90,17 +90,12 @@ int	one_cmd(t_minishell *shell)
 {
 	children_signal();
 	if (builtin_checker(shell, shell->exec->cmd))
-	{
 		return (exec_a_builting(shell, shell->exec));
-	}
 	else
 	{
 		shell->pid = fork();
 		if (shell->pid == -1)
-		{
-			shell->status = 100;
 			return (perror("fork"), shell->status);
-		}
 		if (shell->pid == 0)
 		{
 			signal(SIGQUIT, SIG_DFL);

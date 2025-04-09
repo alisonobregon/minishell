@@ -51,8 +51,8 @@ char	**rm_env_var(t_minishell *shell, char *var)
 
 	i = 0;
 	j = 0;
-	new_env = ft_calloc(ft_len(shell->env), sizeof(char *) + 1);
-	if (!new_env)
+	new_env = ft_calloc(ft_len(shell->env) + 1, sizeof(char *));
+	if (!new_env || !var)
 		return (NULL);
 	while (shell->env[i] != NULL)
 	{
@@ -108,8 +108,11 @@ int	ft_export(t_minishell *shell, char **args)
 	if (ft_len(args) > 1)
 	{
 		vars = check_vars(args);
-		check_export(shell, vars);
-		free_array(vars);
+		if (vars)
+		{
+			check_export(shell, vars);
+			free_array(vars);
+		}
 	}
 	return (1);
 }

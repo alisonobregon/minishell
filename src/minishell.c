@@ -41,15 +41,34 @@ char	*get_input(t_minishell *shell)
 		free(buf);
 		return (NULL);
 	}
-	return(buf);
+	return (buf);
+}
+
+void	execute_command_line(t_minishell *shell)
+{
+	memory_allocated(shell);
+	shell->prompt->str = get_input(shell);
+	if (!shell->prompt->str)
+		return ;
+	add_history(shell->prompt->str);
+	add_history_to_file(shell->prompt->str);
+	parsing(shell);
+	if (!shell->exec || !shell->exec->cmd)
+	{
+		round_frees(&shell);
+		return ;
+	}
+	replace_quotes(&shell->exec->args, shell->env, shell->status);
+	exec(shell);
+	round_frees(&shell);
 }
 
 int	main(int argc, char **argv, char **env)
 {
-	(void)argc;
-	(void)argv;
 	t_minishell	*shell;
 
+	(void)argc;
+	(void)argv;
 	print_shell();
 	shell = ft_calloc(1, sizeof(t_minishell));
 	if (env)
@@ -61,21 +80,12 @@ int	main(int argc, char **argv, char **env)
 	wait_signal();
 	while (1)
 	{
-		memory_allocated(shell);
-		shell->prompt->str = get_input(shell);
-		if (!shell->prompt->str)
-			continue ;
-		add_history(shell->prompt->str);
-		add_history_to_file(shell->prompt->str);
-		parsing(shell);
-		if (!shell->exec || !shell->exec->cmd)
+		if (g_sigint == 1)
 		{
-			round_frees(&shell);
+			g_sigint = 0;
 			continue ;
 		}
-		replace_quotes(&shell->exec->args, shell->env, shell->status);
-		exec(shell);
-		round_frees(&shell);
+		execute_command_line(shell);
 	}
 	rl_clear_history();
 	free_child_shell(&shell);

@@ -109,45 +109,45 @@ int	create_command_lst(t_minishell *shell)
 	return (1);
 }
 
-// int	print_command_list(t_exec *command_list) //! Borrar esta funcion
-// {
-// 	t_exec		*temp;
-// 	t_output	*temp_out;
-// 	int			i;
+/* int	print_command_list(t_exec *command_list)
+{
+	t_exec		*temp;
+	t_output	*temp_out;
+	int			i;
 
-// 	i = 1;
-// 	temp = command_list;
-// 	while (temp)
-// 	{
-// 		printf("comando %d\n", i);
-// 		printf("cmd: %s\n", temp->cmd);
-// 		temp_out = temp->outfile;
-// 		if (temp->args)
-// 		{
-// 			for (int i = 0; temp->args[i]; i++)
-// 			{
-// 				printf("args[%d]: %s\n", i, temp->args[i]);
-// 			}
-// 		}
-// 		if (temp->infile)
-// 		{
-// 			for (int i = 0; temp->infile[i]; i++)
-// 				printf("infile[%d]: %s\n", i, temp->infile[i]);
-// 		}
-// 		while (temp_out)
-// 		{
-// 			printf("outfile: %s\n", temp_out->file);
-// 			printf("action: %d\n", temp_out->action);
-// 			temp_out = temp_out->next;
-// 		}
-// 		if (temp->heredoc)
-// 		{
-// 			for (int i = 0; temp->heredoc[i]; i++)
-// 				printf("heredoc[%d]: %s\n", i, temp->heredoc[i]);
-// 		}
-// 		printf("todo_next: %d\n\n", temp->todo_next);
-// 		temp = temp->next;
-// 		i++;
-// 	}
-// 	return (0);
-// }
+	i = 1;
+	temp = command_list;
+	while (temp)
+	{
+		printf("comando %d\n", i);
+		printf("cmd: %s\n", temp->cmd);
+		temp_out = temp->outfile;
+		if (temp->args)
+		{
+			for (int i = 0; temp->args[i]; i++)
+			{
+				printf("args[%d]: %s\n", i, temp->args[i]);
+			}
+		}
+		if (temp->infile)
+		{
+			for (int i = 0; temp->infile[i]; i++)
+				printf("infile[%d]: %s\n", i, temp->infile[i]);
+		}
+		while (temp_out)
+		{
+			printf("outfile: %s\n", temp_out->file);
+			printf("action: %d\n", temp_out->action);
+			temp_out = temp_out->next;
+		}
+		if (temp->heredoc)
+		{
+			for (int i = 0; temp->heredoc[i]; i++)
+				printf("heredoc[%d]: %s\n", i, temp->heredoc[i]);
+		}
+		printf("todo_next: %d\n\n", temp->todo_next);
+		temp = temp->next;
+		i++;
+	}
+	return (0);
+} */

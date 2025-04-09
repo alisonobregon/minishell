@@ -32,7 +32,7 @@ int	free_output(t_output **output)
 
 int	free_shell(t_minishell *shell)
 {
-	int exit_status;
+	int	exit_status;
 
 	exit_status = shell->status;
 	if (shell->prompt)
@@ -46,7 +46,7 @@ int	free_shell(t_minishell *shell)
 	if (shell->env)
 	{
 		if (shell->path)
-			free_array(shell->path); 
+			free_array(shell->path);
 		free_array(shell->env);
 	}
 	if (shell)

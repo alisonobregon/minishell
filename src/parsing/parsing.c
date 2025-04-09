@@ -120,5 +120,4 @@ void	parsing(t_minishell *shell)
 		return ;
 	free_array(shell->args);
 	shell->args = NULL;
-	//print_command_list(shell->exec);
 }

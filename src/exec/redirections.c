@@ -12,15 +12,6 @@
 
 #include "../../include/minishell.h"
 
-/* t_output	*lst_last_output(t_output *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-} */
-
 int	infile_checker(t_exec **exec)
 {
 	int	i;
@@ -32,14 +23,14 @@ int	infile_checker(t_exec **exec)
 		{
 			(*exec)->infile[i] = quit_quotes((*exec)->infile[i]);
 			if (access((*exec)->infile[i], F_OK))
-				return(perror("File not found"), 0);
+				return (perror("File not found"), 0);
 			if (access((*exec)->infile[i], R_OK))
-				return(perror("Permission denied"), 0);
+				return (perror("Permission denied"), 0);
 			if (!(*exec)->infile[i + 1])
 			{
 				(*exec)->fd_in = open((*exec)->infile[i], O_RDONLY);
 				if ((*exec)->fd_in == -1)
-					return(perror("Error opening file here"), 0);
+					return (perror("Error opening file here"), 0);
 				if ((*exec)->fd_in != 0)
 					(dup2((*exec)->fd_in, STDIN_FILENO), close((*exec)->fd_in));
 			}
@@ -57,14 +48,14 @@ t_exec	*outfile_checker(t_exec **exec)
 	{
 		if (t->outfile->action == 0)
 		{
-			t->fd_out = open(t->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+			t->fd_out = open(t->outfile->file, 1 | 64 | 512, 0664);
 			if (t->fd_out == -1)
 				return (perror("Error opening file here"), NULL);
 			close(t->fd_out);
 		}
 		else
 		{
-			t->fd_out = open(t->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
+			t->fd_out = open(t->outfile->file, 1 | 64 | 1024, 0664);
 			if (t->fd_out == -1)
 				return (perror("Error opening file here"), NULL);
 			close(t->fd_out);
@@ -80,7 +71,7 @@ int	take_outfile(t_exec **exec)
 	{
 		if ((*exec)->outfile->action == 0)
 		{
-			(*exec)->fd_out = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+			(*exec)->fd_out = open((*exec)->outfile->file, 1 | 64 | 512, 0664);
 			if ((*exec)->fd_out == -1)
 				return (perror("Error opening file here"), 0);
 			dup2((*exec)->fd_out, STDOUT_FILENO);
@@ -89,7 +80,7 @@ int	take_outfile(t_exec **exec)
 		}
 		else if ((*exec)->outfile->action == 1)
 		{
-			(*exec)->fd_out = open((*exec)->outfile->file, O_WRONLY | O_CREAT | O_APPEND, 0664);
+			(*exec)->fd_out = open((*exec)->outfile->file, 1 | 64 | 1024, 0664);
 			if ((*exec)->fd_out == -1)
 				return (perror("Error opening file"), 0);
 			if ((*exec)->fd_out > 1)
@@ -106,7 +97,7 @@ int	fd_checker(t_exec **exec)
 {
 	t_exec		*tmp;
 	t_output	*tmp2;
-	int		status;
+	int			status;
 
 	tmp2 = (*exec)->outfile;
 	if ((*exec)->infile)

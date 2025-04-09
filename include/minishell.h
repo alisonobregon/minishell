@@ -33,7 +33,6 @@
 # define BOLD    "\001\033[1m\002"
 # define BLUE    "\001\033[34m\002"
 
-
 # define READ 0
 # define WRITE 1
 # define MAX_ARGUMENTS 256
@@ -50,6 +49,12 @@ typedef struct s_output
 	struct	s_output *next;
 }					t_output;
 
+typedef struct s_pipe
+{
+	int	*pipe_fd;
+	int	*pre_pipe;
+}	t_pipe;
+
 typedef struct s_exec
 {
 	char		*cmd;
@@ -65,6 +70,7 @@ typedef struct s_exec
 	int			stdout;
 	struct		s_exec *next;
 }	t_exec;
+
 typedef struct s_env
 {
 	char	*new_arg;

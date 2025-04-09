@@ -131,3 +131,157 @@ cat a
 asd
 norminette
 norminette ./src/exec
+ls
+ls -la
+/bin/ls
+clear
+/bin/clear
+/bin/ls -la | /bin/grep Makefile
+cd ..
+cd
+export
+export a b c
+export a=a b=c c=b
+export
+env
+exit 100
+ls
+ w                                                                                                                  
+echo "hola que tal"
+echo -n "hola que tal"
+asd
+echo -n "hola que tal" > out
+/bin/cat out
+export "test=/bin/ls -la | grep Makfile"
+cd ..
+export
+env
+export a b c
+export
+cd ..
+export
+ls -la
+/bin/ls -la
+export "test=/bin/ls -la | grep Makefile"
+export "test=ls -la | grep Makefile"
+export
+export a b c
+export a b c
+ls
+export a=a
+export
+export a=asdasdsaa
+export "a=asdasd"
+export "test=ls -la"
+export 1v
+echo "@HOME"
+1v
+export 1v
+export 1v
+export 1v
+export 1v
+export 1v
+export a b c 1d
+export
+export 1v a b c
+export
+export "test=ls -la | grep Makefile"
+export "test=ls -la | grep Makefile"
+"ls -la"
+export test="ls -la | grep Makefile"
+export v="v"
+export v=v
+export
+ls -la | asdads
+ls -la out
+ls -la > out
+chmod 000 out
+< out cat
+ls | < out cat
+ls | cat < out
+asd+
+ls | asd
+< out cat
+ls
+< cat out
+cat < out
+export
+cat < out
+cat < out
+cat < out
+cat < out
+asd
+asd
+dasd asd
+echo $?
+cat < out
+echo $?
+ls -la < out > a > b > c 
+< Makefile cat
+ls -la | grep Makefile 
+ls -la | grep Makefile  | wc -l
+ls -la | grep Makefile  | cat
+ls -la | grep Makefile  | cat | cat
+ls -la | grep Makefile  | cat
+ls -la | grep Makefile  | cat | cat | cat
+ls -la | grep Makefile 
+ls
+ls -la | grep Makefile | cat | cat out
+ls -la | grep Makefile | cat | cat out
+ls -la | grep Makefile | cat | cat out
+ls -la > out
+ls -la > out1
+cat out1
+< cat out
+cat < out
+cat < out
+cat < out1
+ls -la | grep Makefile > out1
+cat out1
+norminette ./src/exec
+norminette ./src/exec
+norminette ./src/exec
+norminette ./src/built-ins/
+norminette ./src/built-ins/
+norminette ./src/prompt
+norminette ./src/parsing/
+norminette ./src/parsing/
+norminette ./src/parsing/
+norminette ./src/parsing/
+norminette ./src/parsing/
+norminette ./src/signals
+norminette ./src/utils
+norminette 
+dasd asdasdsas 
+asd
+asd asd asd
+cd ..
+ls -la | cat | cat | cat
+ls -la
+ct
+cat
+echo $?
+norminette
+norminette
+norminette
+norminette
+ls -la > out1
+cat out1
+ls -la > out1 > a > b > c
+cat c
+norminette
+norminette
+<
+< <
+cat < out
+asd
+cat <  Makefile 
+asd
+rm a b c
+ls
+rm out out1
+ls
+ls
+rm out
+ls
+norminette
