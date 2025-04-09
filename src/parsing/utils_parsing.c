@@ -56,6 +56,7 @@ int	index_of_newline(char *str)
 {
 	int	index;
 	int	temp;
+
 	if (!str)
 		return (0);
 	index = index_of(str, " ", 1);
