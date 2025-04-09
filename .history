@@ -285,3 +285,203 @@ ls
 rm out
 ls
 norminette
+cat < Makefile 
+asd
+ad
+< Makefile  ls -la
+asd
+echo "hola="
+asd
+asd
+d asd asd
+echo "hola=asdasd"
+asd
+" "
+" ="
+< Makefile ls -la > out | ls -la | grep Makefile | cat  out
+asd
+export v="v"
+export v=v
+asd
+export "v=v"
+export v="v"
+echo !"home"
+echo !hoal!
+echo !hoal
+echo "hoal"!
+echo !"hoal"
+echo holds"s"
+echo hola
+echo hola
+echo "hola"
+echo !"hola"
+echo hol"a"
+echo h"ola"
+echo !"hola"
+echo hola
+echo ho"la"
+echo !"hola"
+echo "hola"
+echo !"ho"
+echo hola
+echo "hola"
+echo hola
+echo "hola"
+echo "hola"
+echo hola
+echo "hola $USER"
+echo "hola $USER soy $HOSD"
+echo "hola $USER soy $HOME"
+echo !"hola $USER soy $HOME"
+echo !"hola"
+echo !"hoal"
+echo !"hola"
+export v="v"
+echo "hola"
+echo "hola="
+echo "hola=asd"
+echo !"hola=asd"
+echo !'hola=asd'
+echo !"hola=asd"
+echo "hola"
+export v="hola"
+echo !"end!
+echo !"hola"
+export "tst=ls -la | grep Makefile "
+echo $"tst"
+echo $tst
+echo $tstt
+echo $tst
+export
+export a b c
+export
+export a=ls
+export
+echo $a
+export "tst=ls"
+export
+export "tst=ls -la"
+export
+asd
+asd
+asd
+export a=a b=c c=b
+export
+export a b c
+export
+export a= b= c=
+export
+asd
+make
+make
+make
+make
+./minishell 
+./minishell 
+./minishell 
+./minishell 
+./minishell 
+echo $SHLVL
+env
+vim
+touch caca
+< caca 
+< caca cat
+< caca echo > caca
+< caca echo caca > caca
+cat caca 
+vim caca 
+< caca echo caca >> caca
+cat caca 
+< caca echo caca >> caca
+< caca echo caca >> caca
+< caca echo caca >> caca
+< caca echo caca >> caca
+< caca echo caca >> caca
+< caca echo caca >> caca
+cat caca 
+< caca echo caca > caca
+cat caca 
+export a="a a "
+export a="a a"
+export a="a a "
+echo "a = a "
+export a="a a"
+export a="a a"
+export a="a a"
+export a="a a"
+echo " "
+echo "hola"
+echo " hol "
+echo a =" hol  "
+echo =" asd"
+echo a""
+echo a
+echo "asdsa"
+echo !"asdsa"
+echo "hol."
+echo a"hol."
+echo "hola "
+echo "hola  "
+echo "hola"
+echo hola
+echo "hola "
+echo "hola"
+echo "hola"
+echo "hola  "
+echo !"hola  "
+echo "hola"
+echo "hola  "
+echo !"hola  "
+echo a=" a a"
+echo a= "a a "
+echo "hola "
+echo "hola "
+echo "hola "
+echo a"hola "
+echo "hola"
+echo "hola "
+echo "hola "  
+echo a"hola "  
+echo a!"hola "  
+echo a!sss"hola "  
+echo a!sss"hola "
+echo "hola "
+echo "hola "  
+echo a"hola "  
+echo a!"hola "  
+echo a!"hola "
+echo a=!"  "
+echo a"a  "
+echo a"a"
+echo a"a"
+echo "a"
+echo "hola"
+echo a"hola"
+echo a"a"
+echo "hola "
+echo "hola asd"
+echo a"hola asd"
+echo a"2A
+echo a"a"
+echo a"aa"
+echo a"aa  "
+echo a"a  "
+echo a"  a"
+echo a "  aagsvch"
+echo a"  a"
+echo a"  a"
+echo a"   asd"
+echo a"   asda "
+< cat Makefile 
+asd
+asd
+cat < Makefile 
+asd
+< Makefile cat
+< Makefile cat
+echo "aasdaw"
+echo a"asdw"
+< Makefile cat
+a a
+git add *
