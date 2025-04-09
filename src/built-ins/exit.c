@@ -62,7 +62,7 @@ void	ft_exit(t_minishell *shell, char **args)
 	status = check_exit_args(args);
 	if (status == -1)
 		return ;
-	if (is_bigger_than_long(args[1]))
+	if (args[1] && is_bigger_than_long(args[1]))
 	{
 		ft_printf("exit\n");
 		ft_printf("bash: exit: %s: numeric argument required\n", args[1]);
