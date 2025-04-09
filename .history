@@ -36,3 +36,58 @@ cat d
 > a > b > c
 ls
 rm a b c
+ls
+/bin/ls
+/bin/ls -la
+sad
+asdsad 
+asd
+s
+s
+s
+s
+s
+s
+ls
+perez
+cad
+< Makefile export
+asd
+asd
+< Makefile export
+asd
+< Makefile export
+asd
+< Makefile export
+asd
+< Makefile export
+asd
+< Makefile export
+asd
+asd
+ds
+ < Makefile export
+sad
+< Makefile export
+ls
+< Makefile export
+asd
+< Makefile export
+asd
+'asd'
+'ls'
+< Makefile export
+asd
+< Makefile 'export'
+asd
+< Makefile 'export"
+asd
+cat << end
+asd
+/bin/cat Makefile 
+exit
+./minishell 
+exit 100
+echo $?
+exit 100
+exit 100

@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:58:14 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/04/09 21:22:48 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:17:58 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ int	free_array(char **array)
 void	new_cmd_asign(t_exec *new)
 {
 	if (get_arg_type(new->cmd) == 1 && new->args)
+	{
+		free(new->cmd);
 		new->cmd = ft_strdup(new->args[0]);
+	}
 	if (new->cmd)
 		new->cmd = quit_quotes(new->cmd);
 }
