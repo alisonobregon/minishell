@@ -61,7 +61,6 @@ int	command_lstappend(t_exec *new, char ***buf)
 	while (**buf != NULL && *buf && (get_arg_type(**buf) == 0 \
 		|| get_arg_type(**buf) == 1))
 	{
-		printf("inside of lstappend \n");
 		if (!(append_out_args(buf, ">", &(new->outfile))))
 			return (0);
 		else if (!(append_in_args(buf, "<", &(new->infile))))
@@ -106,10 +105,9 @@ int	create_command_lst(t_minishell *shell)
 		if (*buf && **buf)
 			buf++;
 	}
-	print_command_list(new);
 	return (1);
 }
-
+/*
 int	print_command_list(t_exec *command_list)
 {
 	t_exec		*temp;
@@ -151,4 +149,4 @@ int	print_command_list(t_exec *command_list)
 		i++;
 	}
 	return (0);
-}
+}*/

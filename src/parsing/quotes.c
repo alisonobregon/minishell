@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:53:36 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/04/09 19:12:08 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/04/09 21:21:43 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ int	replace_quotes(char ***args, char **env, int last_exit)
 		return (0);
 	while ((*args)[i])
 	{
-		//printf("%d posicion", find_position((*args)[i]));
 		envi->quotee = (*args)[i][find_position((*args)[i])];
 		new_args[i] = replace_env((*args)[i], env, last_exit, envi);
 		i++;

@@ -1,0 +1,36 @@
+/bin/ls
+echo -nnnnnnn HOla
+echo -nnnnnnna HOla
+echo -n-n HOla
+echo  HOla
+env
+export
+echo Hola
+export
+env
+/bin/ls
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+cat Makefile 
+/bin/cat Makefile 
+/bin/cat Makefile 
+/bin/ls
+cd ..
+cat Makefile 
