@@ -48,7 +48,7 @@ OBJ	= $(SRC:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3 -fsanitize=address,leak
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) 
 
 FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
 
@@ -60,16 +60,6 @@ all: $(NAME) show_progress
 $(NAME): $(OBJ)
 	@make -s -C libft
 	$(CC) $(OBJ) $(CFLAGS) $(FLAGS) -L libft -lft -o $(NAME)
-
-debug: $(NAME)
-	@valgrind -s --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all --suppressions=/home/$(USER)/alumni/minishell/valgrind.supp ./$(NAME)
-
-fd: $(NAME)
-	@valgrind -s --trace-children=yes --track-fds=yes --leak-check=full ./$(NAME)
-
-run: $(NAME)
-	make
-	./$(NAME)
 
 show_progress:
 		@for file in $(SRC); do \

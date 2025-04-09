@@ -36,3 +36,60 @@ cat d
 > a > b > c
 ls
 rm a b c
+ls
+asd
+asd
+< Makefile export
+asd
+cat << end
+cat << end
+cat << end
+cat << end
+asd
+cat << end
+cat << end
+asd
+cat << end
+asd
+asd
+asd
+cat << end
+asd
+cat << end
+asd
+asd
+asd
+asd
+asd
+asd
+das
+cat << end
+asd
+asd
+cat << end
+asd
+asd
+asd
+cat < Makefile 
+asd
+asd
+asd
+asd
+c
+cat << end
+dasd
+asd
+asd
+asd
+cat Makefile 
+/bin/cat Makefile 
+/bin/sleep 5 | /bin/ls 
+asd
+asd
+asd
+asd
+asd
+/bin/sleep 5 | /bin/ls 
+/bin/sleep 5 | /bin/ls 
+/bin/sleep 5 | /bin/cat Makefile 
+/bin/sleep 5 | /bin/cat Makefile 
