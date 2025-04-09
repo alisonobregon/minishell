@@ -97,7 +97,6 @@ int	cd(t_minishell *shell, char **arr)
 	}
 	if (arr[1] == NULL || !ft_strncmp(arr[1], "~", 2))
 	{
-		printf("home case\n");
 		if (home == NULL)
 		{
 			ft_printf("minishell: cd: HOME not set\n");

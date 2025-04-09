@@ -148,5 +148,5 @@ int	create_command_lst(t_minishell *shell)
 		temp = temp->next;
 		i++;
 	}
-	return (0);
-} */
+	return (0); 
+}*/

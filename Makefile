@@ -48,7 +48,7 @@ OBJ	= $(SRC:.c=.o)
 
 INCLUDES = -I/mingw64/include
 
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES) 
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3
 
 FLAGS = -L/mingw64/lib -lreadline -lhistory -ltermcap
 

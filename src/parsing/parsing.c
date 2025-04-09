@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gongarci <gongarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:15:18 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/04/09 22:09:06 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:30:53 by gongarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,10 @@ void	parsing(t_minishell *shell)
 		return ;
 	}
 	if (!create_command_lst(shell))
+	{
 		shell->status = 2;
+		return ;
+	}
 	free_array(shell->args);
 	shell->args = NULL;
 }
