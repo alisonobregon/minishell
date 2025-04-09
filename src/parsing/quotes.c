@@ -6,7 +6,7 @@
 /*   By: aliobreg <aliobreg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:53:36 by aliobreg          #+#    #+#             */
-/*   Updated: 2025/04/09 21:21:43 by aliobreg         ###   ########.fr       */
+/*   Updated: 2025/04/09 21:43:33 by aliobreg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,20 @@ int	get_future_arglen(char *arg, char **env, int lex)
 	return (len);
 }
 
-int		find_position(char *arg)
+/* int	find_position(char *arg)
 {
-	int		i;
-	
+	int	i;
+
 	i = 0;
-	while(arg[i])
+	while (arg[i])
 	{
-		if (arg[i] =='\'' || arg[i] == '"')
-			break;
+		if (arg[i] == '\'' || arg[i] == '"')
+			break ;
 		i++;
 	}
-	return(i);
-}
+	return (i);
+} */
+
 char	*replace_env(char *arg, char **env, int last_exit, t_env *envi)
 {
 	int	quotes;
@@ -87,10 +88,8 @@ char	*replace_env(char *arg, char **env, int last_exit, t_env *envi)
 	envi->new_arg = malloc_new_arg(arg, env, last_exit);
 	while (arg[++i])
 	{
-		printf("%c el argumento es \n", arg[i]);
 		if (handle_quotes(arg, &quotes, envi->quotee, &i) == 1)
 			continue ;
-		printf("%c el argumento es  desoues \n", arg[i]);
 		if (quotes != 1 && arg[i] == '$')
 		{
 			envi->var_val = get_env(arg + i, env, last_exit);

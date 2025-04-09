@@ -230,5 +230,4 @@ char		**rm_str_from_array(char **array, char *str);
 int			check_prompt_str(t_minishell *shell);
 void		print_all_shell(t_minishell *shell);
 int			find_position(char *arg);
-
 #endif

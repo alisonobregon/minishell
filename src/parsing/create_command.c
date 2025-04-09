@@ -107,8 +107,8 @@ int	create_command_lst(t_minishell *shell)
 	}
 	return (1);
 }
-/*
-int	print_command_list(t_exec *command_list)
+
+/* int	print_command_list(t_exec *command_list)
 {
 	t_exec		*temp;
 	t_output	*temp_out;
@@ -149,4 +149,4 @@ int	print_command_list(t_exec *command_list)
 		i++;
 	}
 	return (0);
-}*/
+} */
