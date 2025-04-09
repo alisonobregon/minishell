@@ -71,7 +71,8 @@ int	valid_str(char *str)
 	{
 		while (str[i] != '\0')
 		{
-			if (!ft_isalnum(str[i]) && str[i] != '_' && str[i] != '=')
+			if (!ft_isalnum(str[i]) && str[i] != '_'
+				&& str[i] != '=' && str[i] != ' ' && str[i] != '-')
 				return (0);
 			i++;
 		}

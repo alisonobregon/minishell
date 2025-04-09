@@ -40,7 +40,7 @@ int	append_in_args(char ***buf, char *op, char ***array)
 	return (1);
 }
 
-int	append_in_her_args(char ***buf, char *op, char ***array, t_exec *new)
+int	append_in_her_args(char ***buf, char *op, char ***arr, t_exec *new)
 {
 	if (!(**buf))
 		return (1);
@@ -48,7 +48,7 @@ int	append_in_her_args(char ***buf, char *op, char ***array, t_exec *new)
 		&& !(ft_strncmp(**buf, op, ft_strlen(op))))
 	{
 		(*buf)++;
-		if (!(str_array_append(array, **buf)))
+		if (!(str_array_append(arr, **buf)))
 			return (0);
 		here_doc(&new, **buf);
 		(*buf)++;

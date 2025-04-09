@@ -14,6 +14,32 @@
 
 int	g_sigint;
 
+void	raise_shell_lvl(t_minishell *shell, char **env)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	if (!str_in_array(env, "SHLVL="))
+	{
+		printf("SHLVL not found\n");
+		shell->env = add_str_to_array(shell->env, "SHLVL=1");
+		return ;
+	}
+	while (env[i])
+	{
+		if (ft_strnstr(env[i], "SHLVL=", 6))
+		{
+			str = ft_itoa(ft_atoi(env[i] + 6) + 1);
+			free(shell->env[i]);
+			shell->env[i] = ft_str2join("SHLVL=", str, 0, 1);
+			break ;
+		}
+		i++;
+	}
+	return ;
+}
+
 void	memory_allocated(t_minishell *shell)
 {
 	(void)shell;
@@ -69,12 +95,12 @@ int	main(int argc, char **argv, char **env)
 
 	(void)argc;
 	(void)argv;
-	print_shell();
 	shell = ft_calloc(1, sizeof(t_minishell));
 	if (env)
 	{
 		shell->env = strarray_copy(env);
 		shell->path = ft_split(getenv("PATH"), ':');
+		(print_shell(), raise_shell_lvl(shell, env));
 	}
 	shell->status = 0;
 	wait_signal();

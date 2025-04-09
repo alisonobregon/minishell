@@ -61,8 +61,8 @@ void	exec_cmd(t_minishell *shell, t_exec *exec)
 	execve(path, exec->args, shell->env);
 	perror("Error excecuting execve\n");
 	free(path);
-	free_child_shell(&shell);
 	signal(SIGQUIT, SIG_IGN);
+	free_child_shell(&shell);
 	exit(127);
 }
 
@@ -109,8 +109,8 @@ int	one_cmd(t_minishell *shell)
 			}
 			if (shell->exec->heredoc)
 				unlinker(shell->exec->heredoc);
-			exec_cmd(shell, shell->exec);
+			(exec_cmd(shell, shell->exec));
 		}
 	}
-	return (one_cmd_waiter(shell));
+	return (shell_exception(shell), one_cmd_waiter(shell));
 }
