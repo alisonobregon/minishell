@@ -32,6 +32,7 @@ SRC =	./strings/ft_atoi.c \
 		./strings/ft_strnstr.c \
 		./strings/ft_strlcat.c \
 		./strings/ft_strdup.c \
+		./strings/ft_strldup.c \
 		./strings/ft_substr.c \
 		./strings/ft_strjoin.c \
 		./strings/ft_strtrim.c \
@@ -81,7 +82,7 @@ SRC =	./strings/ft_atoi.c \
 OBJS = $(SRC:.c=.o)
 CURRENT_FILE = 1
 TOTAL_FILES = $(words $(SRC))
-COMPILER = gcc
+COMPILER = cc
 CFLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
