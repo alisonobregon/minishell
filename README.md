@@ -28,6 +28,9 @@ Implementar una shell simple capaz de:
 ✅ Heredoc (`<<`)  
 
 ---
+## Screenshots
+
+![App Screenshot](Screenshot.png)
 
 ## ⚙️ Compilación
 
@@ -39,23 +42,9 @@ Requiere:
 ```bash
 make
 
-
 ## Authors
 
 - [@alisonobregon](https://www.github.com//alisonobregon)
 - [@GGbass](https://www.github.com//GGbass)
 
-## Screenshots
-
-![App Screenshot](make
-
-
-## Authors
-
-- [@alisonobregon](https://www.github.com//alisonobregon)
-- [@GGbass](https://www.github.com//GGbass)
-
-## Screenshots
-
-![App Screenshot](Screenshot.png)
 
