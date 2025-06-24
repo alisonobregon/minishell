@@ -47,5 +47,15 @@ make
 
 ## Screenshots
 
+![App Screenshot](make
+
+
+## Authors
+
+- [@alisonobregon](https://www.github.com//alisonobregon)
+- [@GGbass](https://www.github.com//GGbass)
+
+## Screenshots
+
 ![App Screenshot](Screenshot.png)
 
